@@ -17,7 +17,7 @@ div.title{
     margin-bottom: 30px;
 }
 
-div.category{
+div.category-b{
     margin-bottom: 30px;
 }
 
@@ -28,16 +28,32 @@ div.category{
 
 }
 
+.photo-large{
+    
+    object-fit:contain;
+    display: inline-block;
+}
+
 td {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     max-width: 400px;
     table-layout: fixed;
-  }
+}
+
+#table-products{
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 .text{
     display: inline-block; 
+}
+
+.logo_back{
+    background-image: url(../imgs/logo_back.png);
+    background-size: cover;
 }
 
 table.logo{
@@ -57,6 +73,3 @@ img {
     cursor: pointer;
 }
 
-photo-large{
-    cursor:default;
-}
