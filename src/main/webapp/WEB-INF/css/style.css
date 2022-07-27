@@ -87,3 +87,25 @@ line-height: 75px;
 margin-bottom: 0px;
 }
 
+header.login{
+    margin-bottom: 50px;
+}
+
+.login{
+    width: 300px;
+    padding: 5px;
+}
+
+form.login{
+    margin: auto;
+}
+
+h1.login{
+    color: blueviolet;
+    text-align: center;
+}
+
+p.login-submit{
+    margin: 20px 0px 20px;
+    text-align: center;
+}
