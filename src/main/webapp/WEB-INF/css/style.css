@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-*{
+nav{
     font-family: 'Kiwi Maru', serif;
 }
 
@@ -12,8 +12,29 @@ div.navi{
 }
 
 div.title{
+    font-family: 'Kaisei Opti', serif;
+    font-size: x-large;
     margin-bottom: 30px;
 }
+
+div.category{
+    margin-bottom: 30px;
+}
+
+
+.products table{
+    margin-bottom: 30px;
+    font-size: small;
+
+}
+
+td {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 400px;
+    table-layout: fixed;
+  }
 
 .text{
     display: inline-block; 
@@ -23,11 +44,19 @@ table.logo{
     margin-left: auto;
     margin-right: auto;
     color: rgb(255, 255, 255);
-    font-size: 30px;
+    font-size: 40px;
     text-shadow: 0px 0px 5px #000000,0px 0px 5px #000000,0px 0px 5px #000000,0px 0px 5px #000000,0px 0px 5px #000000;
 }
 
 th{
     padding-left: 10px;
     padding-right: 10px;
+}
+
+img {
+    cursor: pointer;
+}
+
+photo-large{
+    cursor:default;
 }
