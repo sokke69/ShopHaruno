@@ -30,3 +30,11 @@ th#update,#delete{
 #product-table{
 width: 100%;
 }
+
+#head{
+    width: 50px;
+}
+
+td input{
+    width: 100%;
+}
