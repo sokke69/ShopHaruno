@@ -10,12 +10,22 @@ th#update,#delete{
 
 #product-table{
 width: 100%;
+margin-bottom: 20px;
 }
 
-#head{
-    width: 50px;
+.form-sub{
+    margin-bottom: 5px;
+}
+
+th#head{
+    width: 100px;
+}
+
+th{
+    text-align: center;
 }
 
 td input{
     width: 100%;
 }
+
