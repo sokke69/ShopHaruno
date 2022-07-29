@@ -19,25 +19,25 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script>
-    $(document).ready(function () {
-      $('#photo-mini-0001 img').click(function () {
-        let src = $(this).attr('src');
-        console.log(src);
-        $('#photo-large-0001 img').attr('src', src);
-      })
-      $('#photo-mini-0002 img').click(function () {
-        let src = $(this).attr('src');
-        console.log(src);
-        $('#photo-large-0002 img').attr('src', src);
-      })
-    });
+        $(document).ready(function () {
+            $('#photo-mini-1 img').click(function () {
+                let src = $(this).attr('src');
+                console.log(src);
+                $('#photo-large-1 img').attr('src', src);
+            })
+            $('#photo-mini-2 img').click(function () {
+                let src = $(this).attr('src');
+                console.log(src);
+                $('#photo-large-2 img').attr('src', src);
+            })
+        });
     </script>
 
 
 </head>
 
 <body>
-    
+
 
     <div class="navi">
 
@@ -90,23 +90,23 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col">
-                    <table class="category_table" align="center">
+                    <table class="category-table" align="center">
 
-                        <th class="text"><a href="#">カテゴリA01</a></th>
+                        <td class="text"><a href="#">カテゴリA01</a></td>
 
-                        <th class="text"><a href="#">カテゴリA02</a></th>
+                        <td class="text"><a href="#">カテゴリA02</a></td>
 
-                        <th class="text"><a href="#">カテゴリA03</a></th>
+                        <td class="text"><a href="#">カテゴリA03</a></td>
 
-                        <th class="text"><a href="#">カテゴリA04</a></th>
+                        <td class="text"><a href="#">カテゴリA04</a></td>
 
-                        <th class="text"><a href="#">カテゴリA05</a></th>
+                        <td class="text"><a href="#">カテゴリA05</a></td>
 
-                        <th class="text"><a href="#">カテゴリA06</a></th>
+                        <td class="text"><a href="#">カテゴリA06</a></td>
 
-                        <th class="text"><a href="#">カテゴリA07</a></th>
+                        <td class="text"><a href="#">カテゴリA07</a></td>
 
-                        <th class="text"><a href="#">カテゴリA08</a></th>
+                        <td class="text"><a href="#">カテゴリA08</a></td>
                     </table>
                 </div>
                 <div class="col-2"></div>
@@ -121,21 +121,21 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col">
-                    <table class="category_table" align="center">
+                    <table class="category-table" align="center">
 
-                        <th class="text"><a href="#">カテゴリB01</a></th>
+                        <td class="text"><a href="#">カテゴリB01</a></td>
 
-                        <th class="text"><a href="#">カテゴリB02</a></th>
+                        <td class="text"><a href="#">カテゴリB02</a></td>
 
-                        <th class="text"><a href="#">カテゴリB03</a></th>
+                        <td class="text"><a href="#">カテゴリB03</a></td>
 
-                        <th class="text"><a href="#">カテゴリB04</a></th>
+                        <td class="text"><a href="#">カテゴリB04</a></td>
 
-                        <th class="text"><a href="#">カテゴリB05</a></th>
+                        <td class="text"><a href="#">カテゴリB05</a></td>
 
-                        <th class="text"><a href="#">カテゴリB06</a></th>
+                        <td class="text"><a href="#">カテゴリB06</a></td>
 
-                        <th class="text"><a href="#">カテゴリB07</a></th>
+                        <td class="text"><a href="#">カテゴリB07</a></td>
 
                     </table>
                 </div>
@@ -149,179 +149,140 @@
     <div class="products">
         <div class="container">
             <div class="row">
-                <div class="col-1"></div>
-                <div class="col" align="center">
+                <div align="center">
                     <div class="row">
                         <div class="col">
-                            <table height="250" width="500">
+                            <table width="560px" height="260px">
                                 <tr>
-                                    <th rowspan="3" width="70%">
-                                            <div id="photo-large-0001" class="photo-large"><img src="../imgs/0001/0001_main.jpg" alt="" width="100%" height="220px">
-                                    </div><!--/.photo-large-->
-                                        
-                                    </th>
-                                    <th>
-                                        <div id="photo-mini-0001" ><img src="../imgs/0001/0001_main.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="photo-mini-0001"><img src="../imgs/0001/0001_sub_01.jpg" alt="" width="100%"></div>
-                                    </th>
-                                </tr>
-                                <tr height="">
-                                    <th>
-                                        <div id="photo-mini-0001"><img src="../imgs/0001/0001_sub_02.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="photo-mini-0001"><img src="../imgs/0001/0001_sub_03.jpg" alt="" width="100%"></div>
-                                    </th>
-                                </tr>
-                                <tr height="">
-                                    <th>
-                                        <div id="photo-mini-0001"><img src="../imgs/0001/0001_sub_04.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="photo-mini-0001"><img src="../imgs/0001/0001_sub_05.jpg" alt="" width="100%"></div>
-                                    </th>
-                                </tr>
-
-                                <tr height="5%">
-                                    <td colspan="3" id="table-products"><a href="#">Canon コンパクトデジタルカメラ PowerShot SX620 HS ブラック
-                                            光学25倍ズーム/Wi-Fi対応
-                                            PSSX620HSBK</a></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col">
-                            <table height="250" width="500">
-                                <tr>
-                                    <th rowspan="3" width="70%">
-                                            <div id="photo-large-0002" class="photo-large"><img src="../imgs/0002/0002_main.jpg" alt="" width="100%" height="220px">
-                                    </div><!--/.photo-large-->
-                                        
-                                    </th>
-                                    <th>
-                                        <div id="photo-mini-0002"><img src="../imgs/0002/0002_main.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="photo-mini-0002"><img src="../imgs/0002/0002_sub_01.jpg" alt="" width="100%"></div>
-                                    </th>
-                                </tr>
-                                <tr height="">
-                                    <th>
-                                        <div id="photo-mini-0002"><img src="../imgs/0002/0002_sub_02.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="photo-mini-0002"><img src="../imgs/0002/0002_sub_03.jpg" alt="" width="100%"></div>
-                                    </th>
-                                </tr>
-                                <tr height="">
-                                    <th>
-                                        <div id="photo-mini-0002"><img src="../imgs/0002/0002_sub_04.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="photo-mini-0002"><img src="../imgs/0002/0002_sub_05.jpg" alt="" width="100%"></div>
-                                    </th>
-                                </tr>
-
-                                <tr height="5%">
-                                    <td colspan="3" id="table-products"><a href="#">Canon コンパクトデジタルカメラ PowerShot SX620 HS ブラック
-                                            光学25倍ズーム/Wi-Fi対応
-                                            PSSX620HSBK</a></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col">
-                            <table height="250" width="500" border="1">
-                                <tr>
-                                    <th rowspan="3" width="70%">
-                                        <div id="photo-large"><img src="../imgs/main_a.jpg" alt="" width="100%">
+                                    <th height="240px" class="large">
+                                        <div id="photo-large-1" class="photo-large"><img src="../imgs/1/main.jpg" alt=""
+                                                width="320px" height="240px">
                                         </div>
+                                        <!--/.photo-large-->
+
                                     </th>
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/main_a.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/sub_a01.jpg" alt="" width="100%"></div>
-                                    </th>
-                                </tr>
-                                <tr height="">
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/sub_a02.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/sub_a03.jpg" alt="" width="100%"></div>
-                                    </th>
-                                </tr>
-                                <tr height="">
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/sub_a04.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/sub_a05.jpg" alt="" width="100%"></div>
-                                    </th>
+                                    <td height="240px" width="240px" class="mini">
+                                        <div id="photo-mini-1" class="img-table">
+                                            <ul>
+                                                <li><img src="../imgs/1/main.jpg" alt=""></li>
+                                                <li><img src="../imgs/1/sub_01.jpg" alt=""></li>
+                                                <li><img src="../imgs/1/sub_02.jpg" alt=""></li>
+                                                <li><img src="../imgs/1/sub_03.jpg" alt=""></li>
+                                                <li><img src="../imgs/1/sub_04.jpg" alt=""></li>
+                                                <li><img src="../imgs/1/sub_05.jpg" alt=""></li>
+                                                <li><img src="../imgs/1/sub_06.jpg" alt=""></li>
+                                                <li><img src="../imgs/1/sub_07.jpg" alt=""></li>
+                                                <li><img src="../imgs/1/sub_08.jpg" alt=""></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+
                                 </tr>
 
-                                <tr height="5%">
-                                    <td colspan="3"><a href="#">Canon コンパクトデジタルカメラ PowerShot SX620 HS ブラック
+                                <tr>
+                                    <td colspan="2" id="table-products"><a href="#">Canon コンパクトデジタルカメラ PowerShot SX620
+                                            HS ブラック
                                             光学25倍ズーム/Wi-Fi対応
                                             PSSX620HSBK</a></td>
                                 </tr>
                             </table>
                         </div>
                         <div class="col">
-                            <table height="250" width="500" border="1">
+                            <table width="560px" height="260px">
                                 <tr>
-                                    <th rowspan="3" width="70%">
-                                        <div id="photo-large"><img src="../imgs/main_a.jpg" alt="" width="100%">
+                                    <th height="240px" class="large">
+                                        <div id="photo-large-2" class="photo-large"><img src="../imgs/2/main.jpg" alt=""
+                                                width="320px" height="240px">
                                         </div>
+                                        <!--/.photo-large-->
+
                                     </th>
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/main_a.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/sub_a01.jpg" alt="" width="100%"></div>
-                                    </th>
-                                </tr>
-                                <tr height="">
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/sub_a02.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/sub_a03.jpg" alt="" width="100%"></div>
-                                    </th>
-                                </tr>
-                                <tr height="">
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/sub_a04.jpg" alt="" width="100%"></div>
-                                    </th>
-                                    <th>
-                                        <div id="gallery"><img src="../imgs/sub_a05.jpg" alt="" width="100%"></div>
-                                    </th>
+                                    <td height="240px" width="240px" class="mini">
+                                        <div id="photo-mini-2" class="img-table">
+                                            <ul>
+                                                <li><img src="../imgs/2/main.jpg" alt=""></li>
+                                                <li><img src="../imgs/2/sub_01.jpg" alt=""></li>
+                                                <li><img src="../imgs/2/sub_02.jpg" alt=""></li>
+                                                <li><img src="../imgs/2/sub_03.jpg" alt=""></li>
+                                                <li><img src="../imgs/2/sub_04.jpg" alt=""></li>
+                                                <li><img src="../imgs/2/sub_05.jpg" alt=""></li>
+                                                <li><img src="../imgs/2/sub_06.jpg" alt=""></li>
+                                                <li><img src="../imgs/2/sub_07.jpg" alt=""></li>
+                                                <li><img src="../imgs/2/sub_08.jpg" alt=""></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+
                                 </tr>
 
-                                <tr height="5%">
-                                    <td colspan="3"><a href="#">Canon コンパクトデジタルカメラ PowerShot SX620 HS ブラック
+                                <tr>
+                                    <td colspan="2" id="table-products"><a href="#">Canon コンパクトデジタルカメラ PowerShot SX620
+                                            HS ブラック
                                             光学25倍ズーム/Wi-Fi対応
                                             PSSX620HSBK</a></td>
                                 </tr>
                             </table>
                         </div>
+
+                        <div class="col">
+                            <table width="560px" height="260px">
+                                <tr>
+                                    <th height="240px" class="large">
+                                        <div id="photo-large-3" class="photo-large"><img src="../imgs/3/main.jpg" alt=""
+                                                width="320px" height="240px">
+                                        </div>
+                                        <!--/.photo-large-->
+
+                                    </th>
+                                    <td height="240px" width="240px" class="mini">
+                                        <div id="photo-mini-3" class="img-table">
+                                            <ul>
+                                                <li><img src="../imgs/3/main.jpg" alt=""></li>
+                                                <li><img src="../imgs/3/sub_01.jpg" alt=""></li>
+                                                <li><img src="../imgs/3/sub_02.jpg" alt=""></li>
+                                                <li><img src="../imgs/3/sub_03.jpg" alt=""></li>
+                                                <li><img src="../imgs/3/sub_04.jpg" alt=""></li>
+                                                <li><img src="../imgs/3/sub_05.jpg" alt=""></li>
+                                                <li><img src="../imgs/3/sub_06.jpg" alt=""></li>
+                                                <li><img src="../imgs/3/sub_07.jpg" alt=""></li>
+                                                <li><img src="../imgs/3/sub_08.jpg" alt=""></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" id="table-products"><a href="#">Canon コンパクトデジタルカメラ PowerShot SX620
+                                            HS ブラック
+                                            光学25倍ズーム/Wi-Fi対応
+                                            PSSX620HSBK</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <!--ここから消さない-->
+                        <div class="col">
+                            <table width="560px">
+                            </table>
+                        </div>
+                        <!--ここまで消さない-->
+
                     </div>
-                    <!--/.row-->
-                </div>
-                <div class="col-1"></div>
+                <!--/.row-->
             </div>
-            <!--/.row-->
         </div>
-        <!--/.container-->
+        <!--/.row-->
+    </div>
+    <!--/.container-->
     </div>
     <!--/.products-->
 
-<div>
-    <footer>
-        <p class="copyright">Copyright &copy 2022 SHOP HARUNO All Rights Reserved.</p>
-    </footer>
-</div>
+    <div>
+        <footer>
+            <p class="copyright">Copyright &copy 2022 SHOP HARUNO All Rights Reserved.</p>
+        </footer>
+    </div>
 
 
 
