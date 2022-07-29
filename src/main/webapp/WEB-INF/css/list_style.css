@@ -8,7 +8,7 @@ th#update,#delete{
     width: 50px;
 }
 
-#product-table{
+#list-table{
 width: 100%;
 margin-bottom: 20px;
 }
@@ -21,11 +21,20 @@ th#head{
     width: 100px;
 }
 
-th{
-    text-align: center;
-}
 
 td input{
     width: 100%;
 }
 
+th#update,#delete{
+    width: 50px;
+}
+
+
+#user-table{
+    width: 100%;
+}
+
+.submit{
+    margin-bottom: 20px;
+}
