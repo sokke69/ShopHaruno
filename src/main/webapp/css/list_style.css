@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+th,td{
+    padding: 5px;
+}
+
+th#update,#delete{
+    width: 50px;
+}
+
+#list-table{
+width: 100%;
+margin-bottom: 20px;
+}
+
+.form-sub{
+    margin-bottom: 5px;
+}
+
+th#head{
+    width: 100px;
+}
+
+
+td input{
+    width: 100%;
+}
+
+th#update,#delete{
+    width: 50px;
+}
+
+
+#user-table{
+    width: 100%;
+}
+
+.submit{
+    margin-bottom: 20px;
+}

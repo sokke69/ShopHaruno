@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+.login{
+    width: 400px;
+    padding: 5px;    
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form.login{
+    margin: auto;
+}
+
+h1{
+    color: blueviolet;
+    text-align: center;
+}
+
+p.login-submit{
+    margin: 20px 0px 20px;
+    text-align: center;
+}
+
+.logout-center{
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+input{
+    margin-bottom: 20px;
+}
+
+#alert{
+    width: 400px;
+    margin: 0;
+    padding: 8px;
+    font-size: 13px;
+}
+
+#submitButton{
+    width: 200px;
+    padding: 10px;
+}
