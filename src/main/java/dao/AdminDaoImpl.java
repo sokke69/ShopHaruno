@@ -11,10 +11,10 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import domain.Admin;
 
-public class AdminDaoImpl implements AdminDao{
-	
+public class AdminDaoImpl implements AdminDao {
+
 	private DataSource ds;
-	
+
 	public AdminDaoImpl(DataSource ds) {
 		this.ds = ds;
 	}
@@ -34,27 +34,26 @@ public class AdminDaoImpl implements AdminDao{
 	@Override
 	public void insert(Admin admin) throws Exception {
 		// TODO 自動生成されたメソッド・スタブ
-		
+
 	}
 
 	@Override
 	public void update(Admin admin) throws Exception {
 		// TODO 自動生成されたメソッド・スタブ
-		
+
 	}
 
 	@Override
 	public void delete(Admin admin) throws Exception {
 		// TODO 自動生成されたメソッド・スタブ
-		
+
 	}
 
 	@Override
 	public Admin findByLoginIdAndLoginPass(String userName, String userPass) throws Exception {
 		Admin admin = null;
-		try (Connection con = ds.getConnection()){
-			String sql = "SELECT "
-					+ "id, user_name, user_pass FROM user WHERE user_name=?";
+		try (Connection con = ds.getConnection()) {
+			String sql = "SELECT * FROM users WHERE user_name=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, userName);
 			ResultSet rs = stmt.executeQuery();
@@ -68,14 +67,14 @@ public class AdminDaoImpl implements AdminDao{
 		}
 		return admin;
 	}
-	
+
 	private Admin mapToAdmin(ResultSet rs) throws Exception {
 		Admin admin = new Admin();
-		admin.setId((Integer)rs.getObject("id"));
+		admin.setId((Integer) rs.getObject("id"));
 		admin.setUserName(rs.getString("user_name"));
 		admin.setUserPass(rs.getString("user_pass"));
 		return admin;
-		
+
 	}
 
 }

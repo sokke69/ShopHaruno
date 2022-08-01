@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("userName", admin.getUserName());
 				response.sendRedirect("listDb");
 			} else {
-				
+
 				request.setAttribute("nameError", "なんか変です");
 				request.setAttribute("id", userName);
 				request.setAttribute("passError", "なんか変です");
