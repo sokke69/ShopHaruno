@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .login{
-    width: 500px;
+    width: 400px;
     padding: 5px;    
 }
 
@@ -34,7 +34,7 @@ input{
 }
 
 #alert{
-    width: 500px;
+    width: 400px;
     margin: 0;
     padding: 8px;
     font-size: 13px;
