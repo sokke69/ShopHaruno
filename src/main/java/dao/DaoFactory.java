@@ -10,6 +10,10 @@ public class DaoFactory {
 		return new AdminDaoImpl(getDataSource());
 
 	}
+	
+	public static ProductDao createProductDao() {
+		return new ProductDaoImpl(getDataSource());
+	}
 
 	private static DataSource getDataSource() {
 		InitialContext ctx = null;

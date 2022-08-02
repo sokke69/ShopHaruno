@@ -8,6 +8,14 @@ th#update,#delete{
     width: 50px;
 }
 
+#product-name{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 400px;
+    table-layout: fixed;
+}
+
 #list-table{
 width: 100%;
 margin-bottom: 20px;
