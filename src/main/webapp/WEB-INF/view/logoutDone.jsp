@@ -25,7 +25,7 @@
             <div class="col-5">
                     <div class="title"><div class="display-6"><div class="logout-center">ログアウトしました</div></div></div>
                     <p class="logout-center"><a href="login">ログイン画面へ戻る</a></p>
-                    <p class="logout-center"><a href="index.html">トップページへ戻る</a></p>
+                    <p class="logout-center"><a href="index">トップページへ戻る</a></p>
             </div>
             <div class="col"></div>
         </div><!--/.row-->

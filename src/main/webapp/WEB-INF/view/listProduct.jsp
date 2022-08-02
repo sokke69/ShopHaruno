@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col"></div>
         <div class="col-10">
-            <h1>商品一覧</h1>
+            <div class="display-6">商品一覧</div>
             <a href="#">商品追加</a>
             <table border="1" id="list-table">
                 <tr>
@@ -43,7 +43,7 @@
                 <tr><td><a href="#">編集</a></td><td><a href="#">削除</a></td>
                 <td><c:out value="${productList.id}" /></td>
                 <td id="product-name"><c:out value="${productList.productName}" /></td>
-                <td><a href="<c:out value="${productList.productUrl}" />">LINK</a></td>
+                <td><a href="<c:out value="${productList.productUrl}"/>" target="_blank">LINK</a></td>
                 <td><c:out value="${productList.registDate}" /></td>
                 <td><c:out value="${productList.registBy}" /></td>
                 <td><c:out value="${productList.updateDate}" /></td>
@@ -53,7 +53,7 @@
                 
                 
             </table>
-            <p><a href="#">戻る</a></p>
+            <p><a href="listDb">戻る</a></p>
         </div>
         <div class="col"></div>
     </div><!--/.row-->

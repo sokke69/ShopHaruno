@@ -49,7 +49,7 @@ public class AuthFilter extends HttpFilter implements Filter {
 				res.sendRedirect("login");
 				return;
 			}
-		}
+		} 
 
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
