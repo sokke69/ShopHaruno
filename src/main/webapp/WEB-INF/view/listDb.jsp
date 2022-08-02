@@ -8,12 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>データベース一覧</title>
-    <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/list_style.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/hf_style.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/list_style.css">
+    <link rel="stylesheet" href="./css/hf_style.css">
 
-    <script src="<%=request.getContextPath() %>/js/bootstrap.bundle.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/jquery-3.6.0.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>
@@ -27,12 +27,12 @@
             <div class="col-10">
                 <h1>データベース一覧</h1>
                 <table border="1" id="list-table">
-                    <tr><td><a href="listProducts">商品一覧</a></td></tr>
+                    <tr><td><a href="listProduct">商品一覧</a></td></tr>
                     <tr><td><a href="listCat">カテゴリ一覧</a></td></tr>
                     <tr><td><a href="listUser">ユーザー一覧</a></td></tr>
                 
                 </table>
-                <p><a href="#">戻る</a></p>
+                <p><a href="logout">ログアウト</a></p>
             </div>
             <div class="col"></div>
         </div><!--/.row-->
