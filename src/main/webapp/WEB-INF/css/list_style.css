@@ -8,8 +8,8 @@ th#update,#delete{
     width: 50px;
 }
 
-#product-name{
-    text-overflow: ellipsis;
+td#product-name{
+  text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     max-width: 400px;

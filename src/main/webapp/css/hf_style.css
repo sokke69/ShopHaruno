@@ -1,18 +1,19 @@
-header{
-    margin-bottom: 50px;
-    padding: 5px;
+header {
+	margin-bottom: 50px;
+	padding: 5px;
 }
 
-footer{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 75px;
+footer {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 75px;
+	color:#b0c4de;
 }
 
-footer p{
-line-height: 75px;
-margin-bottom: 0px;
+footer p {
+	line-height: 75px;
+	margin-bottom: 0px;
 }

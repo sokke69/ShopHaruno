@@ -8,12 +8,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>管理ページ ログイン</title>
-<link href="./css/bootstrap.min.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="./css/loginout_style.css">
-<link rel="stylesheet"
-	href="./css/hf_style.css">
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/loginout_style.css">
+<link rel="stylesheet" href="./css/hf_style.css">
 
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/jquery-3.6.0.min.js"></script>
@@ -53,7 +50,7 @@
 
 	<div>
 		<footer>
-			<p class="copyright">Copyright &copy 2022 SHOP HARUNO All Rights
+			<p>Copyright &copy 2022 SHOP HARUNO All Rights
 				Reserved.</p>
 		</footer>
 	</div>
