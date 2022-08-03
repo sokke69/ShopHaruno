@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.AdminDao;
 import dao.DaoFactory;
-import dao.ProductDao;
-import domain.Product;
+import domain.Admin;
 
 /**
- * Servlet implementation class ListProductServlet
+ * Servlet implementation class ListUserServlet
  */
-@WebServlet("/listProduct")
-public class ListProductServlet extends HttpServlet {
+@WebServlet("/listUser")
+public class ListUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -25,23 +25,20 @@ public class ListProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			ProductDao productDao = DaoFactory.createProductDao();
-			List<Product> productList = productDao.findAll();
-			request.setAttribute("productList", productList);
-			request.getRequestDispatcher("/WEB-INF/view/listProduct.jsp").forward(request, response);
+			AdminDao adminDao = DaoFactory.createAdminDao();
+			List<Admin> userList = adminDao.findAll();
+			request.setAttribute("userList", userList);
+			request.getRequestDispatcher("/WEB-INF/view/listUser.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-		
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

@@ -1,48 +1,64 @@
 @charset "utf-8";
 
-th,td{
+th,
+td {
     padding: 5px;
 }
 
-th#update,#delete{
+th#update,
+#delete {
     width: 50px;
 }
 
-td#product-name{
-  text-overflow: ellipsis;
+td#product-name {
+    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     max-width: 400px;
     table-layout: fixed;
 }
 
-#list-table{
-width: 100%;
-margin-bottom: 20px;
+#list-table {
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.form-sub{
+.adduser-table{
+    width: 500px;
+    margin: auto;
+}
+
+#list-adduser-table {
+    width: 500px;
+    margin: 0 auto 20px;
+}
+
+.form-sub {
     margin-bottom: 5px;
 }
 
-th#head{
+th#head {
     width: 100px;
 }
 
 
-td input{
-    width: 100%;
+td input {
+    width: 300px;
 }
 
-th#update,#delete{
+td select {
+    width: 100px;
+}
+
+th#update,
+#delete {
     width: 50px;
 }
 
-
-#user-table{
+#user-table {
     width: 100%;
 }
 
-.submit{
+.submit {
     margin-bottom: 20px;
 }

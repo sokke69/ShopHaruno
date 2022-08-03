@@ -45,14 +45,14 @@ public class LoginServlet extends HttpServlet {
 			Pattern passPattern = Pattern.compile("[0-9a-zA-Z]+");
 			Matcher passMatcher = passPattern.matcher(userPass);
 			
-
 			AdminDao adminDao = DaoFactory.createAdminDao();
 			Admin admin = adminDao.findByLoginIdAndLoginPass(userName, userPass);
-			
+					
 			request.setAttribute("userName", userName);
 			
 			if (admin != null) {
 				request.getSession().setAttribute("userName", admin.getUserName());
+				request.getSession().setAttribute("userType", admin.getTypeName());
 				response.sendRedirect("listDb");
 			} else {
 				request.setAttribute("Error", "true");
