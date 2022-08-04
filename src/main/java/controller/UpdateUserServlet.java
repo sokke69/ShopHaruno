@@ -40,6 +40,7 @@ public class UpdateUserServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
 		Admin admin = new Admin();
 		
@@ -55,7 +56,7 @@ public class UpdateUserServlet extends HttpServlet {
 			AdminDao adminDao = DaoFactory.createAdminDao();
 			adminDao.update(admin);
 			
-			response.sendRedirect(request.getContextPath() + "/listUser");
+			request.getRequestDispatcher("/WEB-INF/view/updateUserDone.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}

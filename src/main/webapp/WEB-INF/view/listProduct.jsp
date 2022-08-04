@@ -25,7 +25,7 @@
         <div class="col"></div>
         <div class="col-10">
             <div class="display-6">商品一覧</div>
-            <a href="#">商品追加</a>
+            <a href="addProduct">商品追加</a>
             <table border="1" id="list-table">
                 <tr>
                 <th id="update"></th>
@@ -33,20 +33,20 @@
                 <th id="id">ID</th>
                 <th id="product-name">商品名</th>
                 <th id="product-url">商品URL</th>
-                <th>追加日</th>
-                <th>追加ユーザー</th>
+                <th>登録日</th>
+                <th>登録ユーザー</th>
                 <th>編集日</th>
                 <th>編集ユーザー</th>
                 </tr>
                 
                 <c:forEach items="${productList}" var="productList" >
-                <tr><td><a href="#">編集</a></td><td><a href="#">削除</a></td>
+                <tr><td><a href="updateProduct?id=${productList.id}">編集</a></td><td><a href="deleteProduct?id=${productList.id}">削除</a></td>
                 <td><c:out value="${productList.id}" /></td>
                 <td id="product-name"><c:out value="${productList.productName}" /></td>
                 <td><a href="<c:out value="${productList.productUrl}"/>" target="_blank">LINK</a></td>
-                <td><c:out value="${productList.registDate}" /></td>
+                <td><fmt:formatDate value="${productList.registDate}" pattern="y年MM月dd日 HH:mm:ss" /></td>
                 <td><c:out value="${productList.registBy}" /></td>
-                <td><c:out value="${productList.updateDate}" /></td>
+                <td><fmt:formatDate value="${productList.updateDate}" pattern="y年MM月dd日 HH:mm:ss" /></td>
                 <td><c:out value="${productList.updateBy}" /></td>
                 </tr>
                 </c:forEach>

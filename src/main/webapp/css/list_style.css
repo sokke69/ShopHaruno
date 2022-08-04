@@ -14,7 +14,7 @@ td#product-name {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 400px;
+    max-width: 300px;
     table-layout: fixed;
 }
 
@@ -61,4 +61,12 @@ th#update,
 
 .submit {
     margin-bottom: 20px;
+}
+
+td img{
+	width:200px;
+}
+
+#longform{
+	width:80%;
 }

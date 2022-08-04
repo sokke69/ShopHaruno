@@ -6,6 +6,29 @@ public class Product {
 	
 	private Integer id;
 	private String productName;
+	private String productUrl;
+	private Integer categoryA;
+	private Integer categoryB01;
+	private Integer categoryB02;
+	private Integer categoryB03;
+	private String imgMain;
+	private String imgSub01;
+	private String imgSub02;
+	private String imgSub03;
+	private String imgSub04;
+	private String imgSub05;
+	private String imgSub06;
+	private String imgSub07;
+	private String imgSub08;
+	private Date registDate;
+	private Integer registBy;
+	private Date updateDate;
+	private Integer updateBy;
+	
+	public Product() {
+		
+	}
+	
 	public Product(Integer id, String productName, String productUrl, Integer categoryA, Integer categoryB01,
 			Integer categoryB02, Integer categoryB03, String imgMain, String imgSub01, String imgSub02, String imgSub03,
 			String imgSub04, String imgSub05, String imgSub06, String imgSub07, String imgSub08, Date registDate,
@@ -31,29 +54,6 @@ public class Product {
 		this.registBy = registBy;
 		this.updateDate = updateDate;
 		this.updateBy = updateBy;
-	}
-	
-	private String productUrl;
-	private Integer categoryA;
-	private Integer categoryB01;
-	private Integer categoryB02;
-	private Integer categoryB03;
-	private String imgMain;
-	private String imgSub01;
-	private String imgSub02;
-	private String imgSub03;
-	private String imgSub04;
-	private String imgSub05;
-	private String imgSub06;
-	private String imgSub07;
-	private String imgSub08;
-	private Date registDate;
-	private Integer registBy;
-	private Date updateDate;
-	private Integer updateBy;
-	
-	public Product() {
-		
 	}
 	
 	public Integer getId() {

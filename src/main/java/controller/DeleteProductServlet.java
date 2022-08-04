@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.AdminDao;
 import dao.DaoFactory;
-import domain.Admin;
+import dao.ProductDao;
+import domain.Product;
 
 /**
  * Servlet implementation class DeleteUserServlet
  */
-@WebServlet("/deleteUser")
-public class DeleteUserServlet extends HttpServlet {
+@WebServlet("/deleteProduct")
+public class DeleteProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -29,10 +29,10 @@ public class DeleteUserServlet extends HttpServlet {
 		Integer id = Integer.parseInt(request.getParameter("id"));
 
 		try {
-			AdminDao adminDao = DaoFactory.createAdminDao();
-			Admin admin = adminDao.findById(id);
-			request.setAttribute("user", admin);
-			request.getRequestDispatcher("/WEB-INF/view/deleteUser.jsp").forward(request, response);
+			ProductDao productDao = DaoFactory.createProductDao();
+			Product product = productDao.findById(id);
+			request.setAttribute("product", product);
+			request.getRequestDispatcher("/WEB-INF/view/deleteProduct.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
@@ -49,14 +49,14 @@ public class DeleteUserServlet extends HttpServlet {
 		
 		Integer id = Integer.parseInt(request.getParameter("id"));
 		
-		Admin admin = new Admin();
-		admin.setId(id);
+		Product product = new Product();
+		product.setId(id);
 		
 		try {
-			AdminDao adminDao = DaoFactory.createAdminDao();
-			adminDao.delete(admin);
+			ProductDao productDao = DaoFactory.createProductDao();
+			productDao.delete(product);
 			
-			request.getRequestDispatcher("/WEB-INF/view/deleteUserDone.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/deleteProductDone.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException();
 		}
