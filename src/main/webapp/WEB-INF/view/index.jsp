@@ -23,16 +23,13 @@
     <script src="./js/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#photo-mini-1 img').click(function () {
+            <c:forEach items="${productList}" var="productList" varStatus="vs">
+            $('#photo-mini-${productList.id} img').click(function () {
                 let src = $(this).attr('src');
                 console.log(src);
-                $('#photo-large-1 img').attr('src', src);
+                $('#photo-large-${productList.id} img').attr('src', src);
             })
-            $('#photo-mini-2 img').click(function () {
-                let src = $(this).attr('src');
-                console.log(src);
-                $('#photo-large-2 img').attr('src', src);
-            })
+            </c:forEach>
         });
     </script>
 
@@ -155,29 +152,29 @@
                 <div align="center">
                     <div class="row">
                     
-                    <c:forEach items="" var="" varStatus="vs">
+                    <c:forEach items="${productList}" var="productList" varStatus="vs">
                     <div class="col">
                             <table width="560px" height="260px">
                                 <tr>
                                     <th height="240px" class="large">
-                                        <div id="photo-large-1" class="photo-large"><img src="../imgs/1/main.jpg" alt=""
+                                        <div id="photo-large-${productList.id}" class="photo-large"><img src="${productList.imgMain}" alt=""
                                                 width="320px" height="240px">
                                         </div>
                                         <!--/.photo-large-->
 
                                     </th>
                                     <td height="240px" width="240px" class="mini">
-                                        <div id="photo-mini-1" class="img-table">
+                                        <div id="photo-mini-${productList.id}" class="img-table">
                                             <ul>
-                                                <li><img src="../imgs/1/main.jpg" alt=""></li>
-                                                <li><img src="../imgs/1/sub_01.jpg" alt=""></li>
-                                                <li><img src="../imgs/1/sub_02.jpg" alt=""></li>
-                                                <li><img src="../imgs/1/sub_03.jpg" alt=""></li>
-                                                <li><img src="../imgs/1/sub_04.jpg" alt=""></li>
-                                                <li><img src="../imgs/1/sub_05.jpg" alt=""></li>
-                                                <li><img src="../imgs/1/sub_06.jpg" alt=""></li>
-                                                <li><img src="../imgs/1/sub_07.jpg" alt=""></li>
-                                                <li><img src="../imgs/1/sub_08.jpg" alt=""></li>
+                                                <li><img src="${productList.imgMain}" alt=""></li>
+                                                <li><img src="${productList.imgSub01}" alt=""></li>
+                                                <li><img src="${productList.imgSub02}" alt=""></li>
+                                                <li><img src="${productList.imgSub03}" alt=""></li>
+                                                <li><img src="${productList.imgSub04}" alt=""></li>
+                                                <li><img src="${productList.imgSub05}" alt=""></li>
+                                                <li><img src="${productList.imgSub06}" alt=""></li>
+                                                <li><img src="${productList.imgSub07}" alt=""></li>
+                                                <li><img src="${productList.imgSub08}" alt=""></li>
                                             </ul>
                                         </div>
                                     </td>
@@ -185,14 +182,12 @@
                                 </tr>
 
                                 <tr>
-                                    <td colspan="2" id="table-products"><a href="#">Canon コンパクトデジタルカメラ PowerShot SX620
-                                            HS ブラック
-                                            光学25倍ズーム/Wi-Fi対応
-                                            PSSX620HSBK</a></td>
+                                    <td colspan="2" id="table-products"><a href="#"><c:out value="${productList.productName}" /></a></td>
                                 </tr>
                             </table>
                         </div>
                     </c:forEach>
+                    
                     
                     
                         
