@@ -44,7 +44,7 @@ CREATE TABLE `products` (
   `update_date` timestamp NULL DEFAULT NULL,
   `update_by` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1','https://www.amazon.co.jp/',NULL,NULL,NULL,NULL,'./imgs/1/main.jpg','./imgs/1/sub_01.jpg','./imgs/1/sub_02.jpg','./imgs/1/sub_03.jpg','./imgs/1/sub_04.jpg','./imgs/1/sub_05.jpg','./imgs/1/sub_06.jpg','./imgs/1/sub_07.jpg','./imgs/1/sub_08.jpg','2022-08-02 13:08:49',NULL,NULL,NULL),(2,'テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 ','https://www.google.co.jp/',NULL,NULL,NULL,NULL,'./imgs/2/main.jpg','./imgs/2/sub_01.jpg','./imgs/2/sub_02.jpg','./imgs/2/sub_03.jpg','./imgs/2/sub_04.jpg','./imgs/2/sub_05.jpg','./imgs/2/sub_06.jpg','./imgs/2/sub_07.jpg','./imgs/2/sub_08.jpg','2022-08-02 13:09:30',NULL,NULL,NULL);
+INSERT INTO `products` VALUES (1,'テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1','https://www.amazon.co.jp/',NULL,NULL,NULL,NULL,'./imgs/1/main.jpg','./imgs/1/sub_01.jpg','./imgs/1/sub_02.jpg','./imgs/1/sub_03.jpg','./imgs/1/sub_04.jpg','./imgs/1/sub_05.jpg','./imgs/1/sub_06.jpg','./imgs/1/sub_07.jpg','./imgs/1/sub_08.jpg','2022-08-02 13:08:49',NULL,NULL,NULL),(2,'テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 ','https://www.google.co.jp/',NULL,NULL,NULL,NULL,'./imgs/3/main.jpg','./imgs/3/sub_01.jpg','./imgs/3/sub_02.jpg','./imgs/3/sub_03.jpg','./imgs/3/sub_04.jpg','./imgs/3/sub_05.jpg','./imgs/3/sub_06.jpg','./imgs/3/sub_07.jpg','./imgs/3/sub_08.jpg','2022-08-02 13:09:30',NULL,'2022-08-04 05:54:58',NULL),(13,'テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 ','https://テスト3.jp',NULL,NULL,NULL,NULL,'./imgs/3/main.jpg','./imgs/3/sub_01.jpg','./imgs/3/sub_02.jpg','./imgs/3/sub_03.jpg','./imgs/3/sub_04.jpg','./imgs/3/sub_05.jpg','./imgs/3/sub_06.jpg','./imgs/3/sub_07.jpg','./imgs/3/sub_08.jpg','2022-08-04 14:56:53',NULL,'2022-08-04 06:00:55',NULL),(15,'test4 test4 test4 test4 test4 test4 test4 test4 test4 test4 test4 test4 ','https://test4.com/',NULL,NULL,NULL,NULL,'./imgs/4/main.jpg','./imgs/4/sub_01.jpg','./imgs/4/sub_02.jpg','./imgs/4/sub_03.jpg','./imgs/4/sub_04.jpg','./imgs/4/sub_05.jpg','./imgs/4/sub_06.jpg','./imgs/4/sub_07.jpg','./imgs/4/sub_08.jpg','2022-08-04 15:13:05',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +96,7 @@ CREATE TABLE `users` (
   `user_type` int NOT NULL DEFAULT '2',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_name` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +105,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'master','$2a$08$GzImC.LElmrREYUXbXXjTO2De92lcDslS/1kS5SCmot0BJhnk.MFW',1),(2,'user','$2a$08$JQ3Ty7qMLzj4Y7QQe4Up2OqAEnBGOpEOVMzTqPZxnteZCXRQHqV/q',2),(3,'test','$2a$08$3JkiEGWb5XxMkkK/va871uY.GzgJuQR78XgGDaKvzIhmz8SkhS1ue',3),(5,'root','$2a$10$CJrw8hJzqukeRSwj2m43DedWVOcPAZH3RTTMTJ6jYorBNn1gjbRF2',2);
+INSERT INTO `users` VALUES (1,'master','$2a$08$GzImC.LElmrREYUXbXXjTO2De92lcDslS/1kS5SCmot0BJhnk.MFW',1),(2,'user','$2a$08$JQ3Ty7qMLzj4Y7QQe4Up2OqAEnBGOpEOVMzTqPZxnteZCXRQHqV/q',2),(3,'test','$2a$08$3JkiEGWb5XxMkkK/va871uY.GzgJuQR78XgGDaKvzIhmz8SkhS1ue',3),(7,'happy','$2a$10$sf/hUkDIX87qavPRYRdOhu/FUL1yBqV5L1KBOhyadC.vuEEm/tAQi',2),(8,'sleep','$2a$10$ytxoOAwqcl.o2X5srdP0kupyq6uj9F0So.72wlHaYtt.5QZtU1e0q',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -118,4 +118,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-03 15:24:04
+-- Dump completed on 2022-08-04 15:20:32
