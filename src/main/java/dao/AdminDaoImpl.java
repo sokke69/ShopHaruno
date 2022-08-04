@@ -27,10 +27,10 @@ public class AdminDaoImpl implements AdminDao {
 		try (Connection con = ds.getConnection()) {
 			String sql = "SELECT"
 					+ " users.id, users.user_name, users.user_pass,"
-					+ " user_types.type_name as type"
+					+ " users_types.type_name as type"
 					+ " FROM users "
-					+ " JOIN user_types"
-					+ " ON users.user_type = user_types.id";
+					+ " JOIN users_types"
+					+ " ON users.user_type = users_types.id";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -72,9 +72,9 @@ public class AdminDaoImpl implements AdminDao {
 		try (Connection con = ds.getConnection();) {
 			String sql = "SELECT"
 					+ " id, user_name, user_pass,"
-					+ " user_types.type_name as type"
-					+ " FROM users JOIN user_types"
-					+ " ON users.user_type = user_types.id"
+					+ " users_types.type_name as type"
+					+ " FROM users JOIN users_types"
+					+ " ON users.user_type = users_types.id"
 					+ " WHERE id = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setObject(1, id, Types.INTEGER);
@@ -140,10 +140,10 @@ public class AdminDaoImpl implements AdminDao {
 		try (Connection con = ds.getConnection()) {
 			String sql = "SELECT"
 					+ " users.id, users.user_name, users.user_pass,"
-					+ " user_types.type_name as type"
+					+ " users_types.type_name as type"
 					+ " FROM users "
-					+ " JOIN user_types"
-					+ " ON users.user_type = user_types.id"
+					+ " JOIN users_types"
+					+ " ON users.user_type = users_types.id"
 					+ " WHERE user_name=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, userName);
