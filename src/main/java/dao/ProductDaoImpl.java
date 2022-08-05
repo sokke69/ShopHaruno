@@ -104,7 +104,7 @@ public class ProductDaoImpl implements ProductDao{
 					+ " regist_date, regist_by, update_date, update_by"
 					+ " FROM products"
 					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
-					+ " LEFT JOIN bs_categories ON products.category_b = bs_categories.id"
+					+ " LEFT JOIN bs_categories ON products.category_b = bs_categories.a_category_id"
 					+ " WHERE products.id=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setObject(1, id,Types.INTEGER);
