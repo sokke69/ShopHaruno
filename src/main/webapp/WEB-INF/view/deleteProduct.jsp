@@ -44,15 +44,7 @@
 						</tr>
 						<tr>
 							<th>カテゴリB</th>
-							<td><c:out value="${product.categoryB01}" /></td>
-						</tr>
-						<tr>
-							<th>カテゴリB</th>
-							<td><c:out value="${product.categoryB02}" /></td>
-						</tr>
-						<tr>
-							<th>カテゴリB</th>
-							<td><c:out value="${product.categoryB03}" /></td>
+							<td><c:out value="" /></td>
 						</tr>
 						<tr>
 							<th>メイン画像</th>

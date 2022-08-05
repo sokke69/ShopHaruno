@@ -43,18 +43,16 @@
                         </tr>
                         <tr>
                             <th>カテゴリA</th>
-                            <td>未実装</td>
+                            <td> 
+                            <select name="a-category-id" id="selectform">
+                            <option value="">--選択--</option>
+                            <c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
+                            <option value="${aCategoryList.id}"><c:out value="${aCategoryList.aCategoryName}" /></option>
+                            </c:forEach>
+                            </select></td>
                         </tr>
                         <tr>
-                            <th>カテゴリB1</th>
-                            <td>未実装</td>
-                        </tr>
-                        <tr>
-                            <th>カテゴリB2</th>
-                            <td>未実装</td>
-                        </tr>
-                        <tr>
-                            <th>カテゴリB3</th>
+                            <th>カテゴリB</th>
                             <td>未実装</td>
                         </tr>
                         <tr>

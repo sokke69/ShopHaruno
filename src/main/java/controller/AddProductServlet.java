@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ACategoryDao;
+import dao.BCategoryDao;
 import dao.DaoFactory;
 import dao.ProductDao;
+import domain.ACategory;
+import domain.BCategory;
 import domain.Product;
 
 /**
@@ -23,7 +28,19 @@ public class AddProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/view/addProduct.jsp").forward(request, response);
+		try {
+			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
+			List<ACategory> aCategoryList = aCategoryDao.findAll();
+			request.setAttribute("aCategoryList", aCategoryList);
+			
+			BCategoryDao bCategoryDao = DaoFactory.createBCategoryDao();
+			List<BCategory> bCategoryList = bCategoryDao.findAll();
+			request.setAttribute("bCategoryList", bCategoryList);
+			
+			request.getRequestDispatcher("/WEB-INF/view/addProduct.jsp").forward(request, response);
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
 	}
 
 	/**
@@ -34,6 +51,7 @@ public class AddProductServlet extends HttpServlet {
 		
 		String productName = request.getParameter("product-name");
 		String productUrl = request.getParameter("product-url");
+		Integer aCategoryId = Integer.parseInt(request.getParameter("a-category-id"));
 		String imgMain = request.getParameter("product-img-main");
 		String imgSub01 = request.getParameter("product-img-sub-01");
 		String imgSub02 = request.getParameter("product-img-sub-02");
@@ -48,6 +66,7 @@ public class AddProductServlet extends HttpServlet {
 		
 		product.setProductName(productName);
 		product.setProductUrl(productUrl);
+		product.setCategoryA(aCategoryId);
 		product.setImgMain(imgMain);
 		product.setImgSub01(imgSub01);
 		product.setImgSub02(imgSub02);

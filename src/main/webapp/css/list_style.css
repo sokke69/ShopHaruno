@@ -70,3 +70,11 @@ td img{
 #longform{
 	width:80%;
 }
+
+a#add{
+	text-align:right;
+}
+
+select#selectform{
+	width:200px;
+}

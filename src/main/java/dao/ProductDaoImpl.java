@@ -93,21 +93,22 @@ public class ProductDaoImpl implements ProductDao{
 		try (Connection con = ds.getConnection()){
 			//あとで追加したい：category_a, category_b01, category_b02, category_b03,regist_by
 			String sql = "INSERT INTO"
-					+ " products (product_name, product_url,img_main, img_sub01, img_sub02, img_sub03, img_sub04,"
+					+ " products (product_name, product_url,category_a, img_main, img_sub01, img_sub02, img_sub03, img_sub04,"
 					+ " img_sub05, img_sub06, img_sub07, img_sub08,regist_date)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW() )";
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW() )";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, product.getProductName());
 			stmt.setString(2, product.getProductUrl());
-			stmt.setString(3, product.getImgMain());
-			stmt.setString(4, product.getImgSub01());
-			stmt.setString(5, product.getImgSub02());
-			stmt.setString(6, product.getImgSub03());
-			stmt.setString(7, product.getImgSub04());
-			stmt.setString(8, product.getImgSub05());
-			stmt.setString(9, product.getImgSub06());
-			stmt.setString(10, product.getImgSub07());
-			stmt.setString(11, product.getImgSub08());
+			stmt.setObject(3, product.getCategoryA(),Types.INTEGER);
+			stmt.setString(4, product.getImgMain());
+			stmt.setString(5, product.getImgSub01());
+			stmt.setString(6, product.getImgSub02());
+			stmt.setString(7, product.getImgSub03());
+			stmt.setString(8, product.getImgSub04());
+			stmt.setString(9, product.getImgSub05());
+			stmt.setString(10, product.getImgSub06());
+			stmt.setString(11, product.getImgSub07());
+			stmt.setString(12, product.getImgSub08());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;

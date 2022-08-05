@@ -45,7 +45,12 @@
                         <tr>
                             <th>カテゴリーA</th>
                             <td>
-                                未実装
+                                <select name="a-category-id" id="selectform">
+                                <option value="">--選択--</option>
+                            <c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
+                            <option value="${aCategoryList.id}"><c:out value="${aCategoryList.aCategoryName}" /></option>
+                            </c:forEach>
+                            </select>
                             </td>
                         </tr>
                         <tr>

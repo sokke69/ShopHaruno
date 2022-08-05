@@ -8,11 +8,18 @@ public class DaoFactory {
 
 	public static AdminDao createAdminDao() {
 		return new AdminDaoImpl(getDataSource());
-
 	}
 	
 	public static ProductDao createProductDao() {
 		return new ProductDaoImpl(getDataSource());
+	}
+	
+	public static ACategoryDao createACategoryDao() {
+		return new ACategoryDaoImpl(getDataSource());
+	}
+	
+	public static BCategoryDao createBCategoryDao() {
+		return new BCategoryDaoImpl(getDataSource());
 	}
 
 	private static DataSource getDataSource() {

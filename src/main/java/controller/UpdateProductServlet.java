@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ACategoryDao;
+import dao.BCategoryDao;
 import dao.DaoFactory;
 import dao.ProductDao;
+import domain.ACategory;
+import domain.BCategory;
 import domain.Product;
 
 /**
@@ -30,6 +35,15 @@ public class UpdateProductServlet extends HttpServlet {
 			ProductDao productDao = DaoFactory.createProductDao();
 			Product product = productDao.findById(id);
 			request.setAttribute("product", product);
+			
+			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
+			List<ACategory> aCategoryList = aCategoryDao.findAll();
+			request.setAttribute("aCategoryList", aCategoryList);
+			
+			BCategoryDao bCategoryDao = DaoFactory.createBCategoryDao();
+			List<BCategory> bCategoryList = bCategoryDao.findAll();
+			request.setAttribute("bCategoryList", bCategoryList);
+			
 			request.getRequestDispatcher("/WEB-INF/view/updateProduct.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
