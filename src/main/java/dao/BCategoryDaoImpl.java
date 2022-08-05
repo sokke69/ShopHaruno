@@ -61,6 +61,23 @@ public class BCategoryDaoImpl implements BCategoryDao{
 		}
 		return bCategory;
 	}
+	
+	public List<BCategory> pickByAId(Integer id) throws Exception{
+		List<BCategory> bCategoryList = new ArrayList<>();
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT *  FROM bs_categories WHERE bs_categories.a_category_id=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setObject(1, id,Types.INTEGER);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				bCategoryList.add(mapToBCategory(rs));
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return bCategoryList;
+		
+	}
 
 	@Override
 	public void insert(BCategory bCategory) throws Exception {
@@ -109,6 +126,5 @@ public class BCategoryDaoImpl implements BCategoryDao{
 		bCategory.setaCategoryName(rs.getString("a_category_name"));
 		return bCategory;
 	}
-
 
 }

@@ -45,9 +45,7 @@ public class ProductDaoImpl implements ProductDao{
 		String productName = rs.getString("product_name");
 		String productUrl = rs.getString("product_url");
 		Integer categoryA = (Integer) rs.getObject("category_a");
-		Integer categoryB01 = (Integer) rs.getObject("category_b01");
-		Integer categoryB02 = (Integer) rs.getObject("category_b02");
-		Integer categoryB03 = (Integer) rs.getObject("category_b03");
+		Integer categoryB = (Integer) rs.getObject("category_b");
 		String imgMain = rs.getString("img_main");
 		String imgSub01 = rs.getString("img_sub01");
 		String imgSub02 = rs.getString("img_sub02");
@@ -62,24 +60,57 @@ public class ProductDaoImpl implements ProductDao{
 		Date updateDate = rs.getTimestamp("update_date");
 		Integer updateBy = (Integer) rs.getObject("update_by");
 		
-		return new Product(id, productName, productUrl, categoryA, categoryB01, categoryB02, categoryB03,
+		return new Product(id, productName, productUrl, categoryA, categoryB,
 				imgMain, imgSub01, imgSub02, imgSub03, imgSub04, imgSub05, imgSub06, imgSub07, imgSub08,
 				registDate, registBy, updateDate, updateBy);
 	}
 	
+	private Product mapToProduct2(ResultSet rs) throws Exception {
+		Integer id = (Integer) rs.getObject("id");
+		String productName = rs.getString("product_name");
+		String productUrl = rs.getString("product_url");
+		String categoryA = rs.getString("a_category_name");
+		String categoryB = rs.getString("b_category_name");
+		String imgMain = rs.getString("img_main");
+		String imgSub01 = rs.getString("img_sub01");
+		String imgSub02 = rs.getString("img_sub02");
+		String imgSub03 = rs.getString("img_sub03");
+		String imgSub04 = rs.getString("img_sub04");
+		String imgSub05 = rs.getString("img_sub05");
+		String imgSub06 = rs.getString("img_sub06");
+		String imgSub07 = rs.getString("img_sub07");
+		String imgSub08 = rs.getString("img_sub08");
+		Date registDate = rs.getTimestamp("regist_date");
+		Integer registBy = (Integer) rs.getObject("regist_by");
+		Date updateDate = rs.getTimestamp("update_date");
+		Integer updateBy = (Integer) rs.getObject("update_by");
+		
+		return new Product(id, productName, productUrl, categoryA, categoryB,
+				imgMain, imgSub01, imgSub02, imgSub03, imgSub04, imgSub05, imgSub06, imgSub07, imgSub08,
+				registDate, registBy, updateDate, updateBy);
+	}
 	
 	@Override
 	public Product findById(Integer id) throws Exception {
 		Product product = new Product();
 		
 		try (Connection con = ds.getConnection()){
-			String sql = "SELECT * FROM products"
-					+ " WHERE id=?";
+			String sql = "SELECT"
+					+ " products.id, product_name, product_url,"
+					+ " as_categories.a_category_name AS a_category_name,"
+					+ " bs_categories.b_category_name AS b_category_name,"
+					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
+					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
+					+ " regist_date, regist_by, update_date, update_by"
+					+ " FROM products"
+					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
+					+ " LEFT JOIN bs_categories ON products.category_b = bs_categories.id"
+					+ " WHERE products.id=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setObject(1, id,Types.INTEGER);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
-				product = mapToProduct(rs);
+				product = mapToProduct2(rs);
 			}
 		} catch (Exception e) {
 			throw e;

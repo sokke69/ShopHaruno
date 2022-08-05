@@ -8,9 +8,7 @@ public class Product {
 	private String productName;
 	private String productUrl;
 	private Integer categoryA;
-	private Integer categoryB01;
-	private Integer categoryB02;
-	private Integer categoryB03;
+	private Integer categoryB;
 	private String imgMain;
 	private String imgSub01;
 	private String imgSub02;
@@ -24,13 +22,15 @@ public class Product {
 	private Integer registBy;
 	private Date updateDate;
 	private Integer updateBy;
+	private String categoryAStr;
+	private String categoryBStr;
 	
 	public Product() {
 		
 	}
 	
-	public Product(Integer id, String productName, String productUrl, Integer categoryA, Integer categoryB01,
-			Integer categoryB02, Integer categoryB03, String imgMain, String imgSub01, String imgSub02, String imgSub03,
+	public Product(Integer id, String productName, String productUrl, Integer categoryA, Integer categoryB,
+			String imgMain, String imgSub01, String imgSub02, String imgSub03,
 			String imgSub04, String imgSub05, String imgSub06, String imgSub07, String imgSub08, Date registDate,
 			Integer registBy, Date updateDate, Integer updateBy) {
 		super();
@@ -38,9 +38,32 @@ public class Product {
 		this.productName = productName;
 		this.productUrl = productUrl;
 		this.categoryA = categoryA;
-		this.categoryB01 = categoryB01;
-		this.categoryB02 = categoryB02;
-		this.categoryB03 = categoryB03;
+		this.categoryB = categoryB;
+		this.imgMain = imgMain;
+		this.imgSub01 = imgSub01;
+		this.imgSub02 = imgSub02;
+		this.imgSub03 = imgSub03;
+		this.imgSub04 = imgSub04;
+		this.imgSub05 = imgSub05;
+		this.imgSub06 = imgSub06;
+		this.imgSub07 = imgSub07;
+		this.imgSub08 = imgSub08;
+		this.registDate = registDate;
+		this.registBy = registBy;
+		this.updateDate = updateDate;
+		this.updateBy = updateBy;
+	}
+	
+	public Product(Integer id, String productName, String productUrl, String categoryAStr, String categoryBStr,
+			String imgMain, String imgSub01, String imgSub02, String imgSub03,
+			String imgSub04, String imgSub05, String imgSub06, String imgSub07, String imgSub08, Date registDate,
+			Integer registBy, Date updateDate, Integer updateBy) {
+		super();
+		this.id = id;
+		this.productName = productName;
+		this.productUrl = productUrl;
+		this.categoryAStr = categoryAStr;
+		this.categoryBStr = categoryBStr;
 		this.imgMain = imgMain;
 		this.imgSub01 = imgSub01;
 		this.imgSub02 = imgSub02;
@@ -80,23 +103,11 @@ public class Product {
 	public void setCategoryA(Integer categoryA) {
 		this.categoryA = categoryA;
 	}
-	public Integer getCategoryB01() {
-		return categoryB01;
+	public Integer getCategoryB() {
+		return categoryB;
 	}
-	public void setCategoryB01(Integer categoryB01) {
-		this.categoryB01 = categoryB01;
-	}
-	public Integer getCategoryB02() {
-		return categoryB02;
-	}
-	public void setCategoryB02(Integer categoryB02) {
-		this.categoryB02 = categoryB02;
-	}
-	public Integer getCategoryB03() {
-		return categoryB03;
-	}
-	public void setCategoryB03(Integer categoryB03) {
-		this.categoryB03 = categoryB03;
+	public void setCategoryB(Integer categoryB01) {
+		this.categoryB = categoryB01;
 	}
 	public String getImgMain() {
 		return imgMain;
@@ -175,6 +186,22 @@ public class Product {
 	}
 	public void setUpdateBy(Integer updateBy) {
 		this.updateBy = updateBy;
+	}
+
+	public String getCategoryAStr() {
+		return categoryAStr;
+	}
+
+	public void setCategoryAStr(String categoryAStr) {
+		this.categoryAStr = categoryAStr;
+	}
+
+	public String getCategoryBStr() {
+		return categoryBStr;
+	}
+
+	public void setCategoryBStr(String categoryBStr) {
+		this.categoryBStr = categoryBStr;
 	}
 
 }
