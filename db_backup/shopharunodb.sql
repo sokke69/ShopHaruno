@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: shopharunodb
 -- ------------------------------------------------------
@@ -27,7 +27,7 @@ CREATE TABLE `as_categories` (
   `a_category_name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `a_category_name` (`a_category_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `as_categories` (
 
 LOCK TABLES `as_categories` WRITE;
 /*!40000 ALTER TABLE `as_categories` DISABLE KEYS */;
-INSERT INTO `as_categories` VALUES (4,'カメラ関連製品'),(2,'デジタルカメラ'),(1,'デジタル一眼カメラ'),(3,'レンズ');
+INSERT INTO `as_categories` VALUES (4,'カメラ関連製品'),(5,'その他'),(2,'デジタルカメラ'),(1,'デジタル一眼カメラ'),(3,'レンズ');
 /*!40000 ALTER TABLE `as_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +101,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1','https://www.amazon.co.jp/',1,1,'./imgs/1/main.jpg','./imgs/1/sub_01.jpg','./imgs/1/sub_02.jpg','./imgs/1/sub_03.jpg','./imgs/1/sub_04.jpg','./imgs/1/sub_05.jpg','./imgs/1/sub_06.jpg','./imgs/1/sub_07.jpg','./imgs/1/sub_08.jpg','2022-08-02 13:08:49',NULL,NULL,NULL),(2,'テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 ','https://www.google.co.jp/',1,1,'./imgs/2/main.jpg','./imgs/2/sub_01.jpg','./imgs/2/sub_02.jpg','./imgs/2/sub_03.jpg','./imgs/2/sub_04.jpg','./imgs/2/sub_05.jpg','./imgs/2/sub_06.jpg','./imgs/2/sub_07.jpg','./imgs/2/sub_08.jpg','2022-08-02 13:09:30',NULL,'2022-08-04 13:35:42',NULL),(13,'テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 ','https://テスト3.jp',2,2,'./imgs/3/main.jpg','./imgs/3/sub_01.jpg','./imgs/3/sub_02.jpg','./imgs/3/sub_03.jpg','./imgs/3/sub_04.jpg','./imgs/3/sub_05.jpg','./imgs/3/sub_06.jpg','./imgs/3/sub_07.jpg','./imgs/3/sub_08.jpg','2022-08-04 14:56:53',NULL,'2022-08-04 06:00:55',NULL),(15,'test4 test4 test4 test4 test4 test4 test4 test4 test4 test4 test4 test4 ','https://test4.com/',3,3,'./imgs/4/main.jpg','./imgs/4/sub_01.jpg','./imgs/4/sub_02.jpg','./imgs/4/sub_03.jpg','./imgs/4/sub_04.jpg','./imgs/4/sub_05.jpg','./imgs/4/sub_06.jpg','./imgs/4/sub_07.jpg','./imgs/4/sub_08.jpg','2022-08-04 15:13:05',NULL,NULL,NULL),(16,'てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 ','https://test5.jp/',2,2,'./imgs/5/main.jpg','./imgs/5/sub_01.jpg','./imgs/5/sub_02.jpg','./imgs/5/sub_03.jpg','./imgs/5/sub_04.jpg','./imgs/5/sub_05.jpg','./imgs/5/sub_06.jpg','./imgs/5/sub_07.jpg','./imgs/5/sub_08.jpg','2022-08-04 22:43:11',NULL,NULL,NULL),(17,'test6','https://test6.jp/',3,4,'./imgs/6/main.jpg','./imgs/6/sub_01.jpg','./imgs/6/sub_02.jpg','./imgs/6/sub_03.jpg','./imgs/6/sub_04.jpg','./imgs/6/sub_05.jpg','./imgs/6/sub_06.jpg','./imgs/6/sub_07.jpg','./imgs/6/sub_08.jpg','2022-08-05 12:32:45',NULL,'2022-08-05 03:58:27',NULL);
+INSERT INTO `products` VALUES (1,'テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1 テスト1','https://www.amazon.co.jp/',1,1,'./imgs/1/main.jpg','./imgs/1/sub_01.jpg','./imgs/1/sub_02.jpg','./imgs/1/sub_03.jpg','./imgs/1/sub_04.jpg','./imgs/1/sub_05.jpg','./imgs/1/sub_06.jpg','./imgs/1/sub_07.jpg','./imgs/1/sub_08.jpg','2022-08-02 13:08:49',NULL,NULL,NULL),(2,'テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 テスト2 ','https://www.google.co.jp/',1,1,'./imgs/2/main.jpg','./imgs/2/sub_01.jpg','./imgs/2/sub_02.jpg','./imgs/2/sub_03.jpg','./imgs/2/sub_04.jpg','./imgs/2/sub_05.jpg','./imgs/2/sub_06.jpg','./imgs/2/sub_07.jpg','./imgs/2/sub_08.jpg','2022-08-02 13:09:30',NULL,'2022-08-04 13:35:42',NULL),(13,'テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 テスト3 ','https://テスト3.jp',2,2,'./imgs/3/main.jpg','./imgs/3/sub_01.jpg','./imgs/3/sub_02.jpg','./imgs/3/sub_03.jpg','./imgs/3/sub_04.jpg','./imgs/3/sub_05.jpg','./imgs/3/sub_06.jpg','./imgs/3/sub_07.jpg','./imgs/3/sub_08.jpg','2022-08-04 14:56:53',NULL,'2022-08-04 06:00:55',NULL),(15,'test4 test4 test4 test4 test4 test4 test4 test4 test4 test4 test4 test4 ','https://test4.com/',3,3,'./imgs/4/main.jpg','./imgs/4/sub_01.jpg','./imgs/4/sub_02.jpg','./imgs/4/sub_03.jpg','./imgs/4/sub_04.jpg','./imgs/4/sub_05.jpg','./imgs/4/sub_06.jpg','./imgs/4/sub_07.jpg','./imgs/4/sub_08.jpg','2022-08-04 15:13:05',NULL,NULL,NULL),(16,'てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 てすと5 テスト5 ','https://test5.jp/',2,2,'./imgs/5/main.jpg','./imgs/5/sub_01.jpg','./imgs/5/sub_02.jpg','./imgs/5/sub_03.jpg','./imgs/5/sub_04.jpg','./imgs/5/sub_05.jpg','./imgs/5/sub_06.jpg','./imgs/5/sub_07.jpg','./imgs/5/sub_08.jpg','2022-08-04 22:43:11',NULL,NULL,NULL),(17,'test6','https://test6.jp/',3,3,'./imgs/6/main.jpg','./imgs/6/sub_01.jpg','./imgs/6/sub_02.jpg','./imgs/6/sub_03.jpg','./imgs/6/sub_04.jpg','./imgs/6/sub_05.jpg','./imgs/6/sub_06.jpg','./imgs/6/sub_07.jpg','./imgs/6/sub_08.jpg','2022-08-05 12:32:45',NULL,'2022-08-05 03:58:27',NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-05 15:21:35
+-- Dump completed on 2022-08-05 20:15:42
