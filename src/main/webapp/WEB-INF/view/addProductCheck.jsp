@@ -30,75 +30,89 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-9">
-                <div class="display-6">商品追加</div>
+                <div class="display-6">商品追加 確認</div>
                 <form action="" method="post">
                     <table border="1" id="list-table">
                         <tr>
                             <th id="head">商品名</th>
-                            <td><c:out value="${product.getProductName()}" /></td>
+                            <td><c:out value="${product.productName}" />
+                            <input type="hidden" name="product-name" value="${product.productName}"></td>
                         </tr>
                         <tr>
                             <th>商品URL</th>
-                            <td><c:out value="${product.getProductUrl()}" /></td>
+                            <td><c:out value="${product.productUrl}" />
+                            <input type="hidden" name="product-url" value="${product.productUrl}">
+                            </td>
                         </tr>
                         <tr>
                             <th>カテゴリA</th>
-                            <td>未実装</td>
+                            <td><c:out value="${product.categoryA}" />
+                            <input type="hidden" name="a-category-id" value="${product.categoryA}">
+                            </td>
                         </tr>
                         <tr>
-                            <th>カテゴリB1</th>
-                            <td>未実装</td>
-                        </tr>
-                        <tr>
-                            <th>カテゴリB2</th>
-                            <td>未実装</td>
-                        </tr>
-                        <tr>
-                            <th>カテゴリB3</th>
+                            <th>カテゴリB</th>
                             <td>未実装</td>
                         </tr>
                         <tr>
                             <th>メイン画像</th>
-                            <td><c:out value="${product.getImgMain()}" /></td>
+                            <td><c:out value="${product.imgMain}" />
+                            <input type="hidden" name="product-img-main" value="${product.imgMain}">
+                            </td>
                         </tr>
                         <tr>
                             <th>サブ画像01</th>
-                            <td><c:out value="${product.getImgSub01()}" /></td>
+                            <td><c:out value="${product.imgSub01}" />
+                            <input type="hidden" name="product-img-sub-01" value="${product.imgSub01}"></td>
                         </tr>
                         <tr>
                             <th>サブ画像02</th>
-                            <td><c:out value="${product.getImgSub02()}" /></td>
+                            <td><c:out value="${product.imgSub02}" />
+                            <input type="hidden" name="product-img-sub-02" value="${product.imgSub02}">
+                            </td>
                         </tr>
                         <tr>
                             <th>サブ画像03</th>
-                            <td><c:out value="${product.getImgSub03()}" /></td>
+                            <td><c:out value="${product.imgSub03}" />
+                            <input type="hidden" name="product-img-sub-03" value="${product.imgSub03}">
+                            </td>
                         </tr>
                         <tr>
                             <th>サブ画像04</th>
-                            <td><c:out value="${product.getImgSub04()}" /></td>
+                            <td><c:out value="${product.imgSub04}" />
+                            <input type="hidden" name="product-img-sub-04" value="${product.imgSub04}">
+                            </td>
                         </tr>
                         <tr>
                             <th>サブ画像05</th>
-                            <td><c:out value="${product.getImgSub05()}" /></td>
+                            <td><c:out value="${product.imgSub05}" />
+                            <input type="hidden" name="product-img-sub-05" value="${product.imgSub05}">
+                            </td>
                         </tr>
                         <tr>
                             <th>サブ画像06</th>
-                            <td><c:out value="${product.getImgSub06()}" /></td>
+                            <td><c:out value="${product.imgSub06}" />
+                            <input type="hidden" name="product-img-sub-06" value="${product.imgSub06}">
+                            </td>
                         </tr>
                         <tr>
                             <th>サブ画像07</th>
-                            <td><c:out value="${product.getImgSub07()}" /></td>
+                            <td><c:out value="${product.imgSub07}" />
+                            <input type="hidden" name="product-img-sub-07" value="${product.imgSub07}">
+                            </td>
                         </tr>
                         <tr>
                             <th>サブ画像08</th>
-                            <td><c:out value="${product.getImgSub08()}" /></td>
-                        </tr>
+                            <td><c:out value="${product.imgSub08}" />
+                            <input type="hidden" name="product-img-sub-08" value="${product.imgSub08}">
                             </td>
+                        </tr>
                         
                     </table>
                     <input type="submit" value="追加" class="submit">
 
-                    <p><a href="#">戻る</a></p>
+                    <p><a href="listProduct">商品一覧へ戻る</a></p>
+                    <p><a href="listDb">データベース一覧へ戻る</a></p>
                 </form>
             </div>
             <div class="col"></div>

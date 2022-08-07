@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import dao.ACategoryDao;
 import dao.BCategoryDao;
 import dao.DaoFactory;
-import dao.ProductDao;
 import domain.ACategory;
 import domain.BCategory;
 import domain.Product;
@@ -37,6 +36,13 @@ public class AddProductServlet extends HttpServlet {
 			List<BCategory> bCategoryList = bCategoryDao.findAll();
 			request.setAttribute("bCategoryList", bCategoryList);
 			
+			if (request.getSession().getAttribute("product") != null) {
+				System.out.println("sessionにproduct有り");
+				request.getSession().removeAttribute("product");
+			} else {
+				System.out.println("sessionにproduct無し");
+			}
+			
 			request.getRequestDispatcher("/WEB-INF/view/addProduct.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
@@ -48,6 +54,10 @@ public class AddProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		
+		if (request.getSession().getAttribute("product") != null) {
+			request.getSession().removeAttribute("product");
+		}
 		
 		String productName = request.getParameter("product-name");
 		String productUrl = request.getParameter("product-url");
@@ -77,10 +87,13 @@ public class AddProductServlet extends HttpServlet {
 		product.setImgSub07(imgSub07);
 		product.setImgSub08(imgSub08);
 		
+		request.setAttribute("product", product);
+		request.getSession().setAttribute("product", product);
+		
 		try {
-			ProductDao productDao = DaoFactory.createProductDao();
-			productDao.insert(product);
-			request.getRequestDispatcher("/WEB-INF/view/addProductDone.jsp").forward(request, response);
+			//ProductDao productDao = DaoFactory.createProductDao();
+			//productDao.insert(product);
+			response.sendRedirect(request.getContextPath() + "/addProductCheck");
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
