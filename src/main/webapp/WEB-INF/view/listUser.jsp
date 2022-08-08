@@ -18,16 +18,15 @@
 </head>
 
 <body>
+<c:import url="parts/header.jsp" />
 
-    <header></header>
-
-    <div class="container">
+    <div class="container" id="body">
         <div class="row">
             <div class="col"></div>
             <div class="col-8">
                 <div class="display-6">ユーザー一覧</div>
                 <a href="addUser">ユーザー追加</a>
-                <table border="1" id="list-table">
+                <table id="list-table" class="table">
                     <tr>
                         <th id="update"></th>
                         <th id="delete"></th>

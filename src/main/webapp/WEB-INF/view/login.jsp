@@ -19,7 +19,7 @@
 
 	<header></header>
 
-	<div class="login">
+	<div class="login" id="body">
 		<form action="" method="post" class="login">
 			<div class="display-6">
 				<div class="title">管理ページ ログイン</div>

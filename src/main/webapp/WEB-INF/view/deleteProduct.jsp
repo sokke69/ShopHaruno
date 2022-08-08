@@ -16,10 +16,9 @@
 <script src="./js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+<c:import url="parts/header.jsp" />
 
-	<header></header>
-
-	<div class="container">
+	<div class="container" id="body">
 		<div class="row">
 			<div class="col"></div>
 			<div class="col-9">

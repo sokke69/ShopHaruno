@@ -16,10 +16,9 @@
 <body>
 
 <body>
+<c:import url="parts/header.jsp" />
 
-    <header></header>
-
-    <div class="container">
+    <div class="container" id="body">
         <div class="row">
             <div class="col"></div>
             <div class="col-5">

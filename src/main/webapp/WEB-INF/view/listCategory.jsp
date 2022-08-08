@@ -17,16 +17,15 @@
 
 </head>
 <body>
+<c:import url="parts/header.jsp" />
 
-    <header></header>
 
-
-    <div class="container">
+    <div class="container" id="body">
         <div class="row">
             <div class="col"></div>
             <div class="col-10">
                 <div class="display-6">カテゴリ一覧</div>
-                <table border="1" id="list-table">
+                <table id="list-table" class="table">
                     <tr><td><a href="listACategory">カテゴリA</a></td></tr>
                     <tr><td><a href="listBCategory">カテゴリB</a></td></tr>
                 

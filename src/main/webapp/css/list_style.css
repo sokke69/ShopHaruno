@@ -78,3 +78,7 @@ a#add{
 select#selectform{
 	width:200px;
 }
+
+#body{
+	margin-top:100px
+}
