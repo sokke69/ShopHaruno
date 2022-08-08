@@ -83,7 +83,7 @@
 
     <div>
         <footer>
-            <p class="copyright">Copyright &copy 2022 SHOP HARUNO All Rights Reserved.</p>
+            <p class="copyright">Copyright &copy; 2022 SHOP HARUNO All Rights Reserved.</p>
         </footer>
     </div>
 

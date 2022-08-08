@@ -76,7 +76,7 @@
         <div class="row">
             <div class="logo_back">
                 <table height="400" class="logo">
-                    <td align="center" valign="middle">*ショップ ハルノ*</td>
+                    <tr><td align="center" valign="middle">*ショップ ハルノ*</td></tr>
                 </table>
             </div>
         </div>
@@ -92,7 +92,7 @@
                 <div class="col">
                     <table class="category-table" align="center">
 
-                        <td class="text"><a href="#">カテゴリA01</a></td>
+                        <tr><td class="text"><a href="#">カテゴリA01</a></td>
 
                         <td class="text"><a href="#">カテゴリA02</a></td>
 
@@ -106,7 +106,8 @@
 
                         <td class="text"><a href="#">カテゴリA07</a></td>
 
-                        <td class="text"><a href="#">カテゴリA08</a></td>
+                        <td class="text"><a href="#">カテゴリA08</a></td></tr>
+                        
                     </table>
                 </div>
                 <div class="col-2"></div>
@@ -123,6 +124,7 @@
                 <div class="col">
                     <table class="category-table" align="center">
 
+                        <tr>
                         <td class="text"><a href="#">カテゴリB01</a></td>
 
                         <td class="text"><a href="#">カテゴリB02</a></td>
@@ -136,6 +138,7 @@
                         <td class="text"><a href="#">カテゴリB06</a></td>
 
                         <td class="text"><a href="#">カテゴリB07</a></td>
+                        </tr>
 
                     </table>
                 </div>
@@ -210,7 +213,7 @@
 
     <div>
         <footer>
-            <p class="copyright">Copyright &copy 2022 SHOP HARUNO All Rights Reserved.</p>
+            <p class="copyright">Copyright &copy; 2022 SHOP HARUNO All Rights Reserved.</p>
         </footer>
     </div>
 

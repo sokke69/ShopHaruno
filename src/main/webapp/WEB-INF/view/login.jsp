@@ -50,7 +50,7 @@
 
 	<div>
 		<footer>
-			<p>Copyright &copy 2022 SHOP HARUNO All Rights
+			<p>Copyright &copy; 2022 SHOP HARUNO All Rights
 				Reserved.</p>
 		</footer>
 	</div>
