@@ -26,7 +26,7 @@ public class AdminDaoImpl implements AdminDao {
 		List<Admin> userList = new ArrayList<>();
 		try (Connection con = ds.getConnection()) {
 			String sql = "SELECT"
-					+ " users.id, users.user_name, users.user_pass,"
+					+ " users.id, users.user_nick_name, users.user_name, users.user_pass,"
 					+ " users_types.type_name as type"
 					+ " FROM users "
 					+ " JOIN users_types"
@@ -49,10 +49,12 @@ public class AdminDaoImpl implements AdminDao {
 
 		try (Connection con = ds.getConnection();) {
 			String sql = "SELECT"
-					+ " id, user_name, user_pass,"
+					+ " users.id, user_nick_name, user_name, user_pass,"
 					+ " user_type as type"
 					+ " FROM users"
-					+ " WHERE id = ?";
+					+ " JOIN users_types"
+					+ "	ON users.user_type = users_types.id"
+					+ " WHERE users.id = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setObject(1, id, Types.INTEGER);
 			ResultSet rs = stmt.executeQuery();
@@ -91,12 +93,13 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	public void insert(Admin admin) throws Exception {
 		try (Connection con = ds.getConnection()) {
-			String sql = "INSERT INTO users (user_name, user_pass, user_type)"
-					+ " VALUES (?,?,?)";
+			String sql = "INSERT INTO users (user_nick_name, user_name, user_pass, user_type)"
+					+ " VALUES (?,?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(1, admin.getUserName());
-			stmt.setString(2, admin.getUserPass());
-			stmt.setObject(3, admin.getTypeId(), Types.INTEGER);
+			stmt.setString(1, admin.getUserNickName());
+			stmt.setString(2, admin.getUserName());
+			stmt.setString(3, admin.getUserPass());
+			stmt.setObject(4, admin.getTypeId(), Types.INTEGER);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;
@@ -108,12 +111,13 @@ public class AdminDaoImpl implements AdminDao {
 	public void update(Admin admin) throws Exception {
 		try (Connection con = ds.getConnection()) {
 			String sql = "UPDATE users SET"
-					+ " user_name=?, user_type=?"
+					+ " user_nick_name=?, user_name=?, user_type=?"
 					+ " WHERE id=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(1, admin.getUserName());
-			stmt.setObject(2, admin.getTypeId(), Types.INTEGER);
-			stmt.setObject(3, admin.getId(), Types.INTEGER);
+			stmt.setString(1, admin.getUserNickName());
+			stmt.setString(2, admin.getUserName());
+			stmt.setObject(3, admin.getTypeId(), Types.INTEGER);
+			stmt.setObject(4, admin.getId(), Types.INTEGER);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;
@@ -140,7 +144,7 @@ public class AdminDaoImpl implements AdminDao {
 		try (Connection con = ds.getConnection()) {
 			String sql = "SELECT"
 					+ " users.id, users.user_nick_name, users.user_name, users.user_pass,"
-					+ " users_types.type_name as type_name"
+					+ " users_types.type_name as type"
 					+ " FROM users "
 					+ " JOIN users_types"
 					+ " ON users.user_type = users_types.id"
@@ -164,7 +168,7 @@ public class AdminDaoImpl implements AdminDao {
 		admin.setId((Integer) rs.getObject("id"));
 		admin.setUserName(rs.getString("user_name"));
 		admin.setUserPass(rs.getString("user_pass"));
-		admin.setTypeName(rs.getString("type_name"));
+		admin.setTypeName(rs.getString("type"));
 		admin.setUserNickName(rs.getString("user_nick_name"));
 
 		return admin;

@@ -32,6 +32,10 @@
                         </tr>
                         <tr>
                             <th>ユーザー名</th>
+                            <td><c:out value="${user.userNickName}" /></td>
+                        </tr>
+                        <tr>
+                            <th>ユーザーID</th>
                             <td><c:out value="${user.userName}" /></td>
                         </tr>
                         <tr>

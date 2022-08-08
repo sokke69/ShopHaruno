@@ -26,10 +26,12 @@
                         <div class="display-6">ユーザー追加</div>
                         <form action="" method="post">
                         <table border="1" id="list-table">
-                            <tr><th>ユーザー名</th><td><input type="text" name="user-name"></td></tr>
-                            <tr><th>パスワード</th><td><input type="text" name="user-pass"></td></tr>
+                            <tr><th>ユーザー名</th><td><input type="text" name="user-nick-name"></td></tr>
+                            <tr><th>ユーザーID</th><td><input type="text" name="user-name"></td></tr>
+                            <tr><th>パスワード</th><td><input type="password" name="user-pass"></td></tr>
                             <tr><th>ユーザータイプ</th><td>
                                 <select name="user-type" id="">
+                                    <option value="">--選択--</option>
                                     <option value="2" selected>user</option>
                                     <option value="1">master</option>
                                 </select>

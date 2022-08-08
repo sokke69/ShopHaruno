@@ -32,7 +32,8 @@
                         <th id="update"></th>
                         <th id="delete"></th>
                         <th id="id">ID</th>
-                        <th id="user-name">ユーザー名</th>
+                        <th>ユーザー名</th>
+                        <th id="user-name">ユーザーID</th>
                         <th id="user-types">ユーザータイプ</th>
                     </tr>
                     <c:forEach items="${userList}" var="userList" varStatus="vs">
@@ -40,6 +41,7 @@
                         <td><a href="updateUser?id=${userList.id}">編集</a></td>
                         <td><a href="deleteUser?id=${userList.id}">削除</a></td>
                         <td><c:out value="${userList.id}" /></td>
+                        <td><c:out value="${userList.userNickName}" /></td>
                         <td><c:out value="${userList.userName}" /></td>
                         <td><c:out value="${userList.typeName}" /></td>
                     </tr>

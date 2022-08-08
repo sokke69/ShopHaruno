@@ -38,7 +38,7 @@
 			ログインID <input type="text" name="userName" class="login" value="${id}">
 
 
-			パスワード <input type="text" name="userPass" class="login">
+			パスワード <input type="password" name="userPass" class="login">
 
 			<p class="login-submit">
 				<input type="submit" value="ログイン" id="submitButton">

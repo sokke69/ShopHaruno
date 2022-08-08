@@ -34,6 +34,7 @@ public class AddUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
+		String userNickName = request.getParameter("user-nick-name");
 		String userName = request.getParameter("user-name");
 		String userPass = request.getParameter("user-pass");
 		Integer typeId = Integer.parseInt(request.getParameter("user-type"));
@@ -44,6 +45,7 @@ public class AddUserServlet extends HttpServlet {
 		
 		Admin admin = new Admin();
 		
+		admin.setUserNickName(userNickName);
 		admin.setUserName(userName);
 		admin.setUserPass(hashedPass);
 		admin.setTypeId(typeId);

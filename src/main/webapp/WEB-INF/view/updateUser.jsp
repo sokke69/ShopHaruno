@@ -34,6 +34,10 @@
                         </tr>
                         <tr>
                             <th>ユーザー名</th>
+                            <td><input type="text" value="<c:out value="${user.userNickName}" />" name="user-nick-name"></td>
+                        </tr>
+                        <tr>
+                            <th>ユーザー名</th>
                             <td><input type="text" value="<c:out value="${user.userName}" />" name="user-name"></td>
                         </tr>
                         <tr>

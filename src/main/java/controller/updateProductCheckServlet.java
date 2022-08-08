@@ -16,7 +16,7 @@ import domain.Product;
  * Servlet implementation class AddProductCheckServlet
  */
 @WebServlet("/updateProductCheck")
-public class updateProductCheckServlet extends HttpServlet {
+public class UpdateProductCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
