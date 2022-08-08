@@ -49,12 +49,20 @@ public class LoginServlet extends HttpServlet {
 			AdminDao adminDao = DaoFactory.createAdminDao();
 			Admin admin = adminDao.findByLoginIdAndLoginPass(userName, userPass);
 					
-			request.setAttribute("userName", userName);
-			
 			if (admin != null) {
-				request.getSession().setAttribute("userName", admin.getUserName());
-				request.getSession().setAttribute("userType", admin.getTypeName());
+				
+				String sessionUserName = admin.getUserName();
+				String sessionUserType = admin.getTypeName();
+				String sessionUserNickName = admin.getUserNickName();
+				
+				System.out.println("sessionにユーザーID:" + sessionUserName + "、ユーザータイプ:" + sessionUserType + "、ユーザーニックネーム:" +  sessionUserNickName + "を格納しました");
+				
+				request.getSession().setAttribute("userName", sessionUserName);
+				request.getSession().setAttribute("userType", sessionUserType);
+				request.getSession().setAttribute("userNickName", sessionUserNickName);
+				
 				response.sendRedirect("listDb");
+				
 			} else {
 				request.setAttribute("Error", "true");
 				

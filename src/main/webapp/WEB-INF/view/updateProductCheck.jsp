@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-9">
-                <div class="display-6">商品追加 確認</div>
+                <div class="display-6">商品編集 確認</div>
                 <form action="" method="post">
                     <table border="1" id="list-table">
                         <tr>
@@ -107,9 +107,30 @@
                             <input type="hidden" name="product-img-sub-08" value="${product.imgSub08}">
                             </td>
                         </tr>
+                        <tr>
+                            <th>登録日</th>
+                            <td><c:out value="${product.registDate}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>登録者</th>
+                            <td><c:out value="${product.registBy}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>最終編集日</th>
+                            <td><c:out value="${product.updateDate}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>最終編集者</th>
+                            <td><c:out value="${product.updateBy}" />
+                            <input type="hidden" name="update-by" value="${product.updateBy}">
+                            </td>
+                        </tr>
                         
                     </table>
-                    <input type="hidden" name="regist-by" value="${product.registBy}">
+                    <input type="hidden" name="product-id" value="${product.id}">
                     <input type="submit" value="編集" class="submit"> <input type="submit" value="追加" class="submit">
 
                     <p><a href="listProduct">商品一覧へ戻る</a></p>

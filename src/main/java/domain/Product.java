@@ -19,9 +19,9 @@ public class Product {
 	private String imgSub07;
 	private String imgSub08;
 	private Date registDate;
-	private Integer registBy;
+	private String registBy;
 	private Date updateDate;
-	private Integer updateBy;
+	private String updateBy;
 	private String categoryAStr;
 	private String categoryBStr;
 	
@@ -32,7 +32,7 @@ public class Product {
 	public Product(Integer id, String productName, String productUrl, Integer categoryA, Integer categoryB,
 			String imgMain, String imgSub01, String imgSub02, String imgSub03,
 			String imgSub04, String imgSub05, String imgSub06, String imgSub07, String imgSub08, Date registDate,
-			Integer registBy, Date updateDate, Integer updateBy) {
+			String registBy, Date updateDate, String updateBy) {
 		super();
 		this.id = id;
 		this.productName = productName;
@@ -57,7 +57,7 @@ public class Product {
 	public Product(Integer id, String productName, String productUrl, String categoryAStr, String categoryBStr,
 			String imgMain, String imgSub01, String imgSub02, String imgSub03,
 			String imgSub04, String imgSub05, String imgSub06, String imgSub07, String imgSub08, Date registDate,
-			Integer registBy, Date updateDate, Integer updateBy) {
+			String registBy, Date updateDate, String updateBy) {
 		super();
 		this.id = id;
 		this.productName = productName;
@@ -169,10 +169,10 @@ public class Product {
 	public void setRegistDate(Date registDate) {
 		this.registDate = registDate;
 	}
-	public Integer getRegistBy() {
+	public String getRegistBy() {
 		return registBy;
 	}
-	public void setRegistBy(Integer registBy) {
+	public void setRegistBy(String registBy) {
 		this.registBy = registBy;
 	}
 	public Date getUpdateDate() {
@@ -181,10 +181,10 @@ public class Product {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-	public Integer getUpdateBy() {
+	public String getUpdateBy() {
 		return updateBy;
 	}
-	public void setUpdateBy(Integer updateBy) {
+	public void setUpdateBy(String updateBy) {
 		this.updateBy = updateBy;
 	}
 

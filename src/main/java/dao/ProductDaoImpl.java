@@ -56,9 +56,9 @@ public class ProductDaoImpl implements ProductDao{
 		String imgSub07 = rs.getString("img_sub07");
 		String imgSub08 = rs.getString("img_sub08");
 		Date registDate = rs.getTimestamp("regist_date");
-		Integer registBy = (Integer) rs.getObject("regist_by");
+		String registBy = rs.getString("regist_by");
 		Date updateDate = rs.getTimestamp("update_date");
-		Integer updateBy = (Integer) rs.getObject("update_by");
+		String updateBy = rs.getString("update_by");
 		
 		return new Product(id, productName, productUrl, categoryA, categoryB,
 				imgMain, imgSub01, imgSub02, imgSub03, imgSub04, imgSub05, imgSub06, imgSub07, imgSub08,
@@ -81,9 +81,9 @@ public class ProductDaoImpl implements ProductDao{
 		String imgSub07 = rs.getString("img_sub07");
 		String imgSub08 = rs.getString("img_sub08");
 		Date registDate = rs.getTimestamp("regist_date");
-		Integer registBy = (Integer) rs.getObject("regist_by");
+		String registBy = rs.getString("regist_by");
 		Date updateDate = rs.getTimestamp("update_date");
-		Integer updateBy = (Integer) rs.getObject("update_by");
+		String updateBy = rs.getString("update_by");
 		
 		return new Product(id, productName, productUrl, categoryA, categoryB,
 				imgMain, imgSub01, imgSub02, imgSub03, imgSub04, imgSub05, imgSub06, imgSub07, imgSub08,
@@ -125,8 +125,8 @@ public class ProductDaoImpl implements ProductDao{
 			//あとで追加したい：category_a, category_b01, category_b02, category_b03,regist_by
 			String sql = "INSERT INTO"
 					+ " products (product_name, product_url,category_a, img_main, img_sub01, img_sub02, img_sub03, img_sub04,"
-					+ " img_sub05, img_sub06, img_sub07, img_sub08,regist_date)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW() )";
+					+ " img_sub05, img_sub06, img_sub07, img_sub08, regist_date, regist_by)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW() , ?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, product.getProductName());
 			stmt.setString(2, product.getProductUrl());
@@ -140,6 +140,7 @@ public class ProductDaoImpl implements ProductDao{
 			stmt.setString(10, product.getImgSub06());
 			stmt.setString(11, product.getImgSub07());
 			stmt.setString(12, product.getImgSub08());
+			stmt.setString(13, product.getRegistBy());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;
@@ -153,7 +154,7 @@ public class ProductDaoImpl implements ProductDao{
 			String sql = "UPDATE products SET"
 					+ " product_name=?, product_url=?, img_main=?,"
 					+ " img_sub01=?, img_sub02=?, img_sub03=?, img_sub04=?, img_sub05=?, img_sub06=?, img_sub07=?, img_sub08=?,"
-					+ " update_date= NOW()"
+					+ " update_date= NOW(), update_by=?"
 					+ " WHERE id=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, product.getProductName());
@@ -167,7 +168,8 @@ public class ProductDaoImpl implements ProductDao{
 			stmt.setString(9, product.getImgSub06());
 			stmt.setString(10, product.getImgSub07());
 			stmt.setString(11, product.getImgSub08());
-			stmt.setObject(12, product.getId(),Types.INTEGER);
+			stmt.setString(12, product.getUpdateBy());
+			stmt.setObject(13, product.getId(),Types.INTEGER);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;

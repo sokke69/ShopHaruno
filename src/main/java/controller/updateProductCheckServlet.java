@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,19 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ACategoryDao;
-import dao.BCategoryDao;
 import dao.DaoFactory;
 import dao.ProductDao;
-import domain.ACategory;
-import domain.BCategory;
 import domain.Product;
 
 /**
- * Servlet implementation class UpdateUserServlet
+ * Servlet implementation class AddProductCheckServlet
  */
-@WebServlet("/updateProduct")
-public class UpdateProductServlet extends HttpServlet {
+@WebServlet("/updateProductCheck")
+public class updateProductCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -29,25 +24,10 @@ public class UpdateProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Integer id = Integer.parseInt(request.getParameter("id"));
+		request.getSession().getAttribute("product");
 		
-		try {
-			ProductDao productDao = DaoFactory.createProductDao();
-			Product product = productDao.findById(id);
-			request.setAttribute("product", product);
-			
-			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
-			List<ACategory> aCategoryList = aCategoryDao.findAll();
-			request.setAttribute("aCategoryList", aCategoryList);
-			
-			BCategoryDao bCategoryDao = DaoFactory.createBCategoryDao();
-			List<BCategory> bCategoryList = bCategoryDao.findAll();
-			request.setAttribute("bCategoryList", bCategoryList);
-			
-			request.getRequestDispatcher("/WEB-INF/view/updateProduct.jsp").forward(request, response);
-		} catch (Exception e) {
-			throw new ServletException(e);
-		}
+		
+		request.getRequestDispatcher("/WEB-INF/view/updateProductCheck.jsp").forward(request, response);
 	}
 
 	/**
@@ -58,10 +38,9 @@ public class UpdateProductServlet extends HttpServlet {
 		
 		Product product = new Product();
 		
-		Integer id = Integer.parseInt(request.getParameter("id"));
+		Integer id = Integer.parseInt(request.getParameter("product-id"));
 		String productName = request.getParameter("product-name");
 		String productUrl = request.getParameter("product-url");
-		Integer aCategoryId = Integer.parseInt(request.getParameter("a-category-id"));
 		String productImgMain = request.getParameter("product-img-main");
 		String productImgSub01 = request.getParameter("product-img-sub-01");
 		String productImgSub02 = request.getParameter("product-img-sub-02");
@@ -73,11 +52,9 @@ public class UpdateProductServlet extends HttpServlet {
 		String productImgSub08 = request.getParameter("product-img-sub-08");
 		String productUpdateBy = (String) request.getSession().getAttribute("userNickName");
 		
-		
 		product.setId(id);
 		product.setProductName(productName);
 		product.setProductUrl(productUrl);
-		product.setCategoryA(aCategoryId);
 		product.setImgMain(productImgMain);
 		product.setImgSub01(productImgSub01);
 		product.setImgSub02(productImgSub02);
@@ -90,17 +67,14 @@ public class UpdateProductServlet extends HttpServlet {
 		product.setUpdateBy(productUpdateBy);
 		
 		try {
-			//ProductDao productDao = DaoFactory.createProductDao();
-			//productDao.update(product);
+			ProductDao productDao = DaoFactory.createProductDao();
+			productDao.update(product);
+			request.getSession().removeAttribute("product");
 			
-			request.setAttribute("product", product);
-			request.getSession().setAttribute("product", product);
-			
-			response.sendRedirect(request.getContextPath() + "/updateProductCheck");
+			request.getRequestDispatcher("/WEB-INF/view/updateProductDone.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-		
 	}
 
 }

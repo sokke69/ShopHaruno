@@ -71,6 +71,7 @@ public class AddProductServlet extends HttpServlet {
 		String imgSub06 = request.getParameter("product-img-sub-06");
 		String imgSub07 = request.getParameter("product-img-sub-07");
 		String imgSub08 = request.getParameter("product-img-sub-08");
+		String userNickName = (String) request.getSession().getAttribute("userNickName");
 		
 		Product product = new Product();
 		
@@ -86,6 +87,7 @@ public class AddProductServlet extends HttpServlet {
 		product.setImgSub06(imgSub06);
 		product.setImgSub07(imgSub07);
 		product.setImgSub08(imgSub08);
+		product.setRegistBy(userNickName);
 		
 		request.setAttribute("product", product);
 		request.getSession().setAttribute("product", product);

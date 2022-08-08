@@ -139,8 +139,8 @@ public class AdminDaoImpl implements AdminDao {
 		Admin admin = null;
 		try (Connection con = ds.getConnection()) {
 			String sql = "SELECT"
-					+ " users.id, users.user_name, users.user_pass,"
-					+ " users_types.type_name as type"
+					+ " users.id, users.user_nick_name, users.user_name, users.user_pass,"
+					+ " users_types.type_name as type_name"
 					+ " FROM users "
 					+ " JOIN users_types"
 					+ " ON users.user_type = users_types.id"
@@ -164,7 +164,8 @@ public class AdminDaoImpl implements AdminDao {
 		admin.setId((Integer) rs.getObject("id"));
 		admin.setUserName(rs.getString("user_name"));
 		admin.setUserPass(rs.getString("user_pass"));
-		admin.setTypeName(rs.getString("type"));
+		admin.setTypeName(rs.getString("type_name"));
+		admin.setUserNickName(rs.getString("user_nick_name"));
 
 		return admin;
 
