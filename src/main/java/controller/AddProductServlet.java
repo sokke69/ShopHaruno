@@ -25,7 +25,8 @@ import domain.Product;
  * Servlet implementation class AaddProductServlet
  */
 @WebServlet("/addProduct")
-@MultipartConfig(location = "C:/Users/zd2L17/temp")
+//@MultipartConfig(location = "C:/Users/zd2L17/temp")
+@MultipartConfig(location = "C:/temp")
 public class AddProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
