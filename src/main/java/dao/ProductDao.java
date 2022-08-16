@@ -11,5 +11,6 @@ public interface ProductDao {
 	void insert(Product product) throws Exception;
 	void update(Product product) throws Exception;
 	void delete(Product product) throws Exception;
+	Integer findLatestIdPlusOne() throws Exception;
 
 }

@@ -1,7 +1,12 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,6 +59,7 @@ public class DeleteProductServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		Integer id = Integer.parseInt(request.getParameter("id"));
+		String idStr = id.toString();
 		
 		Product product = new Product();
 		product.setId(id);
@@ -62,11 +68,28 @@ public class DeleteProductServlet extends HttpServlet {
 			ProductDao productDao = DaoFactory.createProductDao();
 			productDao.delete(product);
 			
+			File filePath = getUploadedDirectory(request);
+			Path main = Paths.get(filePath + idStr + "_main.jpg");
+
+			try{
+			  Files.delete(main);
+			}catch(IOException e){
+			  System.out.println(e);
+			}
+			
 			request.getRequestDispatcher("/WEB-INF/view/deleteProductDone.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException();
 		}
 		
+	}
+	
+	private File getUploadedDirectory(HttpServletRequest request) throws ServletException {
+		ServletContext context = request.getServletContext();
+
+			String path = context.getRealPath("/imgs");
+			return new File(path);
+
 	}
 
 }

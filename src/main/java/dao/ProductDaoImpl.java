@@ -190,4 +190,24 @@ public class ProductDaoImpl implements ProductDao{
 		
 	}
 
+	@Override
+	public Integer findLatestIdPlusOne() throws Exception {
+		Integer latestId = null;
+		Integer latestIdPlusOne = null;
+		
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT MAX(id) from products";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				latestId = (Integer)rs.getObject("MAX(id)");
+				latestIdPlusOne = latestId + 1;
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		}
+		return latestIdPlusOne;
+	}
+
 }

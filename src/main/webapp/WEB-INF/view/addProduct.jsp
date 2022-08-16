@@ -31,7 +31,7 @@
             <div class="col"></div>
             <div class="col-9">
                 <div class="display-6">商品追加</div>
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <table border="1" id="list-table">
                         <tr>
                             <th id="head">商品名</th>
@@ -58,17 +58,18 @@
                         <tr>
                             <th>メイン画像</th>
                             <td>
-                                <input type="text" value="./imgs/■/main.jpg" name="product-img-main">
+                                <input type="file" name="product-img-main">
                             </td>
                         </tr>
-                        <tr><th>サブ画像01</th><td><input type="text" value="./imgs/■/sub_01.jpg" name="product-img-sub-01" class="form-sub"></td></tr>
-                        <tr><th>サブ画像02</th><td><input type="text" value="./imgs/■/sub_02.jpg" name="product-img-sub-02" class="form-sub"></td></tr>
-                        <tr><th>サブ画像03</th><td><input type="text" value="./imgs/■/sub_03.jpg" name="product-img-sub-03" class="form-sub"></td></tr>
-                        <tr><th>サブ画像04</th><td><input type="text" value="./imgs/■/sub_04.jpg" name="product-img-sub-04" class="form-sub"></td></tr>
-                        <tr><th>サブ画像05</th><td><input type="text" value="./imgs/■/sub_05.jpg" name="product-img-sub-05" class="form-sub"></td></tr>
-                        <tr><th>サブ画像06</th><td><input type="text" value="./imgs/■/sub_06.jpg" name="product-img-sub-06" class="form-sub"></td></tr>
-                        <tr><th>サブ画像07</th><td><input type="text" value="./imgs/■/sub_07.jpg" name="product-img-sub-07" class="form-sub"></td></tr>
-                        <tr><th>サブ画像08</th><td><input type="text" value="./imgs/■/sub_08.jpg" name="product-img-sub-08" class="form-sub"></td></tr>
+                        <tr><th>サブ画像01</th><td><input type="file" name="product-img-sub-01" class="form-sub"></td></tr>
+                        <tr><th>サブ画像02</th><td><input type="file" name="product-img-sub-02" class="form-sub"></td></tr>
+                        <tr><th>サブ画像03</th><td><input type="file" name="product-img-sub-03" class="form-sub"></td></tr>
+                        <tr><th>サブ画像04</th><td><input type="file" name="product-img-sub-04" class="form-sub"></td></tr>
+                        <tr><th>サブ画像05</th><td><input type="file" name="product-img-sub-05" class="form-sub"></td></tr>
+                        <tr><th>サブ画像06</th><td><input type="file" name="product-img-sub-06" class="form-sub"></td></tr>
+                        <tr><th>サブ画像07</th><td><input type="file" name="product-img-sub-07" class="form-sub"></td></tr>
+                        <tr><th>サブ画像08</th><td><input type="file" name="product-img-sub-08" class="form-sub"></td></tr>
+                        
                     </table>
                     <input type="submit" value="追加" class="submit">
 
