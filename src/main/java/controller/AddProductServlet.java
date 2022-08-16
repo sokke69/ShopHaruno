@@ -49,7 +49,7 @@ public class AddProductServlet extends HttpServlet {
 				System.out.println("sessionにproduct有り");
 				request.getSession().removeAttribute("product");
 			} else {
-				System.out.println("sessionにproduct無し");
+				System.out.println("sessionにproduct無しな感じねー！");
 			}
 
 			request.getRequestDispatcher("/WEB-INF/view/addProduct.jsp").forward(request, response);
@@ -99,43 +99,35 @@ public class AddProductServlet extends HttpServlet {
 			long sub08FileSize = partSub08.getSize();
 
 
+			File filePath = getUploadedDirectory(request);
 			// メイン画像保存
 			if (mainFileSize > 0) {
-				File filePath = getUploadedDirectory(request);
 				partMain.write(filePath + "/" + idStr + "_main.jpg");
 			}
 			
 			//サブ画像保存
 			if (sub01FileSize > 0) {
-				File filePath = getUploadedDirectory(request);
 				partSub01.write(filePath + "/" + idStr + "_sub01.jpg");
 			}
 			if (sub02FileSize > 0) {
-				File filePath = getUploadedDirectory(request);
 				partSub02.write(filePath + "/" + idStr + "_sub02.jpg");
 			}
 			if (sub03FileSize > 0) {
-				File filePath = getUploadedDirectory(request);
 				partSub03.write(filePath + "/" + idStr + "_sub03.jpg");
 			}
 			if (sub04FileSize > 0) {
-				File filePath = getUploadedDirectory(request);
 				partSub04.write(filePath + "/" + idStr + "_sub04.jpg");
 			}
 			if (sub05FileSize > 0) {
-				File filePath = getUploadedDirectory(request);
 				partSub05.write(filePath + "/" + idStr + "_sub05.jpg");
 			}
 			if (sub06FileSize > 0) {
-				File filePath = getUploadedDirectory(request);
 				partSub06.write(filePath + "/" + idStr + "_sub06.jpg");
 			}
 			if (sub07FileSize > 0) {
-				File filePath = getUploadedDirectory(request);
 				partSub07.write(filePath + "/" + idStr + "_sub07.jpg");
 			}
 			if (sub08FileSize > 0) {
-				File filePath = getUploadedDirectory(request);
 				partSub08.write(filePath + "/" + idStr + "_sub08.jpg");
 			}
 			
