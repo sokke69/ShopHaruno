@@ -200,7 +200,12 @@ public class ProductDaoImpl implements ProductDao{
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
-				latestId = (Integer)rs.getObject("MAX(id)");
+				Object object = rs.getObject("MAX(id)");
+				if (object == null) {
+					latestIdPlusOne = 1;
+					return latestIdPlusOne;
+				}
+				latestId = (Integer) object;
 				latestIdPlusOne = latestId + 1;
 			}
 			
