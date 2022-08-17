@@ -27,7 +27,7 @@
                     <p class="logout-center"><a href="listACategory">カテゴリ【A】一覧へ戻る</a></p>
                     <p class="logout-center"><a href="listCategory">カテゴリ一覧へ戻る</a></p>
                     <p class="logout-center"><a href="listDb">データベース一覧へ戻る</a></p>
-                    <p class="logout-center"><a href="index">トップページへ戻る</a></p>
+                    <p class="logout-center"><a href="index" target="_blank">トップページを開く</a></p>
             </div>
             <div class="col"></div>
         </div><!--/.row-->

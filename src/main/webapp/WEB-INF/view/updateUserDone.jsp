@@ -25,7 +25,7 @@
                     <div class="title"><div class="display-6"><div class="logout-center">ユーザーの編集が完了しました</div></div></div>
                     <p class="logout-center"><a href="listUser">ユーザー一覧へ戻る</a></p>
                     <p class="logout-center"><a href="listDb">データベース一覧へ戻る</a></p>
-                    <p class="logout-center"><a href="index">トップページへ戻る</a></p>
+                    <p class="logout-center"><a href="index" target="_blank">トップページを開く</a></p>
             </div>
             <div class="col"></div>
         </div><!--/.row-->
