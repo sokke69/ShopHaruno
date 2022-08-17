@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 				String sessionUserType = admin.getTypeName();
 				String sessionUserNickName = admin.getUserNickName();
 				
-				System.out.println("sessionにユーザーID:" + sessionUserName + "、ユーザータイプ:" + sessionUserType + "、ユーザーニックネーム:" +  sessionUserNickName + "を格納しました");
+				//System.out.println("sessionにユーザーID:" + sessionUserName + "、ユーザータイプ:" + sessionUserType + "、ユーザーニックネーム:" +  sessionUserNickName + "を格納しました");
 				
 				request.getSession().setAttribute("userName", sessionUserName);
 				request.getSession().setAttribute("userType", sessionUserType);
