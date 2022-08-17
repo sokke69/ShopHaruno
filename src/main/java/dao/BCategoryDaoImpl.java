@@ -94,7 +94,7 @@ public class BCategoryDaoImpl implements BCategoryDao{
 			String sql = "INSERT INTO bs_categories (b_category_name, a_category_id) values (?,?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, bCategory.getbCategoryName());
-			stmt.setObject(1, bCategory.getaCategoryId());
+			stmt.setObject(2, bCategory.getaCategoryId());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;

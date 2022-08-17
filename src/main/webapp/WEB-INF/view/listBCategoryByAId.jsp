@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-8">
-            <table><tr><td><div class="display-6">カテゴリ【B】一覧</div></td><td><a href="#" id="add" class="btn btn-primary">追加</a></td></tr></table>
+            <table><tr><td><div class="display-6">カテゴリ【B】一覧</div></td><td><a href="addBCategory" id="add" class="btn btn-primary">追加</a></td></tr></table>
                 <a href="listBCategory">全カテゴリ</a><c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
                 <a href="listBCategoryByAId?id=${aCategoryList.id}"><c:out value="${aCategoryList.aCategoryName}" /></a>
                 </c:forEach>
