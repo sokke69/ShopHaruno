@@ -36,7 +36,7 @@
                                 </select>
                             </td></tr>
                         </table>
-                        <input type="submit" value="登録">
+                        <input type="submit" value="登録" class="submit">
                         </form>
                         <p><a href="listUser">戻る</a></p>
 

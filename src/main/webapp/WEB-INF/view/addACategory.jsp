@@ -28,7 +28,7 @@
                         <table id="list-table" class="table table-hover">
                             <tr><th>カテゴリA名</th><td><input type="text" name="a-category-name"></td></tr>
                         </table>
-                        <input type="submit" value="登録">
+                        <input type="submit" value="登録" class="submit">
                         </form>
                         <p><a href="listACategory">戻る</a></p>
 

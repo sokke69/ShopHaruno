@@ -47,7 +47,7 @@ public class ACategoryDaoImpl implements ACategoryDao{
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setObject(1, id,Types.INTEGER);
 			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				aCategory = mapToACategory(rs);
 			}
 		} catch (Exception e) {

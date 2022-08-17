@@ -24,8 +24,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-8">
-                <div class="display-6">カテゴリ【A】一覧</div>
-                <a href="addACategory" id="add">追加</a>
+                <table><tr><td><div class="display-6">カテゴリ【A】一覧</div></td><td><a href="addACategory" id="add" class="btn btn-primary">追加</a></td></tr></table>
                 <table id="list-table" class="table table-hover">
                     <thead><tr>
                         <th id="update"></th>

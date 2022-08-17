@@ -23,8 +23,7 @@
     <div class="row">
         <div class="col"></div>
         <div class="col-10">
-            <div class="display-6">商品一覧</div>
-            <a href="addProduct">商品追加</a>
+            <table><tr><td><div class="display-6">商品一覧</div></td><td><a href="addProduct" id="add" class="btn btn-primary">追加</a></td></tr></table>
             <table id="list-table" class="table table-hover">
                 <tr>
                 <th id="update"></th>
