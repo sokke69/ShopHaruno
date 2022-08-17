@@ -47,10 +47,10 @@ public class AddProductServlet extends HttpServlet {
 			request.setAttribute("bCategoryList", bCategoryList);
 
 			if (request.getSession().getAttribute("product") != null) {
-				System.out.println("sessionにproduct有り");
+				//System.out.println("sessionにproduct有り");
 				request.getSession().removeAttribute("product");
 			} else {
-				System.out.println("sessionにproduct無しな感じねー！");
+				//System.out.println("sessionにproduct無しな感じねー！");
 			}
 
 			request.getRequestDispatcher("/WEB-INF/view/addProduct.jsp").forward(request, response);

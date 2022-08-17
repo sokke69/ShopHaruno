@@ -82,3 +82,13 @@ select#selectform{
 #body{
 	margin-top:100px
 }
+
+form img.thumb {
+    margin:0 5px 5px 0;
+    max-width:160px;
+    vertical-align:bottom;
+}
+
+th{
+	vertical-align:middle;
+}
