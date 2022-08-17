@@ -34,7 +34,7 @@
                 <form action="" method="post" enctype="multipart/form-data">
                     <table border="1" id="list-table">
                         <tr>
-                            <th id="head">商品名</th>
+                            <th id="head">商品名*</th>
                             <td><input type="text" placeholder="商品名" name="product-name" id="longform"></td>
                         </tr>
                         <tr>
@@ -42,7 +42,7 @@
                             <td><input type="text" value="https://" name="product-url" id="longform"></td>
                         </tr>
                         <tr>
-                            <th>カテゴリA</th>
+                            <th>カテゴリA*</th>
                             <td> 
                             <select name="a-category-id" id="selectform">
                             <option value="">--選択--</option>
@@ -56,19 +56,12 @@
                             <td>未実装</td>
                         </tr>
                         <tr>
-                            <th>メイン画像</th>
+                            <th>メイン画像*</th>
                             <td>
-                                <input type="file" name="product-img-main">
+                                <input type="file" name="product-img-main" accept="image/jpg" required>
                             </td>
                         </tr>
-                        <tr><th>サブ画像01</th><td><input type="file" name="product-img-sub-01" class="form-sub"></td></tr>
-                        <tr><th>サブ画像02</th><td><input type="file" name="product-img-sub-02" class="form-sub"></td></tr>
-                        <tr><th>サブ画像03</th><td><input type="file" name="product-img-sub-03" class="form-sub"></td></tr>
-                        <tr><th>サブ画像04</th><td><input type="file" name="product-img-sub-04" class="form-sub"></td></tr>
-                        <tr><th>サブ画像05</th><td><input type="file" name="product-img-sub-05" class="form-sub"></td></tr>
-                        <tr><th>サブ画像06</th><td><input type="file" name="product-img-sub-06" class="form-sub"></td></tr>
-                        <tr><th>サブ画像07</th><td><input type="file" name="product-img-sub-07" class="form-sub"></td></tr>
-                        <tr><th>サブ画像08</th><td><input type="file" name="product-img-sub-08" class="form-sub"></td></tr>
+                        <tr><th>サブ画像</th><td><input type="file" name="product-img-sub" class="form-sub"  accept="image/jpg" multiple></td></tr>
                         
                     </table>
                     <input type="submit" value="追加" class="submit">

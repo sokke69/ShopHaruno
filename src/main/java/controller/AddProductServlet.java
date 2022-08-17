@@ -3,6 +3,7 @@ package controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -25,8 +26,8 @@ import domain.Product;
  * Servlet implementation class AaddProductServlet
  */
 @WebServlet("/addProduct")
-//@MultipartConfig(location = "C:/Users/zd2L17/temp")
-@MultipartConfig(location = "C:/temp")
+@MultipartConfig(location = "C:/Users/zd2L17/temp")
+//@MultipartConfig(location = "C:/temp")
 public class AddProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -71,6 +72,8 @@ public class AddProductServlet extends HttpServlet {
 		}
 
 		try {
+			File filePath = getUploadedDirectory(request);
+
 			// productsテーブルのMAX(id)+1を取得
 			ProductDao productDao = DaoFactory.createProductDao();
 			Integer id = productDao.findLatestIdPlusOne();
@@ -79,59 +82,25 @@ public class AddProductServlet extends HttpServlet {
 			// メイン画像取得
 			Part partMain = request.getPart("product-img-main");
 			long mainFileSize = partMain.getSize();
-			
-			//サブ画像取得
-			Part partSub01 = request.getPart("product-img-sub-01");
-			Part partSub02 = request.getPart("product-img-sub-02");
-			Part partSub03 = request.getPart("product-img-sub-03");
-			Part partSub04 = request.getPart("product-img-sub-04");
-			Part partSub05 = request.getPart("product-img-sub-05");
-			Part partSub06 = request.getPart("product-img-sub-06");
-			Part partSub07 = request.getPart("product-img-sub-07");
-			Part partSub08 = request.getPart("product-img-sub-08");
-			long sub01FileSize = partSub01.getSize();
-			long sub02FileSize = partSub02.getSize();
-			long sub03FileSize = partSub03.getSize();
-			long sub04FileSize = partSub04.getSize();
-			long sub05FileSize = partSub05.getSize();
-			long sub06FileSize = partSub06.getSize();
-			long sub07FileSize = partSub07.getSize();
-			long sub08FileSize = partSub08.getSize();
-
-
-			File filePath = getUploadedDirectory(request);
-			// メイン画像保存
+			//メイン画像書き込み
 			if (mainFileSize > 0) {
 				partMain.write(filePath + "/" + idStr + "_main.jpg");
 			}
-			
-			//サブ画像保存
-			if (sub01FileSize > 0) {
-				partSub01.write(filePath + "/" + idStr + "_sub01.jpg");
-			}
-			if (sub02FileSize > 0) {
-				partSub02.write(filePath + "/" + idStr + "_sub02.jpg");
-			}
-			if (sub03FileSize > 0) {
-				partSub03.write(filePath + "/" + idStr + "_sub03.jpg");
-			}
-			if (sub04FileSize > 0) {
-				partSub04.write(filePath + "/" + idStr + "_sub04.jpg");
-			}
-			if (sub05FileSize > 0) {
-				partSub05.write(filePath + "/" + idStr + "_sub05.jpg");
-			}
-			if (sub06FileSize > 0) {
-				partSub06.write(filePath + "/" + idStr + "_sub06.jpg");
-			}
-			if (sub07FileSize > 0) {
-				partSub07.write(filePath + "/" + idStr + "_sub07.jpg");
-			}
-			if (sub08FileSize > 0) {
-				partSub08.write(filePath + "/" + idStr + "_sub08.jpg");
-			}
-			
 
+			// サブ画像List取得
+			List<Part> partsSub = request.getParts().stream().filter(part -> "product-img-sub".equals(part.getName()))
+					.collect(Collectors.toList());
+			//サブ画像取得&書き込み
+			for(int i=0; i <= partsSub.size()-1; i++) {
+				//取得
+				Part partSub = partsSub.get(i);
+				long subFileSize = partSub.getSize();
+				//書き込み
+				if (subFileSize > 0) {
+					partSub.write(filePath + "/" + idStr + "_sub0" + (i+1) + ".jpg");
+				}
+			}
+			
 			String productName = request.getParameter("product-name");
 			String productUrl = request.getParameter("product-url");
 			Integer aCategoryId = Integer.parseInt(request.getParameter("a-category-id"));
@@ -175,8 +144,8 @@ public class AddProductServlet extends HttpServlet {
 	private File getUploadedDirectory(HttpServletRequest request) throws ServletException {
 		ServletContext context = request.getServletContext();
 
-			String path = context.getRealPath("/imgs");
-			return new File(path);
+		String path = context.getRealPath("/imgs");
+		return new File(path);
 
 	}
 
