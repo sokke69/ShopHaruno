@@ -17,6 +17,8 @@
 </head>
 <body>
 
+<c:import url="parts/header.jsp" />
+
 	<header></header>
 
 	<div class="login" id="body">

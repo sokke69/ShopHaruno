@@ -24,7 +24,7 @@
 			<div class="col-9">
 				<div class="display-6">商品削除</div>
 				<form action="" method="post">
-					<table border="1" id="list-table">
+					<table border="1" id="list-table" class="table table-hover">
 						<tr>
 							<th id="head">ID</th>
 							<td><c:out value="${product.id}" /></td>

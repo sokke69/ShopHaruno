@@ -197,7 +197,7 @@
 								</tr>
 
 								<tr>
-									<td colspan="2" id="table-products"><a href="#"><c:out
+									<td colspan="2" id="table-products"><a href="#" target="_blank"><c:out
 												value="消せないサンプル1です。消せないサンプル1です。消せないサンプル1です。消せないサンプル1です。消せないサンプル1です。消せないサンプル1です。消せないサンプル1です。" /></a></td>
 								</tr>
 							</table>
@@ -232,7 +232,7 @@
 								</tr>
 
 								<tr>
-									<td colspan="2" id="table-products"><a href="#"><c:out
+									<td colspan="2" id="table-products"><a href="#" target="_blank"><c:out
 												value="消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。" /></a></td>
 								</tr>
 							</table>
@@ -267,7 +267,7 @@
 								</tr>
 
 								<tr>
-									<td colspan="2" id="table-products"><a href="#"><c:out
+									<td colspan="2" id="table-products"><a href="#" target="_blank"><c:out
 												value="消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。" /></a></td>
 								</tr>
 							</table>
@@ -305,7 +305,7 @@
 									</tr>
 
 									<tr>
-										<td colspan="2" id="table-products"><a href="#"><c:out
+										<td colspan="2" id="table-products"><a href="${productList.productUrl}" target="_blank"><c:out
 													value="${productList.productName}" /></a></td>
 									</tr>
 								</table>

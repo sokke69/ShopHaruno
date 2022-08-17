@@ -25,7 +25,7 @@
         <div class="col-10">
             <div class="display-6">商品一覧</div>
             <a href="addProduct">商品追加</a>
-            <table id="list-table" class="table">
+            <table id="list-table" class="table table-hover">
                 <tr>
                 <th id="update"></th>
                 <th id="delete"></th>

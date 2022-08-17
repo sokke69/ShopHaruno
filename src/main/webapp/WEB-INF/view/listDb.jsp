@@ -25,7 +25,7 @@
             <div class="col"></div>
             <div class="col-10">
                 <div class="display-6">データベース一覧</div>
-                <table id="list-table" class="table">
+                <table id="list-table" class="table table-hover">
                     <tr><td><a href="listProduct">商品一覧</a></td></tr>
                     <tr><td><a href="listCategory">カテゴリ一覧</a></td></tr>
                     <tr><td><a href="listUser">ユーザー一覧</a></td></tr>

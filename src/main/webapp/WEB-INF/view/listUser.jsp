@@ -26,15 +26,15 @@
             <div class="col-8">
                 <div class="display-6">ユーザー一覧</div>
                 <a href="addUser">ユーザー追加</a>
-                <table id="list-table" class="table">
-                    <tr>
+                <table id="list-table" class="table table-hover">
+                    <thead><tr>
                         <th id="update"></th>
                         <th id="delete"></th>
                         <th id="id">ID</th>
                         <th>ユーザー名</th>
                         <th id="user-name">ユーザーID</th>
                         <th id="user-types">ユーザータイプ</th>
-                    </tr>
+                    </tr></thead>
                     <c:forEach items="${userList}" var="userList" varStatus="vs">
                     <tr>
                         <td><a href="updateUser?id=${userList.id}">編集</a></td>

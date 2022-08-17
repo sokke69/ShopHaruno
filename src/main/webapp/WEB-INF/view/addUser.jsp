@@ -24,7 +24,7 @@
             <div class="col-8">
                         <div class="display-6">ユーザー追加</div>
                         <form action="" method="post">
-                        <table border="1" id="list-table">
+                        <table id="list-table" class="table table-hover">
                             <tr><th>ユーザー名</th><td><input type="text" name="user-nick-name"></td></tr>
                             <tr><th>ユーザーID</th><td><input type="text" name="user-name"></td></tr>
                             <tr><th>パスワード</th><td><input type="password" name="user-pass"></td></tr>

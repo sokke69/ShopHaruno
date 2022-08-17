@@ -25,7 +25,7 @@
             <div class="col"></div>
             <div class="col-10">
                 <div class="display-6">カテゴリ一覧</div>
-                <table id="list-table" class="table">
+                <table id="list-table" class="table table-hover">
                     <tr><td><a href="listACategory">カテゴリA</a></td></tr>
                     <tr><td><a href="listBCategory">カテゴリB</a></td></tr>
                 

@@ -25,7 +25,7 @@
             <div class="col-8">
                         <div class="display-6">カテゴリ【A】追加</div>
                         <form action="" method="post">
-                        <table border="1" id="list-table">
+                        <table id="list-table" class="table table-hover">
                             <tr><th>カテゴリA名</th><td><input type="text" name="a-category-name"></td></tr>
                         </table>
                         <input type="submit" value="登録">

@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="head">
   <div class="container">
-    <a class="navbar-brand" href="index">会社ページトップへ</a>
+    <a class="navbar-brand" href="index">管理ページ</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,7 +18,12 @@
             <c:out value="${userNickName}" /> さん
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="listDb">データベース一覧</a></li>
+          <li><a class="dropdown-item" href="listProduct">商品一覧</a></li>
+          <li><a class="dropdown-item" href="listCategory">カテゴリ一覧</a></li>
+          <li><a class="dropdown-item" href="listUser">ユーザー一覧</a></li>
             <li><a class="dropdown-item" href="logout">ログアウト</a></li>
+            <li><a class="dropdown-item" href="index" target="_blank">会社トップページ</a></li>
           </ul>
         </li>
       </ul>

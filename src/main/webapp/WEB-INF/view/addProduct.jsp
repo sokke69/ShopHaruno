@@ -53,7 +53,7 @@
 			<div class="col-9">
 				<div class="display-6">商品追加</div>
 				<form action="" method="post" enctype="multipart/form-data">
-					<table id="list-table" class="table">
+					<table id="list-table" class="table table-hover">
 						<tr>
 							<th id="head">商品名*</th>
 							<td><input type="text" placeholder="商品名" name="product-name"

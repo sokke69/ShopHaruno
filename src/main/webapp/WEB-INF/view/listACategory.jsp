@@ -26,7 +26,7 @@
             <div class="col-8">
                 <div class="display-6">カテゴリ【A】一覧</div>
                 <a href="addACategory" id="add">追加</a>
-                <table id="list-table" class="table">
+                <table id="list-table" class="table table-hover">
                     <thead><tr>
                         <th id="update"></th>
                         <th id="delete"></th>
