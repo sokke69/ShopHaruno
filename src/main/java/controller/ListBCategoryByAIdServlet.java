@@ -16,41 +16,35 @@ import domain.ACategory;
 import domain.BCategory;
 
 /**
- * Servlet implementation class ListACategoryServlet
+ * Servlet implementation class ListBCategoryByAIdServlet
  */
-@WebServlet("/listBCategory")
-public class ListBCategoryServlet extends HttpServlet {
+@WebServlet("/listBCategoryByAId")
+public class ListBCategoryByAIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ListBCategoryServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		//System.out.println("前ページで取得したidは" + id + "です。");
+		
 		try {
 			BCategoryDao bCategoryDao = DaoFactory.createBCategoryDao();
-			List<BCategory> bCategoryList = bCategoryDao.findAll();
+			List<BCategory> bCategoryListByAId = bCategoryDao.pickByAId(id);
 			
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			List<ACategory> aCategoryList = aCategoryDao.findAll();
 			
-			request.setAttribute("bCategoryList", bCategoryList);
+			request.setAttribute("bCategoryListByAId", bCategoryListByAId);
 			request.setAttribute("aCategoryList", aCategoryList);
-			request.getRequestDispatcher("/WEB-INF/view/listBCategory.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/listBCategoryByAId.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-		
-		
-	}
 
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -39,13 +39,13 @@
                         <th id="">分類</th>
                     </tr></thead>
                     
-                    <tbody><c:forEach items="${bCategoryList}" var="bCategoryList" varStatus="vs">
+                    <tbody><c:forEach items="${bCategoryListByAId}" var="bCategoryListByAId" varStatus="vs">
                     <tr>
-                        <td><a href="updateBCategory?id=${bCategoryList.id}">編集</a></td>
-                        <td><a href="deleteBCategory?id=${bCategoryList.id}">削除</a></td>
-                        <td><c:out value="${bCategoryList.id}" /></td>
-                        <td><c:out value="${bCategoryList.bCategoryName}" /></td>
-                        <td><c:out value="${bCategoryList.aCategoryName}" /></td>
+                        <td><a href="updateBCategory?id=${bCategoryListByAId.id}">編集</a></td>
+                        <td><a href="deleteBCategory?id=${bCategoryListByAId.id}">削除</a></td>
+                        <td><c:out value="${bCategoryListByAId.id}" /></td>
+                        <td><c:out value="${bCategoryListByAId.bCategoryName}" /></td>
+                        <td><c:out value="${bCategoryListByAId.aCategoryName}" /></td>
                     </tr>
                     </c:forEach></tbody>
                     

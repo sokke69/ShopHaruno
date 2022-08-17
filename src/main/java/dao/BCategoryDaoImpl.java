@@ -37,6 +37,7 @@ public class BCategoryDaoImpl implements BCategoryDao{
 		} catch (Exception e) {
 			throw e;
 		}
+		//System.out.println("bCategoryListのsize()は" + bCategoryList.size() + "です。");
 		return bCategoryList;
 	}
 
@@ -45,7 +46,7 @@ public class BCategoryDaoImpl implements BCategoryDao{
 		BCategory bCategory = new BCategory();
 		try (Connection con = ds.getConnection()){
 			String sql = "SELECT"
-					+ " bs_categories.id, b_category_name, as_categories.id as a_category_name"
+					+ " bs_categories.id, b_category_name, as_categories.a_category_name as a_category_name"
 					+ " FROM bs_categories "
 					+ " JOIN as_categories"
 					+ " ON bs_categories.a_category_id = as_categories.id"
@@ -53,7 +54,7 @@ public class BCategoryDaoImpl implements BCategoryDao{
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setObject(1, id,Types.INTEGER);
 			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				bCategory = mapToBCategory(rs);
 			}
 		} catch (Exception e) {
@@ -63,19 +64,27 @@ public class BCategoryDaoImpl implements BCategoryDao{
 	}
 	
 	public List<BCategory> pickByAId(Integer id) throws Exception{
-		List<BCategory> bCategoryList = new ArrayList<>();
+		List<BCategory> bCategoryListByAId = new ArrayList<>();
 		try (Connection con = ds.getConnection()){
-			String sql = "SELECT *  FROM bs_categories WHERE bs_categories.a_category_id=?";
+			String sql = "SELECT"
+					+ " bs_categories.id, b_category_name, as_categories.a_category_name as a_category_name"
+					+ " FROM bs_categories "
+					+ " JOIN as_categories"
+					+ " ON bs_categories.a_category_id = as_categories.id"
+					+ " WHERE bs_categories.a_category_id=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setObject(1, id,Types.INTEGER);
 			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
-				bCategoryList.add(mapToBCategory(rs));
+			while (rs.next()) {
+				bCategoryListByAId.add(mapToBCategory(rs));
 			}
+			
 		} catch (Exception e) {
 			throw e;
 		}
-		return bCategoryList;
+		//System.out.println("pickByAIdでid=" + id + "のbCategoryListを返します。");
+		//System.out.println("bCategoryListのsize()は" + bCategoryListByAId.size() + "です。");
+		return bCategoryListByAId;
 		
 	}
 
