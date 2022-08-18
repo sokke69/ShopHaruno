@@ -70,36 +70,15 @@ public class AddProductServlet extends HttpServlet {
 		if (request.getSession().getAttribute("product") != null) {
 			request.getSession().removeAttribute("product");
 		}
+		
+		//画像ファイルの書き込み
+		writeImg(request);
 
 		try {
-			File filePath = getUploadedDirectory(request);
-
 			// productsテーブルのMAX(id)+1を取得
 			ProductDao productDao = DaoFactory.createProductDao();
 			Integer id = productDao.findLatestIdPlusOne();
 			String idStr = id.toString();
-
-			// メイン画像取得
-			Part partMain = request.getPart("product-img-main");
-			long mainFileSize = partMain.getSize();
-			//メイン画像書き込み
-			if (mainFileSize > 0) {
-				partMain.write(filePath + "/" + idStr + "_main.jpg");
-			}
-
-			// サブ画像List取得
-			List<Part> partsSub = request.getParts().stream().filter(part -> "product-img-sub".equals(part.getName()))
-					.collect(Collectors.toList());
-			//サブ画像取得&書き込み
-			for(int i=0; i <= partsSub.size()-1; i++) {
-				//取得
-				Part partSub = partsSub.get(i);
-				long subFileSize = partSub.getSize();
-				//書き込み
-				if (subFileSize > 0) {
-					partSub.write(filePath + "/" + idStr + "_sub0" + (i+1) + ".jpg");
-				}
-			}
 			
 			String productName = request.getParameter("product-name");
 			String productUrl = request.getParameter("product-url");
@@ -146,6 +125,43 @@ public class AddProductServlet extends HttpServlet {
 
 		String path = context.getRealPath("/imgs");
 		return new File(path);
+
+	}
+	
+	private void writeImg(HttpServletRequest request) throws ServletException {
+		
+		File filePath = getUploadedDirectory(request);
+		
+		try {
+			// productsテーブルのMAX(id)+1を取得
+			ProductDao productDao = DaoFactory.createProductDao();
+			Integer id = productDao.findLatestIdPlusOne();
+			String idStr = id.toString();
+			
+			// メイン画像取得
+			Part partMain = request.getPart("product-img-main");
+			long mainFileSize = partMain.getSize();
+			//メイン画像書き込み
+			if (mainFileSize > 0) {
+				partMain.write(filePath + "/" + idStr + "_main.jpg");
+			}
+
+			// サブ画像List取得
+			List<Part> partsSub = request.getParts().stream().filter(part -> "product-img-sub".equals(part.getName()))
+					.collect(Collectors.toList());
+			//サブ画像取得&書き込み
+			for(int i=0; i <= partsSub.size()-1; i++) {
+				//取得
+				Part partSub = partsSub.get(i);
+				long subFileSize = partSub.getSize();
+				//書き込み
+				if (subFileSize > 0) {
+					partSub.write(filePath + "/" + idStr + "_sub0" + (i+1) + ".jpg");
+				}
+			}
+		} catch (Exception e1) {
+			throw new ServletException(e1);
+		}
 
 	}
 

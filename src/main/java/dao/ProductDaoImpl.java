@@ -152,24 +152,16 @@ public class ProductDaoImpl implements ProductDao{
 	public void update(Product product) throws Exception {
 		try (Connection con = ds.getConnection()){
 			String sql = "UPDATE products SET"
-					+ " product_name=?, product_url=?, img_main=?,"
-					+ " img_sub01=?, img_sub02=?, img_sub03=?, img_sub04=?, img_sub05=?, img_sub06=?, img_sub07=?, img_sub08=?,"
+					+ " product_name=?, product_url=?,"
+					+ " category_a=?,"
 					+ " update_date= NOW(), update_by=?"
 					+ " WHERE id=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, product.getProductName());
 			stmt.setString(2, product.getProductUrl());
-			stmt.setString(3, product.getImgMain());
-			stmt.setString(4, product.getImgSub01());
-			stmt.setString(5, product.getImgSub02());
-			stmt.setString(6, product.getImgSub03());
-			stmt.setString(7, product.getImgSub04());
-			stmt.setString(8, product.getImgSub05());
-			stmt.setString(9, product.getImgSub06());
-			stmt.setString(10, product.getImgSub07());
-			stmt.setString(11, product.getImgSub08());
-			stmt.setString(12, product.getUpdateBy());
-			stmt.setObject(13, product.getId(),Types.INTEGER);
+			stmt.setObject(3, product.getCategoryA(),Types.INTEGER);
+			stmt.setString(4, product.getUpdateBy());
+			stmt.setObject(5, product.getId(),Types.INTEGER);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;

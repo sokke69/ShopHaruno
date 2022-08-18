@@ -67,11 +67,11 @@
 						<tr>
 							<th>カテゴリA*</th>
 							<td><select name="a-category-id" id="selectform">
-									<option value="">--選択--</option>
+									<option value="0">--選択--</option>
 									<c:forEach items="${aCategoryList}" var="aCategoryList"
 										varStatus="vs">
 										<option value="${aCategoryList.id}"><c:out
-												value="${aCategoryList.aCategoryName}" /></option>
+												value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></option>
 									</c:forEach>
 							</select></td>
 						</tr>
