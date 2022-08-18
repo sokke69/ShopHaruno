@@ -38,11 +38,6 @@ public class DeleteProductServlet extends HttpServlet {
 			Product product = productDao.findById(id);
 			request.setAttribute("product", product);
 			
-			//System.out.println(product.getId() + " " + product.getProductUrl() + " " + product.getCategoryAStr() + " " + product.getCategoryBStr() + " " + 
-			//		product.getImgMain() + " " + product.getImgSub01() + " " + product.getImgSub02() + " " + product.getImgSub03() + " " + product.getImgSub04() + " " + 
-			//		 product.getImgSub05() + product.getImgSub06() + product.getImgSub07() + product.getImgSub08() + 
-			//		 product.getRegistDate() + " " + product.getRegistBy() + " " + product.getUpdateDate() + " " + product.getUpdateBy());
-			//
 			request.getRequestDispatcher("/WEB-INF/view/deleteProduct.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);

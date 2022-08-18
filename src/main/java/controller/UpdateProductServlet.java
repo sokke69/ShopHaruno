@@ -13,11 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import dao.ACategoryDao;
-import dao.BCategoryDao;
 import dao.DaoFactory;
 import dao.ProductDao;
 import domain.ACategory;
-import domain.BCategory;
 import domain.Product;
 
 /**
@@ -44,10 +42,6 @@ public class UpdateProductServlet extends HttpServlet {
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			List<ACategory> aCategoryList = aCategoryDao.findAll();
 			request.setAttribute("aCategoryList", aCategoryList);
-
-			BCategoryDao bCategoryDao = DaoFactory.createBCategoryDao();
-			List<BCategory> bCategoryList = bCategoryDao.findAll();
-			request.setAttribute("bCategoryList", bCategoryList);
 
 			request.getRequestDispatcher("/WEB-INF/view/updateProduct.jsp").forward(request, response);
 		} catch (Exception e) {

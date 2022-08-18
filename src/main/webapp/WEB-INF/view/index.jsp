@@ -117,39 +117,7 @@
 		<!--/.container-->
 	</div>
 	<!--/.category-->
-
-	<div class="category-b">
-		<div class="container">
-			<div class="row">
-				<div class="col-2"></div>
-				<div class="col">
-					<table class="category-table" align="center">
-
-						<tr>
-							<td class="text"><a href="#">カテゴリB01</a></td>
-
-							<td class="text"><a href="#">カテゴリB02</a></td>
-
-							<td class="text"><a href="#">カテゴリB03</a></td>
-
-							<td class="text"><a href="#">カテゴリB04</a></td>
-
-							<td class="text"><a href="#">カテゴリB05</a></td>
-
-							<td class="text"><a href="#">カテゴリB06</a></td>
-
-							<td class="text"><a href="#">カテゴリB07</a></td>
-						</tr>
-
-					</table>
-				</div>
-				<div class="col-2"></div>
-			</div>
-		</div>
-		<!--/.container-->
-	</div>
-	<!--/.category-->
-
+	
 	<div class="products">
 		<div class="container">
 			<div class="row">

@@ -18,10 +18,6 @@ public class DaoFactory {
 		return new ACategoryDaoImpl(getDataSource());
 	}
 	
-	public static BCategoryDao createBCategoryDao() {
-		return new BCategoryDaoImpl(getDataSource());
-	}
-
 	private static DataSource getDataSource() {
 		InitialContext ctx = null;
 		DataSource ds = null;

@@ -44,14 +44,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>カテゴリA</th>
+                            <th>カテゴリ</th>
                             <td><c:out value="${product.categoryA}" />
                             <input type="hidden" name="a-category-id" value="${product.categoryA}">
                             </td>
-                        </tr>
-                        <tr>
-                            <th>カテゴリB</th>
-                            <td>未実装</td>
                         </tr>
                         <tr>
                             <th>メイン画像</th>

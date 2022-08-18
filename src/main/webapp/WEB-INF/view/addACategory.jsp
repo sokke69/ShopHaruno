@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カテゴリ【A】追加</title>
+    <title>カテゴリ追加</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/list_style.css">
     <link rel="stylesheet" href="./css/hf_style.css">
@@ -23,10 +23,10 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-8">
-                        <div class="display-6">カテゴリ【A】追加</div>
+                        <div class="display-6">カテゴリ追加</div>
                         <form action="" method="post">
                         <table id="list-table" class="table table-hover">
-                            <tr><th>カテゴリA名</th><td><input type="text" name="a-category-name"></td></tr>
+                            <tr><th>カテゴリ名</th><td><input type="text" name="a-category-name"></td></tr>
                         </table>
                         <input type="submit" value="登録" class="submit">
                         </form>

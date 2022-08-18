@@ -42,10 +42,6 @@
 							<td><c:out value="${product.categoryAStr}" /></td>
 						</tr>
 						<tr>
-							<th>カテゴリB</th>
-							<td><c:out value="${product.categoryBStr}" /></td>
-						</tr>
-						<tr>
 							<th>メイン画像</th>
 							<td><img src="${product.imgMain}" alt="" id="sumb"></td>
 						</tr>

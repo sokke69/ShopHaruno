@@ -5,7 +5,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>カテゴリ【A】追加</title>
+<title>カテゴリ追加</title>
 <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/loginout_style.css">
     <link rel="stylesheet" href="./css/hf_style.css">
@@ -23,9 +23,8 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-5">
-                    <div class="title"><div class="display-6"><div class="logout-center">カテゴリAに追加しました</div></div></div>
-                    <p class="logout-center"><a href="listACategory">カテゴリ【A】一覧へ戻る</a></p>
-                    <p class="logout-center"><a href="listCategory">カテゴリ一覧へ戻る</a></p>
+                    <div class="title"><div class="display-6"><div class="logout-center">カテゴリに追加しました</div></div></div>
+                    <p class="logout-center"><a href="listACategory">カテゴリ一覧へ戻る</a></p>
                     <p class="logout-center"><a href="listDb">データベース一覧へ戻る</a></p>
                     <p class="logout-center"><a href="index" target="_blank">トップページを開く</a></p>
             </div>

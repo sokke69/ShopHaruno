@@ -66,7 +66,8 @@
 						</tr>
 						<tr>
 							<th>カテゴリA*</th>
-							<td><select name="a-category-id" id="selectform">
+							<td><select name="a-category-id" id="selectform"
+								class="select-a">
 									<option value="0">--選択--</option>
 									<c:forEach items="${aCategoryList}" var="aCategoryList"
 										varStatus="vs">
@@ -76,19 +77,15 @@
 							</select></td>
 						</tr>
 						<tr>
-							<th>カテゴリB</th>
-							<td>未実装</td>
-						</tr>
-						<tr>
 							<th>メイン画像*</th>
-							<td><label><input type="file" name="product-img-main"
-								accept="image/jpg" required></label></td>
+							<td><label><input type="file"
+									name="product-img-main" accept="image/jpg" required></label></td>
 						</tr>
 						<tr>
 							<th>サブ画像</th>
 							<td><label><input type="file" name="product-img-sub"
-								id="product-img-sub" class="form-sub" accept="image/jpg"
-								multiple></label></td>
+									id="product-img-sub" class="form-sub" accept="image/jpg"
+									multiple></label></td>
 						</tr>
 
 					</table>

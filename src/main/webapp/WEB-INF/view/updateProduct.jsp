@@ -53,7 +53,7 @@ $(function() {
 								name="product-url" id="longform"></td>
 						</tr>
 						<tr>
-							<th>カテゴリA*</th>
+							<th>カテゴリ*</th>
 							<td><select name="a-category-id" id="selectform">
 									<option value="0">--選択--</option>
 									<c:forEach items="${aCategoryList}" var="aCategoryList"
@@ -62,10 +62,6 @@ $(function() {
 												value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></option>
 									</c:forEach>
 							</select></td>
-						</tr>
-						<tr>
-							<th>カテゴリB</th>
-							<td></td>
 						</tr>
 						<tr>
 							<th>メイン画像</th>

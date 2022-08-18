@@ -20,7 +20,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href="listDb">データベース一覧</a></li>
           <li><a class="dropdown-item" href="listProduct">商品一覧</a></li>
-          <li><a class="dropdown-item" href="listCategory">カテゴリ一覧</a></li>
+          <li><a class="dropdown-item" href="listACategory">カテゴリ一覧</a></li>
           <li><a class="dropdown-item" href="listUser">ユーザー一覧</a></li>
             <li><a class="dropdown-item" href="logout">ログアウト</a></li>
             <li><a class="dropdown-item" href="index" target="_blank">会社トップページ</a></li>

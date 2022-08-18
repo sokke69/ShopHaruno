@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カテゴリ【A】編集</title>
+    <title>カテゴリ編集</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/list_style.css">
     <link rel="stylesheet" href="./css/hf_style.css">
@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-9">
-                <div class="display-6">カテゴリ【A】編集</div>
+                <div class="display-6">カテゴリ編集</div>
                 <form action="" method="post">
                     <table id="list-table" class="table table-hover">
                         <tr>
@@ -39,7 +39,7 @@
                     </table>
                     <input type="submit" value="決定" class="submit">
 
-                    <p><a href="listACategory">カテゴリ【A】一覧へ戻る</a></p>
+                    <p><a href="listACategory">カテゴリ一覧へ戻る</a></p>
                 </form>
             </div>
             <div class="col"></div>

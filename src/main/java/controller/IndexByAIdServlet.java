@@ -10,11 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ACategoryDao;
-import dao.BCategoryDao;
 import dao.DaoFactory;
 import dao.ProductDao;
 import domain.ACategory;
-import domain.BCategory;
 import domain.Product;
 
 /**
@@ -38,11 +36,7 @@ public class IndexByAIdServlet extends HttpServlet {
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			List<ACategory> aCategoryList = aCategoryDao.findAll();
 			
-			BCategoryDao bCategoryDao = DaoFactory.createBCategoryDao();
-			List<BCategory> bCategoryList = bCategoryDao.findAll();
-			
 			request.setAttribute("productList", productList);
-			request.setAttribute("bCategoryList", bCategoryList);
 			request.setAttribute("aCategoryList", aCategoryList);
 			
 			request.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(request, response);
