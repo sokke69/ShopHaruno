@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ユーザー削除</title>
+    <title>カテゴリ【B】削除</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/list_style.css">
     <link rel="stylesheet" href="./css/hf_style.css">
@@ -22,29 +22,25 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-9">
-                <div class="display-6">ユーザー削除</div>
+                <div class="display-6">カテゴリ【B】削除</div>
                 <form action="" method="post">
                     <table id="list-table" class="table table-hover">
                         <tr>
                             <th id="head">ID</th>
-                            <td><c:out value="${user.id}" /></td>
+                            <td><c:out value="${bCategory.id}" /></td>
                         </tr>
                         <tr>
-                            <th>ユーザー名</th>
-                            <td><c:out value="${user.userNickName}" /></td>
+                            <th>名前</th>
+                            <td><c:out value="${bCategory.bCategoryName}" /></td>
                         </tr>
                         <tr>
-                            <th>ユーザーID</th>
-                            <td><c:out value="${user.userName}" /></td>
-                        </tr>
-                        <tr>
-                            <th>ユーザータイプ</th>
-                            <td><c:out value="${user.typeName}" /></td>
+                            <th>カテゴリ【A】</th>
+                            <td><c:out value="${bCategory.aCategoryName}" /></td>
                         </tr>
                     </table>
                     <input type="submit" value="削除" class="submit">
 
-                    <p><a href="listUser">戻る</a></p>
+                    <p><a href="listBCategory">戻る</a></p>
                 </form>
             </div>
             <div class="col"></div>

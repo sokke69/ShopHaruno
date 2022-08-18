@@ -26,7 +26,7 @@
             <div class="col-9">
                 <div class="display-6">ユーザー編集</div>
                 <form action="" method="post">
-                    <table border="1" id="list-table" class="table table-hover">
+                    <table id="list-table" class="table table-hover">
                         <tr>
                             <th id="head">ID</th>
                             <td><c:out value="${user.id}" /> (変更できません)</td>

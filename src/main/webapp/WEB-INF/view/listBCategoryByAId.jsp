@@ -26,7 +26,7 @@
             <div class="col-8">
             <table><tr><td><div class="display-6">カテゴリ【B】一覧</div></td><td><a href="addBCategory" id="add" class="btn btn-primary">追加</a></td></tr></table>
                 <a href="listBCategory">全カテゴリ</a><c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
-                <a href="listBCategoryByAId?id=${aCategoryList.id}"><c:out value="${aCategoryList.aCategoryName}" /></a>
+                <a href="listBCategoryByAId?id=${aCategoryList.id}"><c:out value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></a>
                 </c:forEach>
                 
                 <table id="list-table" class="table table-hover">
@@ -34,7 +34,7 @@
                         <th id="update"></th>
                         <th id="delete"></th>
                         <th id="id">ID</th>
-                        <th id="user-name">カテゴリ</th>
+                        <th id="user-name">名前</th>
                         <th id="">分類(カテゴリ【A】)</th>
                     </tr></thead>
                     

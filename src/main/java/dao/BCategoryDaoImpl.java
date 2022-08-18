@@ -107,8 +107,8 @@ public class BCategoryDaoImpl implements BCategoryDao{
 			String sql = "UPDATE bs_categories SET b_category_name=?, a_category_id=? WHERE id=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, bCategory.getbCategoryName());
-			stmt.setObject(1, bCategory.getaCategoryId());
-			stmt.setObject(3, bCategory.getId());
+			stmt.setObject(2, bCategory.getaCategoryId(),Types.INTEGER);
+			stmt.setObject(3, bCategory.getId(),Types.INTEGER);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;

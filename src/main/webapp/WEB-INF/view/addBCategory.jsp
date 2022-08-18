@@ -26,8 +26,8 @@
                         <div class="display-6">カテゴリ【B】追加</div>
                         <form action="" method="post">
                         <table id="list-table" class="table table-hover">
-                            <tr><th>カテゴリB名</th><td><input type="text" name="b-category-name"></td></tr>
-                            <tr><th>カテゴリA</th>
+                            <tr><th>カテゴリ【B】名</th><td><input type="text" name="b-category-name"></td></tr>
+                            <tr><th>カテゴリ【A】</th>
                             <td><select name="b-category-a-id" id="selectform">
 									<option value="">--選択--</option>
 									<c:forEach items="${aCategoryList}" var="aCategoryList"
