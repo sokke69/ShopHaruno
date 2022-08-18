@@ -18,10 +18,10 @@ import domain.BCategory;
 import domain.Product;
 
 /**
- * Servlet implementation class IndexServlet
+ * Servlet implementation class IndexByAIdServlet
  */
-@WebServlet("/index")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/indexByAId")
+public class IndexByAIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -29,9 +29,11 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Integer id = Integer.parseInt(request.getParameter("aId"));
+		
 		try {
 			ProductDao productDao = DaoFactory.createProductDao();
-			List<Product> productList = productDao.findAll();
+			List<Product> productList = productDao.findByAId(id);
 			
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			List<ACategory> aCategoryList = aCategoryDao.findAll();
@@ -47,8 +49,6 @@ public class IndexServlet extends HttpServlet {
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-
-		
 		
 	}
 
@@ -56,13 +56,8 @@ public class IndexServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
-		
-		
-		
-		
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

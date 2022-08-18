@@ -207,4 +207,21 @@ public class ProductDaoImpl implements ProductDao{
 		return latestIdPlusOne;
 	}
 
+	@Override
+	public List<Product> findByAId(Integer id) throws Exception {
+		List<Product> productList = new ArrayList<>();
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT * FROM products WHERE category_a=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setObject(1, id,Types.INTEGER);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				productList.add(mapToProduct(rs));
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return null;
+	}
+
 }
