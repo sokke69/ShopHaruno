@@ -221,7 +221,7 @@ public class ProductDaoImpl implements ProductDao{
 		} catch (Exception e) {
 			throw e;
 		}
-		return null;
+		return productList;
 	}
 
 }
