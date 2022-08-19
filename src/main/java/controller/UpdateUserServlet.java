@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.AdminDao;
 import dao.DaoFactory;
+import dao.UserTypeDao;
 import domain.Admin;
+import domain.UserType;
 
 /**
  * Servlet implementation class UpdateUserServlet
@@ -29,7 +32,20 @@ public class UpdateUserServlet extends HttpServlet {
 		try {
 			AdminDao adminDao = DaoFactory.createAdminDao();
 			Admin admin = adminDao.findById(id);
+			Integer typeId = adminDao.findTypeIdById(id);
 			request.setAttribute("user", admin);
+			request.setAttribute("typeId", typeId);
+			
+			//System.out.println("typeId : " + typeId);
+			
+			UserTypeDao userTypeDao = DaoFactory.createUserTypeDao();
+			List<UserType> userTypeList = userTypeDao.findAll();
+			Integer countTypeId = userTypeDao.countTypeId(); 
+			request.setAttribute("userTypeList", userTypeList);
+			request.setAttribute("countTypeId", countTypeId);
+			
+			//System.out.println("countTypeId : " + countTypeId);
+			
 			request.getRequestDispatcher("/WEB-INF/view/updateUser.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);

@@ -15,6 +15,18 @@
 
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/jquery-3.6.0.min.js"></script>
+    
+    <script>
+    $(function(){
+    	
+    	for(let i = 1; i <= ${countTypeId}; i++){
+    		if( ${typeId} == i ){
+    			$(".select-type").val(i);
+    		}
+    	}
+    });
+    </script>
+    
 </head>
 
 <body>
@@ -36,7 +48,7 @@
                             <td><input type="text" value="<c:out value="${user.userNickName}" />" name="user-nick-name"></td>
                         </tr>
                         <tr>
-                            <th>ユーザー名</th>
+                            <th>ユーザーID</th>
                             <td><input type="text" value="<c:out value="${user.userName}" />" name="user-name"></td>
                         </tr>
                         <tr>
@@ -46,10 +58,11 @@
                         <tr>
                             <th>ユーザータイプ</th>
                             <td>
-                                <select name="user-type" id="">
+                                <select name="user-type" id="" class="select-type">
                                     <option value="0">--選択--</option>
-                                    <option value="2">user</option>
-                                    <option value="1">master</option>
+                                    <c:forEach items="${userTypeList}" var="userTypeList" varStatus="vs">
+                                    <option value="${userTypeList.id}"><c:out value="${userTypeList.typeName}" /></option>
+                                    </c:forEach>
                                 </select>
                             </td>
                         </tr>

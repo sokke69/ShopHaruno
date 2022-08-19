@@ -89,6 +89,8 @@ public class AdminDaoImpl implements AdminDao {
 		}
 		return admin;
 	}
+	
+	
 
 	@Override
 	public void insert(Admin admin) throws Exception {
@@ -183,6 +185,24 @@ public class AdminDaoImpl implements AdminDao {
 
 		return admin;
 
+	}
+
+	@Override
+	public Integer findTypeIdById(Integer id) throws Exception {
+		Integer typeId = null;
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT user_type FROM users WHERE id=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setObject(1, id,Types.INTEGER);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				typeId = (Integer) rs.getObject("user_type");
+				return typeId;
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return typeId;
 	}
 
 }

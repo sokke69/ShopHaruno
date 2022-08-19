@@ -18,6 +18,11 @@ public class DaoFactory {
 		return new ACategoryDaoImpl(getDataSource());
 	}
 	
+	public static UserTypeDao createUserTypeDao() {
+		return new UserTypeDaoImpl(getDataSource());
+		
+	}
+	
 	private static DataSource getDataSource() {
 		InitialContext ctx = null;
 		DataSource ds = null;

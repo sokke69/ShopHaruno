@@ -30,10 +30,6 @@ $(function(){
 			$(".select-a").val(i);
 		}
 	}
-		
-			
-			
-		
 });
 </script>
 
