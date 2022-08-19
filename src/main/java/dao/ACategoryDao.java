@@ -11,5 +11,5 @@ public interface ACategoryDao {
 	void insert(ACategory aCategory) throws Exception;
 	void update(ACategory aCategory) throws Exception;
 	void delete(ACategory aCategory) throws Exception;
-
+	Integer countAId() throws Exception;
 }

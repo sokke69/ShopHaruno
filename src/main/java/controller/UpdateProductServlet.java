@@ -37,12 +37,17 @@ public class UpdateProductServlet extends HttpServlet {
 		try {
 			ProductDao productDao = DaoFactory.createProductDao();
 			Product product = productDao.findById(id);
+			Integer aId = productDao.findAIdById(id);
 			request.setAttribute("product", product);
-
+			request.setAttribute("aId", aId);
+			
+			
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			List<ACategory> aCategoryList = aCategoryDao.findAll();
+			Integer countAId = aCategoryDao.countAId();
 			request.setAttribute("aCategoryList", aCategoryList);
-
+			request.setAttribute("countAId", countAId);
+			
 			request.getRequestDispatcher("/WEB-INF/view/updateProduct.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);

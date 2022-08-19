@@ -24,6 +24,9 @@
         <div class="col"></div>
         <div class="col-10">
             <table><tr><td><div class="display-6">商品一覧</div></td><td><a href="addProduct" id="add" class="btn btn-primary">追加</a></td></tr></table>
+            <a href="listProduct">全カテゴリ</a><c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
+                <a href="listProductByAId?aId=${aCategoryList.id}"><c:out value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></a>
+                </c:forEach>
             <table id="list-table" class="table table-hover">
                 <tr>
                 <th id="update"></th>
@@ -31,6 +34,7 @@
                 <th id="id">ID</th>
                 <th id="product-name">商品名</th>
                 <th id="product-url">商品URL</th>
+                <th id="product-category">カテゴリ</th>
                 <th>登録日</th>
                 <th>登録ユーザー</th>
                 <th>編集日</th>
@@ -42,6 +46,7 @@
                 <td><c:out value="${productList.id}" /></td>
                 <td id="product-name"><c:out value="${productList.productName}" /></td>
                 <td><a href="<c:out value="${productList.productUrl}"/>" target="_blank">LINK</a></td>
+                <td><c:out value="${productList.categoryAStr}" /></td>
                 <td><fmt:formatDate value="${productList.registDate}" pattern="y年MM月dd日 HH:mm:ss" /></td>
                 <td><c:out value="${productList.registBy}" /></td>
                 <td><fmt:formatDate value="${productList.updateDate}" pattern="y年MM月dd日 HH:mm:ss" /></td>

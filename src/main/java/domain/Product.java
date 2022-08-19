@@ -54,7 +54,7 @@ public class Product {
 		this.updateBy = updateBy;
 	}
 	
-	public Product(Integer id, String productName, String productUrl, String categoryAStr, String categoryBStr,
+	public Product(Integer id, String productName, String productUrl, String categoryAStr, 
 			String imgMain, String imgSub01, String imgSub02, String imgSub03,
 			String imgSub04, String imgSub05, String imgSub06, String imgSub07, String imgSub08, Date registDate,
 			String registBy, Date updateDate, String updateBy) {
@@ -63,7 +63,6 @@ public class Product {
 		this.productName = productName;
 		this.productUrl = productUrl;
 		this.categoryAStr = categoryAStr;
-		this.categoryBStr = categoryBStr;
 		this.imgMain = imgMain;
 		this.imgSub01 = imgSub01;
 		this.imgSub02 = imgSub02;

@@ -22,6 +22,20 @@ $(function() {
     $('form input:file').uploadThumbs();
 });
 </script>
+<script>
+$(function(){
+	
+	for(let i = 1; i <= ${countAId}; i++){
+		if( ${aId} == i ){
+			$(".select-a").val(i);
+		}
+	}
+		
+			
+			
+		
+});
+</script>
 
 </head>
 
@@ -35,7 +49,7 @@ $(function() {
 				<div class="display-6">商品編集</div>
 				<!-- <form action="" method="post" enctype="multipart/form-data"> -->
 				<form action="" method="post">
-					<table border="1" id="list-table" class="table table-hover">
+					<table id="list-table" class="table table-hover">
 						<tr>
 							<th id="head">ID</th>
 							<td><c:out value="${product.id}" /> (変更できません)</td>
@@ -54,7 +68,7 @@ $(function() {
 						</tr>
 						<tr>
 							<th>カテゴリ*</th>
-							<td><select name="a-category-id" id="selectform">
+							<td><select name="a-category-id" id="selectform" class="select-a">
 									<option value="0">--選択--</option>
 									<c:forEach items="${aCategoryList}" var="aCategoryList"
 										varStatus="vs">
@@ -171,24 +185,6 @@ $(function() {
 									<input type="file" name="product-img-sub-08" /><br />
 								</label>  --%>
 							</td>
-						</tr>
-						<tr>
-							<th>登録日</th>
-							<td><fmt:formatDate value="${product.registDate}"
-									pattern="y年MM月dd日 HH:mm:ss" /></td>
-						</tr>
-						<tr>
-							<th>登録ユーザー</th>
-							<td><c:out value="${product.registBy}" /></td>
-						</tr>
-						<tr>
-							<th>編集日</th>
-							<td><fmt:formatDate value="${product.updateDate}"
-									pattern="y年MM月dd日 HH:mm:ss" /></td>
-						</tr>
-						<tr>
-							<th>編集ユーザー</th>
-							<td><c:out value="${product.updateBy}" /></td>
 						</tr>
 					</table>
 					<input type="submit" value="決定" class="submit">

@@ -103,4 +103,24 @@ public class ACategoryDaoImpl implements ACategoryDao{
 		return aCategory;
 	}
 
+	@Override
+	public Integer countAId() throws Exception {
+		Integer countAId = null;
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT COUNT(id) FROM as_categories";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				Object object = rs.getObject("COUNT(id)");
+				String countAIdStr = object.toString();
+				countAId = Integer.parseInt(countAIdStr);
+				return countAId;
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return countAId;
+	}
+
+
 }

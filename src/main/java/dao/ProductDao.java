@@ -13,5 +13,6 @@ public interface ProductDao {
 	void update(Product product) throws Exception;
 	void delete(Product product) throws Exception;
 	Integer findLatestIdPlusOne() throws Exception;
+	Integer findAIdById(Integer id) throws Exception;
 
 }

@@ -16,19 +16,22 @@ import domain.ACategory;
 import domain.Product;
 
 /**
- * Servlet implementation class ListProductServlet
+ * Servlet implementation class ListProductByAIdServlet
  */
-@WebServlet("/listProduct")
-public class ListProductServlet extends HttpServlet {
+@WebServlet("/listProductByAId")
+public class ListProductByAIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Integer id = Integer.parseInt(request.getParameter("aId"));
+		
 		try {
 			ProductDao productDao = DaoFactory.createProductDao();
-			List<Product> productList = productDao.findAll();
+			List<Product> productList = productDao.findByAId(id);
 			request.setAttribute("productList", productList);
 			
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
@@ -40,14 +43,12 @@ public class ListProductServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 		
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
