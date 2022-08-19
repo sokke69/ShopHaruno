@@ -143,18 +143,16 @@ public class AdminDaoImpl implements AdminDao {
 		Admin admin = null;
 		try (Connection con = ds.getConnection()) {
 			String sql = "SELECT"
-					+ " users.id, users.user_nick_name, users.user_name, users.user_pass,"
-					+ " users_types.type_name as type"
+					+ " *"
 					+ " FROM users "
 					+ " JOIN users_types"
-					+ " ON users.user_type = users_types.id"
 					+ " WHERE user_name=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, userName);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
 				if (BCrypt.checkpw(userPass, rs.getString("user_pass"))) {
-					admin = mapToAdmin(rs);
+					admin = mapToAdmin2(rs);
 				}
 			}
 		} catch (Exception e) {
@@ -169,6 +167,18 @@ public class AdminDaoImpl implements AdminDao {
 		admin.setUserName(rs.getString("user_name"));
 		admin.setUserPass(rs.getString("user_pass"));
 		admin.setTypeName(rs.getString("type"));
+		admin.setUserNickName(rs.getString("user_nick_name"));
+
+		return admin;
+
+	}
+	
+	private Admin mapToAdmin2(ResultSet rs) throws Exception {
+		Admin admin = new Admin();
+		admin.setId((Integer) rs.getObject("id"));
+		admin.setUserName(rs.getString("user_name"));
+		admin.setUserPass(rs.getString("user_pass"));
+		admin.setTypeId(rs.getInt("user_type"));
 		admin.setUserNickName(rs.getString("user_nick_name"));
 
 		return admin;

@@ -52,14 +52,14 @@ public class LoginServlet extends HttpServlet {
 			if (admin != null) {
 				
 				String sessionUserName = admin.getUserName();
-				String sessionUserType = admin.getTypeName();
+				Integer sessionUserType = admin.getTypeId();
 				String sessionUserNickName = admin.getUserNickName();
-				
-				//System.out.println("sessionにユーザーID:" + sessionUserName + "、ユーザータイプ:" + sessionUserType + "、ユーザーニックネーム:" +  sessionUserNickName + "を格納しました");
 				
 				request.getSession().setAttribute("userName", sessionUserName);
 				request.getSession().setAttribute("userType", sessionUserType);
 				request.getSession().setAttribute("userNickName", sessionUserNickName);
+				
+				//System.out.println("sessionにユーザーID:" + sessionUserName + "、ユーザータイプ:" + sessionUserType + "、ユーザーニックネーム:" +  sessionUserNickName + "を格納しました");
 				
 				response.sendRedirect("listDb");
 				

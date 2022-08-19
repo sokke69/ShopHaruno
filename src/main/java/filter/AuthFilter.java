@@ -55,6 +55,13 @@ public class AuthFilter extends HttpFilter implements Filter {
 	        return;
 	      }
 	    }
+	    if(uri.endsWith("listUser")){
+	    	Integer userType = (Integer) session.getAttribute("userType");
+	    	if ( userType == 1) {
+	    		res.sendRedirect(req.getContextPath() + "/listUserOnlyMaster");
+				return;
+			}
+	    }
 
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
