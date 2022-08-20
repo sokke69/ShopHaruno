@@ -56,10 +56,24 @@ public class LoginServlet extends HttpServlet {
 				String sessionUserNickName = admin.getUserNickName();
 				
 				request.getSession().setAttribute("userName", sessionUserName);
-				request.getSession().setAttribute("userType", sessionUserType);
 				request.getSession().setAttribute("userNickName", sessionUserNickName);
 				
-				//System.out.println("sessionにユーザーID:" + sessionUserName + "、ユーザータイプ:" + sessionUserType + "、ユーザーニックネーム:" +  sessionUserNickName + "を格納しました");
+				String sessionUserTypeName = null;
+				if (sessionUserType == 1) {
+					request.getSession().setAttribute("userIsMaster", sessionUserType);
+					sessionUserTypeName = "Master";
+				} else if (sessionUserType == 2) {
+					request.getSession().setAttribute("userIsUser", sessionUserType);
+					sessionUserTypeName = "User";
+				} else if (sessionUserType == 3) {
+					request.getSession().setAttribute("userIsTester", sessionUserType);
+					sessionUserTypeName = "Tester";
+				}	
+				
+				System.out.println("[session格納]");
+				System.out.println("ユーザーID : " + sessionUserName);
+				System.out.println("ユーザーニックネーム : " +  sessionUserNickName);
+				System.out.println("ユーザータイプ:" + sessionUserType);
 				
 				response.sendRedirect("listDb");
 				

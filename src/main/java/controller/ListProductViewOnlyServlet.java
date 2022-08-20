@@ -11,13 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.ACategoryDao;
 import dao.DaoFactory;
+import dao.ProductDao;
 import domain.ACategory;
+import domain.Product;
 
 /**
- * Servlet implementation class ListACategoryOnlyViewServlet
+ * Servlet implementation class ListProductOnlyViewServlet
  */
-@WebServlet("/listACategoryOnlyView")
-public class ListACategoryOnlyViewServlet extends HttpServlet {
+@WebServlet("/listProductViewOnly")
+public class ListProductViewOnlyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -25,14 +27,18 @@ public class ListACategoryOnlyViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			ProductDao productDao = DaoFactory.createProductDao();
+			List<Product> productList = productDao.findAll();
+			request.setAttribute("productList", productList);
+			
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			List<ACategory> aCategoryList = aCategoryDao.findAll();
 			request.setAttribute("aCategoryList", aCategoryList);
-			request.getRequestDispatcher("/WEB-INF/view/listACategoryOnlyView.jsp").forward(request, response);
+			
+			request.getRequestDispatcher("/WEB-INF/view/listProductViewOnly.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-		
 	}
 
 	/**

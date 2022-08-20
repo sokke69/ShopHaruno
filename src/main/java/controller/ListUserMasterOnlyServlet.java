@@ -9,17 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ACategoryDao;
+import dao.AdminDao;
 import dao.DaoFactory;
-import dao.ProductDao;
-import domain.ACategory;
-import domain.Product;
+import domain.Admin;
 
 /**
- * Servlet implementation class ListProductOnlyViewServlet
+ * Servlet implementation class ListUserOnlyMasterServlet
  */
-@WebServlet("/listProductOnlyView")
-public class ListProductOnlyViewServlet extends HttpServlet {
+@WebServlet("/listUserMasterOnly")
+public class ListUserMasterOnlyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -27,15 +25,10 @@ public class ListProductOnlyViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			ProductDao productDao = DaoFactory.createProductDao();
-			List<Product> productList = productDao.findAll();
-			request.setAttribute("productList", productList);
-			
-			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
-			List<ACategory> aCategoryList = aCategoryDao.findAll();
-			request.setAttribute("aCategoryList", aCategoryList);
-			
-			request.getRequestDispatcher("/WEB-INF/view/listProductOnlyView.jsp").forward(request, response);
+			AdminDao adminDao = DaoFactory.createAdminDao();
+			List<Admin> userList = adminDao.findAll();
+			request.setAttribute("userList", userList);
+			request.getRequestDispatcher("/WEB-INF/view/listUserMasterOnly.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}

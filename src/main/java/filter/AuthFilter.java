@@ -56,23 +56,31 @@ public class AuthFilter extends HttpFilter implements Filter {
 			}
 		}
 
-		Integer userType = (Integer) session.getAttribute("userType");
-		// ユーザータイプ1(master)の場合のみ/listUserOnlyMasterを開きそれ以外は閲覧のみのlistUserを開く
-		if (uri.contains("User") ) {
-			if (userType == 1) {
-				res.sendRedirect(req.getContextPath() + "/listUserOnlyMaster");
+		
+		// sessionにuserTypeMasterが格納されてない時listUserを開く
+		if (uri.endsWith("/listUser")) {
+			if (session.getAttribute("userIsMaster") != null) {
+				res.sendRedirect(req.getContextPath() + "/listUserMasterOnly");
 				return;
-			} else {
+			} 
+		} else if(uri.contains("User")) {
+			if (session.getAttribute("userIsMaster") == null) {
 				res.sendRedirect(req.getContextPath() + "/listUser");
 				return;
 			}
-		// ユーザータイプ3(test)の場合全データベースの追加・編集・削除を不可にする為閲覧専用ページに飛ばす
-		} else if (uri.contains("Product") && userType == 3) {
-				res.sendRedirect(req.getContextPath() + "/listProductOnlyView");
+			
+		}
+		
+		if (uri.contains("Product")) {
+			if (session.getAttribute("userIsTester") != null) {
+				res.sendRedirect(req.getContextPath() + "/listProductViewOnly");
 				return;
-		} else if (uri.contains("ACategory") && userType == 3) {
-				res.sendRedirect(req.getContextPath() + "/listACategoryOnlyView");
+			}
+		} else if (uri.contains("ACategory")) {
+			if (session.getAttribute("userIsTester") != null) {
+				res.sendRedirect(req.getContextPath() + "/listACategoryViewOnly");
 				return;
+			}
 		}
 
 
