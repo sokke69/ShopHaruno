@@ -198,8 +198,7 @@ $(function(){
 
 	<div>
 		<footer>
-			<p class="copyright">Copyright &copy; 2022 SHOP HARUNO All Rights
-				Reserved.</p>
+			<c:import url="parts/footer.jsp" />
 		</footer>
 	</div>
 

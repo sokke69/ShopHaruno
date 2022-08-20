@@ -25,7 +25,7 @@
                     <div class="title"><div class="display-6"><div class="logout-center">ユーザーを削除しました</div></div></div>
                     <p class="logout-center"><a href="listUser">ユーザー一覧へ戻る</a></p>
                     <p class="logout-center"><a href="listDb">データベース一覧へ戻る</a></p>
-                    <p class="logout-center"><a href="index" target="_blank">トップページを開く</a></p>
+                    <p class="logout-center"><a href="index" target="_blank">会社トップページを開く</a></p>
             </div>
             <div class="col"></div>
         </div><!--/.row-->
@@ -33,7 +33,7 @@
 
     <div>
         <footer>
-            <p class="copyright">Copyright &copy; 2022 SHOP HARUNO All Rights Reserved.</p>
+            <c:import url="parts/footer.jsp" />
         </footer>
     </div>
     
