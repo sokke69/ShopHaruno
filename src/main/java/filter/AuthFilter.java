@@ -56,8 +56,6 @@ public class AuthFilter extends HttpFilter implements Filter {
 			}
 		}
 
-		
-		// sessionにuserTypeMasterが格納されてない時listUserを開く
 		if (uri.endsWith("/listUser")) {
 			if (session.getAttribute("userIsMaster") != null) {
 				res.sendRedirect(req.getContextPath() + "/listUserMasterOnly");
@@ -69,6 +67,13 @@ public class AuthFilter extends HttpFilter implements Filter {
 				return;
 			}
 			
+		}
+		
+		if (uri.contains("MasterOnly")) {
+			if (session.getAttribute("userIsMaster") == null) {
+				res.sendRedirect(req.getContextPath() + "/notView");
+				return;
+			}
 		}
 		
 		if (uri.endsWith("Product") ||
