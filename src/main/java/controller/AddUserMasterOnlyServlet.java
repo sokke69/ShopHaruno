@@ -25,70 +25,77 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		try {
 			UserTypeDao userTypeDao = DaoFactory.createUserTypeDao();
 			List<UserType> userTypeList = userTypeDao.findAll();
 			request.setAttribute("userTypeList", userTypeList);
-			
+
 			request.getRequestDispatcher("/WEB-INF/view/addUserMasterOnly.jsp").forward(request, response);
-			
+
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		String userNickName = request.getParameter("user-nick-name");
-		String userName = request.getParameter("user-name");
-		String userPass = request.getParameter("user-pass");
-		String userPassCheck = request.getParameter("user-pass-check");
-		Integer typeId = Integer.parseInt(request.getParameter("user-type"));
-		//System.out.println("user-name = " + userName + ", user-pass = " + userPass + ", user-type = " + typeId);
-		
-		/*
-		 * if (userPass != userPassCheck) {
-		 * request.getRequestDispatcher("/WEB-INF/view/AddUserMasterOnly.jsp").forward(
-		 * request, response); }
-		 */
-		
-		String hashedPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
-		//System.out.println("hashedpass = " + hashedPass);
-		
-		Admin admin = new Admin();
-		
-		admin.setUserNickName(userNickName);
-		admin.setUserName(userName);
-		admin.setUserPass(hashedPass);
-		admin.setTypeId(typeId);
-		//System.out.println("admin.userName = " + admin.getUserName() + ", admin.userPass = " + admin.getUserPass() + ". admin.typeId = " + admin.getTypeId());
-		
+
 		try {
 			AdminDao adminDao = DaoFactory.createAdminDao();
+
+			String userNickName = request.getParameter("request-user-nick-name");
+			String userName = request.getParameter("request-user-name");
+			String userPass = request.getParameter("request-user-pass");
+			String userPassCheck = request.getParameter("request-user-pass-check");
+			Integer typeId = Integer.parseInt(request.getParameter("request-user-type"));
+			// System.out.println("user-name = " + userName + ", user-pass = " + userPass +
+			// ", user-type = " + typeId);
+
+			/* ログインIDが重複していないかチェック */
+			boolean checkNameIs = adminDao.checkUserName(userName);
+
+			if (checkNameIs == false) {
+				request.getRequestDispatcher("/WEB-INF/view/addUserMasterOnly.jsp").forward(request, response);
+			}
+
+			/*
+			 * if (userPass != userPassCheck) {
+			 * request.getRequestDispatcher("/WEB-INF/view/AddUserMasterOnly.jsp").forward(
+			 * request, response); }
+			 */
+
+			String hashedPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
+			// System.out.println("hashedpass = " + hashedPass);
+
+			Admin admin = new Admin();
+
+			admin.setUserNickName(userNickName);
+			admin.setUserName(userName);
+			admin.setUserPass(hashedPass);
+			admin.setTypeId(typeId);
+			// System.out.println("admin.userName = " + admin.getUserName() + ",
+			// admin.userPass = " + admin.getUserPass() + ". admin.typeId = " +
+			// admin.getTypeId());
+
 			adminDao.insert(admin);
-			response.sendRedirect(request.getContextPath() + "/listUser");
+			response.sendRedirect(request.getContextPath() + "/addUserDone");
+
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-		
-		
+
 	}
 
 }
-
-
-
-
-
-
-
-

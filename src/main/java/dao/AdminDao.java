@@ -14,5 +14,6 @@ public interface AdminDao {
 	void update(Admin admin) throws Exception;
 	void delete(Admin admin) throws Exception;
 	Admin findByLoginIdAndLoginPass(String userId, String userPass) throws Exception;
+	boolean checkUserName(String userName) throws Exception;
 
 }

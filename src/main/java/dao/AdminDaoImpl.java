@@ -205,4 +205,29 @@ public class AdminDaoImpl implements AdminDao {
 		return typeId;
 	}
 
+	@Override
+	public boolean checkUserName(String userName) throws Exception {
+		List<String> nameList = new ArrayList<>();
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT user_name FROM users";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				nameList.add(rs.getString("user_name"));
+			}
+
+		} catch (Exception e) {
+			throw e;
+		}
+		
+		/* DBに同じログインIDがなければtrueを返す */
+		if (!(nameList.contains(userName))) {
+			return true;
+		}
+		
+		
+		return false;
+	}
+
 }
