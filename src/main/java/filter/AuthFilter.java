@@ -71,17 +71,22 @@ public class AuthFilter extends HttpFilter implements Filter {
 			
 		}
 		
-		if (uri.contains("Product")) {
+		if (uri.endsWith("Product") ||
+				uri.contains("ProductDone") ||
+				uri.contains("ProductCheck") ||
+				uri.contains("ByAId")) {
 			if (session.getAttribute("userIsTester") != null) {
 				res.sendRedirect(req.getContextPath() + "/listProductViewOnly");
 				return;
 			}
-		} else if (uri.contains("ACategory")) {
+		} else if (uri.endsWith("ACategory")||
+				uri.contains("ACategoryDone") ||
+				uri.contains("ACategoryCheck")) {
 			if (session.getAttribute("userIsTester") != null) {
 				res.sendRedirect(req.getContextPath() + "/listACategoryViewOnly");
 				return;
 			}
-		}
+		} 
 
 
 		// pass the request along the filter chain
