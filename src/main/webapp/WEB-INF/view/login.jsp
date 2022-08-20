@@ -26,7 +26,7 @@
 			<div class="display-6">
 				<div class="title">管理ページ ログイン</div>
 			</div>
-			<c:if test="${not empty Error}">
+			<c:if test="※ ${not empty Error}">
 				<div class="alert alert-danger" id="alert">
 				<table>
 				<tr><td><c:out value="${allError}" /></td></tr>
@@ -37,10 +37,10 @@
 				</div>
 			</c:if>
 
-			ログインID <input type="text" name="userName" class="login" value="${id}">
+			ログインID <input type="text" name="loginId" class="login">
 
 
-			パスワード <input type="password" name="userPass" class="login">
+			パスワード <input type="password" name="loginPass" class="login">
 
 			<p class="login-submit">
 				<input type="submit" value="ログイン" id="submitButton">

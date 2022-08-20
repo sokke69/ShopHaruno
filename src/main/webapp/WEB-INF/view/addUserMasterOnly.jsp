@@ -14,6 +14,16 @@
 
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+    $(function(){
+    	
+    	for(let i = 1; i <= ${countTypeId}; i++){
+    		if( ${inputedTypeId} == i ){
+    			$(".select-type").val(i);
+    		}
+    	}
+    });
+    </script>
 </head>
 <body>
 <c:import url="parts/header.jsp" />
@@ -22,16 +32,68 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-8">
+                        <div id="add-update-user">
                         <div class="display-6">ユーザー追加</div>
-                        <form action="" method="post">
+                        <form action="" method="post"  autocomplete="off">
                         <table id="list-table" class="table table-hover">
-                            <tr><th>ユーザー名</th><td><input type="text" name="request-user-nick-name"></td></tr>
-                            <tr><th>ユーザーID</th><td><input type="text" name="request-user-name"></td></tr>
-                            <tr><th>パスワード</th><td><input type="password" name="request-user-pass"></td></tr>
-                            <tr><th>パスワード(確認)</th><td><input type="password" name="request-user-pass-check"></td></tr>
+                            <tr><th id="head">ユーザー名</th>
+                            <td>
+                            <c:if test="${ not empty nameError}">
+                            	<div class="alert alert-danger" id="alert">
+                            		<c:out value="※ ${nameError}" />
+                            	</div>
+                            </c:if>
+                            <input type="text" name="request-user-name" value="${inputedUserName}" id="add-user-form">
+                            <div class="attention">※ ユーザー名は12文字以内で入力してください。</div>
+                            </td></tr>
+                            <tr><th>ログインID</th>
+                            <td>
+                            <c:if test="${ not empty loginIdError}">
+                            	<div class="alert alert-danger" id="alert">
+                            		<c:out value="※ ${loginIdError}" />
+                            	</div>
+                            </c:if>
+                            <input type="text" name="request-login-id" value="${inputedLoginId}" id="add-user-form">
+                            <div class="attention">※ ログインIDは4文字以上12文字以内で入力してください。</div>
+                            <div class="attention">※ 使用できる文字は半角英数字と「-」「_」のみです。</div>
+                            </td></tr>
+                            <tr><th>ログインパスワード</th>
+                            <td>
+                            <c:if test="${ not empty loginPassSameError}">
+                            	<div class="alert alert-danger" id="alert">
+                            		<c:out value="※ ${loginPassSameError}" />
+                            	</div>
+                            </c:if>
+                            <c:if test="${ not empty loginPassError}">
+                            	<div class="alert alert-danger" id="alert">
+                            		<c:out value="※ ${loginPassError}" />
+                            	</div>
+                            </c:if>
+                            <input type="text" name="request-login-pass" id="add-user-form">
+                            <div class="attention">※ ログインパスワードは6字以上20字以内で入力してください。</div>
+                            <div class="attention">※ 使用できる文字は半角英数字のみです。</div>
+                            </td></tr>
+                            <tr><th>ログインパスワード(確認)</th>
+                            <td>
+                            <c:if test="${ not empty loginPassSameError}">
+                            	<div class="alert alert-danger" id="alert">
+                            		<c:out value="※ ${loginPassSameError}" />
+                            	</div>
+                            </c:if>
+                            <c:if test="${ not empty loginPassCheckError}">
+                            	<div class="alert alert-danger" id="alert">
+                            		<c:out value="※ ${loginPassCheckError}" />
+                            	</div>
+                            </c:if>
+                            <input type="text" name="request-login-pass-check" id="add-user-form"></td></tr>
                             <tr><th>ユーザータイプ</th><td>
-                                <select name="request-user-type" id="">
-                                    <option value="">--選択--</option>
+                            <c:if test="${ not empty typeError}">
+                            	<div class="alert alert-danger" id="alert">
+                            		<c:out value="※ ${typeError}" />
+                            	</div>
+                            </c:if>
+                                <select name="request-user-type" class="select-type">
+                                    <option value="0">--選択--</option>
                                     <c:forEach items="${userTypeList}" var="userTypeList" varStatus="vs">
                                     <option value="${userTypeList.id}"><c:out value="${userTypeList.typeName}" /></option>
                                     </c:forEach>
@@ -44,6 +106,7 @@
                         <p><a href="listUser">戻る</a></p>
 
                             </div>
+                        </div>
             <div class="col"></div>
         </div>
         <!--/.row-->

@@ -35,9 +35,10 @@
     <div class="container" id="body">
         <div class="row">
             <div class="col"></div>
-            <div class="col-9">
+            <div class="col-8">
+                <div id="add-update-user">
                 <div class="display-6">ユーザー編集</div>
-                <form action="" method="post">
+                <form action="" method="post"  autocomplete="off">
                     <table id="list-table" class="table table-hover">
                         <tr>
                             <th id="head">ID</th>
@@ -45,20 +46,20 @@
                         </tr>
                         <tr>
                             <th>ユーザー名</th>
-                            <td><input type="text" value="<c:out value="${user.userNickName}" />" name="user-nick-name"></td>
+                            <td><input type="text" value="<c:out value="${user.userNickName}" />" name="request-user-name" id="add-user-form"></td>
                         </tr>
                         <tr>
-                            <th>ユーザーID</th>
-                            <td><input type="text" value="<c:out value="${user.userName}" />" name="user-name"></td>
+                            <th>ログインID</th>
+                            <td><input type="text" value="<c:out value="${user.userName}" />" name="request-login-id" id="add-user-form"></td>
                         </tr>
                         <tr>
-                            <th>パスワード</th>
+                            <th>ログインパスワード</th>
                             <td>変更できません</td>
                         </tr>
                         <tr>
                             <th>ユーザータイプ</th>
                             <td>
-                                <select name="user-type" id="" class="select-type">
+                                <select name="request-user-type" id="" class="select-type">
                                     <option value="0">--選択--</option>
                                     <c:forEach items="${userTypeList}" var="userTypeList" varStatus="vs">
                                     <option value="${userTypeList.id}"><c:out value="${userTypeList.typeName}" /></option>
@@ -72,6 +73,7 @@
                     <p><a href="listUser">戻る</a></p>
                 </form>
             </div>
+                </div>
             <div class="col"></div>
         </div>
         <!--/.row-->

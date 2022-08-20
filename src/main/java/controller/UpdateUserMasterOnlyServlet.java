@@ -61,13 +61,13 @@ public class UpdateUserMasterOnlyServlet extends HttpServlet {
 		Admin admin = new Admin();
 		
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		String userNickName = request.getParameter("user-nick-name");
-		String userName = request.getParameter("user-name");
-		Integer userType = Integer.parseInt(request.getParameter("user-type"));
+		String userName = request.getParameter("request-user-name");
+		String loginId = request.getParameter("request-login-id");
+		Integer userType = Integer.parseInt(request.getParameter("request-user-type"));
 		
 		admin.setId(id);
-		admin.setUserNickName(userNickName);
-		admin.setUserName(userName);
+		admin.setUserNickName(userName);
+		admin.setUserName(loginId);
 		admin.setTypeId(userType);
 		
 		try {

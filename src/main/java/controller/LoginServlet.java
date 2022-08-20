@@ -38,11 +38,9 @@ public class LoginServlet extends HttpServlet {
 			
 			boolean isError = false;
 			
-			String userName = request.getParameter("userName");
-			String userPass = request.getParameter("userPass");
+			String userName = request.getParameter("loginId");
+			String userPass = request.getParameter("loginPass");
 			
-			Pattern namePattern = Pattern.compile("[0-9a-zA-Z\\\\_]+");
-			Matcher nameMatcher = namePattern.matcher(userName);
 			Pattern passPattern = Pattern.compile("[0-9a-zA-Z]+");
 			Matcher passMatcher = passPattern.matcher(userPass);
 			
@@ -84,14 +82,8 @@ public class LoginServlet extends HttpServlet {
 				if(userName.isBlank()) {
 					request.setAttribute("nameError", "※ ログインIDが入力されていません。");
 					isError = true;
-				} else if(userName.length() > 12 && !nameMatcher.matches()) {
-					request.setAttribute("nameError", "※ ログインIDは12文字以内で入力してください。使える文字は半角英数字と「_」のみです。");
-					isError = true;
 				} else if (userName.length() > 12) {
 					request.setAttribute("nameError", "※ ログインIDは12文字以内で入力してください。");
-					isError = true;
-				} else if (!nameMatcher.matches()) {
-					request.setAttribute("nameError", "※ ログインIDに使える文字は半角英数字と「_」のみです。");
 					isError = true;
 				} else {
 					request.setAttribute("allError", "※ ログインIDもしくはパスワードが違います。");
@@ -107,7 +99,7 @@ public class LoginServlet extends HttpServlet {
 					request.setAttribute("passError", "※ パスワードは20文字以内で入力してください。");
 					isError = true;
 				} else if (!passMatcher.matches()) {
-					request.setAttribute("passError", "※ パスワードに使える文字は半角英数字のみです。");
+					request.setAttribute("passError", "※ 半角英数字以外の文字が入力されています。");
 					isError = true;
 				} else {
 					request.setAttribute("allError", "※ ログインIDもしくはパスワードが違います。");

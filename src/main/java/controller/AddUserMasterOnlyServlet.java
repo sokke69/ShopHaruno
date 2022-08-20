@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -55,42 +57,123 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 		try {
 			AdminDao adminDao = DaoFactory.createAdminDao();
 
-			String userNickName = request.getParameter("request-user-nick-name");
 			String userName = request.getParameter("request-user-name");
-			String userPass = request.getParameter("request-user-pass");
-			String userPassCheck = request.getParameter("request-user-pass-check");
+			String loginId = request.getParameter("request-login-id");
+			String loginPass = request.getParameter("request-login-pass");
+			String loginPassCheck = request.getParameter("request-login-pass-check");
 			Integer typeId = Integer.parseInt(request.getParameter("request-user-type"));
-			// System.out.println("user-name = " + userName + ", user-pass = " + userPass +
-			// ", user-type = " + typeId);
-
+			
+						
+			/* ページを再表示したときのユーザータイプ再取得用 */
+			UserTypeDao userTypeDao = DaoFactory.createUserTypeDao();
+			List<UserType> userTypeList = userTypeDao.findAll();
+			Integer countTypeId = userTypeDao.countTypeId(); 
+			request.setAttribute("userTypeList", userTypeList);
+			request.setAttribute("countTypeId", countTypeId);
+			
+			/* ページを再表示したときのinput value自動入力(パスワード以外) */
+			request.setAttribute("inputedUserName", userName);
+			request.setAttribute("inputedLoginId", loginId);
+			request.setAttribute("inputedTypeId", typeId);
+			
 			/* ログインIDが重複していないかチェック */
-			boolean checkNameIs = adminDao.checkUserName(userName);
+			boolean checkLoginIdIs = adminDao.checkUserName(loginId);
+			/* ログインIDの正規表現チェック */
+			Pattern namePattern = Pattern.compile("[0-9a-zA-Z\\-\\_]+");
+			Matcher nameMatcher = namePattern.matcher(loginId);
+			
+			/* ログインパスワードの正規表現チェック */
+			Pattern passPattern = Pattern.compile("[0-9a-zA-Z]+");
+			Matcher passMatcher = passPattern.matcher(loginPass);
+			Matcher passCheckMatcher = passPattern.matcher(loginPassCheck);
 
-			if (checkNameIs == false) {
+			boolean isError = false;
+			
+			
+			/* バリデーション ユーザー名 */
+			if (userName.isBlank()) {
+				request.setAttribute("nameError", "ユーザー名が未入力です。");
+				isError = true;
+			} else if (userName.length() > 12) {
+				request.setAttribute("nameError", "ユーザー名は12文字以内で入力してください。");
+				isError = true;
+			}
+			
+			/* バリデーション ログインID */
+			if (loginId.isBlank()) {
+				request.setAttribute("loginIdError", "ログインIDが未入力です。");
+				isError = true;
+			} else if (loginId.length() < 4 || loginId.length() > 12) {
+				request.setAttribute("loginIdError", "ログインIDは4文字以上12文字以内で入力してください。");
+				isError = true;
+			} else if(!nameMatcher.matches()) {
+				request.setAttribute("loginIdError", "ログインIDに使える文字は半角英数字と「-」「_」のみです。");
+				isError = true;
+			} else if (!checkLoginIdIs) {
+				request.setAttribute("loginIdError", "このログインIDは既に使われています。");
+				isError = true;
+			}
+			
+			/* バリデーション パスワード */
+			if (loginPass.isBlank()) {
+				request.setAttribute("loginPassError", "ログインパスワードが未入力です。");
+				isError = true;
+			} else if (loginPass.length() < 6 || loginPass.length() > 20) {
+				request.setAttribute("loginPassError", "ログインパスワードは6字以上20字以内で入力してください。");
+				isError = true;
+			} else if (!passMatcher.matches()) {
+				request.setAttribute("loginPassError", "ログインパスワードに使える文字は半角英数字のみです。");
+				isError = true;
+			} 
+			
+			/* バリデーション パスワード(確認) */
+			if (loginPassCheck.isBlank()) {
+				request.setAttribute("loginPassCheckError", "ログインパスワード(確認)が未入力です。");
+				isError = true;
+			} else if (loginPassCheck.length() < 6 || loginPassCheck.length() > 20) {
+				request.setAttribute("loginPassCheckError", "ログインパスワードは6字以上20字以内で入力してください。");
+				isError = true;
+			} else if (!passCheckMatcher.matches()) {
+				request.setAttribute("loginPassCheckError", "ログインパスワードに使える文字は半角英数字のみです。");
+				isError = true;
+			} 
+			
+			/* パスワード同一入力チェック */
+			if (!loginPass.equals(loginPassCheck)) {
+				request.setAttribute("loginPassSameError", "同じログインパスワードが入力されていません。");
+				isError = true;
+			}
+			
+			
+			/* バリデーション ユーザータイプ */
+			if (typeId == 0) {
+				request.setAttribute("typeError", "選択してください。");
+				isError = true;
+			}
+			
+			
+			/* 項目に問題があった場合エラーを表示してページを再表示 */
+			if(isError){
 				request.getRequestDispatcher("/WEB-INF/view/addUserMasterOnly.jsp").forward(request, response);
 			}
+			
+			/* 項目に問題がなかった場合ユーザー追加完了ページを表示 */
+			if (!isError) {
+				String hashedPass = BCrypt.hashpw(loginPass, BCrypt.gensalt());
 
-			/*
-			 * if (userPass != userPassCheck) {
-			 * request.getRequestDispatcher("/WEB-INF/view/AddUserMasterOnly.jsp").forward(
-			 * request, response); }
-			 */
+				Admin admin = new Admin();
 
-			String hashedPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
-			// System.out.println("hashedpass = " + hashedPass);
+				admin.setUserNickName(userName);
+				admin.setUserName(loginId);
+				admin.setUserPass(hashedPass);
+				admin.setTypeId(typeId);
 
-			Admin admin = new Admin();
-
-			admin.setUserNickName(userNickName);
-			admin.setUserName(userName);
-			admin.setUserPass(hashedPass);
-			admin.setTypeId(typeId);
-			// System.out.println("admin.userName = " + admin.getUserName() + ",
-			// admin.userPass = " + admin.getUserPass() + ". admin.typeId = " +
-			// admin.getTypeId());
-
-			adminDao.insert(admin);
-			response.sendRedirect(request.getContextPath() + "/addUserDone");
+				adminDao.insert(admin);
+				
+				request.getRequestDispatcher("/WEB-INF/view/addUserDone.jsp").forward(request, response);
+			}
+			
+			
 
 		} catch (Exception e) {
 			throw new ServletException(e);

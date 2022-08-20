@@ -39,7 +39,7 @@ div.adduser-table{
 }
 
 th#head {
-    width: 100px;
+    width: 170px;
 }
 
 td select {
@@ -91,4 +91,26 @@ th{
 
 td{
 	vertical-align:middle;
+}
+
+#add-user-form{
+	width:350px;
+}
+
+#alert{
+	width: 350px;
+    margin-bottom: 5px;
+    padding: 5px;
+    font-size: 13px;
+}
+
+div#add-update-user{
+	width:fit-content;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+div .attention{
+	font-size:11px;
+	font-color:#808080;
 }
