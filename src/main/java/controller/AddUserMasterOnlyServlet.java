@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import dao.AdminDao;
 import dao.DaoFactory;
 import dao.UserTypeDao;
@@ -16,40 +18,28 @@ import domain.Admin;
 import domain.UserType;
 
 /**
- * Servlet implementation class UpdateUserServlet
+ * Servlet implementation class AddUserServlet
  */
-@WebServlet("/updateUser")
-public class UpdateUserServlet extends HttpServlet {
+@WebServlet("/addUserMasterOnly")
+public class AddUserMasterOnlyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Integer id = Integer.parseInt(request.getParameter("id"));
-		
+
 		try {
-			AdminDao adminDao = DaoFactory.createAdminDao();
-			Admin admin = adminDao.findById(id);
-			Integer typeId = adminDao.findTypeIdById(id);
-			request.setAttribute("user", admin);
-			request.setAttribute("typeId", typeId);
-			
-			//System.out.println("typeId : " + typeId);
-			
 			UserTypeDao userTypeDao = DaoFactory.createUserTypeDao();
 			List<UserType> userTypeList = userTypeDao.findAll();
-			Integer countTypeId = userTypeDao.countTypeId(); 
 			request.setAttribute("userTypeList", userTypeList);
-			request.setAttribute("countTypeId", countTypeId);
 			
-			//System.out.println("countTypeId : " + countTypeId);
+			request.getRequestDispatcher("/WEB-INF/view/addUserMasterOnly.jsp").forward(request, response);
 			
-			request.getRequestDispatcher("/WEB-INF/view/updateUser.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
+		
 	}
 
 	/**
@@ -58,27 +48,47 @@ public class UpdateUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		Admin admin = new Admin();
-		
-		Integer id = Integer.parseInt(request.getParameter("id"));
 		String userNickName = request.getParameter("user-nick-name");
 		String userName = request.getParameter("user-name");
-		Integer userType = Integer.parseInt(request.getParameter("user-type"));
+		String userPass = request.getParameter("user-pass");
+		String userPassCheck = request.getParameter("user-pass-check");
+		Integer typeId = Integer.parseInt(request.getParameter("user-type"));
+		//System.out.println("user-name = " + userName + ", user-pass = " + userPass + ", user-type = " + typeId);
 		
-		admin.setId(id);
+		/*
+		 * if (userPass != userPassCheck) {
+		 * request.getRequestDispatcher("/WEB-INF/view/AddUserMasterOnly.jsp").forward(
+		 * request, response); }
+		 */
+		
+		String hashedPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
+		//System.out.println("hashedpass = " + hashedPass);
+		
+		Admin admin = new Admin();
+		
 		admin.setUserNickName(userNickName);
 		admin.setUserName(userName);
-		admin.setTypeId(userType);
+		admin.setUserPass(hashedPass);
+		admin.setTypeId(typeId);
+		//System.out.println("admin.userName = " + admin.getUserName() + ", admin.userPass = " + admin.getUserPass() + ". admin.typeId = " + admin.getTypeId());
 		
 		try {
 			AdminDao adminDao = DaoFactory.createAdminDao();
-			adminDao.update(admin);
-			
-			request.getRequestDispatcher("/WEB-INF/view/updateUserDone.jsp").forward(request, response);
+			adminDao.insert(admin);
+			response.sendRedirect(request.getContextPath() + "/listUser");
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
 		
+		
 	}
 
 }
+
+
+
+
+
+
+
+

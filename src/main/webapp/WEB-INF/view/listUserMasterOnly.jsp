@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-8">
-                <table><tr><td><div class="display-6">ユーザー一覧</div></td><td><a href="addUser" id="add" class="btn btn-primary">追加</a></td></tr></table>
+                <table><tr><td><div class="display-6">ユーザー一覧</div></td><td><a href="addUserMasterOnly" id="add" class="btn btn-primary">追加</a></td></tr></table>
                 <table id="list-table" class="table table-hover">
                     <thead><tr>
                         <th id="update"></th>
@@ -36,7 +36,7 @@
                     </tr></thead>
                     <c:forEach items="${userList}" var="userList" varStatus="vs">
                     <tr>
-                        <td><a href="updateUser?id=${userList.id}">編集</a></td>
+                        <td><a href="updateUserMasterOnly?id=${userList.id}">編集</a></td>
                         <td><a href="deleteUser?id=${userList.id}">削除</a></td>
                         <td><c:out value="${userList.id}" /></td>
                         <td><c:out value="${userList.userNickName}" /></td>
