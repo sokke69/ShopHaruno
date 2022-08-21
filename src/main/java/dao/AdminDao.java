@@ -11,6 +11,7 @@ public interface AdminDao {
 	Admin findById2(Integer id) throws Exception;
 	Integer findTypeIdById(Integer id) throws Exception;
 	void insert(Admin admin) throws Exception;
+	void insertNoUserType(Admin admin) throws Exception;
 	void update(Admin admin) throws Exception;
 	void delete(Admin admin) throws Exception;
 	Admin findByLoginIdAndLoginPass(String userId, String userPass) throws Exception;

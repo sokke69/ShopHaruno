@@ -231,4 +231,19 @@ public class AdminDaoImpl implements AdminDao {
 		return false;
 	}
 
+	@Override
+	public void insertNoUserType(Admin admin) throws Exception {
+		try (Connection con = ds.getConnection()) {
+			String sql = "INSERT INTO users (user_nick_name, user_name, user_pass)"
+					+ " VALUES (?,?,?)";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, admin.getUserNickName());
+			stmt.setString(2, admin.getUserName());
+			stmt.setString(3, admin.getUserPass());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
 }
