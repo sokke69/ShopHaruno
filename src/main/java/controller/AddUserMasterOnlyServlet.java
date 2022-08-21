@@ -55,14 +55,12 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		try {
-			AdminDao adminDao = DaoFactory.createAdminDao();
-
+			/* 入力された値の取得 */
 			String userName = request.getParameter("request-user-name");
 			String loginId = request.getParameter("request-login-id");
 			String loginPass = request.getParameter("request-login-pass");
 			String loginPassCheck = request.getParameter("request-login-pass-check");
 			Integer typeId = Integer.parseInt(request.getParameter("request-user-type"));
-			
 						
 			/* ページを再表示したときのユーザータイプ再取得用 */
 			UserTypeDao userTypeDao = DaoFactory.createUserTypeDao();
@@ -76,7 +74,8 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 			request.setAttribute("inputedLoginId", loginId);
 			request.setAttribute("inputedTypeId", typeId);
 			
-			/* ログインIDが重複していないかチェック */
+			/* ログインIDがDBと重複していないかチェック */
+			AdminDao adminDao = DaoFactory.createAdminDao();
 			boolean checkLoginIdIs = adminDao.checkUserName(loginId);
 			/* ログインIDの正規表現チェック */
 			Pattern namePattern = Pattern.compile("[0-9a-zA-Z\\-\\_]+");
@@ -86,9 +85,9 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 			Pattern passPattern = Pattern.compile("[0-9a-zA-Z]+");
 			Matcher passMatcher = passPattern.matcher(loginPass);
 			Matcher passCheckMatcher = passPattern.matcher(loginPassCheck);
-
-			boolean isError = false;
 			
+			/* バリデーションチェック用boolean作成 */
+			boolean isError = false;
 			
 			/* バリデーション ユーザー名 */
 			if (userName.isBlank()) {
@@ -97,6 +96,8 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 			} else if (userName.length() > 12) {
 				request.setAttribute("nameError", "ユーザー名は12文字以内で入力してください。");
 				isError = true;
+			} else {
+				request.setAttribute("nameSuccess", "true");
 			}
 			
 			/* バリデーション ログインID */
@@ -112,6 +113,8 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 			} else if (!checkLoginIdIs) {
 				request.setAttribute("loginIdError", "このログインIDは既に使われています。");
 				isError = true;
+			} else {
+				request.setAttribute("loginIdSuccess", "true");
 			}
 			
 			/* バリデーション パスワード */
@@ -139,17 +142,27 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 			} 
 			
 			/* パスワード同一入力チェック */
-			if (!loginPass.equals(loginPassCheck)) {
+			if (loginPass.isBlank() && loginPassCheck.isBlank()) {
+				request.setAttribute("loginPassError", "ログインパスワードが未入力です。");
+				request.setAttribute("loginPassCheckError", "ログインパスワード(確認)が未入力です。");
+			} else if (!loginPass.equals(loginPassCheck)) {
 				request.setAttribute("loginPassSameError", "同じログインパスワードが入力されていません。");
 				isError = true;
+			} else {
+				request.setAttribute("loginPassSameSuccess", "他項目にエラーがある為もう一度入力をお願いします。");
 			}
-			
 			
 			/* バリデーション ユーザータイプ */
 			if (typeId == 0) {
 				request.setAttribute("typeError", "選択してください。");
 				isError = true;
+			} else {
+				request.setAttribute("typeSuccess", "true");
 			}
+			
+
+			
+			
 			
 			
 			/* 項目に問題があった場合エラーを表示してページを再表示 */
@@ -159,10 +172,12 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 			
 			/* 項目に問題がなかった場合ユーザー追加完了ページを表示 */
 			if (!isError) {
+				/* 入力されたパスワードをBCryptでハッシュ化 */
 				String hashedPass = BCrypt.hashpw(loginPass, BCrypt.gensalt());
-
+				
+				
+				/* INSERT用にadminへ各要素を追加 */
 				Admin admin = new Admin();
-
 				admin.setUserNickName(userName);
 				admin.setUserName(loginId);
 				admin.setUserPass(hashedPass);

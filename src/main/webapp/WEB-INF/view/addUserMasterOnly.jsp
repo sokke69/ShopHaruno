@@ -14,6 +14,7 @@
 
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/ec1be9ca10.js" crossorigin="anonymous"></script>
     <script>
     $(function(){
     	
@@ -24,6 +25,7 @@
     	}
     });
     </script>
+    
 </head>
 <body>
 <c:import url="parts/header.jsp" />
@@ -36,7 +38,14 @@
                         <div class="display-6">ユーザー追加</div>
                         <form action="" method="post"  autocomplete="off">
                         <table id="list-table" class="table table-hover">
-                            <tr><th id="head">ユーザー名</th>
+                            <tr><th id="head">
+                            <c:if test="${ not empty nameSuccess}">
+                            		<i class="fa-solid fa-circle-check success"></i>
+                            </c:if>
+                            <c:if test="${ not empty nameError}">
+                            		<i class="fa-solid fa-circle-exclamation error"></i>
+                            </c:if>
+                             ユーザー名</th>
                             <td>
                             <c:if test="${ not empty nameError}">
                             	<div class="alert alert-danger" id="alert">
@@ -46,7 +55,14 @@
                             <input type="text" name="request-user-name" value="${inputedUserName}" id="add-user-form">
                             <div class="attention">※ ユーザー名は12文字以内で入力してください。</div>
                             </td></tr>
-                            <tr><th>ログインID</th>
+                            <tr><th>
+                            <c:if test="${ not empty loginIdSuccess}">
+                            		<i class="fa-solid fa-circle-check success"></i>
+                            </c:if>
+                            <c:if test="${ not empty loginIdError}">
+                            		<i class="fa-solid fa-circle-exclamation error"></i>
+                            </c:if>
+                             ログインID</th>
                             <td>
                             <c:if test="${ not empty loginIdError}">
                             	<div class="alert alert-danger" id="alert">
@@ -57,8 +73,23 @@
                             <div class="attention">※ ログインIDは4文字以上12文字以内で入力してください。</div>
                             <div class="attention">※ 使用できる文字は半角英数字と「-」「_」のみです。</div>
                             </td></tr>
-                            <tr><th>ログインパスワード</th>
+                            <tr><th>
+                            <c:if test="${ not empty loginPassSameSuccess}">
+                            		<i class="fa-solid fa-circle-minus warning"></i>
+                            </c:if>
+                            <c:if test="${ not empty loginPassError}">
+                            		<i class="fa-solid fa-circle-exclamation error"></i>
+                            </c:if>
+                            <c:if test="${ not empty loginPassSameError}">
+                            		<i class="fa-solid fa-circle-exclamation error"></i>
+                            </c:if>
+                             ログインパスワード</th>
                             <td>
+                            <c:if test="${ not empty loginPassSameSuccess}">
+                            	<div class="alert alert-warning" id="alert">
+                            		<c:out value="※ ${loginPassSameSuccess}" />
+                            	</div>
+                            </c:if>
                             <c:if test="${ not empty loginPassSameError}">
                             	<div class="alert alert-danger" id="alert">
                             		<c:out value="※ ${loginPassSameError}" />
@@ -73,8 +104,25 @@
                             <div class="attention">※ ログインパスワードは6字以上20字以内で入力してください。</div>
                             <div class="attention">※ 使用できる文字は半角英数字のみです。</div>
                             </td></tr>
-                            <tr><th>ログインパスワード(確認)</th>
+                            <tr><th>
+                            <c:if test="${ not empty loginPassSameSuccess}">
+                            		<i class="fa-solid fa-circle-minus warning"></i>
+                            </c:if>
+                            <c:if test="${ not empty loginPassError}">
+                            		<i class="fa-solid fa-circle-exclamation error"></i>
+                            </c:if>
+                            <c:if test="${ not empty loginPassSameError}">
+                            		<i class="fa-solid fa-circle-exclamation error"></i>
+                            </c:if>
+                             ログインパスワード(確認)
+                            </th>
                             <td>
+                            <c:if test="${ not empty loginPassSameSuccess}">
+                            	<div class="alert alert-warning" id="alert">
+                            		<c:out value="※ ${loginPassSameSuccess}" />
+                            	</div>
+                            </c:if>
+                            
                             <c:if test="${ not empty loginPassSameError}">
                             	<div class="alert alert-danger" id="alert">
                             		<c:out value="※ ${loginPassSameError}" />
@@ -86,7 +134,14 @@
                             	</div>
                             </c:if>
                             <input type="text" name="request-login-pass-check" id="add-user-form"></td></tr>
-                            <tr><th>ユーザータイプ</th><td>
+                            <tr><th>
+                            <c:if test="${ not empty typeSuccess}">
+                            		<i class="fa-solid fa-circle-check success"></i>
+                            </c:if>
+                            <c:if test="${ not empty typeError}">
+                            		<i class="fa-solid fa-circle-exclamation error"></i>
+                            </c:if>
+                             ユーザータイプ</th><td>
                             <c:if test="${ not empty typeError}">
                             	<div class="alert alert-danger" id="alert">
                             		<c:out value="※ ${typeError}" />

@@ -12,9 +12,11 @@
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/list_style.css">
     <link rel="stylesheet" href="./css/hf_style.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/ec1be9ca10.js" crossorigin="anonymous"></script>
     
     <script>
     $(function(){
@@ -45,20 +47,59 @@
                             <td><c:out value="${user.id}" /> (変更できません)</td>
                         </tr>
                         <tr>
-                            <th>ユーザー名</th>
-                            <td><input type="text" value="<c:out value="${user.userNickName}" />" name="request-user-name" id="add-user-form"></td>
+                            <th><c:if test="${ not empty nameSuccess}">
+                            		<i class="fa-solid fa-circle-check success"></i>
+                            </c:if>
+                            <c:if test="${ not empty nameError}">
+                            		<i class="fa-solid fa-circle-exclamation error"></i>
+                            </c:if>
+                             ユーザー名</th>
+                            <td>
+                            <c:if test="${ not empty nameError}">
+                            	<div class="alert alert-danger" id="alert">
+                            		<c:out value="※ ${nameError}" />
+                            	</div>
+                            </c:if>
+                            <input type="text" value="<c:out value="${user.userNickName}" />" name="request-user-name" id="add-user-form">
+                            <div class="attention">※ ユーザー名は12文字以内で入力してください。</div></td>
                         </tr>
                         <tr>
-                            <th>ログインID</th>
-                            <td><input type="text" value="<c:out value="${user.userName}" />" name="request-login-id" id="add-user-form"></td>
+                            <th><c:if test="${ not empty loginIdSuccess}">
+                            		<i class="fa-solid fa-circle-check success"></i>
+                            </c:if>
+                            <c:if test="${ not empty loginIdError}">
+                            		<i class="fa-solid fa-circle-exclamation error"></i>
+                            </c:if>
+                             ログインID</th>
+                            <td>
+                            <c:if test="${ not empty loginIdError}">
+                            	<div class="alert alert-danger" id="alert">
+                            		<c:out value="※ ${loginIdError}" />
+                            	</div>
+                            </c:if>
+                            <input type="text" value="<c:out value="${user.userName}" />" name="request-login-id" id="add-user-form">
+                            <div class="attention">※ ログインIDは4文字以上12文字以内で入力してください。</div>
+                            <div class="attention">※ 使用できる文字は半角英数字と「-」「_」のみです。</div></td>
                         </tr>
                         <tr>
                             <th>ログインパスワード</th>
                             <td>変更できません</td>
                         </tr>
                         <tr>
-                            <th>ユーザータイプ</th>
+                            <th>
+                            <c:if test="${ not empty typeSuccess}">
+                            		<i class="fa-solid fa-circle-check success"></i>
+                            </c:if>
+                            <c:if test="${ not empty typeError}">
+                            		<i class="fa-solid fa-circle-exclamation error"></i>
+                            </c:if>
+                             ユーザータイプ</th>
                             <td>
+                            <c:if test="${ not empty typeError}">
+                            	<div class="alert alert-danger" id="alert">
+                            		<c:out value="※ ${typeError}" />
+                            	</div>
+                            </c:if>
                                 <select name="request-user-type" id="" class="select-type">
                                     <option value="0">--選択--</option>
                                     <c:forEach items="${userTypeList}" var="userTypeList" varStatus="vs">

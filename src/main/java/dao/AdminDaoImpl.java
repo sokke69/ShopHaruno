@@ -209,8 +209,9 @@ public class AdminDaoImpl implements AdminDao {
 	public boolean checkUserName(String userName) throws Exception {
 		List<String> nameList = new ArrayList<>();
 		try (Connection con = ds.getConnection()){
-			String sql = "SELECT user_name FROM users";
+			String sql = "SELECT user_name FROM users WHERE user_name NOT IN (?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, userName);
 			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
