@@ -27,7 +27,7 @@ CREATE TABLE `as_categories` (
   `a_category_name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `a_category_name` (`a_category_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `products` (
   `update_date` timestamp NULL DEFAULT NULL,
   `update_by` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +133,6 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'ff9','https://11111',6,NULL,'./imgs/1_main.jpg','./imgs/1_sub01.jpg','./imgs/1_sub02.jpg','./imgs/1_sub03.jpg','./imgs/1_sub04.jpg','./imgs/1_sub05.jpg','./imgs/1_sub06.jpg','./imgs/1_sub07.jpg','./imgs/1_sub08.jpg','2022-08-19 01:24:05','テスター',NULL,NULL),(2,'test1','https://11111',1,NULL,'./imgs/2_main.jpg','./imgs/2_sub01.jpg','./imgs/2_sub02.jpg','./imgs/2_sub03.jpg','./imgs/2_sub04.jpg','./imgs/2_sub05.jpg','./imgs/2_sub06.jpg','./imgs/2_sub07.jpg','./imgs/2_sub08.jpg','2022-08-19 01:24:25','テスター',NULL,NULL),(3,'test3','https://ff9.jp',1,NULL,'./imgs/3_main.jpg','./imgs/3_sub01.jpg','./imgs/3_sub02.jpg','./imgs/3_sub03.jpg','./imgs/3_sub04.jpg','./imgs/3_sub05.jpg','./imgs/3_sub06.jpg','./imgs/3_sub07.jpg','./imgs/3_sub08.jpg','2022-08-19 01:24:56','テスター',NULL,NULL),(4,'こにちは','https://test1.jp',2,NULL,'./imgs/4_main.jpg','./imgs/4_sub01.jpg','./imgs/4_sub02.jpg','./imgs/4_sub03.jpg','./imgs/4_sub04.jpg','./imgs/4_sub05.jpg','./imgs/4_sub06.jpg','./imgs/4_sub07.jpg','./imgs/4_sub08.jpg','2022-08-19 01:25:18','テスター',NULL,NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,10 +148,10 @@ CREATE TABLE `users` (
   `user_nick_name` varchar(12) DEFAULT NULL,
   `user_name` varchar(12) NOT NULL,
   `user_pass` char(60) NOT NULL,
-  `user_type` int NOT NULL DEFAULT '2',
+  `user_type` int DEFAULT '2',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_name` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +160,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'マスター','master','$2a$08$GzImC.LElmrREYUXbXXjTO2De92lcDslS/1kS5SCmot0BJhnk.MFW',1),(2,'ユーザー','user','$2a$08$JQ3Ty7qMLzj4Y7QQe4Up2OqAEnBGOpEOVMzTqPZxnteZCXRQHqV/q',2),(3,'テスター','test','$2a$08$3JkiEGWb5XxMkkK/va871uY.GzgJuQR78XgGDaKvzIhmz8SkhS1ue',3),(7,'ハッピー子','happy','$2a$10$sf/hUkDIX87qavPRYRdOhu/FUL1yBqV5L1KBOhyadC.vuEEm/tAQi',0),(10,'ふじ君','fuji','$2a$10$MxkZsOld7ZDER7HUqcINt.fh1ao0Ebfl3WDvs8SXImwhFOKQMSq.G',2),(13,'米俵くん','komekome','$2a$10$XsgzZ7G0YwW5WmXHiBv3nuAw01XkTzqqX6pRTHu8Q2iR4PZEOCWcW',1);
+INSERT INTO `users` VALUES (1,'マスター','master','$2a$08$GzImC.LElmrREYUXbXXjTO2De92lcDslS/1kS5SCmot0BJhnk.MFW',1),(2,'ユーザー','user','$2a$08$JQ3Ty7qMLzj4Y7QQe4Up2OqAEnBGOpEOVMzTqPZxnteZCXRQHqV/q',2),(3,'テスター','test','$2a$08$3JkiEGWb5XxMkkK/va871uY.GzgJuQR78XgGDaKvzIhmz8SkhS1ue',3),(7,'ハッピー子','happy','$2a$10$sf/hUkDIX87qavPRYRdOhu/FUL1yBqV5L1KBOhyadC.vuEEm/tAQi',0),(10,'ふじ君','fuji','$2a$10$MxkZsOld7ZDER7HUqcINt.fh1ao0Ebfl3WDvs8SXImwhFOKQMSq.G',2),(17,'矢沢 永吉','yazawa','$2a$10$So/Rfgxif9hN9spnHMe8JO3/pbi3EonI8VT7m.MRUeHUfIUseclc2',2),(39,'バンドエイドバンド','bandaid','$2a$10$k6l.KGPf73IvcvZ1i9wD3uN5TTkfYUgJ.YzewB.2xptTWB9R1Vndq',2),(40,'sokken','sokken','$2a$10$2rq8/iKrE/l1X5LGTX5eFunWvPDMmFPcRRW9KVSGp70jIfWznTHLq',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-19  1:27:50
+-- Dump completed on 2022-08-21 11:24:23
