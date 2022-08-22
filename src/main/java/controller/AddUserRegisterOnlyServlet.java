@@ -19,15 +19,15 @@ import domain.Admin;
 /**
  * Servlet implementation class AddUserServlet
  */
-@WebServlet("/addUser")
-public class AddUserServlet extends HttpServlet {
+@WebServlet("/addUserRegisterOnly")
+public class AddUserRegisterOnlyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/view/addUser.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/addUserRegisterOnly.jsp").forward(request, response);
 	}
 
 	/**
@@ -125,13 +125,17 @@ public class AddUserServlet extends HttpServlet {
 				request.setAttribute("loginPassSameSuccess", "他項目にエラーがある為もう一度入力をお願いします。");
 			}
 			
-			
+			/* パスワード同一でもどちらかにエラーがあれば同一チェックエラーは消去し非表示に */
+			if (request.getAttribute("loginPassError") != null ||
+					request.getAttribute("loginPassSameError") != null) {
+				request.setAttribute("loginPassSameSuccess", null);
+			}
 			
 			
 			
 			/* 項目に問題があった場合エラーを表示してページを再表示 */
 			if(isError){
-				request.getRequestDispatcher("/WEB-INF/view/addUser.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/view/addUserRegisterOnly.jsp").forward(request, response);
 			}
 			
 			/* 項目に問題がなかった場合ユーザー追加完了ページを表示 */
@@ -148,7 +152,10 @@ public class AddUserServlet extends HttpServlet {
 
 				adminDao.insertNoUserType(admin);
 				
-				request.getRequestDispatcher("/WEB-INF/view/addUserDone.jsp").forward(request, response);
+				/* sessionに格納された */
+				request.getSession().invalidate();
+				
+				request.getRequestDispatcher("/WEB-INF/view/addUserDoneRegisterOnly.jsp").forward(request, response);
 			}
 			
 			

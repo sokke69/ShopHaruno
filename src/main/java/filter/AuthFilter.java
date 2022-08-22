@@ -55,20 +55,38 @@ public class AuthFilter extends HttpFilter implements Filter {
 				return;
 			}
 		}
-
+		
+		/* ユーザーリストページ遷移時masterのみユーザーの追加・編集・削除可能なlistUserMasterOnlyへ */
 		if (uri.endsWith("/listUser")) {
 			if (session.getAttribute("userIsMaster") != null) {
 				res.sendRedirect(req.getContextPath() + "/listUserMasterOnly");
 				return;
 			} 
-		} else if(uri.contains("User")) {
+		}
+		
+		/* それ以外のユーザーがユーザー追加編集削除画面へ遷移しようとすると閲覧専用のlistUserへ 
+		 * 直接URLを打ち込んでadd～等に飛ぼうとしてもlistUserへ */
+		if(uri.endsWith("/addUser") &&
+				uri.endsWith("/addUserDone") &&
+				uri.endsWith("/updateUser") &&
+				uri.endsWith("/updateUserDone") &&
+				uri.endsWith("/deleteUser") &&
+				uri.endsWith("/deleteUserDone")) {
 			if (session.getAttribute("userIsMaster") == null) {
 				res.sendRedirect(req.getContextPath() + "/listUser");
 				return;
 			}
-			
 		}
 		
+		/* ユーザータイプregister以外でURLにRegisterが含まれるページに遷移しようとすると閲覧不可へ */
+		if(uri.contains("Register")) {
+			if (session.getAttribute("userIsRegister") == null) {
+				res.sendRedirect(req.getContextPath() + "/notView");
+				return;
+			}
+		}
+		
+		/* ユーザーがmasterでない場合かつURLにMasterOnluが含まれる場合は閲覧不可のページへ */
 		if (uri.contains("MasterOnly")) {
 			if (session.getAttribute("userIsMaster") == null) {
 				res.sendRedirect(req.getContextPath() + "/notView");
@@ -76,18 +94,19 @@ public class AuthFilter extends HttpFilter implements Filter {
 			}
 		}
 		
+		/*  */
 		if (uri.endsWith("Product") ||
 				uri.contains("ProductDone") ||
 				uri.contains("ProductCheck") ||
 				uri.contains("ByAId")) {
-			if (session.getAttribute("userIsTester") != null) {
+			if (session.getAttribute("userIsTester") != null || session.getAttribute("userIsRegister") != null) {
 				res.sendRedirect(req.getContextPath() + "/listProductViewOnly");
 				return;
 			}
 		} else if (uri.endsWith("ACategory")||
 				uri.contains("ACategoryDone") ||
 				uri.contains("ACategoryCheck")) {
-			if (session.getAttribute("userIsTester") != null) {
+			if (session.getAttribute("userIsTester") != null || session.getAttribute("userIsRegister") != null) {
 				res.sendRedirect(req.getContextPath() + "/listACategoryViewOnly");
 				return;
 			}

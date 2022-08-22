@@ -5,7 +5,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>表示できません</title>
+<title>ユーザー追加</title>
 <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/loginout_style.css">
     <link rel="stylesheet" href="./css/hf_style.css">
@@ -16,17 +16,14 @@
 <body>
 
 <body>
-
 <c:import url="parts/header.jsp" />
 
     <div class="container" id="body">
         <div class="row">
             <div class="col"></div>
             <div class="col-5">
-                    <div class="title"><div class="display-6"><div class="logout-center">表示できません</div></div></div>
-                    <p class="logout-center">このページを開く場合は適切なユーザーでログインしてください。</p>
-                    <p class="logout-center"><a href="listDb">データベース一覧へ戻る</a></p><br>
-                    <p class="logout-center"><a href="index" target="_blank">トップページを開く</a></p>
+                    <div class="title"><div class="display-6"><div class="logout-center">ユーザーを追加しました</div></div></div>
+                    <p class="logout-center"><a href="login">戻る</a></p>
             </div>
             <div class="col"></div>
         </div><!--/.row-->

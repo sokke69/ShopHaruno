@@ -152,6 +152,12 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 				request.setAttribute("loginPassSameSuccess", "他項目にエラーがある為もう一度入力をお願いします。");
 			}
 			
+			/* パスワード同一でもどちらかにエラーがあれば同一チェックエラーは消去し非表示に */
+			if (request.getAttribute("loginPassError") != null ||
+					request.getAttribute("loginPassSameError") != null) {
+				request.setAttribute("loginPassSameSuccess", null);
+			}
+			
 			/* バリデーション ユーザータイプ */
 			if (typeId == 0) {
 				request.setAttribute("typeError", "選択してください。");
@@ -159,8 +165,6 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 			} else {
 				request.setAttribute("typeSuccess", "true");
 			}
-			
-
 			
 			
 			

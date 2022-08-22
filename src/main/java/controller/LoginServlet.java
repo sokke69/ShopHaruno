@@ -35,47 +35,60 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		try {
-			
+			/* ログインエラー判断変数 */
 			boolean isError = false;
 			
+			/* ログインフォーム取得 */
 			String userName = request.getParameter("loginId");
 			String userPass = request.getParameter("loginPass");
 			
+			/* バリデーション用パターン・マッチャー定義 */
 			Pattern passPattern = Pattern.compile("[0-9a-zA-Z]+");
 			Matcher passMatcher = passPattern.matcher(userPass);
 			
+			/* ログインチェック フォームに入力された内容とDBに一致するものがあればadminにreturn有り→ログイン */
 			AdminDao adminDao = DaoFactory.createAdminDao();
 			Admin admin = adminDao.findByLoginIdAndLoginPass(userName, userPass);
-					
+			
+			/* admin有り→データベースリストへ */
 			if (admin != null) {
-				
+				/* セッションにログインユーザー情報(ログインID・ユーザーニックネーム)格納 */
 				String sessionUserName = admin.getUserName();
-				Integer sessionUserType = admin.getTypeId();
 				String sessionUserNickName = admin.getUserNickName();
-				
 				request.getSession().setAttribute("userName", sessionUserName);
 				request.getSession().setAttribute("userNickName", sessionUserNickName);
 				
-				//String sessionUserTypeName = null;
+				/* セッションにログインユーザー情報(ログインタイプID)格納 */
+				Integer sessionUserType = admin.getTypeId();
+				
+				/* ページ遷移チェック 
+				 * セッションに格納する情報はフィルター(filter/AuthFilter)で使用 */
+				boolean register = false;
 				if (sessionUserType == 1) {
 					request.getSession().setAttribute("userIsMaster", sessionUserType);
-				//	sessionUserTypeName = "Master";
 				} else if (sessionUserType == 2) {
 					request.getSession().setAttribute("userIsUser", sessionUserType);
-				//	sessionUserTypeName = "User";
 				} else if (sessionUserType == 3) {
 					request.getSession().setAttribute("userIsTester", sessionUserType);
-				//	sessionUserTypeName = "Tester";
-				}	
+				} else if (sessionUserType == 4) {
+					request.getSession().setAttribute("userIsRegister", sessionUserType);
+					register = true;
+				}
 				
-				/*
-				 * System.out.println("[session格納]"); System.out.println("ユーザーID : " +
-				 * sessionUserName); System.out.println("ユーザーニックネーム : " + sessionUserNickName);
-				 * System.out.println("ユーザータイプ:" + sessionUserType);
-				 */
+				/* 4(Register)ならユーザー登録画面(RegisterOnly)へ */
+				if (register) {
+					response.sendRedirect("addUserRegisterOnly");
+				}
 				
-				response.sendRedirect("listDb");
+				/* 1～3(Master,User,Tester)ならデータベストリストへ */
+				if(!register) {
+					response.sendRedirect("listDb");
+				}
 				
+				
+				
+				
+			/* admin無し→ログイン画面へ戻る */
 			} else {
 				request.setAttribute("Error", "true");
 				
