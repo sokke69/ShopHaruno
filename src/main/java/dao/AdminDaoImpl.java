@@ -246,4 +246,59 @@ public class AdminDaoImpl implements AdminDao {
 		}
 	}
 
+	@Override
+	public void updateNickNameAndUserId(Admin admin) throws Exception {
+		try (Connection con = ds.getConnection()) {
+			String sql = "UPDATE users SET"
+					+ " user_nick_name=?, user_name=?"
+					+ " WHERE id=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, admin.getUserNickName());
+			stmt.setString(2, admin.getUserName());
+			stmt.setObject(3, admin.getId(), Types.INTEGER);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public void updatePassword(Integer id, String newPass) throws Exception {
+		try (Connection con = ds.getConnection()){
+			String sql = "UPDATE users SET"
+					+ " user_pass=? WHERE id=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, newPass);
+			stmt.setObject(2, id);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		}
+		
+	}
+
+	@Override
+	public boolean checkPassword(Integer id, String oldPass) throws Exception {
+		
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT user_pass FROM users WHERE id=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setObject(1, id,Types.INTEGER);
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				
+				if (BCrypt.checkpw(oldPass, rs.getString("user_pass"))) {
+					return true;
+				}
+
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		}
+
+		return false;
+	}
+
 }

@@ -126,3 +126,12 @@ div .attention{
 .warning{
 	color:#ffd700;
 }
+
+table.title-table{
+	width:100%;
+}
+
+td#view{
+	text-align:right;
+	vertical-align:top;
+}

@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 			/* ログインエラー判断変数 */
 			boolean isError = false;
 			
-			/* ログインフォーム取得 */
+			/* ログインフォームから取得 */
 			String userName = request.getParameter("loginId");
 			String userPass = request.getParameter("loginPass");
 			
@@ -52,9 +52,11 @@ public class LoginServlet extends HttpServlet {
 			
 			/* admin有り→データベースリストへ */
 			if (admin != null) {
-				/* セッションにログインユーザー情報(ログインID・ユーザーニックネーム)格納 */
+				/* セッションにログインユーザー情報(ID・ログインID・ユーザーニックネーム)格納 */
+				Integer sessionId = admin.getId();
 				String sessionUserName = admin.getUserName();
 				String sessionUserNickName = admin.getUserNickName();
+				request.getSession().setAttribute("userId", sessionId);
 				request.getSession().setAttribute("userName", sessionUserName);
 				request.getSession().setAttribute("userNickName", sessionUserNickName);
 				

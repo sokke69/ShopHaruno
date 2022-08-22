@@ -28,6 +28,7 @@
             </svg> <c:out value="${userNickName}" />
 					</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="viewMyData">マイアカウント</a></li>
 							<li><a class="dropdown-item" href="listDb">データベース一覧</a></li>
 							<li><a class="dropdown-item" href="listProduct">商品一覧</a></li>
 							<li><a class="dropdown-item" href="listACategory">カテゴリ一覧</a></li>
