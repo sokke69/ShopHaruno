@@ -48,6 +48,11 @@
                             		<c:out value="※ ${oldLoginPassSuccess}" />
                             	</div>
                             </c:if>
+                            <c:if test="${ not empty oldLoginPassError}">
+                            	<div class="alert alert-danger" id="alert">
+                            		<c:out value="※ ${oldLoginPassError}" />
+                            	</div>
+                            </c:if>
                         <input type="text" name="request-old-login-pass" id="add-user-form">
                         </td>
                         </tr>

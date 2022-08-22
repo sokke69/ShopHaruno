@@ -40,7 +40,7 @@
 			ログインID <input type="text" name="loginId" class="login">
 
 
-			パスワード <input type="password" name="loginPass" class="login">
+			パスワード <input type="text" name="loginPass" class="login">
 
 			<p class="login-submit">
 				<input type="submit" value="ログイン" id="submitButton">

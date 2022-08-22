@@ -57,7 +57,6 @@ public class UpdatePasswordServlet extends HttpServlet {
 			/* 入力された旧パスワードがDBのパスワードと等しいかチェック */
 			AdminDao adminDao = DaoFactory.createAdminDao();
 			boolean checkPass = adminDao.checkPassword(id, oldPass);
-			System.out.println(checkPass);
 			
 			/* バリデーションチェック用boolean作成 */
 			boolean isError = false;
@@ -81,13 +80,13 @@ public class UpdatePasswordServlet extends HttpServlet {
 			
 			/* バリデーション 新パスワード */
 			if (newPass.isBlank()) {
-				request.setAttribute("newLoginPassCheckError", "新パスワードが未入力です。");
+				request.setAttribute("newLoginPassError", "新パスワードが未入力です。");
 				isError = true;
 			} else if (newPass.length() < 6 || newPass.length() > 20) {
-				request.setAttribute("newLoginPassCheckError", "新パスワードは6字以上20字以内で入力してください。");
+				request.setAttribute("newLoginPassError", "新パスワードは6字以上20字以内で入力してください。");
 				isError = true;
 			} else if (!newPassMatcher.matches()) {
-				request.setAttribute("newLoginPassCheckError", "新パスワードに使える文字は半角英数字のみです。");
+				request.setAttribute("newLoginPassError", "新パスワードに使える文字は半角英数字のみです。");
 				isError = true;
 			} 
 			
@@ -105,7 +104,7 @@ public class UpdatePasswordServlet extends HttpServlet {
 			
 			/* パスワード同一入力チェック */
 			if (newPass.isBlank() && newPassCheck.isBlank()) {
-				request.setAttribute("newLoginPassError", "新スワードが未入力です。");
+				request.setAttribute("newLoginPassError", "新パスワードが未入力です。");
 				request.setAttribute("newLoginPassCheckError", "新パスワード(確認)が未入力です。");
 			} else if (!newPass.equals(newPassCheck)) {
 				request.setAttribute("newLoginPassSameError", "同じログインパスワードが入力されていません。");
