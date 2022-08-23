@@ -36,7 +36,6 @@ div.category-a{
 }
 
 .photo-large{
-    
     object-fit:contain;
     display: inline-block;
 }
@@ -66,16 +65,6 @@ table.logo{
     color: rgb(255, 255, 255);
     font-size: 40px;
     text-shadow: 0px 0px 5px #000000,0px 0px 5px #000000,0px 0px 5px #000000,0px 0px 5px #000000,0px 0px 5px #000000;
-}
-
-th{
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-
-th.large{
-    padding:0px ;
 }
 
 td.mini{
@@ -117,25 +106,19 @@ img {
     object-fit: cover;
 }
 
-th.large{
-	hegiht:240px;
-	width:320px;
-}
-
 th img{
 	max-width:320px;
 	height:auto;
-	vertical-align: middle;
 }
 
-.box {
-  height: 200px;
-  width:200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+th{
+    padding-left: 0px;
+    padding-right: 0px;
+    vertical-align: middle;
 }
-.box img {
-  max-width: 80%;
+
+th.large{
+    padding:0px ;
+    hegiht:240px;
+	width:320px;
 }

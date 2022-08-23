@@ -20,41 +20,14 @@
 <link rel="stylesheet" href="./css/hf_style.css">
 
 <script src="./js/bootstrap.bundle.min.js"></script>
-<script src="./js/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./js/jquery-adaptive-backgrounds.js"></script>
+
 <script>
-	$(document).ready(function() {
-		$('#photo-mini-sample1 img').click(function() {
-			let src = $(this).attr('src');
-			$('#photo-large-sample1 img').attr('src', src);
-		})
-		$('#photo-mini-sample2 img').click(function() {
-			let src = $(this).attr('src');
-			$('#photo-large-sample2 img').attr('src', src);
-		})
-		$('#photo-mini-sample3 img').click(function() {
-			let src = $(this).attr('src');
-			$('#photo-large-sample3 img').attr('src', src);
-		})
-		<c:forEach items="${productList}" var="productList" varStatus="vs">
-		$('#photo-mini-${productList.id} img').click(function() {
-			let src = $(this).attr('src');
-			$('#photo-large-${productList.id} img').attr('src', src);
-			//$('#${productList.id}-bg').attr('background',src);
-		})
-		</c:forEach>
-	});
-</script>
-
-<style>
-<c:forEach items="${productList}" var="productList" varStatus="vs">
-th#${productList.id}-bg.large{
-background-size:auto 240px;
-}
-</c:forEach>
-</style>
-
-
+$(document).ready(function(){
+  $.adaptiveBackground.run()
+});
+</script> 
 
 </head>
 
@@ -62,7 +35,6 @@ background-size:auto 240px;
 
 <c:import url="parts/header_shop.jsp" />
 	
-
 	<div class="title">
 
 		<div class="row">
@@ -75,23 +47,19 @@ background-size:auto 240px;
 			</div>
 		</div>
 		<!--/.row-->
-
 	</div>
 	<!--/.title-->
-
 	<div class="category-a">
 		<div class="container">
 			<div class="row">
 				<div class="col-2"></div>
 				<div class="col">
 					<table class="category-table" align="center">
-
 						<tr>
 							<td><a href="index">全カテゴリ</a><c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
                 <a href="indexByAId?aId=${aCategoryList.id}"><c:out value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></a>
                 </c:forEach></td>
 						</tr>
-
 					</table>
 				</div>
 				<div class="col-2"></div>
@@ -106,123 +74,16 @@ background-size:auto 240px;
 			<div class="row">
 				<div align="center">
 					<div class="row">
-
-						<div class="col">
-							<table width="560px" height="260px">
-								<tr>
-									<th height="240px" class="large">
-										<div id="photo-large-sample1" class="photo-large">
-											<img src="./imgs/sample1main.jpg" alt="" width="320px"
-												height="240px" data-adaptive-background="1">
-										</div> <!--/.photo-large-->
-
-									</th>
-									<td height="240px" width="240px" class="mini">
-										<div id="photo-mini-sample1" class="img-table">
-											<ul>
-												<li><img src="./imgs/sample1main.jpg" alt=""></li>
-												<li><img src="./imgs/sample1sub01.jpg" alt=""></li>
-												<li><img src="./imgs/sample1sub02.jpg" alt=""></li>
-												<li><img src="./imgs/sample1sub03.jpg" alt=""></li>
-												<li><img src="./imgs/sample1sub04.jpg" alt=""></li>
-												<li><img src="./imgs/sample1sub05.jpg" alt=""></li>
-												<li><img src="./imgs/sample1sub06.jpg" alt=""></li>
-												<li><img src="./imgs/sample1sub07.jpg" alt=""></li>
-												<li><img src="./imgs/sample1sub08.jpg" alt=""></li>
-											</ul>
-										</div>
-									</td>
-
-								</tr>
-
-								<tr>
-									<td colspan="2" id="table-products"><a href="#" target="_blank"><c:out
-												value="消せないサンプル1です。消せないサンプル1です。消せないサンプル1です。消せないサンプル1です。消せないサンプル1です。消せないサンプル1です。消せないサンプル1です。" /></a></td>
-								</tr>
-							</table>
-						</div>
+					
+					<c:import url="parts/product_table1.jsp" />
+					<c:import url="parts/product_table2.jsp" />
 						
-						<div class="col">
-							<table width="560px" height="260px">
-								<tr>
-									<th height="240px" class="large">
-										<div id="photo-large-sample2" class="photo-large">
-											<img src="./imgs/sample2main.jpg" alt="" width="320px"
-												height="240px" data-adaptive-background="1">
-										</div> <!--/.photo-large-->
-
-									</th>
-									<td height="240px" width="240px" class="mini">
-										<div id="photo-mini-sample2" class="img-table">
-											<ul>
-												<li><img src="./imgs/sample2main.jpg" alt=""></li>
-												<li><img src="./imgs/sample2sub01.jpg" alt=""></li>
-												<li><img src="./imgs/sample2sub02.jpg" alt=""></li>
-												<li><img src="./imgs/sample2sub03.jpg" alt=""></li>
-												<li><img src="./imgs/sample2sub04.jpg" alt=""></li>
-												<li><img src="./imgs/sample2sub05.jpg" alt=""></li>
-												<li><img src="./imgs/sample2sub06.jpg" alt=""></li>
-												<li><img src="./imgs/sample2sub07.jpg" alt=""></li>
-												<li><img src="./imgs/sample2sub08.jpg" alt=""></li>
-											</ul>
-										</div>
-									</td>
-
-								</tr>
-
-								<tr>
-									<td colspan="2" id="table-products"><a href="#" target="_blank"><c:out
-												value="消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。消せないサンプル2です。" /></a></td>
-								</tr>
-							</table>
-						</div>
-						
-						<div class="col">
-							<table width="560px" height="260px">
-								<tr>
-									<th height="240px" class="large">
-										<div id="photo-large-sample3" class="photo-large">
-											<img src="./imgs/sample3main.jpg" alt="" width="320px"
-												height="240px" data-adaptive-background="1">
-										</div> <!--/.photo-large-->
-
-									</th>
-									<td height="240px" width="240px" class="mini">
-										<div id="photo-mini-sample3" class="img-table">
-											<ul>
-												<li><img src="./imgs/sample3main.jpg" alt=""></li>
-												<li><img src="./imgs/sample3sub01.jpg" alt=""></li>
-												<li><img src="./imgs/sample3sub02.jpg" alt=""></li>
-												<li><img src="./imgs/sample3sub03.jpg" alt=""></li>
-												<li><img src="./imgs/sample3sub04.jpg" alt=""></li>
-												<li><img src="./imgs/sample3sub05.jpg" alt=""></li>
-												<li><img src="./imgs/sample3sub06.jpg" alt=""></li>
-												<li><img src="./imgs/sample3sub07.jpg" alt=""></li>
-												<li><img src="./imgs/sample3sub08.jpg" alt=""></li>
-											</ul>
-										</div>
-									</td>
-
-								</tr>
-
-								<tr>
-									<td colspan="2" id="table-products"><a href="#" target="_blank"><c:out
-												value="消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。消せないサンプル3です。" /></a></td>
-								</tr>
-							</table>
-						</div>
-						
-						
-
 						<c:forEach items="${productList}" var="productList" varStatus="vs">
 							<div class="col">
 								<table width="560px" height="260px">
 									<tr>
-										<th class="large" id="${productList.id}-bg" background="">
-											<div id="photo-large-${productList.id}" class="photo-large">
+										<th class="large"  id="photo-large-${productList.id}">
 												<img src="${productList.imgMain}" alt="" data-adaptive-background/>
-											</div> <!--/.photo-large-->
-
 										</th>
 										<td height="240px" width="240px" class="mini">
 											<div id="photo-mini-${productList.id}" class="img-table">
@@ -239,9 +100,7 @@ background-size:auto 240px;
 												</ul>
 											</div>
 										</td>
-
 									</tr>
-
 									<tr>
 										<td colspan="2" id="table-products"><a href="${productList.productUrl}" target="_blank"><c:out
 													value="${productList.productName}" /></a></td>
@@ -249,19 +108,14 @@ background-size:auto 240px;
 								</table>
 							</div>
 						</c:forEach>
-
-
-
-
+						
 						<!--ここから消さない-->
 						<div class="col">
 							<table width="560px">
 							</table>
 						</div>
 						<!--ここまで消さない-->
-						
-						<div class="box"><img src="./imgs/sample1main.jpg" width="100px" height="100p"  data-adaptive-background/></div>
-						
+
 					</div>
 					<!--/.row-->
 				</div>
@@ -278,8 +132,27 @@ background-size:auto 240px;
 		</footer>
 	</div>
 
+<script>
+		$('#photo-mini-sample1').on('click','img',function() {
+			let src = $(this).attr('src');
+			$('#photo-large-sample1 img').attr('src', src);
+		});
+</script>
+<script>
+		$('#photo-mini-sample2').on('click','img',function() {
+			let src = $(this).attr('src');
+			$('#photo-large-sample2 img').attr('src', src);
+		});
+</script>
 
-
+<c:forEach items="${productList}" var="productList" varStatus="vs">
+<script>
+	$('#photo-mini-${productList.id}').on('click','img',function() {
+		let src = $(this).attr('src');
+		$('#photo-large-${productList.id} img').attr('src', src);
+});
+</script>
+</c:forEach>
 
 </body>
 
