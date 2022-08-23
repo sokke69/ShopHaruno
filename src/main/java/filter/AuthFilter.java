@@ -49,7 +49,8 @@ public class AuthFilter extends HttpFilter implements Filter {
 				!uri.endsWith("/login") && 
 				!uri.contains("/css/") && 
 				!uri.contains("/js/") && 
-				!uri.contains("/index")) {
+				!uri.contains("/index") &&
+				!uri.contains("/enquiry")) {
 			if (session.getAttribute("userName") == null) {
 				res.sendRedirect(req.getContextPath() + "/login");
 				return;
