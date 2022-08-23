@@ -21,32 +21,39 @@
 
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/jquery-3.6.0.min.js"></script>
+<script src="./js/jquery-adaptive-backgrounds.js"></script>
 <script>
 	$(document).ready(function() {
 		$('#photo-mini-sample1 img').click(function() {
 			let src = $(this).attr('src');
-			console.log(src);
 			$('#photo-large-sample1 img').attr('src', src);
 		})
 		$('#photo-mini-sample2 img').click(function() {
 			let src = $(this).attr('src');
-			console.log(src);
 			$('#photo-large-sample2 img').attr('src', src);
 		})
 		$('#photo-mini-sample3 img').click(function() {
 			let src = $(this).attr('src');
-			console.log(src);
 			$('#photo-large-sample3 img').attr('src', src);
 		})
 		<c:forEach items="${productList}" var="productList" varStatus="vs">
 		$('#photo-mini-${productList.id} img').click(function() {
 			let src = $(this).attr('src');
-			console.log(src);
 			$('#photo-large-${productList.id} img').attr('src', src);
+			//$('#${productList.id}-bg').attr('background',src);
 		})
 		</c:forEach>
 	});
 </script>
+
+<style>
+<c:forEach items="${productList}" var="productList" varStatus="vs">
+th#${productList.id}-bg.large{
+background-size:auto 240px;
+}
+</c:forEach>
+</style>
+
 
 
 </head>
@@ -106,7 +113,7 @@
 									<th height="240px" class="large">
 										<div id="photo-large-sample1" class="photo-large">
 											<img src="./imgs/sample1main.jpg" alt="" width="320px"
-												height="240px">
+												height="240px" data-adaptive-background="1">
 										</div> <!--/.photo-large-->
 
 									</th>
@@ -141,7 +148,7 @@
 									<th height="240px" class="large">
 										<div id="photo-large-sample2" class="photo-large">
 											<img src="./imgs/sample2main.jpg" alt="" width="320px"
-												height="240px">
+												height="240px" data-adaptive-background="1">
 										</div> <!--/.photo-large-->
 
 									</th>
@@ -176,7 +183,7 @@
 									<th height="240px" class="large">
 										<div id="photo-large-sample3" class="photo-large">
 											<img src="./imgs/sample3main.jpg" alt="" width="320px"
-												height="240px">
+												height="240px" data-adaptive-background="1">
 										</div> <!--/.photo-large-->
 
 									</th>
@@ -211,10 +218,9 @@
 							<div class="col">
 								<table width="560px" height="260px">
 									<tr>
-										<th height="240px" class="large">
+										<th class="large" id="${productList.id}-bg" background="">
 											<div id="photo-large-${productList.id}" class="photo-large">
-												<img src="${productList.imgMain}" alt="" width="320px"
-													height="240px">
+												<img src="${productList.imgMain}" alt="" data-adaptive-background/>
 											</div> <!--/.photo-large-->
 
 										</th>
@@ -253,7 +259,9 @@
 							</table>
 						</div>
 						<!--ここまで消さない-->
-
+						
+						<div class="box"><img src="./imgs/sample1main.jpg" width="100px" height="100p"  data-adaptive-background/></div>
+						
 					</div>
 					<!--/.row-->
 				</div>

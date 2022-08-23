@@ -107,11 +107,11 @@ public class ACategoryDaoImpl implements ACategoryDao{
 	public Integer countAId() throws Exception {
 		Integer countAId = null;
 		try (Connection con = ds.getConnection()){
-			String sql = "SELECT COUNT(id) FROM as_categories";
+			String sql = "SELECT MAX(id) FROM as_categories";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
-				Object object = rs.getObject("COUNT(id)");
+				Object object = rs.getObject("MAX(id)");
 				String countAIdStr = object.toString();
 				countAId = Integer.parseInt(countAIdStr);
 				return countAId;

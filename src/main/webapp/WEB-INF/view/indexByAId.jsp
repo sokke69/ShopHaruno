@@ -25,23 +25,19 @@
 	$(document).ready(function() {
 		$('#photo-mini-sample1 img').click(function() {
 			let src = $(this).attr('src');
-			console.log(src);
 			$('#photo-large-sample1 img').attr('src', src);
 		})
 		$('#photo-mini-sample2 img').click(function() {
 			let src = $(this).attr('src');
-			console.log(src);
 			$('#photo-large-sample2 img').attr('src', src);
 		})
 		$('#photo-mini-sample3 img').click(function() {
 			let src = $(this).attr('src');
-			console.log(src);
 			$('#photo-large-sample3 img').attr('src', src);
 		})
 		<c:forEach items="${productList}" var="productList" varStatus="vs">
 		$('#photo-mini-${productList.id} img').click(function() {
 			let src = $(this).attr('src');
-			console.log(src);
 			$('#photo-large-${productList.id} img').attr('src', src);
 		})
 		</c:forEach>

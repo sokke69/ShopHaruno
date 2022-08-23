@@ -26,8 +26,15 @@ import domain.Product;
  * Servlet implementation class AaddProductServlet
  */
 @WebServlet("/addProduct")
-@MultipartConfig(location = "C:/Users/zd2L17/temp")
-//@MultipartConfig(location = "C:/temp")
+
+
+
+/* 注意！！使うPCによって必ずここを変更する！！！！！！！！ */
+//@MultipartConfig(location = "C:/Users/zd2L17/temp")
+@MultipartConfig(location = "C:/temp")
+
+
+
 public class AddProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -166,6 +173,8 @@ public class AddProductServlet extends HttpServlet {
 				/* DBに登録 */
 				productDao.insert(product);
 				request.getSession().removeAttribute("product");
+				
+				/* 完了ページ移動 */
 				request.getRequestDispatcher("/WEB-INF/view/addProductDone.jsp").forward(request, response);
 			}
 			

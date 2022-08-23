@@ -3,9 +3,12 @@ package controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +25,15 @@ import domain.Product;
  * Servlet implementation class UpdateUserServlet
  */
 @WebServlet("/updateProduct")
+
+
+
+/* 注意！！使うPCによって必ずここを変更する！！！！！！！！ */
+//@MultipartConfig(location = "C:/Users/zd2L17/temp")
+@MultipartConfig(location = "C:/temp")
+
+
+
 public class UpdateProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -61,62 +73,124 @@ public class UpdateProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
-		Integer id = Integer.parseInt(request.getParameter("id"));
-		String productName = request.getParameter("product-name");
-		String productUrl = request.getParameter("product-url");
-		Integer aCategoryId = Integer.parseInt(request.getParameter("a-category-id"));
-		String productUpdateBy = (String) request.getSession().getAttribute("userNickName");
-
-//		writeImg(request);
 		
-		Product product = new Product();
-
-		product.setId(id);
-		product.setProductName(productName);
-		product.setProductUrl(productUrl);
-		product.setCategoryA(aCategoryId);
-		product.setUpdateBy(productUpdateBy);
-
 		try {
-			ProductDao productDao = DaoFactory.createProductDao();
-			productDao.update(product);
-
-			request.getRequestDispatcher("/WEB-INF/view/updateProductDone.jsp").forward(request, response);
+			/* 入力されたデータを取得 */
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			String productName = request.getParameter("product-name");
+			String productUrl = request.getParameter("product-url");
+			Integer aCategoryId = Integer.parseInt(request.getParameter("a-category-id"));
+			
+			/* セッションからログインしているユーザー名を取得(編集ユーザー記録用) */
+			String productUpdateBy = (String) request.getSession().getAttribute("userNickName");
+			
+			/* 商品URLの正規表現チェック */
+			Pattern urlPattern = Pattern.compile("https?://[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+");
+			Matcher urlMatcher = urlPattern.matcher(productUrl);
+			
+			/* バリデーションチェック用boolean作成 */
+			boolean isError = false;
+			
+			/* 商品名バリデーション */
+			if (productName.isBlank()) {
+				request.setAttribute("nameError", "商品名が入力されていません。");
+				isError = true;
+			} else if (productName.length() > 255) {
+				request.setAttribute("nameError", "商品名は255文字以内で入力してください。");
+				isError = true;
+			} else {
+				request.setAttribute("nameSuccess", "true");
+			}
+			
+			/* 商品URLバリデーション */
+			if (productUrl.isBlank()) {
+				request.setAttribute("urlError", "商品URLが入力されていません。");
+				isError = true;
+			} else if (productUrl.length() > 8190) {
+				request.setAttribute("urlError", "商品URの文字数がオーバーしています。");
+				isError = true;
+			} else if (!urlMatcher.matches()) {
+				request.setAttribute("urlError", "商品URLが正しく入力されていません。");
+				isError = true;
+			} else {
+				request.setAttribute("urlSuccess", "true");
+			}
+			
+			/* 商品カテゴリバリデーション */
+			if (aCategoryId == 0) {
+				request.setAttribute("aCategoryError", "選択してください。");
+				isError = true;
+			} else {
+				request.setAttribute("aCategorySuccess", "true");
+			}
+			
+			/* update実行用にセット */
+			Product product = new Product();
+			
+			product.setId(id);
+			product.setProductName(productName);
+			product.setProductUrl(productUrl);
+			product.setCategoryA(aCategoryId);
+			product.setUpdateBy(productUpdateBy);
+			
+			/* エラーがある場合は再表示 */
+			if (isError) {
+				/* ページ再表示用 */
+				request.setAttribute("aId", aCategoryId);
+				ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
+				List<ACategory> aCategoryList = aCategoryDao.findAll();
+				Integer countAId = aCategoryDao.countAId();
+				request.setAttribute("aCategoryList", aCategoryList);
+				request.setAttribute("countAId", countAId);
+				request.setAttribute("product", product);
+				
+				/* ページ再表示 */
+				request.getRequestDispatcher("/WEB-INF/view/updateProduct.jsp").forward(request, response);
+			} else if (!isError) {
+				
+				/* 画像ファイル上書き */
+				writeImg(request,id);
+				
+				/* DBを更新 */
+				ProductDao productDao = DaoFactory.createProductDao();
+				productDao.update(product);
+				
+				/* 完了ページ移動 */
+				request.setAttribute("id", id);
+				request.getRequestDispatcher("/WEB-INF/view/updateProductDone.jsp").forward(request, response);
+			}
+			
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-
+		
 	}
-
+	
 	private File getUploadedDirectory(HttpServletRequest request) throws ServletException {
 		ServletContext context = request.getServletContext();
-
+		
 		String path = context.getRealPath("/imgs");
 		return new File(path);
-
+		
 	}
 
-	private void writeImg(HttpServletRequest request) throws ServletException {
-
+	private void writeImg(HttpServletRequest request,Integer id) throws ServletException {
+		
 		File filePath = getUploadedDirectory(request);
-
+		
 		try {
-			// productsテーブルのMAX(id)+1を取得
-			ProductDao productDao = DaoFactory.createProductDao();
-			Integer id = productDao.findLatestIdPlusOne();
+			/* 編集する商品のidをString化 */
 			String idStr = id.toString();
-
-			// メイン画像取得
+			
+			/* メイン画像取得 */
 			Part partMain = request.getPart("product-img-main");
 			long mainFileSize = partMain.getSize();
 			// メイン画像書き込み
 			if (mainFileSize > 0) {
 				partMain.write(filePath + "/" + idStr + "_main.jpg");
 			}
-
 			
-			// サブ画像取得
+			/* サブ画像取得 */
 			Part partSub01 = request.getPart("product-img-sub-01");
 			Part partSub02 = request.getPart("product-img-sub-02");
 			Part partSub03 = request.getPart("product-img-sub-03");
@@ -133,8 +207,8 @@ public class UpdateProductServlet extends HttpServlet {
 			long sub06FileSize = partSub06.getSize();
 			long sub07FileSize = partSub07.getSize();
 			long sub08FileSize = partSub08.getSize();
-
-			// サブ画像書き込み
+			
+			/* サブ画像書き込み */
 			if (sub01FileSize > 0) {
 				partSub01.write(filePath + "/" + idStr + "_sub01.jpg");
 			}
@@ -148,7 +222,7 @@ public class UpdateProductServlet extends HttpServlet {
 				partSub04.write(filePath + "/" + idStr + "_sub04.jpg");
 			}
 			if (sub05FileSize > 0) {
-			partSub05.write(filePath + "/" + idStr + "_sub05.jpg");
+				partSub05.write(filePath + "/" + idStr + "_sub05.jpg");
 			}
 			if (sub06FileSize > 0) {
 				partSub06.write(filePath + "/" + idStr + "_sub06.jpg");

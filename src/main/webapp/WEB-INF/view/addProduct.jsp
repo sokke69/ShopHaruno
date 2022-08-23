@@ -33,6 +33,7 @@
 		})
 	});
 </script>
+
 <script>
 	$(function() {
 		$('form input:file').uploadThumbs({
@@ -41,6 +42,7 @@
 		});
 	});
 </script>
+
 <script>
 $(function(){
 	
@@ -62,96 +64,80 @@ $(function(){
 		<div class="row">
 			<div class="col"></div>
 			<div class="col-8">
-			<div id="add-update-user">
-			<div class="display-6">商品追加</div>
-				<form action="" method="post" enctype="multipart/form-data">
-					<table id="list-table" class="table table-hover">
-						<tr>
-							<th id="head">
-							<c:if test="${ not empty nameSuccess}">
-                            		<i class="fa-solid fa-circle-check success"></i>
-                            </c:if>
-                            <c:if test="${ not empty nameError}">
-                            		<i class="fa-solid fa-circle-exclamation error"></i>
-                            </c:if>
-                             商品名*</th>
-							<td>
-							<c:if test="${ not empty nameError}">
-                            	<div class="alert alert-danger" id="alert">
-                            		<c:out value="※ ${nameError}" />
-                            	</div>
-                            </c:if>
-							<input type="text" value="${productName}" placeholder="商品名" name="product-name"
-								 id="add-user-form">
-								<div class="attention">※ 商品名は255文字以内で入力してください。</div></td>
-						</tr>
-						<tr>
-							<th>
-							<c:if test="${ not empty urlSuccess}">
-                            		<i class="fa-solid fa-circle-check success"></i>
-                            </c:if>
-                            <c:if test="${ not empty urlError}">
-                            		<i class="fa-solid fa-circle-exclamation error"></i>
-                            </c:if>
-							 商品URL*</th>
-							<td>
-							<c:if test="${ not empty urlError}">
-                            	<div class="alert alert-danger" id="alert">
-                            		<c:out value="※ ${urlError}" />
-                            	</div>
-                            </c:if>
-							<input type="text"  value="${productUrl}"value="https://" name="product-url"
-								 id="add-user-form"></td>
-						</tr>
-						<tr>
-							<th>
-							<c:if test="${ not empty aCategorySuccess}">
-                            		<i class="fa-solid fa-circle-check success"></i>
-                            </c:if>
-                            <c:if test="${ not empty aCategoryError}">
-                            		<i class="fa-solid fa-circle-exclamation error"></i>
-                            </c:if>
-							 カテゴリA*</th>
-							<td>
-							<c:if test="${ not empty aCategoryError}">
-                            	<div class="alert alert-danger" id="alert">
-                            		<c:out value="※ ${aCategoryError}" />
-                            	</div>
-                            </c:if>
-							<select name="a-category-id" id="selectform"
-								class="select-a">
-									<option value="0">--選択--</option>
-									<c:forEach items="${aCategoryList}" var="aCategoryList"
-										varStatus="vs">
-										<option value="${aCategoryList.id}"><c:out
-												value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></option>
-									</c:forEach>
-							</select></td>
-						</tr>
-						<tr>
-							<th>メイン画像*</th>
-							<td><label><input type="file"
-									name="product-img-main" accept="image/jpg" required></label>
-									<div class="attention">※ 形式はjpgのみです。</div>
-									</td>
-						</tr>
-						<tr>
-							<th>サブ画像</th>
-							<td><label><input type="file" name="product-img-sub"
-									id="product-img-sub" class="form-sub" accept="image/jpg"
-									multiple></label>
+				<div id="add-update-user">
+					<div class="display-6">商品追加</div>
+					<form action="" method="post" enctype="multipart/form-data">
+						<table id="list-table" class="table table-hover">
+							<tr>
+								<th id="head"><c:if test="${ not empty nameSuccess}">
+										<i class="fa-solid fa-circle-check success"></i>
+									</c:if> <c:if test="${ not empty nameError}">
+										<i class="fa-solid fa-circle-exclamation error"></i>
+									</c:if>
+									 商品名*</th>
+								<td><c:if test="${ not empty nameError}">
+										<div class="alert alert-danger" id="alert">
+											<c:out value="※ ${nameError}" />
+										</div>
+									</c:if> <input type="text" value="${productName}" placeholder="商品名"
+									name="product-name" id="add-user-form">
+									<div class="attention">※ 商品名は255文字以内で入力してください。</div></td>
+							</tr>
+							<tr>
+								<th><c:if test="${ not empty urlSuccess}">
+										<i class="fa-solid fa-circle-check success"></i>
+									</c:if> <c:if test="${ not empty urlError}">
+										<i class="fa-solid fa-circle-exclamation error"></i>
+									</c:if> 商品URL*</th>
+								<td><c:if test="${ not empty urlError}">
+										<div class="alert alert-danger" id="alert">
+											<c:out value="※ ${urlError}" />
+										</div>
+									</c:if> <input type="text" value="${productUrl}" name="product-url"
+									id="add-user-form"></td>
+							</tr>
+							<tr>
+								<th><c:if test="${ not empty aCategorySuccess}">
+										<i class="fa-solid fa-circle-check success"></i>
+									</c:if> <c:if test="${ not empty aCategoryError}">
+										<i class="fa-solid fa-circle-exclamation error"></i>
+									</c:if> カテゴリA*</th>
+								<td><c:if test="${ not empty aCategoryError}">
+										<div class="alert alert-danger" id="alert">
+											<c:out value="※ ${aCategoryError}" />
+										</div>
+									</c:if> <select name="a-category-id" id="selectform" class="select-a">
+										<option value="0">--選択--</option>
+										<c:forEach items="${aCategoryList}" var="aCategoryList"
+											varStatus="vs">
+											<option value="${aCategoryList.id}"><c:out
+													value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></option>
+										</c:forEach>
+								</select></td>
+							</tr>
+							<tr>
+								<th>メイン画像*</th>
+								<td><label><input type="file"
+										name="product-img-main" accept="image/jpg" required></label>
 									<div class="attention">※ 形式はjpgのみです。</div></td>
-						</tr>
+							</tr>
+							<tr>
+								<th>サブ画像</th>
+								<td><label><input type="file"
+										name="product-img-sub" id="product-img-sub" class="form-sub"
+										accept="image/jpg" multiple></label>
+									<div class="attention">※ 形式はjpgのみです。</div></td>
+							</tr>
 
-					</table>
-					<div class="attention">「*」は必須項目です。</div>
-					<input type="submit" value="追加" class="submit">
+						</table>
+						<div class="attention">「*」は必須項目です。</div>
+						<input type="submit" value="追加" class="submit">
 
-					<p>
-						<a href="listProduct">戻る</a>
-					</p>
-				</form>
-			</div>
+						<p>
+							<a href="listProduct">戻る</a>
+						</p>
+					</form>
+				</div>
 			</div>
 			<div class="col"></div>
 		</div>

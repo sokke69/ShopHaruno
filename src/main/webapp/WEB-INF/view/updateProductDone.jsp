@@ -26,6 +26,7 @@
                     <p class="logout-center"><a href="listProduct">商品一覧へ戻る</a></p>
                     <p class="logout-center"><a href="listDb">データベース一覧へ戻る</a></p><br>
                     <p class="logout-center"><a href="index" target="_blank">会社トップページを開く</a></p>
+                                <div><img src="./imgs/${id}_main.jpg" alt="" class="display_non"></div>
             </div>
             <div class="col"></div>
         </div><!--/.row-->

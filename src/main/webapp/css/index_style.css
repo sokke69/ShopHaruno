@@ -116,3 +116,26 @@ img {
     margin: auto;
     object-fit: cover;
 }
+
+th.large{
+	hegiht:240px;
+	width:320px;
+}
+
+th img{
+	max-width:320px;
+	height:auto;
+	vertical-align: middle;
+}
+
+.box {
+  height: 200px;
+  width:200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.box img {
+  max-width: 80%;
+}
