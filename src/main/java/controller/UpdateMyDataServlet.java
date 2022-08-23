@@ -59,19 +59,20 @@ public class UpdateMyDataServlet extends HttpServlet {
 			
 			/* 入力された値の取得 */
 			String userName = request.getParameter("request-user-name");
-			String loginId = request.getParameter("request-login-id");
+			String newLoginId = request.getParameter("request-login-id");
 			
 			/* アップデート用Adminセット */
 			Admin admin = new Admin();
 			admin.setId(id);
-			admin.setUserName(loginId);
+			admin.setUserName(newLoginId);
 			admin.setUserNickName(userName);
 			
 			/* ログインIDがDBと重複していないかチェック */
-			boolean checkLoginIdIs = adminDao.checkUserName(loginId);
+			String oldLoginId = adminDao.findLoginIdById(id);
+			boolean checkLoginIdIs = adminDao.checkUserName(oldLoginId,newLoginId);
 			/* ログインIDの正規表現チェック */
 			Pattern namePattern = Pattern.compile("[0-9a-zA-Z\\-\\_]+");
-			Matcher nameMatcher = namePattern.matcher(loginId);
+			Matcher nameMatcher = namePattern.matcher(newLoginId);
 			
 			/* バリデーションチェック用boolean作成 */
 			boolean isError = false;
@@ -88,10 +89,10 @@ public class UpdateMyDataServlet extends HttpServlet {
 			}
 			
 			/* バリデーション ログインID */
-			if (loginId.isBlank()) {
+			if (newLoginId.isBlank()) {
 				request.setAttribute("loginIdError", "ログインIDが未入力です。");
 				isError = true;
-			} else if (loginId.length() < 4 || loginId.length() > 12) {
+			} else if (newLoginId.length() < 4 || newLoginId.length() > 12) {
 				request.setAttribute("loginIdError", "ログインIDは4文字以上12文字以内で入力してください。");
 				isError = true;
 			} else if(!nameMatcher.matches()) {

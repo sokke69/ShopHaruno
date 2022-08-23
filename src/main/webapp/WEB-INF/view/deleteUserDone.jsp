@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-5">
-                    <div class="title"><div class="display-6"><div class="logout-center">ユーザーを削除しました</div></div></div>
+                    <div class="title"><div class="h3"><div class="logout-center">ユーザーを削除しました</div></div></div>
                     <p class="logout-center"><a href="listUser">ユーザー一覧へ戻る</a></p>
                     <p class="logout-center"><a href="listDb">データベース一覧へ戻る</a></p>
                     <p class="logout-center"><a href="index" target="_blank">会社トップページを開く</a></p>

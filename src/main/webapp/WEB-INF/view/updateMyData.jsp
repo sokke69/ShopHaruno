@@ -71,12 +71,12 @@
                         </tr>
                         <tr>
                             <th>ログインパスワード</th>
-                            <td><a href="updatePassword">変更する</a></td>
+                            <td><a href="updatePassword">パスワード変更ページを開く</a></td>
                         </tr>
                     </table>
-                    <input type="submit" value="決定" class="submit">
+                    <input type="submit" value="変更する" class="submit">
 
-                    <p><a href="viewMyData">変更する</a></p>
+                    <p><a href="viewMyData">戻る</a></p>
                 </form>
             </div>
                 </div>

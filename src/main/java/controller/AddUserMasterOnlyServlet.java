@@ -32,12 +32,12 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		try {
+			/* ユーザータイプ取得用 */
 			UserTypeDao userTypeDao = DaoFactory.createUserTypeDao();
 			List<UserType> userTypeList = userTypeDao.findAll();
 			request.setAttribute("userTypeList", userTypeList);
-
+			/* ページ表示 */
 			request.getRequestDispatcher("/WEB-INF/view/addUserMasterOnly.jsp").forward(request, response);
 
 		} catch (Exception e) {
@@ -76,7 +76,7 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 			
 			/* ログインIDがDBと重複していないかチェック */
 			AdminDao adminDao = DaoFactory.createAdminDao();
-			boolean checkLoginIdIs = adminDao.checkUserName(loginId);
+			boolean checkLoginIdIs = adminDao.checkUserName2(loginId);
 			/* ログインIDの正規表現チェック */
 			Pattern namePattern = Pattern.compile("[0-9a-zA-Z\\-\\_]+");
 			Matcher nameMatcher = namePattern.matcher(loginId);

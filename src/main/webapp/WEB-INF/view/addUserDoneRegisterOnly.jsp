@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-5">
-                    <div class="title"><div class="display-6"><div class="logout-center">ユーザーを追加しました</div></div></div>
+                    <div class="title"><div class="h3"><div class="logout-center">ユーザーを追加しました</div></div></div>
                     <p class="logout-center"><a href="login">戻る</a></p>
             </div>
             <div class="col"></div>

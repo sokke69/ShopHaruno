@@ -61,13 +61,10 @@ public class UpdateUserMasterOnlyServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		try {
-			
-			
-			
 			/* 入力された値の取得 */
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			String userName = request.getParameter("request-user-name");
-			String loginId = request.getParameter("request-login-id");
+			String newLoginId = request.getParameter("request-login-id");
 			Integer typeId = Integer.parseInt(request.getParameter("request-user-type"));
 			
 			/* ページを再表示したときのユーザータイプ再取得用 */
@@ -81,17 +78,18 @@ public class UpdateUserMasterOnlyServlet extends HttpServlet {
 			Admin admin = new Admin();
 			admin.setId(id);
 			admin.setUserNickName(userName);
-			admin.setUserName(loginId);
+			admin.setUserName(newLoginId);
 			admin.setTypeId(typeId);
 			request.setAttribute("user", admin);
 			request.setAttribute("typeId", typeId);
 			
 			/* ログインIDがDBと重複していないかチェック */
 			AdminDao adminDao = DaoFactory.createAdminDao();
-			boolean checkLoginIdIs = adminDao.checkUserName(loginId);
+			String oldLoginId = adminDao.findLoginIdById(id);
+			boolean checkLoginIdIs = adminDao.checkUserName(oldLoginId,newLoginId);
 			/* ログインIDの正規表現チェック */
 			Pattern namePattern = Pattern.compile("[0-9a-zA-Z\\-\\_]+");
-			Matcher nameMatcher = namePattern.matcher(loginId);
+			Matcher nameMatcher = namePattern.matcher(newLoginId);
 			
 			/* バリデーションチェック用boolean作成 */
 			boolean isError = false;
@@ -108,14 +106,14 @@ public class UpdateUserMasterOnlyServlet extends HttpServlet {
 			}
 			
 			/* バリデーション ログインID */
-			if (loginId.isBlank()) {
+			if (newLoginId.isBlank()) {
 				request.setAttribute("loginIdError", "ログインIDが未入力です。");
 				isError = true;
-			} else if (loginId.length() < 4 || loginId.length() > 12) {
+			} else if (newLoginId.length() < 4 || newLoginId.length() > 12) {
 				request.setAttribute("loginIdError", "ログインIDは4文字以上12文字以内で入力してください。");
 				isError = true;
 			} else if(!nameMatcher.matches()) {
-				request.setAttribute("loginIdError", "ログインIDに使える文字は半角英数字と「-」「_」のみです。");
+				request.setAttribute("loginIdError", "ログインIDに使用できる文字は半角英数字と「-」「_」のみです。");
 				isError = true;
 			} else if (!checkLoginIdIs) {
 				request.setAttribute("loginIdError", "このログインIDは既に使われています。");

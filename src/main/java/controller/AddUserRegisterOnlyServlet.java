@@ -49,7 +49,7 @@ public class AddUserRegisterOnlyServlet extends HttpServlet {
 			
 			/* ログインIDがDBと重複していないかチェック */
 			AdminDao adminDao = DaoFactory.createAdminDao();
-			boolean checkLoginIdIs = adminDao.checkUserName(loginId);
+			boolean checkLoginIdIs = adminDao.checkUserName2(loginId);
 			/* ログインIDの正規表現チェック */
 			Pattern namePattern = Pattern.compile("[0-9a-zA-Z\\-\\_]+");
 			Matcher nameMatcher = namePattern.matcher(loginId);

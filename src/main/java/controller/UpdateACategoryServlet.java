@@ -23,13 +23,16 @@ public class UpdateACategoryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Integer id = Integer.parseInt(request.getParameter("id"));
-		
 		try {
+			/* URLからID取得 */
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			
+			/* 表示用にカテゴリー取得 */
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			ACategory aCategory = aCategoryDao.findById(id);
 			request.setAttribute("aCategory", aCategory);
 			
+			/* ページ表示 */
 			request.getRequestDispatcher("/WEB-INF/view/updateACategory.jsp").forward(request, response);
 			
 		} catch (Exception e) {
@@ -45,19 +48,40 @@ public class UpdateACategoryServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		ACategory aCategory = new ACategory();
-		
-		Integer id = Integer.parseInt(request.getParameter("id"));
-		String aCategoryName = request.getParameter("a-category-name");
-		
-		aCategory.setId(id);
-		aCategory.setaCategoryName(aCategoryName);
-		
 		try {
-			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
-			aCategoryDao.update(aCategory);
+			/* update様に取得 */
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			String aCategoryName = request.getParameter("a-category-name");
 			
-			request.getRequestDispatcher("/WEB-INF/view/updateACategoryDone.jsp").forward(request, response);
+			/* バリデーションチェック用boolean作成 */
+			boolean isError = false;
+			
+			/* カテゴリ名バリデーション */
+			if (aCategoryName.isBlank()) {
+				request.setAttribute("aCategoryError", "名前を入力してください。");
+				isError = true;
+			} else if (aCategoryName.length() > 20) {
+				request.setAttribute("aCategoryError", "名前は20文字以内で入力してください。");
+				isError = true;
+			}
+			
+			/* エラーがあればページを再表示 */
+			if (isError) {
+				request.getRequestDispatcher("/WEB-INF/view/updateACategory.jsp").forward(request, response);
+			} /* エラーがなければupdate */ 
+			else if (!isError) {
+				/* update用にセット */
+				ACategory aCategory = new ACategory();
+				aCategory.setId(id);
+				aCategory.setaCategoryName(aCategoryName);
+				
+				/* update */
+				ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
+				aCategoryDao.update(aCategory);
+				
+				/* ページ移動 */
+				request.getRequestDispatcher("/WEB-INF/view/updateACategoryDone.jsp").forward(request, response);
+			}
 			
 		} catch (Exception e) {
 			throw new ServletException(e);

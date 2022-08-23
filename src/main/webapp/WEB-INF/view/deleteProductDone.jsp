@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-5">
-                    <div class="title"><div class="display-6"><div class="logout-center">商品を削除しました</div></div></div>
+                    <div class="title"><div class="h3"><div class="logout-center">商品を削除しました</div></div></div>
                     <p class="logout-center"><a href="listProduct">商品一覧へ戻る</a></p>
                     <p class="logout-center"><a href="listDb">データベース一覧へ戻る</a></p>
                     <p class="logout-center"><a href="index" target="_blank">トップページを開く</a></p>

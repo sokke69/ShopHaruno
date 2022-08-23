@@ -23,8 +23,8 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-5">
-                    <div class="title"><div class="display-6"><div class="logout-center">表示できません</div></div></div>
-                    <p class="logout-center">このページを開く場合は適切なユーザーでログインしてください。</p>
+                    <div class="title"><div class="h3"><div class="logout-center">表示できません</div></div></div>
+                    <div class="title"><div class="h3"><div class="logout-center">このページを開く場合は適切なユーザーでログインしてください。</div></div></div>
                     <p class="logout-center"><a href="listDb">データベース一覧へ戻る</a></p><br>
                     <p class="logout-center"><a href="index" target="_blank">トップページを開く</a></p>
             </div>

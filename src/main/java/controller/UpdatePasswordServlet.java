@@ -51,7 +51,6 @@ public class UpdatePasswordServlet extends HttpServlet {
 			Matcher newPassCheckMatcher = passPattern.matcher(newPassCheck);
 			
 			/* 入力されたパスワードをBCryptでハッシュ化 */
-			String hashedOldPass = BCrypt.hashpw(oldPass, BCrypt.gensalt());
 			String hashedNewPass = BCrypt.hashpw(newPass, BCrypt.gensalt());
 			
 			/* 入力された旧パスワードがDBのパスワードと等しいかチェック */
@@ -65,11 +64,14 @@ public class UpdatePasswordServlet extends HttpServlet {
 			if (oldPass.isBlank()) {
 				request.setAttribute("oldLoginPassError", "旧パスワードが未入力です。");
 				isError = true;
+			} else if ((oldPass.length() < 6 || oldPass.length() > 20) && !(oldPassMatcher.matches())) {
+				request.setAttribute("oldLoginPassError", "旧パスワードは6字以上20字以内で入力してください。使用できる文字は半角英数字のみです。");
+				isError = true;
 			} else if (oldPass.length() < 6 || oldPass.length() > 20) {
 				request.setAttribute("oldLoginPassError", "旧パスワードは6字以上20字以内で入力してください。");
 				isError = true;
 			} else if (!oldPassMatcher.matches()) {
-				request.setAttribute("oldLoginPassError", "旧パスワードに使える文字は半角英数字のみです。");
+				request.setAttribute("oldLoginPassError", "旧パスワードに使用できる文字文字は半角英数字のみです。");
 				isError = true;
 			} else if (!checkPass) {
 				request.setAttribute("oldLoginPassError", "旧パスワードが違います");
@@ -82,11 +84,14 @@ public class UpdatePasswordServlet extends HttpServlet {
 			if (newPass.isBlank()) {
 				request.setAttribute("newLoginPassError", "新パスワードが未入力です。");
 				isError = true;
+			} else if ((newPass.length() < 6 || newPass.length() > 20) && !(newPassMatcher.matches())) {
+				request.setAttribute("newLoginPassError", "新パスワードは6字以上20字以内で入力してください。使用できる文字文字は半角英数字のみです。");
+				isError = true;
 			} else if (newPass.length() < 6 || newPass.length() > 20) {
 				request.setAttribute("newLoginPassError", "新パスワードは6字以上20字以内で入力してください。");
 				isError = true;
 			} else if (!newPassMatcher.matches()) {
-				request.setAttribute("newLoginPassError", "新パスワードに使える文字は半角英数字のみです。");
+				request.setAttribute("newLoginPassError", "新パスワードに使用できる文字文字は半角英数字のみです。");
 				isError = true;
 			} 
 			
@@ -94,11 +99,13 @@ public class UpdatePasswordServlet extends HttpServlet {
 			if (newPassCheck.isBlank()) {
 				request.setAttribute("newLoginPassCheckError", "新パスワード(確認)が未入力です。");
 				isError = true;
+			} else if ((newPassCheck.length() < 6 || newPassCheck.length() > 20) && !(newPassCheckMatcher.matches())) {
+				
 			} else if (newPassCheck.length() < 6 || newPassCheck.length() > 20) {
 				request.setAttribute("newLoginPassCheckError", "新パスワードは6字以上20字以内で入力してください。");
 				isError = true;
 			} else if (!newPassCheckMatcher.matches()) {
-				request.setAttribute("newLoginPassCheckError", "新パスワードに使える文字は半角英数字のみです。");
+				request.setAttribute("newLoginPassCheckError", "新パスワードに使用できる文字文字は半角英数字のみです。");
 				isError = true;
 			} 
 			

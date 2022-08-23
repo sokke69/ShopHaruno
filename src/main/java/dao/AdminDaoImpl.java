@@ -206,27 +206,29 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public boolean checkUserName(String userName) throws Exception {
+	public boolean checkUserName(String oldLoginId,String newLoginId) throws Exception {
 		List<String> nameList = new ArrayList<>();
 		try (Connection con = ds.getConnection()){
 			String sql = "SELECT user_name FROM users WHERE user_name NOT IN (?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(1, userName);
+			stmt.setString(1, oldLoginId);
 			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
 				nameList.add(rs.getString("user_name"));
 			}
-
 		} catch (Exception e) {
 			throw e;
 		}
+
+		boolean check = nameList.contains(newLoginId);
 		
 		/* DBに同じログインIDがなければtrueを返す */
-		if (!(nameList.contains(userName))) {
+		if (check) {
+			return false;
+		} else if (!check){
 			return true;
 		}
-		
 		
 		return false;
 	}
@@ -317,6 +319,51 @@ public class AdminDaoImpl implements AdminDao {
 			throw e;
 		}
 		return null;
+	}
+
+	@Override
+	public String findLoginIdById(Integer id) throws Exception {
+		String loginId;
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT user_name FROM users WHERE id=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setObject(1, id,Types.INTEGER);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				loginId = rs.getString("user_name");
+				return loginId;
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return null;
+	}
+
+	@Override
+	public boolean checkUserName2(String loginId) throws Exception {
+		List<String> nameList = new ArrayList<>();
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT user_name FROM users";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				nameList.add(rs.getString("user_name"));
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+
+		boolean check = nameList.contains(loginId);
+		
+		/* DBに同じログインIDがなければtrueを返す */
+		if (check) {
+			return false;
+		} else if (!check){
+			return true;
+		}
+		
+		return false;
 	}
 
 }

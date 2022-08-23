@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-5">
-                    <div class="title"><div class="display-6"><div class="logout-center">ユーザーの編集が完了しました</div></div></div>
+                    <div class="title"><div class="h3"><div class="logout-center">ユーザーの編集が完了しました</div></div></div>
                     <p class="logout-center"><a href="listUser">ユーザー一覧へ戻る</a></p>
                     <p class="logout-center"><a href="listDb">データベース一覧へ戻る</a></p><br>
                     <p class="logout-center"><a href="index" target="_blank">会社トップページを開く</a></p>
