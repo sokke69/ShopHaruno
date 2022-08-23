@@ -141,26 +141,26 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public Admin findByLoginIdAndLoginPass(String userName, String userPass) throws Exception {
-		Admin admin = null;
+	public boolean findByLoginIdAndLoginPass(String userName, String userPass) throws Exception {
+		boolean findIs = false;
 		try (Connection con = ds.getConnection()) {
 			String sql = "SELECT"
-					+ " *"
+					+ " user_pass"
 					+ " FROM users "
-					+ " JOIN users_types"
 					+ " WHERE user_name=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, userName);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
 				if (BCrypt.checkpw(userPass, rs.getString("user_pass"))) {
-					admin = mapToAdmin2(rs);
+					findIs = true;
+					return findIs;
 				}
 			}
 		} catch (Exception e) {
 			throw e;
 		}
-		return admin;
+		return findIs;
 	}
 
 	private Admin mapToAdmin(ResultSet rs) throws Exception {
@@ -299,6 +299,24 @@ public class AdminDaoImpl implements AdminDao {
 		}
 
 		return false;
+	}
+
+	@Override
+	public Admin findByUserName(String userName) throws Exception {
+		Admin admin = new Admin();
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT * FROM users WHERE user_name=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, userName);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				admin = mapToAdmin2(rs);
+				return admin;
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return null;
 	}
 
 }

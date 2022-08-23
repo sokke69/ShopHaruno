@@ -42,10 +42,10 @@ input{
 }
 
 #alert{
-    width: 400px;
-    margin: 0;
-    padding: 8px;
-    font-size: 14px;
+	width: 400px;
+    margin-bottom: 5px;
+    padding: 5px;
+    font-size: 13px;
 }
 
 #submitButton{

@@ -26,20 +26,30 @@
 			<div class="display-6">
 				<div class="title">管理ページ ログイン</div>
 			</div>
-			<c:if test="※ ${not empty Error}">
+			
+			<c:if test="${not empty allError}">
 				<div class="alert alert-danger" id="alert">
 				<table>
 				<tr><td><c:out value="${allError}" /></td></tr>
-				<tr><td><c:out value="${nameError}" /></td></tr>
-				<tr><td><c:out value="${passError}" /></td></tr>
 				</table>
-
 				</div>
 			</c:if>
-
+			
+			<c:if test="${not empty nameError}">
+				<div class="alert alert-danger" id="alert">
+				<table>
+				<tr><td><c:out value="${nameError}" /></td></tr>
+				</table>
+				</div>
+			</c:if>
 			ログインID <input type="text" name="loginId" class="login">
-
-
+			
+			<c:if test="${not empty passError}">
+				<div class="alert alert-danger" id="alert">
+				<table><tr><td><c:out value="${passError}" /></td></tr>
+				</table>
+				</div>
+			</c:if>
 			パスワード <input type="text" name="loginPass" class="login">
 
 			<p class="login-submit">

@@ -76,7 +76,7 @@
                     </table>
                     <input type="submit" value="決定" class="submit">
 
-                    <p><a href="viewMyData">戻る</a></p>
+                    <p><a href="viewMyData">変更する</a></p>
                 </form>
             </div>
                 </div>
