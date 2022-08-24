@@ -48,6 +48,17 @@ table {
 	color: rgb(247, 202, 239);
 }
 
+.table-category{
+	width:450px;
+	font-size:14px;
+	color:white;
+	overflow-wrap: break-word;
+}
+
+.table-category a{
+	color:white;
+}
+
 .product {
 	width: 450px;
 	height: 450px;
