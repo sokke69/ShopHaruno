@@ -1,0 +1,94 @@
+body {
+    margin: 0px;
+    background-color: black;
+}
+
+.logo_bg {
+    background-image: url(../imgs/logo_back2.jpg);
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    margin:0px;
+    padding:0px;
+  }
+
+table {
+    margin-right: auto;
+    margin-left: auto;
+    border-spacing: 0px;
+}
+
+#logo {
+    width: 400px;
+    max-height: 300px;
+    min-height: 300px;
+    ;
+    color: white;
+    text-shadow: -1px -1px 4px rgb(0, 0, 0), -1px 0 4px rgb(0, 0, 0), -1px 1px 4px rgb(0, 0, 0),
+        0 -1px 4px rgb(0, 0, 0), 0px 1px 4px rgb(0, 0, 0),
+        1px -1px 4px rgb(0, 0, 0), 1px 0 4px rgb(0, 0, 0), 1px 1px 4px rgb(0, 0, 0);
+    font-family: 'Kaisei Opti', serif;
+    font-size: 2.5vw;
+}
+
+#title {
+    color: rgb(255, 255, 255);
+}
+
+#spring {
+    color: rgb(247, 202, 239);
+}
+
+.product {
+    width: 450px;
+    height: 450px;
+    min-width: 250px;
+    min-height: 250px;
+    background-color: white;
+    padding: 15px ;
+    border-radius: 6px;
+    
+}
+
+img {
+    width: 430px;
+    height: auto;
+    object-fit: cover;
+}
+
+.product td {
+    padding: 0px;
+}
+
+.th_height {
+    height: 15%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.product_name {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    width: 430px;
+}
+
+.js-textTrim{
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.table_bottom{
+    text-align: center;;
+}
+
+.slider{
+    width: 430px;
+    object-fit: cover;
+}

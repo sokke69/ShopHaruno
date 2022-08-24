@@ -20,21 +20,13 @@
 <link rel="stylesheet" href="./css/hf_style.css">
 
 <script src="./js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="./js/jquery-adaptive-backgrounds.js"></script>
-
-<script>
-$(document).ready(function(){
-  $.adaptiveBackground.run()
-});
-</script> 
 
 </head>
 
 <body>
 
-<c:import url="parts/header_shop.jsp" />
-	
+	<c:import url="parts/header_shop.jsp" />
+
 	<div class="title">
 
 		<div class="row">
@@ -56,9 +48,12 @@ $(document).ready(function(){
 				<div class="col">
 					<table class="category-table" align="center">
 						<tr>
-							<td><a href="index">全カテゴリ</a><c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
-                <a href="indexByAId?aId=${aCategoryList.id}"><c:out value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></a>
-                </c:forEach></td>
+							<td><a href="index">全カテゴリ</a>
+							<c:forEach items="${aCategoryList}" var="aCategoryList"
+									varStatus="vs">
+									<a href="indexByAId?aId=${aCategoryList.id}"><c:out
+											value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></a>
+								</c:forEach></td>
 						</tr>
 					</table>
 				</div>
@@ -68,22 +63,22 @@ $(document).ready(function(){
 		<!--/.container-->
 	</div>
 	<!--/.category-->
-	
+
 	<div class="products">
 		<div class="container">
 			<div class="row">
 				<div align="center">
 					<div class="row">
-					
-					<c:import url="parts/product_table1.jsp" />
-					<c:import url="parts/product_table2.jsp" />
-						
+
+						<c:import url="parts/product_table1.jsp" />
+						<c:import url="parts/product_table2.jsp" />
+
 						<c:forEach items="${productList}" var="productList" varStatus="vs">
 							<div class="col">
 								<table width="560px" height="260px">
 									<tr>
-										<th class="large"  id="photo-large-${productList.id}">
-												<img src="${productList.imgMain}" alt="" data-adaptive-background/>
+										<th class="large" id="photo-large-${productList.id}"><img
+											src="${productList.imgMain}" alt="" data-adaptive-background />
 										</th>
 										<td height="240px" width="240px" class="mini">
 											<div id="photo-mini-${productList.id}" class="img-table">
@@ -102,13 +97,14 @@ $(document).ready(function(){
 										</td>
 									</tr>
 									<tr>
-										<td colspan="2" id="table-products"><a href="${productList.productUrl}" target="_blank"><c:out
+										<td colspan="2" id="table-products"><a
+											href="${productList.productUrl}" target="_blank"><c:out
 													value="${productList.productName}" /></a></td>
 									</tr>
 								</table>
 							</div>
 						</c:forEach>
-						
+
 						<!--ここから消さない-->
 						<div class="col">
 							<table width="560px">
@@ -132,27 +128,31 @@ $(document).ready(function(){
 		</footer>
 	</div>
 
-<script>
-		$('#photo-mini-sample1').on('click','img',function() {
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+	<script>
+		$('#photo-mini-sample1').on('click', 'img', function() {
 			let src = $(this).attr('src');
 			$('#photo-large-sample1 img').attr('src', src);
 		});
-</script>
-<script>
-		$('#photo-mini-sample2').on('click','img',function() {
+	</script>
+	<script>
+		$('#photo-mini-sample2').on('click', 'img', function() {
 			let src = $(this).attr('src');
 			$('#photo-large-sample2 img').attr('src', src);
 		});
-</script>
+	</script>
 
-<c:forEach items="${productList}" var="productList" varStatus="vs">
-<script>
-	$('#photo-mini-${productList.id}').on('click','img',function() {
-		let src = $(this).attr('src');
-		$('#photo-large-${productList.id} img').attr('src', src);
-});
-</script>
-</c:forEach>
+	<c:forEach items="${productList}" var="productList" varStatus="vs">
+		<script>
+			$('#photo-mini-${productList.id}').on('click', 'img', function() {
+				let src = $(this).attr('src');
+				$('#photo-large-${productList.id} img').attr('src', src);
+			});
+		</script>
+	</c:forEach>
 
 </body>
 
