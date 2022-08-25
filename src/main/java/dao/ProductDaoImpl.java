@@ -268,7 +268,7 @@ public class ProductDaoImpl implements ProductDao{
 					+ " regist_date, regist_by, update_date, update_by"
 					+ " FROM products"
 					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
-					+ " ORDER BY id ASC LIMIT ?,5";
+					+ " ORDER BY id DESC LIMIT ?,5";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			Integer id = (page*5)-5;
 			stmt.setObject(1, id,Types.INTEGER);

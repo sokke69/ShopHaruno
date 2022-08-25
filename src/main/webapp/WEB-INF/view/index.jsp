@@ -38,13 +38,13 @@
 <%-- カテゴリ一覧 ここから --%>
 <table class="table-category">
 <tr><th>- カテゴリ一覧 -</th></tr>
-<tr>
-<td>
+<tr><td>
+<div class="container">
 <c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
-<a href="index?Category=${aCategoryList.id}"><c:out value="${aCategoryList.aCategoryName}" /></a> 
+<div><a href="index?Category=${aCategoryList.id}"><c:out value="${aCategoryList.aCategoryName}" /></a></div>
 </c:forEach>
-</td>
-</tr></table>
+</div>
+</td></tr></table>
 
 <br><br>
 <%-- カテゴリ一覧 ここまで --%>
@@ -85,7 +85,7 @@
         <tr id="visit"><td width="420px" colspan="2"><p><a href="${productList.productUrl}">販売ページへ行く</a></p></td></tr>
         <tr>
         <td><%-- <i class="fa-brands fa-gratipay like-off"></i><i class="fa-brands fa-gratipay like-on"></i> --%></td>
-        <td id="clock"><i class="fa-solid fa-clock clock"></i> 2022/09/01</td>
+        <td id="clock"><i class="fa-solid fa-calendar-days"></i> <fmt:formatDate value="${productList.registDate}" pattern="y年MM月dd日" /></td>
         </tr>
         </table>
         </td>
@@ -116,14 +116,6 @@ $(function() {
 	   lastText: '<i class="fas fa-angle-double-right"></i>', // "最後のページ"に移動するボタンのテキスト
 	  })
 	});
-</script>
-<script>
-$(document).ready(function(){
-	$('#clock').hover(
-			function(){$(this).css('background-color','#ffb6c1')},
-			function(){$(this).css('background-color','#FFF')}
-			);
-});
 </script>
 </div>
 <%-- ページネーション ここまで --%>
