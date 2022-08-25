@@ -14,5 +14,6 @@ public interface ProductDao {
 	void delete(Product product) throws Exception;
 	Integer findLatestIdPlusOne() throws Exception;
 	Integer findAIdById(Integer id) throws Exception;
-
+	List<Product> find5(Integer page) throws Exception;
+	Integer countId() throws Exception;
 }

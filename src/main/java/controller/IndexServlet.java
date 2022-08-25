@@ -16,7 +16,7 @@ import domain.ACategory;
 import domain.Product;
 
 /**
- * Servlet implementation class IndexServlet
+ * Servlet implementation class Index2Servlet
  */
 @WebServlet("/index")
 public class IndexServlet extends HttpServlet {
@@ -26,22 +26,26 @@ public class IndexServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
+			
+			/* DBから商品の取得 */
 			ProductDao productDao = DaoFactory.createProductDao();
 			List<Product> productList = productDao.findAll();
-			
+
+			/* データベースからカテゴリ一覧の取得 */
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			List<ACategory> aCategoryList = aCategoryDao.findAll();
-
+			
+			/* 取得したデータを各リストへ収納しjspで表示用にsetAttribute */
 			request.setAttribute("productList", productList);
 			request.setAttribute("aCategoryList", aCategoryList);
+
 			
+			/* ページ表示 */
 			request.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-
 		
 		
 	}
@@ -51,11 +55,6 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		
-		
-		
-		
 		
 	}
 

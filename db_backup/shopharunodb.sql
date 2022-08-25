@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: shopharunodb
 -- ------------------------------------------------------
@@ -27,7 +27,7 @@ CREATE TABLE `as_categories` (
   `a_category_name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `a_category_name` (`a_category_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `as_categories` (
 
 LOCK TABLES `as_categories` WRITE;
 /*!40000 ALTER TABLE `as_categories` DISABLE KEYS */;
-INSERT INTO `as_categories` VALUES (4,'カメラ関連製品'),(5,'その他'),(2,'デジタルカメラ'),(1,'デジタル一眼カメラ'),(3,'レンズ'),(6,'生鮮食品');
+INSERT INTO `as_categories` VALUES (4,'カメラ関連製品'),(5,'その他'),(2,'デジタルカメラ'),(1,'デジタル一眼カメラ'),(3,'レンズ'),(8,'水泳用品'),(6,'生鮮食品');
 /*!40000 ALTER TABLE `as_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,6 +98,30 @@ INSERT INTO `imgs` VALUES (1,_binary '�\��\�\0JFIF\0\0\0\0\0\0�\�\�Exif\0\
 UNLOCK TABLES;
 
 --
+-- Table structure for table `likes`
+--
+
+DROP TABLE IF EXISTS `likes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `likes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `status` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `status` (`status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `likes`
+--
+
+LOCK TABLES `likes` WRITE;
+/*!40000 ALTER TABLE `likes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `likes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `products`
 --
 
@@ -124,7 +148,7 @@ CREATE TABLE `products` (
   `update_date` timestamp NULL DEFAULT NULL,
   `update_by` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,6 +157,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (1,'ソニー / 標準単焦点レンズ / APS-C / E 35mm F1.8 OSS / デジタル一眼カメラα[Eマウント]用レンズ / SEL35F18','http://www.yahoo.co.jp',1,NULL,'./imgs/1_main.jpg','./imgs/1_sub01.jpg','./imgs/1_sub02.jpg','./imgs/1_sub03.jpg','./imgs/1_sub04.jpg','./imgs/1_sub05.jpg','./imgs/1_sub06.jpg','./imgs/1_sub07.jpg','./imgs/1_sub08.jpg','2022-08-25 11:08:51','マスター',NULL,NULL),(2,'テスト2','http://www.google.co.jp',2,NULL,'./imgs/2_main.jpg','./imgs/2_sub01.jpg','./imgs/2_sub02.jpg','./imgs/2_sub03.jpg','./imgs/2_sub04.jpg','./imgs/2_sub05.jpg','./imgs/2_sub06.jpg','./imgs/2_sub07.jpg','./imgs/2_sub08.jpg','2022-08-25 11:08:51','マスター',NULL,NULL),(3,'テスト3','http://www.amazon.co.jp',1,NULL,'./imgs/3_main.jpg','./imgs/3_sub01.jpg','./imgs/3_sub02.jpg','./imgs/3_sub03.jpg','./imgs/3_sub04.jpg','./imgs/3_sub05.jpg','./imgs/3_sub06.jpg','./imgs/3_sub07.jpg','./imgs/3_sub08.jpg','2022-08-25 11:08:51','マスター',NULL,NULL),(4,'テスト4','http://www.google.co.jp',3,NULL,'./imgs/4_main.jpg','./imgs/4_sub01.jpg','./imgs/4_sub02.jpg','./imgs/4_sub03.jpg','./imgs/4_sub04.jpg','./imgs/4_sub05.jpg','./imgs/4_sub06.jpg','./imgs/4_sub07.jpg','./imgs/4_sub08.jpg','2022-08-25 11:08:51','マスター',NULL,NULL),(5,'テスト5','http://www.google.co.jp',2,NULL,'./imgs/5_main.jpg','./imgs/5_sub01.jpg','./imgs/5_sub02.jpg','./imgs/5_sub03.jpg','./imgs/5_sub04.jpg','./imgs/5_sub05.jpg','./imgs/5_sub06.jpg','./imgs/5_sub07.jpg','./imgs/5_sub08.jpg','2022-08-25 11:08:51','マスター',NULL,NULL),(6,'テスト6','http://www.google.co.jp',1,NULL,'./imgs/6_main.jpg','./imgs/6_sub01.jpg','./imgs/6_sub02.jpg','./imgs/6_sub03.jpg','./imgs/6_sub04.jpg','./imgs/6_sub05.jpg','./imgs/6_sub06.jpg','./imgs/6_sub07.jpg','./imgs/6_sub08.jpg','2022-08-25 11:08:51','マスター',NULL,NULL),(7,'テスト7','http://www.google.co.jp',2,NULL,'./imgs/7_main.jpg','./imgs/7_sub01.jpg','./imgs/7_sub02.jpg','./imgs/7_sub03.jpg','./imgs/7_sub04.jpg','./imgs/7_sub05.jpg','./imgs/7_sub06.jpg','./imgs/7_sub07.jpg','./imgs/7_sub08.jpg','2022-08-25 11:08:51','マスター',NULL,NULL),(8,'テスト8','http://www.google.co.jp',2,NULL,'./imgs/8_main.jpg','./imgs/8_sub01.jpg','./imgs/8_sub02.jpg','./imgs/8_sub03.jpg','./imgs/8_sub04.jpg','./imgs/8_sub05.jpg','./imgs/8_sub06.jpg','./imgs/8_sub07.jpg','./imgs/8_sub08.jpg','2022-08-25 11:08:51','マスター',NULL,NULL),(9,'テスト9','http://www.google.co.jp',1,NULL,'./imgs/9_main.jpg','./imgs/9_sub01.jpg','./imgs/9_sub02.jpg','./imgs/9_sub03.jpg','./imgs/9_sub04.jpg','./imgs/9_sub05.jpg','./imgs/9_sub06.jpg','./imgs/9_sub07.jpg','./imgs/9_sub08.jpg','2022-08-25 11:08:51','マスター',NULL,NULL),(10,'テスト10','http://www.google.co.jp',1,NULL,'./imgs/10_main.jpg','./imgs/10_sub01.jpg','./imgs/10_sub02.jpg','./imgs/10_sub03.jpg','./imgs/10_sub04.jpg','./imgs/10_sub05.jpg','./imgs/10_sub06.jpg','./imgs/10_sub07.jpg','./imgs/10_sub08.jpg','2022-08-25 11:08:51','マスター',NULL,NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +176,7 @@ CREATE TABLE `users` (
   `user_type` int DEFAULT '2',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_name` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +185,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'マスター','master','$2a$08$GzImC.LElmrREYUXbXXjTO2De92lcDslS/1kS5SCmot0BJhnk.MFW',1),(2,'ユーザー','user','$2a$08$JQ3Ty7qMLzj4Y7QQe4Up2OqAEnBGOpEOVMzTqPZxnteZCXRQHqV/q',2),(3,'テスター','test','$2a$08$3JkiEGWb5XxMkkK/va871uY.GzgJuQR78XgGDaKvzIhmz8SkhS1ue',3),(7,'ハッピー子','happy','$2a$10$sf/hUkDIX87qavPRYRdOhu/FUL1yBqV5L1KBOhyadC.vuEEm/tAQi',0),(10,'ふじ君','fuji','$2a$10$MxkZsOld7ZDER7HUqcINt.fh1ao0Ebfl3WDvs8SXImwhFOKQMSq.G',2),(17,'矢沢 永吉','yazawa','$2a$10$So/Rfgxif9hN9spnHMe8JO3/pbi3EonI8VT7m.MRUeHUfIUseclc2',2),(39,'バンドエイドバンド','bandaid','$2a$10$k6l.KGPf73IvcvZ1i9wD3uN5TTkfYUgJ.YzewB.2xptTWB9R1Vndq',2),(40,'sokken','sokken','$2a$10$2rq8/iKrE/l1X5LGTX5eFunWvPDMmFPcRRW9KVSGp70jIfWznTHLq',2);
+INSERT INTO `users` VALUES (1,'マスター','master','$2a$08$GzImC.LElmrREYUXbXXjTO2De92lcDslS/1kS5SCmot0BJhnk.MFW',1),(2,'ユーザー','user','$2a$08$JQ3Ty7qMLzj4Y7QQe4Up2OqAEnBGOpEOVMzTqPZxnteZCXRQHqV/q',2),(3,'テスター','tester','$2a$08$P.lWYJo6tPgHsztooPNVKOn56/FKMdzDM/NdlyavQjCuhN1sQoiTS',3),(4,'レジスター','register','$2a$08$Aru6HBH9D/apzxO/6Yh4eOyqTeImkF8nKB5urfQW9wE1qy8NBXkji',4),(5,'テスター2','tester2','$2a$10$HLZl5J2eb7XwW6fFSw1ZmOXMnuMCeX3KqaVEXfO3lMSZ/bH8kEkn6',2),(6,'テスター3','tester3','$2a$10$VhzJyOegs0iYo8ZACdE22uNHMDDT0MNnOZ.HF08IvhNQvLmdxrdfu',3);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +201,7 @@ CREATE TABLE `users_types` (
   `type_name` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `type_name` (`type_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +210,7 @@ CREATE TABLE `users_types` (
 
 LOCK TABLES `users_types` WRITE;
 /*!40000 ALTER TABLE `users_types` DISABLE KEYS */;
-INSERT INTO `users_types` VALUES (1,'master'),(3,'test'),(2,'user');
+INSERT INTO `users_types` VALUES (1,'master'),(99,'register'),(3,'test'),(2,'user');
 /*!40000 ALTER TABLE `users_types` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -198,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-21 11:24:23
+-- Dump completed on 2022-08-25 15:12:38

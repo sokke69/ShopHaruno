@@ -256,4 +256,65 @@ public class ProductDaoImpl implements ProductDao{
 		return aId;
 	}
 
+	@Override
+	public List<Product> find5(Integer page) throws Exception {
+		List<Product> productList = new ArrayList<>();
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT"
+					+ " products.id, product_name, product_url,"
+					+ " as_categories.a_category_name AS a_category_name,"
+					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
+					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
+					+ " regist_date, regist_by, update_date, update_by"
+					+ " FROM products"
+					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
+					+ " ORDER BY id ASC LIMIT ?,5";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			Integer id = (page*5)-5;
+			stmt.setObject(1, id,Types.INTEGER);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				productList.add(mapToProduct2(rs));
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		
+		for(Product product : productList) {
+			String name = product.getProductName();
+			System.out.println(name);
+		}
+		
+		return productList;
+	}
+
+	@Override
+	public Integer countId() throws Exception {
+		Integer countedId;
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT COUNT(id) FROM products";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				Object object = rs.getObject("COUNT(id)");
+				String countTypeIdStr = object.toString();
+				countedId = Integer.parseInt(countTypeIdStr);
+				return countedId;
+			}
+			} catch (Exception e) {
+			throw e;
+		}
+		
+		return null;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
 }
