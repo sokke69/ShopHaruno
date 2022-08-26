@@ -24,6 +24,18 @@ public class EnquiryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		/* 送信失敗して再度開いたとき再表示するためにsessionに保存したものを取得 */
+		String name = (String) request.getSession().getAttribute("enquiryName");
+		String emailAddress = (String) request.getSession().getAttribute("enquiryEmailAddress");
+		String text = (String) request.getSession().getAttribute("enquiryText");
+		
+		/* 再表示用にセット */
+		request.setAttribute("requestName", name);
+		request.setAttribute("requestEmailAddress", emailAddress);
+		request.setAttribute("requestText", text);
+		
+		/* ページ移動 */
 		request.getRequestDispatcher("/WEB-INF/view/enquiry.jsp").forward(request, response);
 	}
 
@@ -102,8 +114,19 @@ public class EnquiryServlet extends HttpServlet {
 				
 				email.send();
 				
+				/* 送信成功すればsessionに保存したものは必要なくなるので削除 */
+				request.getSession().removeAttribute("enquiryName");
+				request.getSession().removeAttribute("enquiryEmailAddress");
+				request.getSession().removeAttribute("enquiryText");
+				
+				/* ページ移動 */
 				request.getRequestDispatcher("/WEB-INF/view/enquiryDone.jsp").forward(request, response);
 			} catch (EmailException e) {
+				/* 送信失敗した、一度失敗画面に移動したあと戻ることになるので再表示用にsessionに追加 */
+				request.getSession().setAttribute("enquiryName", name);
+				request.getSession().setAttribute("enquiryEmailAddress", emailAddress);
+				request.getSession().setAttribute("enquiryText", text);
+				
 				request.getRequestDispatcher("/WEB-INF/view/enquiryFail.jsp").forward(request, response);
 			}
 			

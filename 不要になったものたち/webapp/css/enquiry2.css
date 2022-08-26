@@ -1,0 +1,79 @@
+@charset "UTF-8";
+.table-enquiry th{
+	width:100%;
+}
+.table-category-e{
+	width:450px;
+	overflow-wrap: break-word;
+	background-color: white;
+	border-radius: 6px;
+}
+
+.table-category-e th{
+	font-size:14px;
+	color:black;
+	text-align:center;
+	padding: 15px 15px 15px 15px;
+}
+
+.table-category-e td{
+	font-size:14px;
+	color:black;
+	padding: 0px 15px 0px 15px;
+}
+
+.table-category-e a{
+	color:black;
+}
+
+.table-enquiry{
+	width:100%;
+}
+
+.table-enquiry th{
+	text-align:left;
+	padding:0px 0px 5px 2px;
+}
+
+.table-enquiry td{
+	text-align:left;
+	padding:0px 0px 5px 2px;
+}
+
+.table-enquiry td input{
+	width:80%;
+	padding:6px;
+}
+
+.table-enquiry textarea{
+	resize: none;
+	width:100%;
+	padding:6px;
+}
+
+.input-wrap{
+	text-align:center;
+}
+
+div .attention{
+	font-size:11px;
+	color:#808080;
+}
+.success{
+	color:#3cb371;
+}
+
+.error{
+	color:#dc143c;
+}
+
+.warning{
+	color:#ffd700;
+}
+
+#alert{
+	width: 380px;
+    margin-bottom: 5px;
+    padding: 5px;
+    font-size: 12px;
+}

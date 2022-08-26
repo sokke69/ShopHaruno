@@ -16,9 +16,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
-    <link rel="stylesheet" href="./css/shop.css">
+    <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/hf_style.css">
-    
+    <link rel="stylesheet" href="./css/pagenation.css">
     
     <script src="https://kit.fontawesome.com/ec1be9ca10.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -47,87 +48,88 @@
 <c:import url="parts/header_shop.jsp" />
 
 <%-- ホームページロゴ ここから --%>
-<div class="logo_bg">
-    <table id="logo">
-        <tr>
-            <th id="title">*ショップ<span id="spring">ハル</span>ノ*</th>
-        </tr>
-    </table>
-</div>
-
-<br> <br>
+<c:import url="parts/logo.jsp" />
 <%-- ホームページロゴ ここまで --%>
 
 <%-- カテゴリ一覧 ここから --%>
-<table class="table-category">
-<tr><th>- カテゴリ一覧 -</th></tr>
-<tr><td>
-<div class="container">
-	<div><a href="index">すべて</a></div>
-	<c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
-		<div><a href="index?Category=${aCategoryList.id}"><c:out value="${aCategoryList.aCategoryName}" /></a></div>
-	</c:forEach>
-	<!-- ソート未実装 -->
-	<!-- <div class="sort">
-	<hr class="hr-category">
-		<div>登録日 :</div><div><a href="" id="sort-new">新しい順</a></div><div><a href="" id="sort-old">古い順</a></div>
-	</div> -->
-</div>
-</td></tr></table>
+<table class="basic">
+<tr><td class="basic-top"></td></tr>
+<tr><td class="basic-middle">
+
+	<%-- テーブル中身 ここから --%>
+	
+		<table class="category">
+			<tr><th>- カテゴリ一覧 -</th></tr>
+			<tr><td>
+				<div class="container">
+					<div><a href="index">すべて</a></div>
+					<c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
+					<div class="category-a"><a href="index?Category=${aCategoryList.id}"><c:out value="${aCategoryList.aCategoryName}" /></a><span>  </span></div>
+					</c:forEach>
+				</div>
+			</td></tr>
+		</table>
+
+	<%-- テーブル中身 ここまで --%>
+
+</td></tr>
+<tr><td class="basic-bottom"></td></tr>
+</table>
 
 <br><br>
 <%-- カテゴリ一覧 ここまで --%>
 
 
 <%-- 商品1つのテーブル(DBからデータ取得) ここから --%>
-<div class="pagenation_block">
-
-<c:forEach items="${productList}" var="productList" varStatus="vs">
-
-<dl>
-<dd>
-<table class="product">
-    <tr class="product-name-height">
-        <th class="js-textTrim">
-            <p><c:out value="${productList.productName}" /></p> 
-        </th>
-    </tr>
-    <tr class=img-view>
-        <td>
-            <div class="single">
-                <div><img src="${productList.imgMain}" alt="" class="imgs"></div>
-                <div><img src="${productList.imgSub01}" alt="" class="imgs"></div>
-                <div><img src="${productList.imgSub02}" alt="" class="imgs"></div>
-                <div><img src="${productList.imgSub03}" alt="" class="imgs"></div>
-                <div><img src="${productList.imgSub04}" alt="" class="imgs"></div>
-                <div><img src="${productList.imgSub05}" alt="" class="imgs"></div>
-                <div><img src="${productList.imgSub06}" alt="" class="imgs"></div>
-                <div><img src="${productList.imgSub07}" alt="" class="imgs"></div>
-                <div><img src="${productList.imgSub08}" alt="" class="imgs"></div>
-            </div>
-        </td>
-    </tr>
-    <tr class="product-bottom">
-        <td id="bottom">
-        <table>
-        <tr></tr>
-        <tr id="visit"><td width="420px" colspan="2"><p><a href="${productList.productUrl}">販売ページへ行く</a></p></td></tr>
-        <tr>
-        <td><%-- <i class="fa-brands fa-gratipay like-off"></i><i class="fa-brands fa-gratipay like-on"></i> --%></td>
-        <td id="clock"><i class="fa-solid fa-calendar-days"></i> <fmt:formatDate value="${productList.registDate}" pattern="y年MM月dd日" /></td>
-        </tr>
-        </table>
-        </td>
-    </tr>
-</table>
-<br> <br>
-</dd>
-</dl>
-
-</c:forEach>
-
-
-
+<div class="pagenation-block">
+	<c:forEach items="${productList}" var="productList" varStatus="vs">
+		<dl><dd>
+			<table class="basic">
+				<tr><td class="basic-top"></td></tr>
+				<tr><td class="basic-middle">
+					<%-- テーブル中身 ここから --%>
+						<table class="table-product">
+							<tr class="product-top"><th><c:out value="${productList.productName}" /></th></tr>
+							<tr class="product-middle">
+								<td>
+									<div class="single">
+										<div><img src="${productList.imgMain}" alt="" class="imgs"></div>
+										<div><img src="${productList.imgSub01}" alt="" class="imgs"></div>
+										<div><img src="${productList.imgSub02}" alt="" class="imgs"></div>
+										<div><img src="${productList.imgSub03}" alt="" class="imgs"></div>
+										<div><img src="${productList.imgSub04}" alt="" class="imgs"></div>
+										<div><img src="${productList.imgSub05}" alt="" class="imgs"></div>
+										<div><img src="${productList.imgSub06}" alt="" class="imgs"></div>
+										<div><img src="${productList.imgSub07}" alt="" class="imgs"></div>
+										<div><img src="${productList.imgSub08}" alt="" class="imgs"></div>
+									</div>
+								</td>
+							</tr>
+				<tr>
+					<td class="product-bottom">
+						<table class="table-bottom">
+							<tr>
+								<td class="product-link">
+									<p><a href="${productList.productUrl}"><i class="fa-brands fa-amazon amazon"></i> 販売ページへ</a></p>
+								</td>
+							</tr>
+							<tr>
+								<td class="product-registed">
+									<i class="fa-solid fa-calendar-days calender-icon"></i>
+									<fmt:formatDate value="${productList.registDate}" pattern=" y年MM月dd日" />
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+					<%-- ここまで --%>
+					</td></tr>
+				<tr><td class="basic-bottom"></td></tr>
+			</table>
+			<br><br>
+		</dd></dl>
+	</c:forEach>
 </div>
 <%-- 商品1つのテーブル(DBからデータ取得) ここまで --%>
 
@@ -136,7 +138,7 @@
 <div class="page-nation">
 <script>
 $(function() {
-	  $('.pagenation_block').paginathing({//親要素のclassを記述
+	  $('.pagenation-block').paginathing({//親要素のclassを記述
 	   perPage: 3,//1ページあたりの表示件数
 	   prevText:'<i class="fas fa-angle-left"></i>',//1つ前のページへ移動するボタンのテキスト
 	   nextText:'<i class="fas fa-angle-right"></i>',//1つ次のページへ移動するボタンのテキスト
@@ -149,15 +151,15 @@ $(function() {
 </div>
 <%-- ページネーション ここまで --%>
 
+<%-- フッター ここから --%>
 <footer>
      <c:import url="parts/footer.jsp" />
 </footer>
-
+<%-- フッター ここまで --%>
 
 <%-- slick ここから --%>
 <script src="./js/slick.min.js"></script>
 <script>
-$(document).ready(function(){
 	  $('.single').slick({
 		    autoplay:true,
 		    autoplaySpeed:4000,
@@ -165,7 +167,6 @@ $(document).ready(function(){
 		    prevArrow: '<button class="slide-arrow prev-arrow"></button>',
 		    nextArrow: '<button class="slide-arrow next-arrow"></button>'
 		  });
-		});
 </script>
 <%-- slick ここまで --%>
 

@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+img {
+	width: 430px;
+	height: auto;
+	object-fit: contain;
+}
+table.category{
+	width:100%;
+}
+table.category th{
+	text-align:center;
+}
+table.category td{
+	text-align:center;
+}
+.container{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content: center;
+}
+.category-a{
+	padding: 0px 8px 0px;
+}
+.table-product{
+	height:470px;
+}
+.product-top th{
+	height:60px;
+	font-size:22px;
+	font-weight: bold;
+	margin: 0px;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+.product-bottom {
+	height:60px;
+	vertical-align:bottom;
+}
+.table-bottom{
+	width:100%;
+}
+.product-link{
+	width:100%;
+	font-size:20px;
+	text-align:center;
+	vertical-align: text-top;
+}
+.amazon{
+	color:#ffa500;
+	font-size:19px;
+}
+.product-registed{
+	color:gray;
+	font-size:12px;
+	text-align:right;
+}
+/* slick ここから */
+.single{
+	max-width: 420px;
+	margin: 0 auto 50px;
+}
+/* slick ここまで */
+/* page-nation ここから */
+.single{
+	verical-align:middle;
+}
+.single img {
+	width: 100%;
+}
+
+.slide-arrow {
+	background-color: #FFF;
+	bottom: 0;
+	height: 0;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	width: 0;
+}
+
+.prev-arrow {
+	border-bottom: 5px solid #FFF;
+	border-left: 0;
+	border-right: 7px solid #000;
+	border-top: 5px solid #FFF;
+	left: -11px;
+}
+
+.next-arrow {
+	border-bottom: 5px solid #FFF;
+	border-left: 7px solid #000;
+	border-right: 0;
+	border-top: 5px solid #FFF;
+	right: -11px;
+}
+
+button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+	padding: 0;
+}
+
+/* page-nationここまで */

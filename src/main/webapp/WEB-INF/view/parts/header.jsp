@@ -9,7 +9,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 		<div class="container">
 		<c:if test="${not empty userNickName}">
-		<a class="navbar-brand" href="index"><i class="fa-solid fa-circle-user"></i>  <c:out value="${userNickName}" /> さん</a>
+		<a class="navbar-brand" href="viewMyData"><i class="fa-solid fa-circle-user"></i>  <c:out value="${userNickName}" /> さん</a>
 		</c:if>
 			
 			<button class="navbar-toggler" data-bs-toggle="collapse"
@@ -18,13 +18,12 @@
 			</button>
 			<div class="collapse navbar-collapse" id="menu">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="viewMyData">マイアカウント</a></li>
 					<li class="nav-item"><a class="nav-link" href="listDb">データベース一覧</a></li>
 					<li class="nav-item"><a class="nav-link" href="listACategory">カテゴリ一覧</a></li>
-					<li class="nav-item"><a class="nav-link" href="enquiry">CONTACT</a></li>
 					<li class="nav-item"><a class="nav-link" href="listUser">ユーザー一覧</a></li>
-					<li class="nav-item"><a class="nav-link" href="logout">ログアウト</a></li>
 					<li class="nav-item"><a class="nav-link" href="index">会社トップページ</a></li>
+					<li class="nav-item"><a class="nav-link" href="logout">ログアウト</a></li>
+					
 				</ul>
 			</div>
 			<!--/.collapse.navbar-collapse-->

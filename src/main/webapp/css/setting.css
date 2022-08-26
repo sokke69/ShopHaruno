@@ -38,8 +38,8 @@
 	padding: 0px 0px 5px 2px;
 }
 
-.table-enquiry td input {
-	width: 50%;
+input {
+	width: 100%;
 	padding: 6px;
 }
 
@@ -106,4 +106,8 @@ div .attention {
 	margin-bottom: 5px;
 	padding: 5px;
 	font-size: 12px;
+}
+
+input#add-user-form{
+	width:100%;
 }
