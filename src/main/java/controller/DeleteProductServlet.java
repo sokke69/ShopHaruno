@@ -37,7 +37,7 @@ public class DeleteProductServlet extends HttpServlet {
 			ProductDao productDao = DaoFactory.createProductDao();
 			Product product = productDao.findById(id);
 			request.setAttribute("product", product);
-			
+
 			request.getRequestDispatcher("/WEB-INF/view/deleteProduct.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
@@ -52,38 +52,62 @@ public class DeleteProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		String idStr = id.toString();
-		
+
 		Product product = new Product();
 		product.setId(id);
-		
+
 		try {
 			ProductDao productDao = DaoFactory.createProductDao();
 			productDao.delete(product);
-			
-			File filePath = getUploadedDirectory(request);
-			Path main = Paths.get(filePath + idStr + "_main.jpg");
 
-			try{
-			  Files.delete(main);
-			}catch(IOException e){
-			  System.out.println(e);
-			}
-			
+			deleteImg(request);
+
 			request.getRequestDispatcher("/WEB-INF/view/deleteProductDone.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException();
 		}
-		
+
 	}
-	
+
 	private File getUploadedDirectory(HttpServletRequest request) throws ServletException {
 		ServletContext context = request.getServletContext();
 
-			String path = context.getRealPath("/imgs");
-			return new File(path);
+		String path = context.getRealPath("/imgs");
+		return new File(path);
+
+	}
+
+	private void deleteImg(HttpServletRequest request) throws ServletException {
+
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		String idStr = id.toString();
+
+		File filePath = getUploadedDirectory(request);
+		Path main = Paths.get(filePath + "/" + idStr + "_main.jpg");
+		Path sub01 = Paths.get(filePath + "/" + idStr + "_sub01.jpg");
+		Path sub02 = Paths.get(filePath + "/" + idStr + "_sub02.jpg");
+		Path sub03 = Paths.get(filePath + "/" + idStr + "_sub03.jpg");
+		Path sub04 = Paths.get(filePath + "/" + idStr + "_sub04.jpg");
+		Path sub05 = Paths.get(filePath + "/" + idStr + "_sub05.jpg");
+		Path sub06 = Paths.get(filePath + "/" + idStr + "_sub06.jpg");
+		Path sub07 = Paths.get(filePath + "/" + idStr + "_sub07.jpg");
+		Path sub08 = Paths.get(filePath + "/" + idStr + "_sub08.jpg");
+		
+		try {
+			Files.deleteIfExists(main);
+			Files.deleteIfExists(sub01);
+			Files.deleteIfExists(sub02);
+			Files.deleteIfExists(sub03);
+			Files.deleteIfExists(sub04);
+			Files.deleteIfExists(sub05);
+			Files.deleteIfExists(sub06);
+			Files.deleteIfExists(sub07);
+			Files.deleteIfExists(sub08);
+		} catch (IOException e) {
+			System.out.println(e);
+		}
 
 	}
 

@@ -4,17 +4,19 @@ insert into users (id,user_nick_name,user_name,user_pass,user_type) values
 (3,'テスター','tester','$2a$08$P.lWYJo6tPgHsztooPNVKOn56/FKMdzDM/NdlyavQjCuhN1sQoiTS',3),
 (4,'レジスター','register','$2a$08$Aru6HBH9D/apzxO/6Yh4eOyqTeImkF8nKB5urfQW9wE1qy8NBXkji',4),
 (5,'テスター2','tester2','$2a$08$GuCW3oFKXNGF8jAVXOJkSeqV2DD3VfyV4gEP6AiJdsdVEB1Fl8b1u',2);
+
 truncate table users; 
+
 truncate table products;
+
 insert into products (product_name,product_url,category_a,img_main,img_sub01,img_sub02,img_sub03,img_sub04,img_sub05,img_sub06,img_sub07,img_sub08,regist_date,regist_by) values 
-('テスト1','http://www.yahoo.co.jp',1,'./imgs/1_main.jpg','./imgs/1_sub01.jpg','./imgs/1_sub02.jpg','./imgs/1_sub03.jpg','./imgs/1_sub04.jpg','./imgs/1_sub05.jpg','./imgs/1_sub06.jpg','./imgs/1_sub07.jpg','./imgs/1_sub08.jpg',now(),'マスター'),
-('テスト2','http://www.google.co.jp',2,'./imgs/2_main.jpg','./imgs/2_sub01.jpg','./imgs/2_sub02.jpg','./imgs/2_sub03.jpg','./imgs/2_sub04.jpg','./imgs/2_sub05.jpg','./imgs/2_sub06.jpg','./imgs/2_sub07.jpg','./imgs/2_sub08.jpg',now(),'マスター'),
-('テスト3','http://www.amazon.co.jp',1,'./imgs/3_main.jpg','./imgs/3_sub01.jpg','./imgs/3_sub02.jpg','./imgs/3_sub03.jpg','./imgs/3_sub04.jpg','./imgs/3_sub05.jpg','./imgs/3_sub06.jpg','./imgs/3_sub07.jpg','./imgs/3_sub08.jpg',now(),'マスター'),
-('テスト4','http://www.google.co.jp',3,'./imgs/4_main.jpg','./imgs/4_sub01.jpg','./imgs/4_sub02.jpg','./imgs/4_sub03.jpg','./imgs/4_sub04.jpg','./imgs/4_sub05.jpg','./imgs/4_sub06.jpg','./imgs/4_sub07.jpg','./imgs/4_sub08.jpg',now(),'マスター'),
-('テスト5','http://www.google.co.jp',2,'./imgs/5_main.jpg','./imgs/5_sub01.jpg','./imgs/5_sub02.jpg','./imgs/5_sub03.jpg','./imgs/5_sub04.jpg','./imgs/5_sub05.jpg','./imgs/5_sub06.jpg','./imgs/5_sub07.jpg','./imgs/5_sub08.jpg',now(),'マスター'),
-('テスト6','http://www.google.co.jp',1,'./imgs/6_main.jpg','./imgs/6_sub01.jpg','./imgs/6_sub02.jpg','./imgs/6_sub03.jpg','./imgs/6_sub04.jpg','./imgs/6_sub05.jpg','./imgs/6_sub06.jpg','./imgs/6_sub07.jpg','./imgs/6_sub08.jpg',now(),'マスター'),
-('テスト7','http://www.google.co.jp',2,'./imgs/7_main.jpg','./imgs/7_sub01.jpg','./imgs/7_sub02.jpg','./imgs/7_sub03.jpg','./imgs/7_sub04.jpg','./imgs/7_sub05.jpg','./imgs/7_sub06.jpg','./imgs/7_sub07.jpg','./imgs/7_sub08.jpg',now(),'マスター'),
-('テスト8','http://www.google.co.jp',2,'./imgs/8_main.jpg','./imgs/8_sub01.jpg','./imgs/8_sub02.jpg','./imgs/8_sub03.jpg','./imgs/8_sub04.jpg','./imgs/8_sub05.jpg','./imgs/8_sub06.jpg','./imgs/8_sub07.jpg','./imgs/8_sub08.jpg',now(),'マスター'),
-('テスト9','http://www.google.co.jp',1,'./imgs/9_main.jpg','./imgs/9_sub01.jpg','./imgs/9_sub02.jpg','./imgs/9_sub03.jpg','./imgs/9_sub04.jpg','./imgs/9_sub05.jpg','./imgs/9_sub06.jpg','./imgs/9_sub07.jpg','./imgs/9_sub08.jpg',now(),'マスター'),
-('テスト10','http://www.google.co.jp',1,'./imgs/10_main.jpg','./imgs/10_sub01.jpg','./imgs/10_sub02.jpg','./imgs/10_sub03.jpg','./imgs/10_sub04.jpg','./imgs/10_sub05.jpg','./imgs/10_sub06.jpg','./imgs/10_sub07.jpg','./imgs/10_sub08.jpg',now(),'マスター');
-select * from products order by id asc limit 0,5;
+('テスト1','http://www.yahoo.co.jp',1,'./imgs/1_main.jpg','./imgs/1_sub01.jpg','./imgs/1_sub02.jpg','./imgs/1_sub03.jpg','./imgs/1_sub04.jpg','./imgs/1_sub05.jpg','./imgs/1_sub06.jpg','./imgs/1_sub07.jpg','./imgs/1_sub08.jpg','2022-04-01 00:00:00','マスター'),
+('テスト2','http://www.google.co.jp',2,'./imgs/2_main.jpg','./imgs/2_sub01.jpg','./imgs/2_sub02.jpg','./imgs/2_sub03.jpg','./imgs/2_sub04.jpg','./imgs/2_sub05.jpg','./imgs/2_sub06.jpg','./imgs/2_sub07.jpg','./imgs/2_sub08.jpg','2022-05-01 00:00:00','マスター'),
+('テスト3','http://www.amazon.co.jp',1,'./imgs/3_main.jpg','./imgs/3_sub01.jpg','./imgs/3_sub02.jpg','./imgs/3_sub03.jpg','./imgs/3_sub04.jpg','./imgs/3_sub05.jpg','./imgs/3_sub06.jpg','./imgs/3_sub07.jpg','./imgs/3_sub08.jpg','2022-05-15 00:00:00','マスター'),
+('テスト4','http://www.google.co.jp',3,'./imgs/4_main.jpg','./imgs/4_sub01.jpg','./imgs/4_sub02.jpg','./imgs/4_sub03.jpg','./imgs/4_sub04.jpg','./imgs/4_sub05.jpg','./imgs/4_sub06.jpg','./imgs/4_sub07.jpg','./imgs/4_sub08.jpg','2022-06-21 00:00:00','マスター'),
+('テスト5','http://www.google.co.jp',2,'./imgs/5_main.jpg','./imgs/5_sub01.jpg','./imgs/5_sub02.jpg','./imgs/5_sub03.jpg','./imgs/5_sub04.jpg','./imgs/5_sub05.jpg','./imgs/5_sub06.jpg','./imgs/5_sub07.jpg','./imgs/5_sub08.jpg','2022-8-15 00:00:00','マスター'),
+('テスト6','http://www.google.co.jp',1,'./imgs/6_main.jpg','./imgs/6_sub01.jpg','./imgs/6_sub02.jpg','./imgs/6_sub03.jpg','./imgs/6_sub04.jpg','./imgs/6_sub05.jpg','./imgs/6_sub06.jpg','./imgs/6_sub07.jpg','./imgs/6_sub08.jpg','2022-8-17 00:00:00','マスター'),
+('テスト7','http://www.google.co.jp',2,'./imgs/7_main.jpg','./imgs/7_sub01.jpg','./imgs/7_sub02.jpg','./imgs/7_sub03.jpg','./imgs/7_sub04.jpg','./imgs/7_sub05.jpg','./imgs/7_sub06.jpg','./imgs/7_sub07.jpg','./imgs/7_sub08.jpg','2022-8-21 00:00:00','マスター'),
+('テスト8','http://www.google.co.jp',2,'./imgs/8_main.jpg','./imgs/8_sub01.jpg','./imgs/8_sub02.jpg','./imgs/8_sub03.jpg','./imgs/8_sub04.jpg','./imgs/8_sub05.jpg','./imgs/8_sub06.jpg','./imgs/8_sub07.jpg','./imgs/8_sub08.jpg','2022-8-26 00:00:00','マスター'),
+('テスト9','http://www.google.co.jp',1,'./imgs/9_main.jpg','./imgs/9_sub01.jpg','./imgs/9_sub02.jpg','./imgs/9_sub03.jpg','./imgs/9_sub04.jpg','./imgs/9_sub05.jpg','./imgs/9_sub06.jpg','./imgs/9_sub07.jpg','./imgs/9_sub08.jpg','2022-8-28 00:00:00','マスター'),
+('テスト10','http://www.google.co.jp',1,'./imgs/10_main.jpg','./imgs/10_sub01.jpg','./imgs/10_sub02.jpg','./imgs/10_sub03.jpg','./imgs/10_sub04.jpg','./imgs/10_sub05.jpg','./imgs/10_sub06.jpg','./imgs/10_sub07.jpg','./imgs/10_sub08.jpg','2022-09-01 00:00:00','マスター');

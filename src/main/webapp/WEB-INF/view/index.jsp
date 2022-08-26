@@ -9,19 +9,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ショップ ハルノ</title>
-
+    
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/shop.css">
     <link rel="stylesheet" href="./css/hf_style.css">
+    
     
     <script src="https://kit.fontawesome.com/ec1be9ca10.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    
+    <!-- ソート 未実装  -->
+    <!-- <script>
+    		$(".sort-new a").click(function(){
+    			let path = $(location).attr('pathname');
+    			let search = $(location).attr('search');
+    			console.log(path);
+    			console.log(search);
+        		(this).attr("href",path+search+"?sort=new")
+        	});
+        	$(".sort-old a").click(function(){
+        		let path = $(location).attr('pathname');
+        		let search = $(location).attr('search');
+        		console.log(path);
+    			console.log(search);
+        		(this).attr("href",path+search+"?sort=old")
+        	});
+    </script> -->
 
 </head>
+
+<c:import url="parts/header_shop.jsp" />
 
 <%-- ホームページロゴ ここから --%>
 <div class="logo_bg">
@@ -40,9 +63,15 @@
 <tr><th>- カテゴリ一覧 -</th></tr>
 <tr><td>
 <div class="container">
-<c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
-<div><a href="index?Category=${aCategoryList.id}"><c:out value="${aCategoryList.aCategoryName}" /></a></div>
-</c:forEach>
+	<div><a href="index">すべて</a></div>
+	<c:forEach items="${aCategoryList}" var="aCategoryList" varStatus="vs">
+		<div><a href="index?Category=${aCategoryList.id}"><c:out value="${aCategoryList.aCategoryName}" /></a></div>
+	</c:forEach>
+	<!-- ソート未実装 -->
+	<!-- <div class="sort">
+	<hr class="hr-category">
+		<div>登録日 :</div><div><a href="" id="sort-new">新しい順</a></div><div><a href="" id="sort-old">古い順</a></div>
+	</div> -->
 </div>
 </td></tr></table>
 
@@ -59,9 +88,9 @@
 <dd>
 <table class="product">
     <tr class="product-name-height">
-        <td class="js-textTrim">
+        <th class="js-textTrim">
             <p><c:out value="${productList.productName}" /></p> 
-        </td>
+        </th>
     </tr>
     <tr class=img-view>
         <td>
@@ -79,7 +108,7 @@
         </td>
     </tr>
     <tr class="product-bottom">
-        <td>
+        <td id="bottom">
         <table>
         <tr></tr>
         <tr id="visit"><td width="420px" colspan="2"><p><a href="${productList.productUrl}">販売ページへ行く</a></p></td></tr>

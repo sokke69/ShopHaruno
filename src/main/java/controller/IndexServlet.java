@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -28,13 +29,25 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			
-			/* DBから商品の取得 */
-			ProductDao productDao = DaoFactory.createProductDao();
-			List<Product> productList = productDao.findAll();
-
+			/* urlに?Category=があれば取得してInteger化 */
+			String categoryStr = request.getParameter("Category");
+			Integer category = null;
+			if (categoryStr != null) {
+				category = Integer.parseInt(categoryStr);
+			}
+			
 			/* データベースからカテゴリ一覧の取得 */
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			List<ACategory> aCategoryList = aCategoryDao.findAll();
+			
+			/* DBから商品の取得 */
+			ProductDao productDao = DaoFactory.createProductDao();
+			List<Product> productList = new ArrayList<>();
+			if (categoryStr == null) {
+				productList = productDao.findAllDesc();
+			} else {
+					productList = productDao.findByAIdDesc(category);
+			}
 			
 			/* 取得したデータを各リストへ収納しjspで表示用にsetAttribute */
 			request.setAttribute("productList", productList);

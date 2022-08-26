@@ -40,8 +40,8 @@ public class LoginServlet extends HttpServlet {
 
 		try {
 			/* ログインフォームから取得 */
-			String userName = request.getParameter("loginId");
-			String userPass = request.getParameter("loginPass");
+			String userName = request.getParameter("login-id");
+			String userPass = request.getParameter("login-pass");
 
 			/* ログインIDの正規表現チェック */
 			Pattern namePattern = Pattern.compile("[0-9a-zA-Z\\-\\_]+");
@@ -119,7 +119,7 @@ public class LoginServlet extends HttpServlet {
 					request.setAttribute("nameError", "※ ログインIDは12文字以内で入力してください。");
 					isError = true;
 				} else {
-					request.setAttribute("allError", "※ ログインIDもしくはパスワードが違います。");
+					request.setAttribute("nameError", "※ ログインIDもしくはパスワードが違います。");
 					isError = true;
 				}
 
@@ -134,6 +134,9 @@ public class LoginServlet extends HttpServlet {
 					isError = true;
 				} else if (userPass.length() > 20) {
 					request.setAttribute("passError", "※ パスワードは20文字以内で入力してください。");
+					isError = true;
+				} else {
+					request.setAttribute("passError", "※ ログインIDもしくはパスワードが違います。");
 					isError = true;
 				}
 				

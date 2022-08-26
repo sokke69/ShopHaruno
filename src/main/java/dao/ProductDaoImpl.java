@@ -41,8 +41,82 @@ public class ProductDaoImpl implements ProductDao{
 		} catch (Exception e) {
 			throw e;
 		}
+		return productList;
+	}
+	
+	@Override
+	public List<Product> findAllDesc() throws Exception {
+		List<Product> productList = new ArrayList<>();
 		
-		
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT"
+					+ " products.id, product_name, product_url,"
+					+ " as_categories.a_category_name AS a_category_name,"
+					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
+					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
+					+ " regist_date, regist_by, update_date, update_by"
+					+ " FROM products"
+					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
+					+ " ORDER BY id DESC";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				productList.add(mapToProduct2(rs));
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return productList;
+	}
+	
+	@Override
+	public List<Product> findByAId(Integer id) throws Exception {
+		List<Product> productList = new ArrayList<>();
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT"
+					+ " products.id, product_name, product_url,"
+					+ " as_categories.a_category_name AS a_category_name,"
+					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
+					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
+					+ " regist_date, regist_by, update_date, update_by"
+					+ " FROM products"
+					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
+					+ " WHERE category_a=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setObject(1, id,Types.INTEGER);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				productList.add(mapToProduct2(rs));
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return productList;
+	}
+	
+	@Override
+	public List<Product> findByAIdDesc(Integer id) throws Exception {
+		List<Product> productList = new ArrayList<>();
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT"
+					+ " products.id, product_name, product_url,"
+					+ " as_categories.a_category_name AS a_category_name,"
+					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
+					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
+					+ " regist_date, regist_by, update_date, update_by"
+					+ " FROM products"
+					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
+					+ " WHERE category_a=?"
+					+ " ORDER BY id DESC";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setObject(1, id,Types.INTEGER);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				productList.add(mapToProduct2(rs));
+			}
+		} catch (Exception e) {
+			throw e;
+		}
 		return productList;
 	}
 
@@ -214,31 +288,6 @@ public class ProductDaoImpl implements ProductDao{
 	}
 
 	@Override
-	public List<Product> findByAId(Integer id) throws Exception {
-		List<Product> productList = new ArrayList<>();
-		try (Connection con = ds.getConnection()){
-			String sql = "SELECT"
-					+ " products.id, product_name, product_url,"
-					+ " as_categories.a_category_name AS a_category_name,"
-					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
-					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
-					+ " regist_date, regist_by, update_date, update_by"
-					+ " FROM products"
-					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
-					+ " WHERE category_a=?";
-			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setObject(1, id,Types.INTEGER);
-			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {
-				productList.add(mapToProduct2(rs));
-			}
-		} catch (Exception e) {
-			throw e;
-		}
-		return productList;
-	}
-
-	@Override
 	public Integer findAIdById(Integer id) throws Exception {
 		Integer aId = null;
 		try (Connection con = ds.getConnection()){
@@ -254,38 +303,6 @@ public class ProductDaoImpl implements ProductDao{
 			throw e;
 		}
 		return aId;
-	}
-
-	@Override
-	public List<Product> find5(Integer page) throws Exception {
-		List<Product> productList = new ArrayList<>();
-		try (Connection con = ds.getConnection()){
-			String sql = "SELECT"
-					+ " products.id, product_name, product_url,"
-					+ " as_categories.a_category_name AS a_category_name,"
-					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
-					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
-					+ " regist_date, regist_by, update_date, update_by"
-					+ " FROM products"
-					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
-					+ " ORDER BY id DESC LIMIT ?,5";
-			PreparedStatement stmt = con.prepareStatement(sql);
-			Integer id = (page*5)-5;
-			stmt.setObject(1, id,Types.INTEGER);
-			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {
-				productList.add(mapToProduct2(rs));
-			}
-		} catch (Exception e) {
-			throw e;
-		}
-		
-		for(Product product : productList) {
-			String name = product.getProductName();
-			System.out.println(name);
-		}
-		
-		return productList;
 	}
 
 	@Override
@@ -308,13 +325,5 @@ public class ProductDaoImpl implements ProductDao{
 		
 		return null;
 	}
-
-	
-	
-	
-	
-	
-	
-	
 	
 }

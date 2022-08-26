@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body {
 	margin: 0px;
 	background-color:#dcdcdc;
@@ -20,6 +22,7 @@ a:visited{
 }
 
 .logo_bg{
+	margin-top:56px;
 	background-image: url("../imgs/logo_back.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -73,23 +76,48 @@ table {
 
 .table-category{
 	width:450px;
+	overflow-wrap: break-word;
+	background-color: white;
+	border-radius: 6px;
+}
+
+.table-category th{
 	font-size:14px;
 	color:black;
-	overflow-wrap: break-word;
+	text-align:center;
+	padding: 15px 15px 15px 15px;
+}
+
+.table-category td{
+	font-size:14px;
+	color:black;
+	padding: 0px 15px 15px 15px;
 }
 
 .table-category a{
 	color:black;
 }
 
+.hr-category{
+	width:100%;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
 .product {
 	width: 450px;
 	height: 450px;
-	min-width: 250px;
-	min-height: 250px;
 	background-color: white;
-	padding: 15px;
 	border-radius: 6px;
+}
+
+.product th{
+	padding: 15px 15px 0px 15px;
+	height:70px;
+}
+
+#bottom{
+	padding-bottom:15px;
 }
 
 .product-name-height{
@@ -100,6 +128,10 @@ table {
 	height:60px;
 	font-size:13px;
 	text-align: center;
+}
+
+.product_td{
+	padding:0px 15px 0px 15px;
 }
 
 .img-view{
@@ -266,6 +298,9 @@ nav.pagination-container ul li a{
 }
 li.last a{
 	width:20px;
+}
+li.page{
+	background-color:#FFF;
 }
 .page-nation{
 	text-align:center;

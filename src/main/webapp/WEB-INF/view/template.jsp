@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>管理ページ ログイン</title>
+<title>お問い合わせ</title>
 
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,41 +55,12 @@
 <form action="" method="post">
 	<table class="table-category-e">
 		<tr>
-			<th>- 管理ページ ログイン -</th>
+			<th>-  -</th>
 		</tr>
 		<tr>
 			<td>
 				<div>
-					<table class="table-login">
-						<tr>
-							<th><c:if test="${ not empty nameError}">
-									<i class="fa-solid fa-circle-exclamation error"></i>
-								</c:if> ログインID</th>
-						</tr>
-						<tr>
-							<td>
-							<c:if test="${not empty nameError}">
-									<div class="alert alert-danger" id="alert-login">
-										<c:out value="${nameError}" />
-									</div>
-								</c:if><input type="text"
-								name="login-id" id="add-user-form"></td>
-						</tr>
-						<tr>
-							<th><c:if test="${ not empty passError}">
-									<i class="fa-solid fa-circle-exclamation error"></i>
-								</c:if> パスワード
-							<th>
-						</tr>
-						<tr>
-							<td>
-							<c:if test="${not empty passError}">
-									<div class="alert alert-danger" id="alert-login">
-										<c:out value="${passError}" />
-									</div>
-								</c:if><input type="text" 
-								name="login-pass" id="add-user-form"></td>
-						</tr>
+					<table class="table-enquiry">
 					</table>
 				</div>
 			</td>

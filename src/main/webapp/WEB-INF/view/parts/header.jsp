@@ -2,46 +2,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	rel="stylesheet">
+<script src="https://kit.fontawesome.com/ec1be9ca10.js" crossorigin="anonymous"></script>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
-	id="head">
-	<div class="container">
-		<a class="navbar-brand" href="listDb">管理ページ</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<div class="container">
 		<c:if test="${not empty userNickName}">
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
+		<a class="navbar-brand" href="index"><i class="fa-solid fa-circle-user"></i>  <c:out value="${userNickName}" /> さん</a>
+		</c:if>
+			
+			<button class="navbar-toggler" data-bs-toggle="collapse"
+				data-bs-target="#menu">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ms-auto">
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<svg class="mb-1" xmlns="http://www.w3.org/2000/svg" width="20"
-								height="20" fill="currentColor" class="bi bi-person-circle"
-								viewBox="0 0 16 16">
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-              <path fill-rule="evenodd"
-									d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-            </svg> <c:out value="${userNickName}" />
-					</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="viewMyData">マイアカウント</a></li>
-							<li><a class="dropdown-item" href="listDb">データベース一覧</a></li>
-							<li><a class="dropdown-item" href="listProduct">商品一覧</a></li>
-							<li><a class="dropdown-item" href="listACategory">カテゴリ一覧</a></li>
-							<li><a class="dropdown-item" href="listUser">ユーザー一覧</a></li>
-							<li><a class="dropdown-item" href="logout">ログアウト</a></li>
-							<li><a class="dropdown-item" href="index" target="_blank">会社トップページ</a></li>
-						</ul></li>
+			<div class="collapse navbar-collapse" id="menu">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="viewMyData">マイアカウント</a></li>
+					<li class="nav-item"><a class="nav-link" href="listDb">データベース一覧</a></li>
+					<li class="nav-item"><a class="nav-link" href="listACategory">カテゴリ一覧</a></li>
+					<li class="nav-item"><a class="nav-link" href="enquiry">CONTACT</a></li>
+					<li class="nav-item"><a class="nav-link" href="listUser">ユーザー一覧</a></li>
+					<li class="nav-item"><a class="nav-link" href="logout">ログアウト</a></li>
+					<li class="nav-item"><a class="nav-link" href="index">会社トップページ</a></li>
 				</ul>
 			</div>
-		</c:if>
-		<c:if test="${empty userNickName}">
-		</c:if>
+			<!--/.collapse.navbar-collapse-->
+		</div>
+		<!--/.container-->
 
-	</div>
-	<!-- /.container -->
-</nav>
+	</nav>
