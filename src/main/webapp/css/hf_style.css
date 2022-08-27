@@ -1,10 +1,10 @@
-header {
+header{
 	margin-bottom: 50px;
 	padding: 5px;
 }
 
-footer {
-	margin-top: 30px;
+footer{
+	margin-top: 10px;
 	margin-bottom: 30px;
 	display: flex;
 	justify-content: center;
@@ -13,11 +13,7 @@ footer {
 	color:rgb(0, 0, 0);
 }
 
-footer p {
+footer p{
 	line-height: 75px;
 	margin-bottom: 0px;
-}
-
-nav {
-	margin-bottom:100px
 }

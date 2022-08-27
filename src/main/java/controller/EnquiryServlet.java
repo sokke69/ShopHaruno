@@ -35,7 +35,7 @@ public class EnquiryServlet extends HttpServlet {
 		request.setAttribute("requestEmailAddress", emailAddress);
 		request.setAttribute("requestText", text);
 		
-		/* ページ移動 */
+		/* ページ表示 */
 		request.getRequestDispatcher("/WEB-INF/view/enquiry.jsp").forward(request, response);
 	}
 
@@ -122,6 +122,7 @@ public class EnquiryServlet extends HttpServlet {
 				/* ページ移動 */
 				request.getRequestDispatcher("/WEB-INF/view/enquiryDone.jsp").forward(request, response);
 			} catch (EmailException e) {
+				System.out.println(e);
 				/* 送信失敗した、一度失敗画面に移動したあと戻ることになるので再表示用にsessionに追加 */
 				request.getSession().setAttribute("enquiryName", name);
 				request.getSession().setAttribute("enquiryEmailAddress", emailAddress);

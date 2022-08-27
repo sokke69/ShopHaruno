@@ -18,12 +18,12 @@
 			</button>
 			<div class="collapse navbar-collapse" id="menu">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="listDb">データベース一覧</a></li>
-					<li class="nav-item"><a class="nav-link" href="listACategory">カテゴリ一覧</a></li>
-					<li class="nav-item"><a class="nav-link" href="listUser">ユーザー一覧</a></li>
-					<li class="nav-item"><a class="nav-link" href="index">会社トップページ</a></li>
+					<li class="nav-item"><a class="nav-link" href="listDb">データベースリスト</a></li>
+					<li class="nav-item"><a class="nav-link" href="listProduct">商品リスト</a></li>
+					<li class="nav-item"><a class="nav-link" href="listACategory">カテゴリリスト</a></li>
+					<li class="nav-item"><a class="nav-link" href="listUser">ユーザーリスト</a></li>
+					<li class="nav-item"><a class="nav-link" href="index">トップ</a></li>
 					<li class="nav-item"><a class="nav-link" href="logout">ログアウト</a></li>
-					
 				</ul>
 			</div>
 			<!--/.collapse.navbar-collapse-->

@@ -114,10 +114,23 @@
 				<tr>
 					<td><div class="attention">「*」は必須項目です。</div></td>
 				</tr>
+				<tr>
+					<td><div class="submit"><input type="submit" value="送信" class="btn btn-secondary"></div>
+					</td>
+					</tr>
+					<tr>
+						<td><hr></td>
+					</tr>
+					<tr>
+						<td>
+							<table>
+								<tr>
+									<td class="bottom-link"><a href="listDb">戻る</a></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
 			</table>
-			<div class="input-wrap">
-				<input type="submit">
-			</div>
 		</form>
 	
 	<%-- ここまで --%>

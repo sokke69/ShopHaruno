@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>タイトル</title>
     
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
     <link rel="stylesheet" href="./css/default.css">
     <link rel="stylesheet" href="./css/.css">
-    <link rel="stylesheet" href="./css/pagenation.css">
+    <link rel="stylesheet" href="./css/hf_style.css">
     
     <script src="https://kit.fontawesome.com/ec1be9ca10.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -27,7 +27,7 @@
 </head>
 
 <%-- ナビ・ロゴ ここから --%>
-<c:import url="parts/header_shop.jsp" />
+<c:import url="parts/header_.jsp" />
 <c:import url="parts/logo.jsp" />
 <%--  ここまで --%>
 

@@ -19,6 +19,9 @@ a:visited{
 img{
 	weight:100px;
 }
+hr{
+	width:100%;
+}
 ul {
 	list-style: none;
 	margin: 0px;
@@ -30,7 +33,7 @@ table{
 	border-spacing: 0px;
 }
 th{
-	padding:opx;
+	padding:0px;
 }
 td{
 	padding:0px;
@@ -38,6 +41,9 @@ td{
 input{
 	width:100%;
 	padding:6px;
+}
+select{
+	width:50%;
 }
 textarea{
 	width:100%;
@@ -63,4 +69,39 @@ table td.basic-middle{
 table td.basic-bottom{
 	padding:0px 15px 15px 15px;
 	height:15px;
+}
+.input-margin{
+	padding-bottom:8px;
+}
+.attention{
+	font-size:11px;
+	color:#808080;
+}
+.submit{
+	padding-top:40px;
+	padding-bottom:10px;
+}
+.success{
+	color:#3cb371;
+}
+.error{
+	font-size:14px;
+	color:#dc143c;
+}
+.warning{
+	color:#ffd700;
+}
+#alert{
+	width: 100%;
+    margin-bottom: 5px;
+    padding: 5px;
+    font-size: 13px;
+}
+.subject{
+	font-size:20px;
+	text-align:center;
+}
+.bottom-link{
+	padding:0 15px;
+	text-align:center
 }

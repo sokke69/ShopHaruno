@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>管理ページ ログイン</title>
+<title>管理画面 ログイン</title>
 
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,16 +16,13 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap"
 	rel="stylesheet">
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
-<link rel="stylesheet" href="./css/shop.css">
-<link rel="stylesheet" href="./css/setting.css">
+<link rel="stylesheet" href="./css/default.css">
+<link rel="stylesheet" href="./css/list.css">
 <link rel="stylesheet" href="./css/hf_style.css">
-
 
 <script src="https://kit.fontawesome.com/ec1be9ca10.js"
 	crossorigin="anonymous"></script>
@@ -35,85 +32,93 @@
 
 </head>
 
-<c:import url="parts/header_shop.jsp" />
+<%-- ナビ・ロゴ ここから --%>
+<c:import url="parts/header_setting.jsp" />
+<c:import url="parts/logo_setting.jsp" />
+<%-- ここまで --%>
 
-<%-- ホームページロゴ ここから --%>
-<div class="logo_bg">
-	<table id="logo">
-		<tr>
-			<th id="title">*ショップ<span id="spring">ハル</span>ノ*
-			</th>
-		</tr>
-	</table>
-</div>
+<%-- テーブルサンプル ここから --%>
 
-<br>
-<br>
-<%-- ホームページロゴ ここまで --%>
+<table class="basic">
+	<tr>
+		<td class="basic-top"></td>
+	</tr>
+	<tr>
+		<td class="basic-middle">
+			<form action="" method="post">
+				<%-- テーブル中身 ここから --%>
+				<table class="table-list">
+					<tr>
+						<th class="subject">管理画面 ログイン</th>
+					</tr>
+					<tr>
+						<td><hr></td>
+					</tr>
+					<%-- ログインID --%>
+					<tr>
+						<th><c:if test="${ not empty nameError}">
+								<i class="fa-solid fa-circle-exclamation error"></i>
+							</c:if> ログインID</th>
+					</tr>
+					<tr>
+						<td><c:if test="${not empty nameError}">
+								<div class="alert alert-danger" id="alert">
+									<c:out value="${nameError}" />
+								</div>
+							</c:if><input type="text" name="login-id" id="add-user-form"></td>
+					</tr>
 
-<%-- テーブル ここから --%>
-<form action="" method="post">
-	<table class="table-category-e">
-		<tr>
-			<th>- 管理ページ ログイン -</th>
-		</tr>
-		<tr>
-			<td>
-				<div>
-					<table class="table-login">
-						<tr>
-							<th><c:if test="${ not empty nameError}">
-									<i class="fa-solid fa-circle-exclamation error"></i>
-								</c:if> ログインID</th>
-						</tr>
-						<tr>
-							<td>
-							<c:if test="${not empty nameError}">
-									<div class="alert alert-danger" id="alert-login">
-										<c:out value="${nameError}" />
-									</div>
-								</c:if><input type="text"
-								name="login-id" id="add-user-form"></td>
-						</tr>
-						<tr>
+					<%-- パスワード --%>
+					<tr>
 							<th><c:if test="${ not empty passError}">
 									<i class="fa-solid fa-circle-exclamation error"></i>
 								</c:if> パスワード
 							<th>
 						</tr>
-						<tr>
+					<tr>
 							<td>
 							<c:if test="${not empty passError}">
-									<div class="alert alert-danger" id="alert-login">
+									<div class="alert alert-danger" id="alert">
 										<c:out value="${passError}" />
 									</div>
 								</c:if><input type="text" 
 								name="login-pass" id="add-user-form"></td>
 						</tr>
-					</table>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<th><div class="input-wrap">
-					<input type="submit">
-				</div></th>
-		</tr>
-	</table>
-</form>
+					<tr>
+						<td><div class="submit">
+								<input type="submit" value="ログイン" class="btn btn-secondary">
+							</div></td>
+					</tr>
+					<tr>
+						<td><hr></td>
+					</tr>
+					<tr>
+						<td>
+							<table>
+								<tr>
+									<td class="bottom-link"><a href="listDb">戻る</a></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				<%-- ここまで --%>
+			</form>
 
-
+		</td>
+	</tr>
+	<tr>
+		<td class="basic-bottom"></td>
+	</tr>
+</table>
 
 <br>
 <br>
-<%-- テーブル ここまで --%>
-
+<%-- ここまで --%>
 
 <footer>
 	<c:import url="parts/footer.jsp" />
 </footer>
-
-
 
 
 </body>
