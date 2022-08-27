@@ -33,7 +33,7 @@
 </head>
 
 <%-- ナビ・ロゴ ここから --%>
-<c:import url="parts/header_setting.jsp" />
+<c:import url="parts/header_shop.jsp" />
 <c:import url="parts/logo_setting.jsp" />
 <%-- ここまで --%>
 
@@ -96,7 +96,7 @@
 						<td>
 							<table>
 								<tr>
-									<td class="bottom-link"><a href="listDb">戻る</a></td>
+									<td class="bottom-link"><a href="index">戻る</a></td>
 								</tr>
 							</table>
 						</td>
