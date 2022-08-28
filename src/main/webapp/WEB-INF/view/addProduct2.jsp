@@ -9,19 +9,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>商品追加</title>
-
 <link href="./css/bootstrap.min.css" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" href="./css/default.css">
-<link rel="stylesheet" href="./css/list.css">
+<link rel="stylesheet" href="./css/list_style.css">
 <link rel="stylesheet" href="./css/hf_style.css">
+
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/jquery-3.6.0.min.js"></script>
 <script src="./js/jquery-uploadThumbs.js"></script>
+<script src="https://kit.fontawesome.com/ec1be9ca10.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	const maxFiles = 8;
 	$(function() {
@@ -58,85 +53,56 @@ $(function(){
 	}
 });
 </script>
-<script>
-    $(function(){
-    	
-    	for(let i = 1; i <= ${countTypeId}; i++){
-    		if( ${inputedTypeId} == i ){
-    			$(".select-type").val(i);
-    		}
-    	}
-    });
-    </script>
 
 </head>
 
-<%-- ナビ・ロゴ ここから --%>
-<c:import url="parts/header_setting.jsp" />
-<c:import url="parts/logo_setting.jsp" />
-<%-- ここまで --%>
+<body>
 
-<%-- テーブルサンプル ここから --%>
+	<c:import url="parts/header.jsp" />
 
-<table class="basic">
-	<tr>
-		<td class="basic-top"></td>
-	</tr>
-	<tr>
-		<td class="basic-middle">
-			<form action="" method="post" enctype="multipart/form-data">
-				<%-- テーブル中身 ここから --%>
-				<table class="table-list">
-					<tr>
-						<th class="subject">ユーザー追加</th>
-					</tr>
-					<tr>
-						<td><hr></td>
-					</tr>
-					<%-- ユーザー名 --%>
-					<tr>
-						<th><c:if test="${ not empty nameSuccess}">
+	<div class="container" id="body">
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-8">
+				<div id="add-update-user">
+					<div class="display-6">商品追加</div>
+					<form action="" method="post" enctype="multipart/form-data">
+						<table id="list-table" class="table table-hover">
+							<tr>
+								<th id="head"><c:if test="${ not empty nameSuccess}">
 										<i class="fa-solid fa-circle-check success"></i>
 									</c:if> <c:if test="${ not empty nameError}">
 										<i class="fa-solid fa-circle-exclamation error"></i>
 									</c:if>
-									 商品名*</th></tr>
-					<tr><td>
-					<c:if test="${ not empty nameError}">
+									 商品名*</th>
+								<td><c:if test="${ not empty nameError}">
 										<div class="alert alert-danger" id="alert">
 											<c:out value="※ ${nameError}" />
 										</div>
 									</c:if> <input type="text" value="${productName}" placeholder="商品名"
 									name="product-name" id="add-user-form">
 									<div class="attention">※ 商品名は255文字以内で入力してください。</div></td>
-					</tr>
-
-					<%-- ログインID --%>
-					<tr>
-						<th><c:if test="${ not empty urlSuccess}">
+							</tr>
+							<tr>
+								<th><c:if test="${ not empty urlSuccess}">
 										<i class="fa-solid fa-circle-check success"></i>
 									</c:if> <c:if test="${ not empty urlError}">
 										<i class="fa-solid fa-circle-exclamation error"></i>
 									</c:if> 商品URL*</th>
-					</tr>
-					<tr>
-						<td><c:if test="${ not empty urlError}">
+								<td><c:if test="${ not empty urlError}">
 										<div class="alert alert-danger" id="alert">
 											<c:out value="※ ${urlError}" />
 										</div>
 									</c:if> <input type="text" value="${productUrl}" name="product-url"
 									id="add-user-form"></td>
-					</tr>
-					<%-- ログインパスワード --%>
-					<tr>
-						<th><c:if test="${ not empty aCategorySuccess}">
+							</tr>
+							<tr>
+								<th><c:if test="${ not empty aCategorySuccess}">
 										<i class="fa-solid fa-circle-check success"></i>
 									</c:if> <c:if test="${ not empty aCategoryError}">
 										<i class="fa-solid fa-circle-exclamation error"></i>
 									</c:if> カテゴリA*</th>
-					</tr>
-					<tr>
-						<td><c:if test="${ not empty aCategoryError}">
+								<td><c:if test="${ not empty aCategoryError}">
 										<div class="alert alert-danger" id="alert">
 											<c:out value="※ ${aCategoryError}" />
 										</div>
@@ -148,60 +114,42 @@ $(function(){
 													value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></option>
 										</c:forEach>
 								</select></td>
-					</tr>
-					<%-- ログインパスワード(確認) --%>
-					<tr>
-						<th>メイン画像</th>
-					</tr>
-					<tr>
-						<td><label><input type="file"
+							</tr>
+							<tr>
+								<th>メイン画像*</th>
+								<td><label><input type="file"
 										name="product-img-main" accept="image/jpg" required></label>
 									<div class="attention">※ 形式はjpgのみです。</div></td>
-					</tr>
-					<tr>
-						<th>サブ画像</th>
-					</tr>
-					<tr>
-						<td><label><input type="file"
+							</tr>
+							<tr>
+								<th>サブ画像</th>
+								<td><label><input type="file"
 										name="product-img-sub" id="product-img-sub" class="form-sub"
 										accept="image/jpg" multiple></label>
 									<div class="attention">※ 形式はjpgのみです。</div></td>
-					</tr>
-					<tr>
-					<td><div class="submit"><input type="submit" value="追加" class="btn btn-secondary"></div>
-					</td>
-					</tr>
-					<tr>
-						<td><hr></td>
-					</tr>
-					<tr>
-						<td>
-							<table>
-								<tr>
-									<td class="bottom-link"><a href="listProduct">戻る</a></td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
-				<%-- ここまで --%>
-			</form>
+							</tr>
 
-		</td>
-	</tr>
-	<tr>
-		<td class="basic-bottom"></td>
-	</tr>
-</table>
+						</table>
+						<div class="attention">「*」は必須項目です。</div>
+						<input type="submit" value="追加" class="submit">
 
-<br>
-<br>
-<%-- ここまで --%>
+						<p>
+							<a href="listProduct">戻る</a>
+						</p>
+					</form>
+				</div>
+			</div>
+			<div class="col"></div>
+		</div>
+		<!--/.row-->
+	</div>
+	<!--/.container-->
 
-<footer>
-	<c:import url="parts/footer.jsp" />
-</footer>
-
+	<div>
+		<footer>
+			<c:import url="parts/footer.jsp" />
+		</footer>
+	</div>
 
 </body>
 
