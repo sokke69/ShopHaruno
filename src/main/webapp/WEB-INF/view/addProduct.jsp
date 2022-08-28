@@ -16,9 +16,11 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap"
 	rel="stylesheet">
+	
 <link rel="stylesheet" href="./css/default.css">
 <link rel="stylesheet" href="./css/list.css">
 <link rel="stylesheet" href="./css/hf_style.css">
+
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/jquery-3.6.0.min.js"></script>
 <script src="./js/jquery-uploadThumbs.js"></script>

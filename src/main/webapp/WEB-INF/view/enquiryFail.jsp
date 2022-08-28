@@ -29,7 +29,7 @@
 
 <%-- ナビ・ロゴ ここから --%>
 <c:import url="parts/header_shop.jsp" />
-<c:import url="parts/logo.jsp" />
+<c:import url="parts/logo_shop.jsp" />
 <%--  ここまで --%>
 
 <%-- テーブルサンプル ここから --%>

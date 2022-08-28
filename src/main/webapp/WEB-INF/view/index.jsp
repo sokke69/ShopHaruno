@@ -48,7 +48,7 @@
 <c:import url="parts/header_shop.jsp" />
 
 <%-- ホームページロゴ ここから --%>
-<c:import url="parts/logo.jsp" />
+<c:import url="parts/logo_shop.jsp" />
 <%-- ホームページロゴ ここまで --%>
 
 <%-- カテゴリ一覧 ここから --%>

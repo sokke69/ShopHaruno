@@ -46,7 +46,9 @@
 			<tr>
 				<td>
 					<table class="table-table">
-						<tr><td class="alink"><a href="listProduct">商品 <span class="sub-title">-Pproduct-</span></a></td></tr>
+						<tr><td>
+							<table><tr><td class="alink"><a href="listProduct">商品 <span class="sub-title">-Pproduct- </span></a> <a href="listProduct">&ltデザイン版&gt</a><a href="listProductSimple">&ltシンプル版&gt</a></td></tr></table>
+						</td></tr>
 						<tr><td class="alink"><a href="listACategory">商品カテゴリ <span class="sub-title">-Category-</span></a></td></tr>
 						<tr><td class="alink"><a href="listUser">ユーザー <span class="sub-title">-User-</span></a></td></tr>
 					</table>

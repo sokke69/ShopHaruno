@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 img {
 	width: 430px;
 	height: auto;
@@ -14,6 +13,18 @@ table.category th{
 table.category td{
 	text-align:center;
 }
+table.category-d{
+	width:100%;
+}
+table.category-d th{
+	text-align:center;
+}
+table.category-d td{
+	text-align:center;
+}
+table.category-d a{
+	font-size:12px;
+}
 .container{
 	display:flex;
 	flex-wrap:wrap;
@@ -25,6 +36,7 @@ table.category td{
 .table-product{
 	height:470px;
 }
+
 .product-top th{
 	height:60px;
 	font-size:22px;
@@ -53,6 +65,11 @@ table.category td{
 	font-size:19px;
 }
 .product-registed{
+	color:gray;
+	font-size:12px;
+	text-align:right;
+}
+.product-ted{
 	color:gray;
 	font-size:12px;
 	text-align:right;
@@ -106,3 +123,62 @@ button {
 }
 
 /* page-nationここまで */
+.table-up{
+	background-color:#FFF;
+	width:81px;
+	border:1px solid #a9a9a9;
+	border-radius: 10px;
+	border-spacing: 0;
+	border-collapse: separate;
+	box-shadow: 0 0 10px 0 #c0c0c0;
+	margin-top:10px;
+	margin-left:278px;
+	margin-bottom:10px;
+}
+.table-up a{
+	display:block;
+	width:100%;
+	height:100%;
+	padding:5px 12px;
+}
+.table-del{
+	background-color:#FFF;
+	width:81px;
+	border:1px solid #a9a9a9;
+	border-radius: 10px;
+	border-spacing: 0;
+	border-collapse: separate;
+	box-shadow: 0 0 10px 0 #c0c0c0;
+	margin-top:10px;
+	margin-left:10px;
+	margin-bottom:10px;
+}
+.table-add{
+	background-color:#FFF;
+	width:450px;
+	border:1px solid #a9a9a9;
+	border-radius: 10px;
+	border-spacing: 0;
+	border-collapse: separate;
+	box-shadow: 0 0 10px 0 #c0c0c0;
+	margin-top:10px;
+	margin-right:auto;
+	margin-left:auto;
+	margin-bottom:10px;
+	text-align:center;
+}
+.table-del a{
+	display:block;
+	width:100%;
+	height:100%;
+	padding:5px 12px;
+}
+.table-add a{
+	display:block;
+	width:100%;
+	height:100%;
+	padding:5px 12px;
+}
+.button{
+	width:55px;
+}

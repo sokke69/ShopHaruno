@@ -67,11 +67,11 @@ public class AuthFilter extends HttpFilter implements Filter {
 		
 		/* それ以外のユーザーがユーザー追加編集削除画面へ遷移しようとすると閲覧専用のlistUserへ 
 		 * 直接URLを打ち込んでadd～等に飛ぼうとしてもlistUserへ */
-		if(uri.endsWith("/addUser") &&
-				uri.endsWith("/addUserDone") &&
-				uri.endsWith("/updateUser") &&
-				uri.endsWith("/updateUserDone") &&
-				uri.endsWith("/deleteUser") &&
+		if(uri.endsWith("/addUser") ||
+				uri.endsWith("/addUserDone") ||
+				uri.endsWith("/updateUser") ||
+				uri.endsWith("/updateUserDone") ||
+				uri.endsWith("/deleteUser") ||
 				uri.endsWith("/deleteUserDone")) {
 			if (session.getAttribute("userIsMaster") == null) {
 				res.sendRedirect(req.getContextPath() + "/listUser");
@@ -80,14 +80,14 @@ public class AuthFilter extends HttpFilter implements Filter {
 		}
 		
 		/* ユーザータイプregister以外でURLにRegisterが含まれるページに遷移しようとすると閲覧不可へ */
-		if(uri.contains("Register")) {
+		if(uri.equals("/addUserRegisterOnly")) {
 			if (session.getAttribute("userIsRegister") == null) {
 				res.sendRedirect(req.getContextPath() + "/notView");
 				return;
 			}
 		}
 		
-		/* ユーザーがmasterでない場合かつURLにMasterOnluが含まれる場合は閲覧不可のページへ */
+		/* ユーザーがmasterでない場合かつURLにMasterOnlyが含まれる場合は閲覧不可のページへ */
 		if (uri.contains("MasterOnly")) {
 			if (session.getAttribute("userIsMaster") == null) {
 				res.sendRedirect(req.getContextPath() + "/notView");
@@ -95,13 +95,18 @@ public class AuthFilter extends HttpFilter implements Filter {
 			}
 		}
 		
-		/*  */
+		/* ユーザーがregisterまたはtesterのとき表示しないで移動 */
 		if (uri.endsWith("Product") ||
 				uri.contains("ProductDone") ||
 				uri.contains("ProductCheck") ||
 				uri.contains("ByAId")) {
 			if (session.getAttribute("userIsTester") != null || session.getAttribute("userIsRegister") != null) {
 				res.sendRedirect(req.getContextPath() + "/listProductViewOnly");
+				return;
+			}
+		} else if(uri.endsWith("Simple")) {
+			if (session.getAttribute("userIsTester") != null || session.getAttribute("userIsRegister") != null) {
+				res.sendRedirect(req.getContextPath() + "/listProductSimpleViewOnly");
 				return;
 			}
 		} else if (uri.endsWith("ACategory")||

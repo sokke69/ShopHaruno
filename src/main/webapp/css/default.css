@@ -44,6 +44,7 @@ input{
 }
 select{
 	width:50%;
+	padding:6px;
 }
 textarea{
 	width:100%;

@@ -3,7 +3,6 @@
 	width:100%;
 }
 th{
-	padding-top:6px;
 	padding-bottom:3px;
 }
 .subject{
@@ -18,6 +17,9 @@ th{
 }
 .table-table{
 	width:100%;
+	text-align:center;
+}
+.inner-table{
 	text-align:center;
 }
 .sub-title{
@@ -40,6 +42,7 @@ th{
 	width:75px;
 	text-align:right;
 }
+
 .icon{
 	font-size:14px;
 }
@@ -64,4 +67,61 @@ form img.thumb {
     margin:0 5px 5px 0;
     max-width:160px;
     vertical-align:bottom;
+}
+.product-ted{
+	color:gray;
+	font-size:12px;
+	text-align:right;
+}
+.product-ted-simple{
+	color:gray;
+	font-size:12px;
+}
+.product-name{
+	font-size:18px;
+	padding:0px;
+}
+.table-add{
+	background-color:#FFF;
+	width:450px;
+	border:1px solid #a9a9a9;
+	border-radius: 10px;
+	border-spacing: 0;
+	border-collapse: separate;
+	box-shadow: 0 0 10px 0 #c0c0c0;
+	margin-top:10px;
+	margin-right:auto;
+	margin-left:auto;
+	margin-bottom:10px;
+	text-align:center;
+	padding:5px 0;
+}
+table.category{
+	width:100%;
+}
+table.category a{
+	font-size:12px;
+}
+table.category th{
+	text-align:center;
+}
+table.category td{
+	text-align:center;
+}
+.container{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content: center;
+}
+.category-a{
+	padding: 0px 8px;
+}
+th.product-name-simple{
+	padding:0px;
+}
+td.product-ted-simple{
+	padding:0px 0px 10px 0px;;
+}
+.margin-space{
+	padding-bottom:10px;
 }

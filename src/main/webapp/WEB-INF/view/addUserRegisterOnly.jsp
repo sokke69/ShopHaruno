@@ -44,7 +44,7 @@
 </head>
 
 <%-- ナビ・ロゴ ここから --%>
-<c:import url="parts/header_setting.jsp" />
+<c:import url="parts/header_shop.jsp" />
 <c:import url="parts/logo_setting.jsp" />
 <%-- ここまで --%>
 
