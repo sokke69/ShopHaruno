@@ -23,27 +23,17 @@
 
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/jquery-3.6.0.min.js"></script>
-<script src="./js/jquery-uploadThumbs.js"></script>
-<script>
-$(function(){
-	
-	for(let i = 1; i <= ${countAId}; i++){
-		if( ${aId} == i ){
-			$(".select-a").val(i);
-		}
-	}
-});
-</script>
 <script>
     $(function(){
     	
     	for(let i = 1; i <= ${countTypeId}; i++){
-    		if( ${inputedTypeId} == i ){
+    		if( ${typeId} == i ){
     			$(".select-type").val(i);
     		}
     	}
     });
     </script>
+
 
 </head>
 
@@ -127,12 +117,14 @@ $(function(){
                             		<c:out value="※ ${typeError}" />
                             	</div>
                             </c:if>
-                                <select name="request-user-type" id="" class="select-type">
-                                    <option value="0">--選択--</option>
-                                    <c:forEach items="${userTypeList}" var="userTypeList" varStatus="vs">
-                                    <option value="${userTypeList.id}"><c:out value="${userTypeList.typeName}" /></option>
-                                    </c:forEach>
-                                </select>
+                                <select name="request-user-type" class="select-type">
+									<option value="0">--選択--</option>
+									<c:forEach items="${userTypeList}" var="userTypeList"
+										varStatus="vs">
+										<option value="${userTypeList.id}"><c:out
+												value="${userTypeList.typeName}" /></option>
+									</c:forEach>
+								</select>
                             </td>
                         </tr>
 					<tr>
@@ -140,13 +132,13 @@ $(function(){
 					</td>
 					</tr>
 					<tr>
-						<td><hr></td>
+						<td colspan=2><hr></td>
 					</tr>
 					<tr>
-						<td>
+						<td colspan=2>
 							<table>
 								<tr>
-									<td class="bottom-link"><a href="listProduct">戻る</a></td>
+									<td class="bottom-link"><a href="listUser">戻る</a></td>
 								</tr>
 							</table>
 						</td>
