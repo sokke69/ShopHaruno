@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>マイアカウント</title>
+<title>ユーザー削除</title>
 
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap"
 	rel="stylesheet">
-
+	
 <link rel="stylesheet" href="./css/default.css">
 <link rel="stylesheet" href="./css/list.css">
 <link rel="stylesheet" href="./css/hf_style.css">
@@ -32,25 +32,6 @@
 <c:import url="parts/logo_setting.jsp" />
 <%-- ここまで --%>
 
-<%-- 編集ボタン ここから --%>
-<table>
-
-	<tr>
-		<td>
-			<table class="table-add">
-				<tr>
-					<td class="button"><a
-						href="updateMyData"> <span class="icon"><i
-								class="fa-solid fa-wrench"></i></span> 編集
-					</a></td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-
-</table>
-<%-- 編集ボタン ここまで --%>
-
 <%-- テーブルサンプル ここから --%>
 
 <table class="basic">
@@ -63,30 +44,35 @@
 				<%-- テーブル中身 ここから --%>
 				<table class="table-list">
 					<tr>
-						<th colspan=2 class="subject">マイアカウント</th>
+						<th class="subject" colspan=2>ユーザー削除</th>
 					</tr>
 					<tr>
 						<td colspan=2><hr></td>
 					</tr>
 					<tr>
-						<th class="head">ID</th>
-						<td></td>
-					</tr>
+                            <th class="head">ID</th>
+                            <td><c:out value="${user.id}" /></td>
+                        </tr>
+                        <tr>
+                            <th>ユーザー名</th>
+                            <td><c:out value="${user.userNickName}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>ログインID</th>
+                            <td><c:out value="${user.userName}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th  class="head">
+                            ユーザータイプ</th>
+                            <td>
+                            <c:out value="${user.typeName}" />
+                            </td>
+                        </tr>
 					<tr>
-						<th>ユーザー名</th>
-						<td><c:out value="${myData.userNickName}" /></td>
-					</tr>
-					<tr>
-						<th>ログインID</th>
-						<td><c:out value="${myData.userName}" /></td>
-					</tr>
-					<tr>
-						<th>パスワード</th>
-						<td>(表示できません)</td>
-					</tr>
-					
-					<tr>
-						<td colspan=2></td>
+					<td colspan=2><div class="submit"><input type="submit" value="決定" class="btn btn-secondary"></div>
+					</td>
 					</tr>
 					<tr>
 						<td colspan=2><hr></td>
@@ -95,7 +81,7 @@
 						<td colspan=2>
 							<table>
 								<tr>
-									<td class="bottom-link"><a href="listDb">戻る</a></td>
+									<td class="bottom-link"><a href="listUser">戻る</a></td>
 								</tr>
 							</table>
 						</td>
@@ -104,16 +90,16 @@
 				<%-- ここまで --%>
 			</form>
 
-
 		</td>
 	</tr>
 	<tr>
 		<td class="basic-bottom"></td>
 	</tr>
 </table>
+
+<br>
+<br>
 <%-- ここまで --%>
-
-
 
 <footer>
 	<c:import url="parts/footer.jsp" />

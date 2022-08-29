@@ -38,7 +38,7 @@
 		<td>
 			<table class="table-add">
 				<tr>
-				<td class="button"><a href="addUserMasterOnly"><span class="icon"><i class="fa-solid fa-file-circle-plus"></i></span> 追加</a></td>
+				<td class="button"><a href="addListACategory"><span class="icon"><i class="fa-solid fa-file-circle-plus"></i></span> 追加</a></td>
 				</tr>
 			</table>
 		</td>
@@ -64,8 +64,8 @@
 							<tr>
 								<td class="id"><c:out value="${aCategoryList.id}" /></td>
 								<td class="name"><c:out value="${aCategoryList.aCategoryName}" /></td>
-								<td class="update"><a href="updateACategory"><span class="icon"><i class="fa-solid fa-wrench"></i></span> 編集</a></td>
-								<td class="delete"><a href="deleteACategory"><span class="icon"><i class="fa-solid fa-trash-can"></i></span> 削除</a></td>
+								<td class="update"><a href="updateACategory?id=${aCategoryList.id}"><span class="icon"><i class="fa-solid fa-wrench"></i></span> 編集</a></td>
+								<td class="delete"><a href="deleteACategory?id=${aCategoryList.id}"><span class="icon"><i class="fa-solid fa-trash-can"></i></span> 削除</a></td>
 							</tr>
 						</c:forEach>
 					</table>

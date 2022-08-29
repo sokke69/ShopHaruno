@@ -15,8 +15,8 @@ import domain.Admin;
 /**
  * Servlet implementation class DeleteUserServlet
  */
-@WebServlet("/deleteUser")
-public class DeleteUserServlet extends HttpServlet {
+@WebServlet("/deleteUserMasterOnly")
+public class DeleteUserMasterOnlyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -30,9 +30,9 @@ public class DeleteUserServlet extends HttpServlet {
 
 		try {
 			AdminDao adminDao = DaoFactory.createAdminDao();
-			Admin admin = adminDao.findById(id);
+			Admin admin = adminDao.findById2(id);
 			request.setAttribute("user", admin);
-			request.getRequestDispatcher("/WEB-INF/view/deleteUser.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/deleteUserMasterOnly.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}

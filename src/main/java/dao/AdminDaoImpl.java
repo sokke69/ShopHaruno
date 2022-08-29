@@ -73,11 +73,11 @@ public class AdminDaoImpl implements AdminDao {
 
 		try (Connection con = ds.getConnection();) {
 			String sql = "SELECT"
-					+ " id, user_name, user_pass,"
+					+ " users.id, user_nick_name, user_name, user_pass,"
 					+ " users_types.type_name as type"
 					+ " FROM users JOIN users_types"
 					+ " ON users.user_type = users_types.id"
-					+ " WHERE id = ?";
+					+ " WHERE users.id = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setObject(1, id, Types.INTEGER);
 			ResultSet rs = stmt.executeQuery();

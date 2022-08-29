@@ -50,7 +50,7 @@
 	</tr>
 	<tr>
 		<td class="basic-middle">
-			<form action="" method="post" enctype="multipart/form-data">
+			<form action="" method="post">
 				<%-- テーブル中身 ここから --%>
 				<table class="table-list">
 					<tr>
@@ -60,7 +60,7 @@
 						<td colspan=2><hr></td>
 					</tr>
 					<tr>
-                            <th id="head">ID</th>
+                            <th class="head">ID</th>
                             <td><c:out value="${user.id}" /> (変更できません)</td>
                         </tr>
                         <tr>
@@ -100,10 +100,10 @@
                         </tr>
                         <tr>
                             <th>ログインパスワード</th>
-                            <td>変更できません</td>
+                            <td>(変更できません)</td>
                         </tr>
                         <tr>
-                            <th colspan=2>
+                            <th  class="head" colspan=2>
                             <c:if test="${ not empty typeSuccess}">
                             		<i class="fa-solid fa-circle-check success"></i>
                             </c:if>
