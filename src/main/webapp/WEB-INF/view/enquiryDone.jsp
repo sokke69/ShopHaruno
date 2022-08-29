@@ -43,7 +43,7 @@
 	<table class="done">
 		<tr><th class="subject">送信しました。</th></tr>
 		<tr><td><hr></td></tr>
-		<tr><td class="message">お問い合わせありがとうございました。。</td></tr>
+		<tr><td class="message">お問い合わせありがとうございました。</td></tr>
 		<tr><td><hr></td></tr>
 		<tr><td class="bottom-link"><a href="enquiry">戻る</a></td></tr>
 	</table>

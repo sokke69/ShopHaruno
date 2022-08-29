@@ -36,9 +36,9 @@
 <table>
 	<tr>
 		<td>
-			<table class="add">
+			<table class="table-add">
 				<tr>
-				<td class="button"><span class="icon"><i class="fa-solid fa-file-circle-plus"></i></span><a href="addACategory"> 追加</a></td>
+				<td class="button"><a href="addUserMasterOnly"><span class="icon"><i class="fa-solid fa-file-circle-plus"></i></span> 追加</a></td>
 				</tr>
 			</table>
 		</td>

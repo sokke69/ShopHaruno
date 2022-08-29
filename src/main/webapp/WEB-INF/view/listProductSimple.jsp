@@ -48,7 +48,7 @@
 <%-- デザイン切り替えボタン ここまで --%>
 
 <%-- 追加ボタン ここから --%>
-<table class="table-add">
+<table class="add">
 	<tr>
 		<td class="button"><a href="addProduct"><span class="icon"><i
 					class="fa-solid fa-file-circle-plus"></i></span> 追加 </a></td>
@@ -152,9 +152,9 @@
 													</c:if>
 										</div>
 									</td>
-									<td class="update"><a href="updateACategory?id=${productList.id}"><span
+									<td class="update"><a href="updateProduct?id=${productList.id}"><span
 											class="icon"><i class="fa-solid fa-wrench"></i></span> 編集</a></td>
-									<td class="delete"><a href="deleteACategory?id=${productList.id}"><span
+									<td class="delete"><a href="deleteProduct?id=${productList.id}"><span
 											class="icon"><i class="fa-solid fa-trash-can"></i></span> 削除</a></td>
 								</tr>
 
@@ -193,7 +193,7 @@
 	<script>
 		$(function() {
 			$('.pagenation-block').paginathing({//親要素のclassを記述
-				perPage : 10,//1ページあたりの表示件数
+				perPage : 5,//1ページあたりの表示件数
 				prevText : '<i class="fas fa-angle-left"></i>',//1つ前のページへ移動するボタンのテキスト
 				nextText : '<i class="fas fa-angle-right"></i>',//1つ次のページへ移動するボタンのテキスト
 				activeClass : 'navi-active',//現在のページ番号に任意のclassを付与できます

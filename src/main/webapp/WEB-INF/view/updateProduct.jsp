@@ -9,20 +9,47 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>商品編集</title>
+
 <link href="./css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="./css/list_style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap"
+	rel="stylesheet">
+	
+<link rel="stylesheet" href="./css/default.css">
+<link rel="stylesheet" href="./css/list.css">
 <link rel="stylesheet" href="./css/hf_style.css">
 
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/jquery-3.6.0.min.js"></script>
 <script src="./js/jquery-uploadThumbs.js"></script>
-<script src="https://kit.fontawesome.com/ec1be9ca10.js" crossorigin="anonymous"></script>
-<script>
-$(function() {
-    // jQuery Upload Thumbs 
-    $('form input:file').uploadThumbs();
-});
+<script type="text/javascript">
+	const maxFiles = 8;
+	$(function() {
+		let $file_btn = $("#product-img-sub");
+
+		$file_btn.on("change", function(evt) {
+			let elm = $file_btn[0];
+			if (maxFiles < elm.files.length) {
+				alert(`サブ画像は8枚までです`);
+				elm.value = null; 
+
+				return false;
+			}
+		})
+	});
 </script>
+
+<script>
+	$(function() {
+		$('form input:file').uploadThumbs({
+			position : 0,
+			imgbreak : true
+		});
+	});
+</script>
+
 <script>
 $(function(){
 	
@@ -33,87 +60,118 @@ $(function(){
 	}
 });
 </script>
+<script>
+    $(function(){
+    	
+    	for(let i = 1; i <= ${countTypeId}; i++){
+    		if( ${inputedTypeId} == i ){
+    			$(".select-type").val(i);
+    		}
+    	}
+    });
+    </script>
 
 </head>
 
-<body>
-	<c:import url="parts/header.jsp" />
+<%-- ナビ・ロゴ ここから --%>
+<c:import url="parts/header_setting.jsp" />
+<c:import url="parts/logo_setting.jsp" />
+<%-- ここまで --%>
 
-	<div class="container" id="body">
-		<div class="row">
-			<div class="col"></div>
-			<div class="col-9">
-				<div class="display-6">商品編集</div>
-				<form action="" method="post" enctype="multipart/form-data">
-				<!-- <form action="" method="post"> -->
-					<table id="list-table" class="table table-hover">
-						<tr>
-							<th id="head">ID</th>
-							<td><c:out value="${product.id}" /> (変更できません)</td>
-						</tr>
-						<tr>
-							<th><c:if test="${ not empty nameSuccess}">
-									<i class="fa-solid fa-circle-check success"></i>
-								</c:if> <c:if test="${ not empty nameError}">
-									<i class="fa-solid fa-circle-exclamation error"></i>
-								</c:if> 商品名*</th>
-							<td><c:if test="${ not empty nameError}">
-									<div class="alert alert-danger" id="alert">
-										<c:out value="※ ${nameError}" />
-									</div>
-								</c:if> <input type="text" value="${product.productName}" name="product-name" id="longform"></td>
-						</tr>
-						<tr>
-							<th><c:if test="${ not empty urlSuccess}">
-									<i class="fa-solid fa-circle-check success"></i>
-								</c:if> <c:if test="${ not empty urlError}">
-									<i class="fa-solid fa-circle-exclamation error"></i>
-								</c:if> 商品URL*</th>
-							<td><c:if test="${ not empty urlError}">
-									<div class="alert alert-danger" id="alert">
-										<c:out value="※ ${urlError}" />
-									</div>
-								</c:if> <input type="text"
-								value="<c:out value="${product.productUrl}" />"
-								name="product-url" id="longform"></td>
-						</tr>
-						<tr>
-							<th><c:if test="${ not empty aCategorySuccess}">
-									<i class="fa-solid fa-circle-check success"></i>
-								</c:if> <c:if test="${ not empty aCategoryError}">
-									<i class="fa-solid fa-circle-exclamation error"></i>
-								</c:if> カテゴリ*</th>
-							<td><c:if test="${ not empty aCategoryError}">
-									<div class="alert alert-danger" id="alert">
-										<c:out value="※ ${aCategoryError}" />
-									</div>
-								</c:if> <select name="a-category-id" id="selectform" class="select-a">
-									<option value="0">--選択--</option>
-									<c:forEach items="${aCategoryList}" var="aCategoryList"
-										varStatus="vs">
-										<option value="${aCategoryList.id}"><c:out
-												value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></option>
-									</c:forEach>
-							</select></td>
-						</tr>
-						<tr>
-							<th>メイン画像</th>
-							<td>
+<%-- テーブルサンプル ここから --%>
+
+<table class="basic">
+	<tr>
+		<td class="basic-top"></td>
+	</tr>
+	<tr>
+		<td class="basic-middle">
+			<form action="" method="post" enctype="multipart/form-data">
+				<%-- テーブル中身 ここから --%>
+				<table class="table-list">
+					<tr>
+						<th class="subject">商品編集</th>
+					</tr>
+					<tr>
+						<td><hr></td>
+					</tr>
+					<%-- ユーザー名 --%>
+					<tr>
+						<th><c:if test="${ not empty nameSuccess}">
+										<i class="fa-solid fa-circle-check success"></i>
+									</c:if> <c:if test="${ not empty nameError}">
+										<i class="fa-solid fa-circle-exclamation error"></i>
+									</c:if>
+									 商品名*</th></tr>
+					<tr><td>
+					<c:if test="${ not empty nameError}">
+										<div class="alert alert-danger" id="alert">
+											<c:out value="※ ${nameError}" />
+										</div>
+									</c:if> <input type="text" value="${product.productName}" placeholder="商品名"
+									name="product-name" id="add-user-form">
+									<div class="attention">※ 商品名は255文字以内で入力してください。</div></td>
+					</tr>
+
+					<%-- ログインID --%>
+					<tr>
+						<th><c:if test="${ not empty urlSuccess}">
+										<i class="fa-solid fa-circle-check success"></i>
+									</c:if> <c:if test="${ not empty urlError}">
+										<i class="fa-solid fa-circle-exclamation error"></i>
+									</c:if> 商品URL*</th>
+					</tr>
+					<tr>
+						<td><c:if test="${ not empty urlError}">
+										<div class="alert alert-danger" id="alert">
+											<c:out value="※ ${urlError}" />
+										</div>
+									</c:if> <input type="text" value="${product.productUrl}" name="product-url"
+									id="add-user-form" placeholder="https://"></td>
+					</tr>
+					<%-- ログインパスワード --%>
+					<tr>
+						<th><c:if test="${ not empty aCategorySuccess}">
+										<i class="fa-solid fa-circle-check success"></i>
+									</c:if> <c:if test="${ not empty aCategoryError}">
+										<i class="fa-solid fa-circle-exclamation error"></i>
+									</c:if> カテゴリA*</th>
+					</tr>
+					<tr>
+						<td><c:if test="${ not empty aCategoryError}">
+										<div class="alert alert-danger" id="alert">
+											<c:out value="※ ${aCategoryError}" />
+										</div>
+									</c:if> <select name="a-category-id" id="selectform" class="select-a">
+										<option value="0">--選択--</option>
+										<c:forEach items="${aCategoryList}" var="aCategoryList"
+											varStatus="vs">
+											<option value="${aCategoryList.id}"><c:out
+													value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></option>
+										</c:forEach>
+								</select></td>
+					</tr>
+					<%-- ログインパスワード(確認) --%>
+					<tr>
+						<th>メイン画像</th>
+							</tr><tr><td>
 								<label>
-									<input type="checkbox" name="checked" value="1" checked="checked" /> <small>変更しない</small>
+									<input type="checkbox" name="checked" value="1" checked="checked" class="check"/> <small>変更しない</small>
 								</label><br />
 								<label>
 									<img src="${product.imgMain}" class="uploaded thumb" alt="" /><br />
 									<input type="file" name="product-img-main" /><br />
 									<br />
 								</label>
-							</td>
-						</tr>
-						<tr>
+									<div class="attention">※ 形式はjpgのみです。</div></td>
+					</tr>
+					<tr>
 							<th>サブ画像01</th>
+							</tr>
+					<tr>
 							<td>
 								<label>
-									<input type="checkbox" name="checked" value="1" checked="checked" /> <small>変更しない</small>
+									<input type="checkbox" name="checked" value="1" checked="checked" class="check" /> <small>変更しない</small>
 								</label><br />
 								<label>
 									<img src="${product.imgSub01}" class="uploaded thumb" alt="" /><br />
@@ -123,9 +181,11 @@ $(function(){
 						</tr>
 						<tr>
 							<th>サブ画像02</th>
+							</tr>
+					<tr>
 							<td>
 								<label>
-									<input type="checkbox" name="checked" value="1" checked="checked" /> <small>変更しない</small>
+									<input type="checkbox" name="checked" value="1" checked="checked" class="check" /> <small>変更しない</small>
 								</label><br />
 								<label>
 									<img src="${product.imgSub02}" class="uploaded thumb" alt="" /><br />
@@ -134,10 +194,11 @@ $(function(){
 							</td>
 						</tr>
 						<tr>
-							<th>サブ画像03</th>
+							<th>サブ画像03</th></tr>
+					<tr>
 							<td>
 								<label>
-									<input type="checkbox" name="checked" value="1" checked="checked" /> <small>変更しない</small>
+									<input type="checkbox" name="checked" value="1" checked="checked" class="check" /> <small>変更しない</small>
 								</label><br />
 								<label>
 									<img src="${product.imgSub03}" class="uploaded thumb" alt="" /><br />
@@ -146,10 +207,11 @@ $(function(){
 							</td>
 						</tr>
 						<tr>
-							<th>サブ画像04</th>
+							<th>サブ画像04</th></tr>
+					<tr>
 							<td>
 								<label>
-									<input type="checkbox" name="checked" value="1" checked="checked" /> <small>変更しない</small>
+									<input type="checkbox" name="checked" value="1" checked="checked" class="check" /> <small>変更しない</small>
 								</label><br />
 								<label>
 									<img src="${product.imgSub04}" class="uploaded thumb" alt="" /><br />
@@ -158,10 +220,11 @@ $(function(){
 							</td>
 						</tr>
 						<tr>
-							<th>サブ画像05</th>
+							<th>サブ画像05</th></tr>
+					<tr>
 							<td>
 								<label>
-									<input type="checkbox" name="checked" value="1" checked="checked" /> <small>変更しない</small>
+									<input type="checkbox" name="checked" value="1" checked="checked" class="check" /> <small>変更しない</small>
 								</label><br />
 								<label>
 									<img src="${product.imgSub05}" class="uploaded thumb" alt="" /><br />
@@ -170,10 +233,11 @@ $(function(){
 							</td>
 						</tr>
 						<tr>
-							<th>サブ画像06</th>
+							<th>サブ画像06</th></tr>
+					<tr>
 							<td>
 								<label>
-									<input type="checkbox" name="checked" value="1" checked="checked" /> <small>変更しない</small>
+									<input type="checkbox" name="checked" value="1" checked="checked" class="check" /> <small>変更しない</small>
 								</label><br />
 								<label>
 									<img src="${product.imgSub06}" class="uploaded thumb" alt="" /><br />
@@ -182,10 +246,11 @@ $(function(){
 							</td>
 						</tr>
 						<tr>
-							<th>サブ画像07</th>
+							<th>サブ画像07</th></tr>
+					<tr>
 							<td>
 								<label>
-									<input type="checkbox" name="checked" value="1" checked="checked" /> <small>変更しない</small>
+									<input type="checkbox" name="checked" value="1" checked="checked" class="check" /> <small>変更しない</small>
 								</label><br />
 								<label>
 									<img src="${product.imgSub07}" class="uploaded thumb" alt="" /><br />
@@ -194,10 +259,11 @@ $(function(){
 							</td>
 						</tr>
 						<tr>
-							<th>サブ画像08</th>
+							<th>サブ画像08</th></tr>
+					<tr>
 							<td>
 								<label>
-									<input type="checkbox" name="checked" value="1" checked="checked" /> <small>変更しない</small>
+									<input type="checkbox" name="checked" value="1" checked="checked" class="check" /> <small>変更しない</small>
 								</label><br />
 								<label>
 									<img src="${product.imgSub08}" class="uploaded thumb" alt="" /><br />
@@ -205,25 +271,41 @@ $(function(){
 								</label>
 							</td>
 						</tr>
-					</table>
-					<input type="submit" value="決定" class="submit">
+					<tr>
+					<td><div class="submit"><input type="submit" value="決定" class="btn btn-secondary"></div>
+					</td>
+					</tr>
+					<tr>
+						<td><hr></td>
+					</tr>
+					<tr>
+						<td>
+							<table>
+								<tr>
+									<td class="bottom-link"><a href="listProduct">戻る</a></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				<%-- ここまで --%>
+			</form>
 
-					<p>
-						<a href="listProduct">戻る</a>
-					</p>
-				</form>
-			</div>
-			<div class="col"></div>
-		</div>
-		<!--/.row-->
-	</div>
-	<!--/.container-->
+		</td>
+	</tr>
+	<tr>
+		<td class="basic-bottom"></td>
+	</tr>
+</table>
 
-	<div>
-		<footer>
-			<c:import url="parts/footer.jsp" />
-		</footer>
-	</div>
+<br>
+<br>
+<%-- ここまで --%>
+
+<footer>
+	<c:import url="parts/footer.jsp" />
+</footer>
+
 
 </body>
 

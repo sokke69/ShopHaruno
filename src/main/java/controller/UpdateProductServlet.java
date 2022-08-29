@@ -29,8 +29,8 @@ import domain.Product;
 
 
 /* 注意！！使うPCによって必ずここを変更する！！！！！！！！ */
-//@MultipartConfig(location = "C:/Users/zd2L17/temp")
-@MultipartConfig(location = "C:/temp")
+@MultipartConfig(location = "C:/Users/zd2L17/temp")
+//MultipartConfig(location = "C:/temp")
 
 
 
@@ -154,6 +154,9 @@ public class UpdateProductServlet extends HttpServlet {
 				/* DBを更新 */
 				ProductDao productDao = DaoFactory.createProductDao();
 				productDao.update(product);
+				
+				/* 商品IDを一度セッションに */
+				request.getSession().setAttribute("productId", id);
 				
 				/* 完了ページ移動 */
 				request.setAttribute("id", id);

@@ -180,7 +180,7 @@
 	<script>
 		$(function() {
 			$('.pagenation-block').paginathing({//親要素のclassを記述
-				perPage : 10,//1ページあたりの表示件数
+				perPage : 5,//1ページあたりの表示件数
 				prevText : '<i class="fas fa-angle-left"></i>',//1つ前のページへ移動するボタンのテキスト
 				nextText : '<i class="fas fa-angle-right"></i>',//1つ次のページへ移動するボタンのテキスト
 				activeClass : 'navi-active',//現在のページ番号に任意のclassを付与できます
