@@ -79,8 +79,16 @@ public class UpdateACategoryServlet extends HttpServlet {
 				ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 				aCategoryDao.update(aCategory);
 				
+				/*完了ページ表示用*/
+				request.getSession().setAttribute("completeTitle", "カテゴリ編集");
+				request.getSession().setAttribute("completeMessage", "カテゴリを変更しました。");
+				request.getSession().setAttribute("completeLink1Title", "カテゴリリスト");
+				request.getSession().setAttribute("completeLink1", "listACategory");
+				request.getSession().setAttribute("completeLink2Title", "データベースリスト");
+				request.getSession().setAttribute("completeLink2", "listDb");
+				
 				/* ページ移動 */
-				request.getRequestDispatcher("/WEB-INF/view/updateACategoryDone.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
 			
 		} catch (Exception e) {

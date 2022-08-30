@@ -133,31 +133,31 @@
 									<td>
 										<div class="single">
 											<div>
-												<img src="${productList.imgMain}" alt="" class="imgs">
+												<img src="${productList.imgMain}?${today}" alt="" class="imgs" />
 											</div>
 											<div>
-												<img src="${productList.imgSub01}" alt="" class="imgs">
+												<img src="${productList.imgSub01}?${today}" alt="" class="imgs" />
 											</div>
 											<div>
-												<img src="${productList.imgSub02}" alt="" class="imgs">
+												<img src="${productList.imgSub02}?${today}" alt="" class="imgs" />
 											</div>
 											<div>
-												<img src="${productList.imgSub03}" alt="" class="imgs">
+												<img src="${productList.imgSub03}?${today}" alt="" class="imgs" />
 											</div>
 											<div>
-												<img src="${productList.imgSub04}" alt="" class="imgs">
+												<img src="${productList.imgSub04}?${today}" alt="" class="imgs" />
 											</div>
 											<div>
-												<img src="${productList.imgSub05}" alt="" class="imgs">
+												<img src="${productList.imgSub05}?${today}" alt="" class="imgs" />
 											</div>
 											<div>
-												<img src="${productList.imgSub06}" alt="" class="imgs">
+												<img src="${productList.imgSub06}?${today}" alt="" class="imgs" />
 											</div>
 											<div>
-												<img src="${productList.imgSub07}" alt="" class="imgs">
+												<img src="${productList.imgSub07}?${today}" alt="" class="imgs" />
 											</div>
 											<div>
-												<img src="${productList.imgSub08}" alt="" class="imgs">
+												<img src="${productList.imgSub08}?${today}" alt="" class="imgs" />
 											</div>
 										</div>
 									</td>
@@ -176,7 +176,7 @@
 											<tr>
 												<td class="product-ted"><i
 													class="fa-solid fa-calendar-days calender-icon"></i> <fmt:formatDate
-														value="${productList.registDate}" pattern=" y年MM月dd日" />
+														value="${productList.registDate}" pattern=" y年MM月dd日 HH時mm分" />
 													<c:out value="by ${productList.registBy}" /></td>
 											</tr>
 											<tr>
@@ -184,9 +184,9 @@
 													class="fa-solid fa-arrows-rotate"></i> <c:if
 														test="${not empty productList.updateDate}">
 														<fmt:formatDate value="${productList.updateDate}"
-															pattern=" y年MM月dd日" />
+															pattern=" y年MM月dd日 HH時mm分" />
 													</c:if> <c:if test="${empty productList.updateDate}">
-														<span> ----年--月--日</span>
+														<span> ----年--月--日 --時--分</span>
 													</c:if> <c:if test="${not empty productList.updateBy}">
 														<c:out value="by ${productList.updateBy}" />
 													</c:if> <c:if test="${empty productList.updateBy}">

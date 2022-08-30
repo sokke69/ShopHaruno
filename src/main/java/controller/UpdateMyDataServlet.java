@@ -118,10 +118,23 @@ public class UpdateMyDataServlet extends HttpServlet {
 			
 			/* 問題がなければデータを更新して完了画面を表示 */
 			if (!isError) {
+				
+				/* ユーザー名が変更されていればsession中のuserNickNameを変更 */
+				request.getSession().setAttribute("userNickName", userName);
+				
 				/* UPDATE */
 				adminDao.updateNickNameAndUserId(admin);
 				
-				request.getRequestDispatcher("/WEB-INF/view/updateMyDataDone.jsp").forward(request, response);
+				/*完了ページ表示用*/
+				request.getSession().setAttribute("completeTitle", "マイアカウント編集");
+				request.getSession().setAttribute("completeMessage", "マイアカウントを変更しました");
+				request.getSession().setAttribute("completeLink1Title", "マイアカウント");
+				request.getSession().setAttribute("completeLink1", "viewMyData");
+				request.getSession().setAttribute("completeLink2Title", "データベースリスト");
+				request.getSession().setAttribute("completeLink2", "listDb");
+
+				/* ページ移動 */
+				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
 
 		} catch (Exception e) {

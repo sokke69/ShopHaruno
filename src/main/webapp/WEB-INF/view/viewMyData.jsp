@@ -70,7 +70,7 @@
 					</tr>
 					<tr>
 						<th class="head">ID</th>
-						<td></td>
+						<td><c:out value="${myData.id}" /></td>
 					</tr>
 					<tr>
 						<th>ユーザー名</th>

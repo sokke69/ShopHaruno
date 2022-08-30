@@ -18,7 +18,7 @@
 					<li class="nav-item"><a class="nav-link" href="#">ABOUT</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Q&A</a></li>
 					<li class="nav-item"><a class="nav-link" href="enquiry">CONTACT</a></li>
-					<li class="nav-item"><a class="nav-link" href="listDb"><i class="fa-solid fa-gear setting"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="login"><i class="fa-solid fa-gear setting"></i></a></li>
 					
 				</ul>
 			</div>

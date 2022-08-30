@@ -189,7 +189,16 @@ public class AddUserMasterOnlyServlet extends HttpServlet {
 
 				adminDao.insert(admin);
 				
-				request.getRequestDispatcher("/WEB-INF/view/addUserDone.jsp").forward(request, response);
+				/*完了ページ表示用*/
+				request.getSession().setAttribute("completeTitle", "ユーザー追加");
+				request.getSession().setAttribute("completeMessage", "ユーザーを追加しました。");
+				request.getSession().setAttribute("completeLink1Title", "ユーザーリスト");
+				request.getSession().setAttribute("completeLink1", "listUser");
+				request.getSession().setAttribute("completeLink2Title", "データベースリスト");			
+				request.getSession().setAttribute("completeLink2", "listDb");	
+				
+				/* ページ移動 */
+				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
 			
 			

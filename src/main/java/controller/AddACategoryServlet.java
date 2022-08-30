@@ -57,6 +57,14 @@ public class AddACategoryServlet extends HttpServlet {
 			} 
 			/* エラーがない場合は登録 */
 			else if (!isError) {
+				/*完了ページ表示用*/
+				request.getSession().setAttribute("completeTitle", "カテゴリ追加");
+				request.getSession().setAttribute("completeMessage", "カテゴリーに追加しました。");
+				request.getSession().setAttribute("completeLink1Title", "カテゴリリスト");
+				request.getSession().setAttribute("completeLink1", "listACategory");
+				request.getSession().setAttribute("completeLink2Title", "データベースリスト");			
+				request.getSession().setAttribute("completeLink2", "listDb");
+				
 				/* 取得した名前をセット */
 				ACategory aCategory = new ACategory();
 				aCategory.setaCategoryName(aCategoryName);
@@ -66,7 +74,7 @@ public class AddACategoryServlet extends HttpServlet {
 				aCategoryDao.insert(aCategory);
 				
 				/* 完了ページ表示 */
-				request.getRequestDispatcher("/WEB-INF/view/addACategoryDone.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
 
 		} catch (Exception e) {

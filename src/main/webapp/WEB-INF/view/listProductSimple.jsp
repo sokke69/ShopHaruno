@@ -132,17 +132,17 @@
 										<div>
 											<i class="fa-solid fa-calendar-days calender-icon"></i>
 											<fmt:formatDate value="${productList.registDate}"
-												pattern=" y年MM月dd日" />
+												pattern=" y年MM月dd日 HH時mm分" />
 											<c:out value="by ${productList.registBy}" />
 										</div>
 										<div>
 											<i class="fa-solid fa-arrows-rotate"></i>
 											<c:if test="${not empty productList.updateDate}">
 												<fmt:formatDate value="${productList.updateDate}"
-													pattern=" y年MM月dd日" />
+													pattern=" y年MM月dd日 HH時mm分" />
 											</c:if>
 											<c:if test="${empty productList.updateDate}">
-												<span> ----年--月--日</span>
+												<span> ----年--月--日 --時--分</span>
 											</c:if>
 											<c:if test="${not empty productList.updateBy}">
 												<c:out value="by ${productList.updateBy}" />

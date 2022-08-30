@@ -9,34 +9,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LogoutServlet
+ * Servlet implementation class DoneServlet
  */
-@WebServlet("/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/done")
+public class DoneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html; charset=UTF-8");
-		request.getSession().invalidate();
-		request.getRequestDispatcher("/WEB-INF/view/logoutDone.jsp").forward(request, response);
 		
+		request.getSession().getAttribute("completeTitle");
+		request.getSession().getAttribute("completeMessage");
+		request.getSession().getAttribute("completeLink1Title");
+		request.getSession().getAttribute("completeLink1");
+		request.getSession().getAttribute("completeLink2Title");
+		request.getSession().getAttribute("completeLink2");
+		request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-
-		
-		
-		
-		
-		
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

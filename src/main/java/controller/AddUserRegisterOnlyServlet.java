@@ -149,13 +149,21 @@ public class AddUserRegisterOnlyServlet extends HttpServlet {
 				admin.setUserNickName(userName);
 				admin.setUserName(loginId);
 				admin.setUserPass(hashedPass);
-
 				adminDao.insertNoUserType(admin);
 				
-				/* sessionに格納された */
+				/* registerからログアウト */
 				request.getSession().invalidate();
 				
-				request.getRequestDispatcher("/WEB-INF/view/addUserDoneRegisterOnly.jsp").forward(request, response);
+				/*完了ページ表示用*/
+				request.getSession().setAttribute("completeTitle", "ユーザー追加");
+				request.getSession().setAttribute("completeMessage", "ユーザーを追加しました。");
+				request.getSession().setAttribute("completeLink1Title", "ログイン画面");
+				request.getSession().setAttribute("completeLink1", "login");
+				request.getSession().setAttribute("completeLink2Title", "トップページ");			
+				request.getSession().setAttribute("completeLink2", "index");	
+				
+				/*ページ移動*/
+				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
 			
 			

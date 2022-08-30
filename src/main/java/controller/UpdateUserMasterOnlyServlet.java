@@ -140,7 +140,16 @@ public class UpdateUserMasterOnlyServlet extends HttpServlet {
 				/* UPDATE */
 				adminDao.update(admin);
 				
-				request.getRequestDispatcher("/WEB-INF/view/updateUserDone.jsp").forward(request, response);
+				/*完了ページ表示用*/
+				request.getSession().setAttribute("completeTitle", "ユーザー編集");
+				request.getSession().setAttribute("completeMessage", "ユーザーの編集が完了しました。");
+				request.getSession().setAttribute("completeLink1Title", "ユーザーリスト");
+				request.getSession().setAttribute("completeLink1", "listUser");
+				request.getSession().setAttribute("completeLink2Title", "データベースリスト");
+				request.getSession().setAttribute("completeLink2", "listDb");
+
+				/* ページ移動 */
+				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
 			
 			

@@ -166,7 +166,7 @@
 						<td>
 							<table>
 								<tr>
-									<td class="bottom-link"><a href="listDb">戻る</a></td>
+									<td class="bottom-link"><a href="logout">ログアウトして戻る</a></td>
 								</tr>
 							</table>
 						</td>

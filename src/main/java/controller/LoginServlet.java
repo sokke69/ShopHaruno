@@ -81,18 +81,16 @@ public class LoginServlet extends HttpServlet {
 				} else if (sessionUserType == 2) {
 					request.getSession().setAttribute("userIsUser", sessionUserType);
 				} else if (sessionUserType == 3) {
-					request.getSession().setAttribute("userIsTester", sessionUserType);
-				} else if (sessionUserType == 4) {
 					request.getSession().setAttribute("userIsRegister", sessionUserType);
 					register = true;
 				}
 
-				/* 4(Register)ならユーザー登録画面(RegisterOnly)へ */
+				/* 3(Register)ならユーザー登録画面(RegisterOnly)へ */
 				if (register) {
 					response.sendRedirect("addUserRegisterOnly");
 				}
 
-				/* 1～3(Master,User,Tester)ならデータベストリストへ */
+				/* 1,2(Master,User)ならデータベースリストへ */
 				else if (!register) {
 					response.sendRedirect("listDb");
 				}

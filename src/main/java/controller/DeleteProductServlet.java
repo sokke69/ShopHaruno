@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -30,10 +32,15 @@ public class DeleteProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		Integer id = Integer.parseInt(request.getParameter("id"));
-
 		try {
+			/* 画像キャッシュ問題をクリアするためセッションに本日の日付を格納 */
+			Date todayDate = new Date();
+			SimpleDateFormat fmt = new SimpleDateFormat("yMMddHHmmss");
+			String today = fmt.format(todayDate);
+			request.getSession().setAttribute("today", today);
+			
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			
 			ProductDao productDao = DaoFactory.createProductDao();
 			Product product = productDao.findById(id);
 			request.setAttribute("product", product);
@@ -52,19 +59,29 @@ public class DeleteProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
-		Integer id = Integer.parseInt(request.getParameter("id"));
-
-		Product product = new Product();
-		product.setId(id);
-
 		try {
+			/* URLから削除する商品のidを取得しセット */
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			Product product = new Product();
+			product.setId(id);
+			
+			/* データベースの商品データの削除実行 */
 			ProductDao productDao = DaoFactory.createProductDao();
 			productDao.delete(product);
-
+			
+			/* imgsフォルダの画像削除実行 */
 			deleteImg(request);
-
-			request.getRequestDispatcher("/WEB-INF/view/deleteProductDone.jsp").forward(request, response);
+			
+			/*完了ページ表示用*/
+			request.getSession().setAttribute("completeTitle", "商品削除");
+			request.getSession().setAttribute("completeMessage", "商品を削除しました。");
+			request.getSession().setAttribute("completeLink1Title", "商品リスト");
+			request.getSession().setAttribute("completeLink1", "listProduct");
+			request.getSession().setAttribute("completeLink2Title", "データベースリスト");			
+			request.getSession().setAttribute("completeLink2", "listDb");	
+			
+			/* ページ移動 */
+			request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException();
 		}

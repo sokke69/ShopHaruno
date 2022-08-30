@@ -13,18 +13,16 @@ import dao.DaoFactory;
 import domain.Admin;
 
 /**
- * Servlet implementation class ViewMyDataServlet
+ * Servlet implementation class ViewMyDataViewOnlyServlet
  */
-@WebServlet("/viewMyData")
-public class ViewMyDataServlet extends HttpServlet {
+@WebServlet("/viewMyDataViewOnly")
+public class ViewMyDataViewOnlyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			/* セッションからログインしているユーザーのIDからユーザー情報取得しセット */
 			Integer id = (Integer) request.getSession().getAttribute("userId");
@@ -33,7 +31,7 @@ public class ViewMyDataServlet extends HttpServlet {
 			request.setAttribute("myData", admin);
 			
 			/* ページ表示 */
-			request.getRequestDispatcher("/WEB-INF/view/viewMyData.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/viewMyDataViewOnly.jsp").forward(request, response);
 
 		} catch (Exception e) {
 			throw new ServletException(e);
@@ -41,11 +39,9 @@ public class ViewMyDataServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -95,28 +95,17 @@ public class AuthFilter extends HttpFilter implements Filter {
 			}
 		}
 		
-		/* ユーザーがregisterまたはtesterのとき表示しないで移動 */
-		if (uri.endsWith("Product") ||
-				uri.contains("ProductDone") ||
-				uri.contains("ProductCheck") ||
-				uri.contains("ByAId")) {
-			if (session.getAttribute("userIsTester") != null || session.getAttribute("userIsRegister") != null) {
-				res.sendRedirect(req.getContextPath() + "/listProductViewOnly");
+		/* ユーザーがregisterのとき表示しないで移動 */
+		if (!uri.contains("Register") &&
+				!uri.contains("login") && 
+				!uri.contains("logout") &&
+				!uri.contains("index") && 
+				!uri.contains("enquiry")) {
+			if (session.getAttribute("userIsRegister") != null) {
+				request.getRequestDispatcher("/WEB-INF/view/addUserRegisterOnly.jsp").forward(request, response);
 				return;
 			}
-		} else if(uri.endsWith("Simple")) {
-			if (session.getAttribute("userIsTester") != null || session.getAttribute("userIsRegister") != null) {
-				res.sendRedirect(req.getContextPath() + "/listProductSimpleViewOnly");
-				return;
-			}
-		} else if (uri.endsWith("ACategory")||
-				uri.contains("ACategoryDone") ||
-				uri.contains("ACategoryCheck")) {
-			if (session.getAttribute("userIsTester") != null || session.getAttribute("userIsRegister") != null) {
-				res.sendRedirect(req.getContextPath() + "/listACategoryViewOnly");
-				return;
-			}
-		} 
+		}	
 
 
 		// pass the request along the filter chain

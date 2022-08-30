@@ -46,21 +46,31 @@ public class DeleteUserMasterOnlyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		Integer id = Integer.parseInt(request.getParameter("id"));
-		
-		Admin admin = new Admin();
-		admin.setId(id);
-		
+
 		try {
+			/* URLから削除するユーザーのIDを取得しセット */
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			Admin admin = new Admin();
+			admin.setId(id);
+			
+			/* 削除実行 */
 			AdminDao adminDao = DaoFactory.createAdminDao();
 			adminDao.delete(admin);
 			
-			request.getRequestDispatcher("/WEB-INF/view/deleteUserDone.jsp").forward(request, response);
+			/*完了ページ表示用*/
+			request.getSession().setAttribute("completeTitle", "ユーザー削除");
+			request.getSession().setAttribute("completeMessage", "ユーザーを削除しました");
+			request.getSession().setAttribute("completeLink1Title", "ユーザーリスト");
+			request.getSession().setAttribute("completeLink1", "listUser");
+			request.getSession().setAttribute("completeLink2Title", "データベースリスト");			
+			request.getSession().setAttribute("completeLink2", "listDb");	
+
+			/* ページ移動 */
+			request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException();
 		}
-		
+
 	}
 
 }

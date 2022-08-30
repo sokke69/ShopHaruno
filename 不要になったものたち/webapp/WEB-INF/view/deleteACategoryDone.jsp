@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>カテゴリ追加</title>
+<title>カテゴリ削除 完了</title>
 
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,7 @@
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
 <link rel="stylesheet" href="./css/default.css">
-<link rel="stylesheet" href="./css/list.css">
+<link rel="stylesheet" href="./css/done.css">
 <link rel="stylesheet" href="./css/hf_style.css">
 
 <script src="https://kit.fontawesome.com/ec1be9ca10.js"
@@ -35,7 +35,7 @@
 <%-- ナビ・ロゴ ここから --%>
 <c:import url="parts/header_setting.jsp" />
 <c:import url="parts/logo_setting.jsp" />
-<%-- ここまで --%>
+<%--  ここまで --%>
 
 <%-- テーブルサンプル ここから --%>
 
@@ -45,50 +45,30 @@
 	</tr>
 	<tr>
 		<td class="basic-middle">
-			<form action="" method="post">
-				<%-- テーブル中身 ここから --%>
-				<table class="table-list">
-					<tr>
-						<th class="subject">カテゴリ追加</th>
-					</tr>
-					<tr>
-						<td><hr></td>
-					</tr>
-					<%-- カテゴリ名 --%>
-					<tr>
-						<th><c:if test="${ not empty aCategoryError}">
-								<i class="fa-solid fa-circle-exclamation error"></i>
-							</c:if> カテゴリ名</th>
-					</tr>
-					<tr>
-						<td><c:if test="${ not empty aCategoryError}">
-								<div class="alert alert-danger" id="alert">
-									<c:out value="※ ${aCategoryError}" />
-								</div>
-							</c:if> <input type="text" value="${aCategoryName}"
-							name="a-category-name" id="add-user-form">
-							<div class="attention">※ 名前は20文字以内で入力してください。</div></td>
-					</tr>
-					<tr>
-						<td><div class="submit">
-								<input type="submit" value="追加" class="btn btn-secondary">
-							</div></td>
-					</tr>
-					<tr>
-						<td><hr></td>
-					</tr>
-					<tr>
-						<td>
-							<table>
-								<tr>
-									<td class="bottom-link"><a href="listACategory">戻る</a></td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
-				<%-- ここまで --%>
-			</form>
+			<%-- テーブル中身 ここから --%>
+
+			<table class="done">
+				<tr>
+					<th class="subject">カテゴリ削除 完了</th>
+				</tr>
+				<tr><td><hr></td></tr>
+				<tr>
+					<td>カテゴリを削除しました。</td>
+				</tr>
+				<tr>
+					<td><hr></td>
+				</tr>
+				<tr>
+					<td>
+						<table>
+							<tr>
+							<td class="bottom-link"><a href="listACategory">カテゴリリスト</a></td>
+							<td class="bottom-link"><a href="listDb">データベースリスト</a></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table> <%-- ここまで --%>
 
 		</td>
 	</tr>

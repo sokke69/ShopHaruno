@@ -16,7 +16,7 @@
     <script src="./js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<c:import url="parts/header.jsp" />
+<c:import url="parts/header_setting.jsp" />
 
     <div class="container" id="body">
         <div class="row">

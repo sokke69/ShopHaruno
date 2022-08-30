@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -28,6 +30,12 @@ public class ListProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			/* 画像キャッシュ問題をクリアするためセッションに本日の日付を格納 */
+			Date todayDate = new Date();
+			SimpleDateFormat fmt = new SimpleDateFormat("yMMddHHmmss");
+			String today = fmt.format(todayDate);
+			request.getSession().setAttribute("today", today);
+			
 			/* urlに?Category=があれば取得してInteger化 */
 			String categoryStr = request.getParameter("Category");
 			Integer category = null;
@@ -39,7 +47,7 @@ public class ListProductServlet extends HttpServlet {
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			List<ACategory> aCategoryList = aCategoryDao.findAll();
 			
-			/* DBから商品の取得 */
+			/* データベースから商品の取得 */
 			ProductDao productDao = DaoFactory.createProductDao();
 			List<Product> productList = new ArrayList<>();
 			if (categoryStr == null) {

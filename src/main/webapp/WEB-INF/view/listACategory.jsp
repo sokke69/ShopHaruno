@@ -38,7 +38,7 @@
 		<td>
 			<table class="table-add">
 				<tr>
-				<td class="button"><a href="addListACategory"><span class="icon"><i class="fa-solid fa-file-circle-plus"></i></span> 追加</a></td>
+				<td class="button"><a href="addACategory"><span class="icon"><i class="fa-solid fa-file-circle-plus"></i></span> 追加</a></td>
 				</tr>
 			</table>
 		</td>

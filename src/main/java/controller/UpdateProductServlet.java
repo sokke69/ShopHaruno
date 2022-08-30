@@ -146,6 +146,8 @@ public class UpdateProductServlet extends HttpServlet {
 				
 				/* ページ再表示 */
 				request.getRequestDispatcher("/WEB-INF/view/updateProduct.jsp").forward(request, response);
+				
+			/* エラーがなければ編集を実行 */
 			} else if (!isError) {
 				
 				/* 画像ファイル上書き */
@@ -155,12 +157,16 @@ public class UpdateProductServlet extends HttpServlet {
 				ProductDao productDao = DaoFactory.createProductDao();
 				productDao.update(product);
 				
-				/* 商品IDを一度セッションに */
-				request.getSession().setAttribute("productId", id);
-				
-				/* 完了ページ移動 */
-				request.setAttribute("id", id);
-				request.getRequestDispatcher("/WEB-INF/view/updateProductDone.jsp").forward(request, response);
+				/*完了ページ表示用*/
+				request.getSession().setAttribute("completeTitle", "商品編集");
+				request.getSession().setAttribute("completeMessage", "商品の編集が完了しました。");
+				request.getSession().setAttribute("completeLink1Title", "商品リスト");
+				request.getSession().setAttribute("completeLink1", "listProduct");
+				request.getSession().setAttribute("completeLink2Title", "データベースリスト");
+				request.getSession().setAttribute("completeLink2", "listDb");
+
+				/* ページ移動 */
+				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
 			
 		} catch (Exception e) {

@@ -47,19 +47,28 @@ public class DeleteACategoryServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
-		ACategory aCategory = new ACategory();
-
-		Integer id = Integer.parseInt(request.getParameter("id"));
-
-		aCategory.setId(id);
-
 		try {
+			
+			/* URLから削除したいカテゴリのidを取得しセット */
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			ACategory aCategory = new ACategory();
+			aCategory.setId(id);
+			
+			/*削除実行*/
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			aCategoryDao.delete(aCategory);
+			
+			/*完了ページ表示用*/
+			request.getSession().setAttribute("completeTitle", "カテゴリ削除");
+			request.getSession().setAttribute("completeMessage", "カテゴリを削除しました。");
+			request.getSession().setAttribute("completeLink1Title", "カテゴリリスト");
+			request.getSession().setAttribute("completeLink1", "listACategory");
+			request.getSession().setAttribute("completeLink2Title", "データベースリスト");			
+			request.getSession().setAttribute("completeLink2", "listDb");	
 
-			request.getRequestDispatcher("/WEB-INF/view/deleteACategoryDone.jsp").forward(request, response);
-
+			/* ページ移動 */
+			request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
+			
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}

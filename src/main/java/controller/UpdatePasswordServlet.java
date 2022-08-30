@@ -131,10 +131,21 @@ public class UpdatePasswordServlet extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/view/updatePassword.jsp").forward(request, response);
 			} 
 			
+			/* 項目に問題がなかった場合はパスワードを変更し完了ページを表示 */
 			if (!isError){
+				/* UPDATE */
 				adminDao.updatePassword(id, hashedNewPass);
 				
-				request.getRequestDispatcher("/WEB-INF/view/updatePasswordDone.jsp").forward(request, response);
+				/*完了ページ表示用*/
+				request.getSession().setAttribute("completeTitle", "パスワード変更");
+				request.getSession().setAttribute("completeMessage", "パスワードを変更しました。");
+				request.getSession().setAttribute("completeLink1Title", "マイアカウント");
+				request.getSession().setAttribute("completeLink1", "viewMyData");
+				request.getSession().setAttribute("completeLink2Title", "データベースリスト");
+				request.getSession().setAttribute("completeLink2", "listDb");
+
+				/* ページ移動 */
+				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
 			
 			

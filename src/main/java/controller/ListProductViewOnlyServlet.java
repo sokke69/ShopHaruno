@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -27,14 +30,37 @@ public class ListProductViewOnlyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			ProductDao productDao = DaoFactory.createProductDao();
-			List<Product> productList = productDao.findAll();
-			request.setAttribute("productList", productList);
+			/* 画像キャッシュ問題をクリアするためセッションに本日の日付を格納 */
+			Date todayDate = new Date();
+			SimpleDateFormat fmt = new SimpleDateFormat("yMMddHHmmss");
+			String today = fmt.format(todayDate);
+			request.getSession().setAttribute("today", today);
 			
+			/* urlに?Category=があれば取得してInteger化 */
+			String categoryStr = request.getParameter("Category");
+			Integer category = null;
+			if (categoryStr != null) {
+				category = Integer.parseInt(categoryStr);
+			}
+			
+			/* データベースからカテゴリ一覧の取得 */
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 			List<ACategory> aCategoryList = aCategoryDao.findAll();
+			
+			/* データベースから商品の取得 */
+			ProductDao productDao = DaoFactory.createProductDao();
+			List<Product> productList = new ArrayList<>();
+			if (categoryStr == null) {
+				productList = productDao.findAllDesc();
+			} else {
+					productList = productDao.findByAIdDesc(category);
+			}
+			
+			/* 取得したデータを各リストへ収納しjspで表示用にsetAttribute */
+			request.setAttribute("productList", productList);
 			request.setAttribute("aCategoryList", aCategoryList);
 			
+			/* ページ表示 */
 			request.getRequestDispatcher("/WEB-INF/view/listProductViewOnly.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);

@@ -174,8 +174,16 @@ public class AddProductServlet extends HttpServlet {
 				productDao.insert(product);
 				request.getSession().removeAttribute("product");
 				
+				/*完了ページ表示用*/
+				request.getSession().setAttribute("completeTitle", "商品追加");
+				request.getSession().setAttribute("completeMessage", "商品を追加しました。");
+				request.getSession().setAttribute("completeLink1Title", "商品リスト");
+				request.getSession().setAttribute("completeLink1", "listProduct");
+				request.getSession().setAttribute("completeLink2Title", "データベースリスト");			
+				request.getSession().setAttribute("completeLink2", "ListDb");	
+				
 				/* 完了ページ移動 */
-				request.getRequestDispatcher("/WEB-INF/view/addProductDone.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
 			
 		} catch (Exception e1) {

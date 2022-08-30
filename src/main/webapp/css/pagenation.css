@@ -35,7 +35,7 @@ li.last {
 li.page.navi-active a {
 	color:#FFF;
     font-weight:bold;
-    background-color:#000;
+    background-color:#ffc0cb;
    /*  transform: scale(1.2); */
 }
 .pagenation_block dl {

@@ -134,7 +134,7 @@
 						<td>
 							<table>
 								<tr>
-									<td class="bottom-link"><a href="listUser">戻る</a></td>
+									<td class="bottom-link"><a href="updateMyData">戻る</a></td>
 								</tr>
 							</table>
 						</td>
