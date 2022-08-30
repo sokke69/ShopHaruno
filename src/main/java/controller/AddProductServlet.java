@@ -195,6 +195,8 @@ public class AddProductServlet extends HttpServlet {
 			/* 画像List取得 */
 			List<Part> partsImg = request.getParts().stream().filter(part -> "product-img".equals(part.getName()))
 					.collect(Collectors.toList());
+			
+			
 			/* 画像取得&書き込み */
 			for(int i=0; i <= partsImg.size()-1; i++) {
 				/* 取得 */
@@ -203,13 +205,12 @@ public class AddProductServlet extends HttpServlet {
 				/* 書き込み */
 				if (subFileSize > 0) {
 					partImg.write(filePath + "/" + idStr + "_0" + (i+1) + ".jpg");
-					return partsImg.size();
 				}
 			}
+			return partsImg.size();
 		} catch (Exception e1) {
 			throw new ServletException(e1);
 		}
-		return 0;
 
 	}
 
