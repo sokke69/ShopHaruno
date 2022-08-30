@@ -146,7 +146,7 @@ $(function(){
 							</label><br /> <label> <img
 									src="./imgs/${product.id}_0${i}.jpg?${today}"
 									class="uploaded thumb" alt="" /><br /> <input type="file"
-									name="product-img-main" /><br /> <br />
+									name="product-img-0${i}" /><br /> <br />
 							</label>
 								<div class="attention">※ 形式はjpgのみです。</div></td>
 						</tr>

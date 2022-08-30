@@ -30,7 +30,7 @@ import domain.Product;
 
 /* 注意！！使うPCによって必ずここを変更する！！！！！！！！ */
 @MultipartConfig(location = "C:/Users/zd2L17/temp")
-//MultipartConfig(location = "C:/temp")
+//@MultipartConfig(location = "C:/temp")
 
 
 
@@ -191,57 +191,75 @@ public class UpdateProductServlet extends HttpServlet {
 			/* 編集する商品のidをString化 */
 			String idStr = id.toString();
 			
-			/* メイン画像取得 */
-			Part partMain = request.getPart("product-img-main");
-			long mainFileSize = partMain.getSize();
-			// メイン画像書き込み
-			if (mainFileSize > 0) {
-				partMain.write(filePath + "/" + idStr + "_main.jpg");
+			
+			
+			/* 1 画像取得・書き込み */
+			Part part01 = request.getPart("product-img-01");
+			long part01FileSize = part01.getSize();
+			if (part01FileSize > 0) {
+				part01.write(filePath + "/" + idStr + "_01.jpg");
 			}
 			
-			/* サブ画像取得 */
-			Part partSub01 = request.getPart("product-img-sub-01");
-			Part partSub02 = request.getPart("product-img-sub-02");
-			Part partSub03 = request.getPart("product-img-sub-03");
-			Part partSub04 = request.getPart("product-img-sub-04");
-			Part partSub05 = request.getPart("product-img-sub-05");
-			Part partSub06 = request.getPart("product-img-sub-06");
-			Part partSub07 = request.getPart("product-img-sub-07");
-			Part partSub08 = request.getPart("product-img-sub-08");
-			long sub01FileSize = partSub01.getSize();
-			long sub02FileSize = partSub02.getSize();
-			long sub03FileSize = partSub03.getSize();
-			long sub04FileSize = partSub04.getSize();
-			long sub05FileSize = partSub05.getSize();
-			long sub06FileSize = partSub06.getSize();
-			long sub07FileSize = partSub07.getSize();
-			long sub08FileSize = partSub08.getSize();
 			
-			/* サブ画像書き込み */
-			if (sub01FileSize > 0) {
-				partSub01.write(filePath + "/" + idStr + "_sub01.jpg");
+			/* 2～9 画像取得・書き込み */
+			Part part02 = request.getPart("product-img-02");
+			Part part03 = request.getPart("product-img-03");
+			Part part04 = request.getPart("product-img-04");
+			Part part05 = request.getPart("product-img-05");
+			Part part06 = request.getPart("product-img-06");
+			Part part07 = request.getPart("product-img-07");
+			Part part08 = request.getPart("product-img-08");
+			Part part09 = request.getPart("product-img-09");
+			
+			if (part02 != null) {
+				long part02FileSize = part02.getSize();
+				if (part02FileSize > 0) {
+					part02.write(filePath + "/" + idStr + "_02.jpg");
+				}
 			}
-			if (sub02FileSize > 0) {
-				partSub02.write(filePath + "/" + idStr + "_sub02.jpg");
+			if (part03 != null) {
+				long part03FileSize = part03.getSize();
+				if (part03FileSize > 0) {
+					part03.write(filePath + "/" + idStr + "_03.jpg");
+				}
 			}
-			if (sub03FileSize > 0) {
-				partSub03.write(filePath + "/" + idStr + "_sub03.jpg");
+			if (part04 != null) {
+				long part04FileSize = part04.getSize();
+				if (part04FileSize > 0) {
+					part04.write(filePath + "/" + idStr + "_04.jpg");
+				}
 			}
-			if (sub04FileSize > 0) {
-				partSub04.write(filePath + "/" + idStr + "_sub04.jpg");
+			if (part05 != null) {
+				long part05FileSize = part05.getSize();
+				if (part05FileSize > 0) {
+					part05.write(filePath + "/" + idStr + "_05.jpg");
+				}
 			}
-			if (sub05FileSize > 0) {
-				partSub05.write(filePath + "/" + idStr + "_sub05.jpg");
+			if (part06 != null) {
+				long part06FileSize = part06.getSize();
+				if (part06FileSize > 0) {
+					part07.write(filePath + "/" + idStr + "_06.jpg");
+				}
 			}
-			if (sub06FileSize > 0) {
-				partSub06.write(filePath + "/" + idStr + "_sub06.jpg");
+			if (part07 != null) {
+				long part07FileSize = part07.getSize();
+				if (part07FileSize > 0) {
+					part07.write(filePath + "/" + idStr + "_07.jpg");
+				}
 			}
-			if (sub07FileSize > 0) {
-				partSub07.write(filePath + "/" + idStr + "_sub07.jpg");
+			if (part08 != null) {
+				long part08FileSize = part08.getSize();
+				if (part08FileSize > 0) {
+					part08.write(filePath + "/" + idStr + "_08.jpg");
+				}
 			}
-			if (sub08FileSize > 0) {
-				partSub08.write(filePath + "/" + idStr + "_sub08.jpg");
-			}
+			if (part09 != null) {
+				long part09FileSize = part09.getSize();
+				if (part09FileSize > 0) {
+					part09.write(filePath + "/" + idStr + "_09.jpg");
+				}
+			}			
+			
 		} catch (Exception e1) {
 			throw new ServletException(e1);
 		}
