@@ -202,15 +202,16 @@ public class ProductDaoImpl implements ProductDao{
 		try (Connection con = ds.getConnection()){
 			String sql = "UPDATE products SET"
 					+ " product_name=?, product_url=?,"
-					+ " category_a=?,"
+					+ " category_a=?, img=?,"
 					+ " update_date= NOW(), update_by=?"
 					+ " WHERE id=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, product.getProductName());
 			stmt.setString(2, product.getProductUrl());
 			stmt.setObject(3, product.getCategoryA(),Types.INTEGER);
-			stmt.setString(4, product.getUpdateBy());
-			stmt.setObject(5, product.getId(),Types.INTEGER);
+			stmt.setObject(4, product.getImg(),Types.INTEGER);
+			stmt.setString(5, product.getUpdateBy());
+			stmt.setObject(6, product.getId(),Types.INTEGER);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;
@@ -292,6 +293,25 @@ public class ProductDaoImpl implements ProductDao{
 			throw e;
 		}
 		
+		return null;
+	}
+
+	@Override
+	public Integer findCountImg(Integer id) throws Exception {
+		Integer countImg;
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT img FROM products WHERE id=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setObject(1, id,Types.INTEGER);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				countImg = (Integer) rs.getObject("img");
+				return countImg;
+			}
+			} catch (Exception e) {
+			throw e;
+		}
+
 		return null;
 	}
 	

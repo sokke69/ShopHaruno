@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -29,8 +30,8 @@ import domain.Product;
 
 
 /* 注意！！使うPCによって必ずここを変更する！！！！！！！！ */
-@MultipartConfig(location = "C:/Users/zd2L17/temp")
-//@MultipartConfig(location = "C:/temp")
+//@MultipartConfig(location = "C:/Users/zd2L17/temp")
+@MultipartConfig(location = "C:/temp")
 
 
 
@@ -44,22 +45,39 @@ public class UpdateProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Integer id = Integer.parseInt(request.getParameter("id"));
+		
 
 		try {
+			/* DaoFactoryで使用するDaoの作成 */
 			ProductDao productDao = DaoFactory.createProductDao();
+			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();	
+			
+			/* URLから修正したい商品のIDの取得 */
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			
+			/* IDから商品情報全てを取得・セット */
 			Product product = productDao.findById(id);
-			Integer aId = productDao.findAIdById(id);
 			request.setAttribute("product", product);
+			
+			/* 登録できる残り枚数を計算・セット */
+			Integer countImg = product.getImg();
+			Integer restOfCountImg = 9 - countImg;
+			request.setAttribute("countImg", countImg);
+			request.setAttribute("restOfCountImg", restOfCountImg);
+			
+			/* IDからカテゴリIDを個別に取得・セット */
+			Integer aId = productDao.findAIdById(id);
 			request.setAttribute("aId", aId);
 			
-			
-			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
-			List<ACategory> aCategoryList = aCategoryDao.findAll();
+			/* カテゴリーの件数取得・セット */
 			Integer countAId = aCategoryDao.countAId();
-			request.setAttribute("aCategoryList", aCategoryList);
 			request.setAttribute("countAId", countAId);
 			
+			/* カテゴリーリストの取得・セット */
+			List<ACategory> aCategoryList = aCategoryDao.findAll();
+			request.setAttribute("aCategoryList", aCategoryList);
+			
+			/* ページ表示 */
 			request.getRequestDispatcher("/WEB-INF/view/updateProduct.jsp").forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
@@ -74,12 +92,21 @@ public class UpdateProductServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
+		/*画像削除ボタンは押されていなかったとき*/
 		try {
+			/* DaoFactoryで使用するDaoの作成 */
+			ProductDao productDao = DaoFactory.createProductDao();
+			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
+			
 			/* 入力されたデータを取得 */
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			String productName = request.getParameter("product-name");
 			String productUrl = request.getParameter("product-url");
+			Integer countImg = productDao.findCountImg(id);
 			Integer aCategoryId = Integer.parseInt(request.getParameter("a-category-id"));
+			
+			/* 削除する画像ナンバーを取得 */
+			
 			
 			/* セッションからログインしているユーザー名を取得(編集ユーザー記録用) */
 			String productUpdateBy = (String) request.getSession().getAttribute("userNickName");
@@ -126,7 +153,6 @@ public class UpdateProductServlet extends HttpServlet {
 			
 			/* update実行用にセット */
 			Product product = new Product();
-			
 			product.setId(id);
 			product.setProductName(productName);
 			product.setProductUrl(productUrl);
@@ -137,7 +163,6 @@ public class UpdateProductServlet extends HttpServlet {
 			if (isError) {
 				/* ページ再表示用 */
 				request.setAttribute("aId", aCategoryId);
-				ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
 				List<ACategory> aCategoryList = aCategoryDao.findAll();
 				Integer countAId = aCategoryDao.countAId();
 				request.setAttribute("aCategoryList", aCategoryList);
@@ -150,11 +175,14 @@ public class UpdateProductServlet extends HttpServlet {
 			/* エラーがなければ編集を実行 */
 			} else if (!isError) {
 				
-				/* 画像ファイル上書き */
-				writeImg(request,id);
+				/* 画像ファイル変更・追加 */
+				Integer registImg = writeImg(request,id,countImg);
+				Integer updateImg = countImg + registImg;
 				
-				/* DBを更新 */
-				ProductDao productDao = DaoFactory.createProductDao();
+				/* update実行用にセット(2) */
+				product.setImg(updateImg);
+				
+				/* DBに反映させアップデート */
 				productDao.update(product);
 				
 				/*完了ページ表示用*/
@@ -165,7 +193,7 @@ public class UpdateProductServlet extends HttpServlet {
 				request.getSession().setAttribute("completeLink2Title", "データベースリスト");
 				request.getSession().setAttribute("completeLink2", "listDb");
 
-				/* ページ移動 */
+				/* 完了ページ移動 */
 				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
 			
@@ -183,24 +211,21 @@ public class UpdateProductServlet extends HttpServlet {
 		
 	}
 
-	private void writeImg(HttpServletRequest request,Integer id) throws ServletException {
+	private Integer writeImg(HttpServletRequest request, Integer id, Integer countImg) throws ServletException {
 		
 		File filePath = getUploadedDirectory(request);
 		
 		try {
 			/* 編集する商品のidをString化 */
 			String idStr = id.toString();
-			
-			
-			
+
 			/* 1 画像取得・書き込み */
 			Part part01 = request.getPart("product-img-01");
 			long part01FileSize = part01.getSize();
 			if (part01FileSize > 0) {
 				part01.write(filePath + "/" + idStr + "_01.jpg");
 			}
-			
-			
+
 			/* 2～9 画像取得・書き込み */
 			Part part02 = request.getPart("product-img-02");
 			Part part03 = request.getPart("product-img-03");
@@ -210,7 +235,6 @@ public class UpdateProductServlet extends HttpServlet {
 			Part part07 = request.getPart("product-img-07");
 			Part part08 = request.getPart("product-img-08");
 			Part part09 = request.getPart("product-img-09");
-			
 			if (part02 != null) {
 				long part02FileSize = part02.getSize();
 				if (part02FileSize > 0) {
@@ -260,6 +284,31 @@ public class UpdateProductServlet extends HttpServlet {
 				}
 			}			
 			
+			/* 変更ではなく追加画像の取得 */
+			List<Part> partsImg = request.getParts().stream().filter(part -> "product-img".equals(part.getName()))
+					.collect(Collectors.toList());
+			System.out.println("参照から取得した枚数" + partsImg.size());
+			/* 画像取得&書き込み */
+			for(int i = 0; i <= partsImg.size()-1; i++) {
+				/* 取得 */
+				Part partImg = partsImg.get(i);
+				long subFileSize = partImg.getSize();
+				
+				/* 変数iを書き込み用に現在登録枚数に変更 */
+				i = i + countImg;
+				
+				/* 書き込み */
+				if (subFileSize > 0) {
+					partImg.write(filePath + "/" + idStr + "_0" + (i+1) + ".jpg");
+					System.out.println("./imgs/" + idStr + "_0" + (i+1) + ".jpg で追加登録します。");
+				}
+				
+				/* 変数iを変更前に戻す */
+				i = i - countImg;
+			}
+			
+			return partsImg.size();
+
 		} catch (Exception e1) {
 			throw new ServletException(e1);
 		}

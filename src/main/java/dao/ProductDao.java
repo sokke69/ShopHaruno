@@ -17,4 +17,5 @@ public interface ProductDao {
 	Integer findLatestIdPlusOne() throws Exception;
 	Integer findAIdById(Integer id) throws Exception;
 	Integer countId() throws Exception;
+	Integer findCountImg(Integer id) throws Exception;
 }

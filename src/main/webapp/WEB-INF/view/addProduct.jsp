@@ -27,7 +27,7 @@
 <script type="text/javascript">
 	const maxFiles = 9;
 	$(function() {
-		let $file_btn = $("#product-img-sub");
+		let $file_btn = $("#product-img");
 
 		$file_btn.on("change", function(evt) {
 			let elm = $file_btn[0];
@@ -157,7 +157,7 @@ $(function(){
 					</tr>
 					<tr>
 						<td><label><input type="file" name="product-img"
-								id="product-img-sub" class="form-sub" accept="image/jpg"
+								id="product-img" class="form-sub" accept="image/jpg"
 								multiple required></label>
 							<div class="attention">※ 形式はjpgのみです。</div></td>
 					</tr>
