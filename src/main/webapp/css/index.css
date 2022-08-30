@@ -74,13 +74,12 @@ table.category-d a{
 	font-size:12px;
 	text-align:right;
 }
-/* slick ここから */
+
 .single{
 	max-width: 420px;
 	margin: 0 auto 50px;
 }
-/* slick ここまで */
-/* page-nation ここから */
+
 .single{
 	verical-align:middle;
 }
@@ -122,7 +121,6 @@ button {
 	padding: 0;
 }
 
-/* page-nationここまで */
 .table-up{
 	background-color:#FFF;
 	width:81px;

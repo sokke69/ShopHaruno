@@ -1,22 +1,45 @@
+truncate table users; 
+
 insert into users (id,user_nick_name,user_name,user_pass,user_type) values 
 (1,'マスター','master','$2a$08$GzImC.LElmrREYUXbXXjTO2De92lcDslS/1kS5SCmot0BJhnk.MFW',1),
 (2,'ユーザー','user','$2a$08$JQ3Ty7qMLzj4Y7QQe4Up2OqAEnBGOpEOVMzTqPZxnteZCXRQHqV/q',2),
-(3,'テスター','tester','$2a$08$P.lWYJo6tPgHsztooPNVKOn56/FKMdzDM/NdlyavQjCuhN1sQoiTS',3),
-(4,'レジスター','register','$2a$08$Aru6HBH9D/apzxO/6Yh4eOyqTeImkF8nKB5urfQW9wE1qy8NBXkji',4),
-(5,'テスター2','tester2','$2a$08$GuCW3oFKXNGF8jAVXOJkSeqV2DD3VfyV4gEP6AiJdsdVEB1Fl8b1u',2);
+(3,'レジスター','register','$2a$08$Aru6HBH9D/apzxO/6Yh4eOyqTeImkF8nKB5urfQW9wE1qy8NBXkji',3),
+(4,'山田太郎','yamada','$2a$08$f54z5b1Q0gFmmNiG6ukg5eMyIeWfytQnmn1eDGxMeMIBuxTVWAsm2',2);
 
-truncate table users; 
 
 truncate table products;
 
-insert into products (product_name,product_url,category_a,img_main,img_sub01,img_sub02,img_sub03,img_sub04,img_sub05,img_sub06,img_sub07,img_sub08,regist_date,regist_by) values 
-('テスト1','http://www.yahoo.co.jp',1,'./imgs/1_main.jpg','./imgs/1_sub01.jpg','./imgs/1_sub02.jpg','./imgs/1_sub03.jpg','./imgs/1_sub04.jpg','./imgs/1_sub05.jpg','./imgs/1_sub06.jpg','./imgs/1_sub07.jpg','./imgs/1_sub08.jpg','2022-04-01 00:00:00','マスター'),
-('テスト2','http://www.google.co.jp',2,'./imgs/2_main.jpg','./imgs/2_sub01.jpg','./imgs/2_sub02.jpg','./imgs/2_sub03.jpg','./imgs/2_sub04.jpg','./imgs/2_sub05.jpg','./imgs/2_sub06.jpg','./imgs/2_sub07.jpg','./imgs/2_sub08.jpg','2022-05-01 00:00:00','マスター'),
-('テスト3','http://www.amazon.co.jp',1,'./imgs/3_main.jpg','./imgs/3_sub01.jpg','./imgs/3_sub02.jpg','./imgs/3_sub03.jpg','./imgs/3_sub04.jpg','./imgs/3_sub05.jpg','./imgs/3_sub06.jpg','./imgs/3_sub07.jpg','./imgs/3_sub08.jpg','2022-05-15 00:00:00','マスター'),
-('テスト4','http://www.google.co.jp',3,'./imgs/4_main.jpg','./imgs/4_sub01.jpg','./imgs/4_sub02.jpg','./imgs/4_sub03.jpg','./imgs/4_sub04.jpg','./imgs/4_sub05.jpg','./imgs/4_sub06.jpg','./imgs/4_sub07.jpg','./imgs/4_sub08.jpg','2022-06-21 00:00:00','マスター'),
-('テスト5','http://www.google.co.jp',2,'./imgs/5_main.jpg','./imgs/5_sub01.jpg','./imgs/5_sub02.jpg','./imgs/5_sub03.jpg','./imgs/5_sub04.jpg','./imgs/5_sub05.jpg','./imgs/5_sub06.jpg','./imgs/5_sub07.jpg','./imgs/5_sub08.jpg','2022-8-15 00:00:00','マスター'),
-('テスト6','http://www.google.co.jp',1,'./imgs/6_main.jpg','./imgs/6_sub01.jpg','./imgs/6_sub02.jpg','./imgs/6_sub03.jpg','./imgs/6_sub04.jpg','./imgs/6_sub05.jpg','./imgs/6_sub06.jpg','./imgs/6_sub07.jpg','./imgs/6_sub08.jpg','2022-8-17 00:00:00','マスター'),
-('テスト7','http://www.google.co.jp',2,'./imgs/7_main.jpg','./imgs/7_sub01.jpg','./imgs/7_sub02.jpg','./imgs/7_sub03.jpg','./imgs/7_sub04.jpg','./imgs/7_sub05.jpg','./imgs/7_sub06.jpg','./imgs/7_sub07.jpg','./imgs/7_sub08.jpg','2022-8-21 00:00:00','マスター'),
-('テスト8','http://www.google.co.jp',2,'./imgs/8_main.jpg','./imgs/8_sub01.jpg','./imgs/8_sub02.jpg','./imgs/8_sub03.jpg','./imgs/8_sub04.jpg','./imgs/8_sub05.jpg','./imgs/8_sub06.jpg','./imgs/8_sub07.jpg','./imgs/8_sub08.jpg','2022-8-26 00:00:00','マスター'),
-('テスト9','http://www.google.co.jp',1,'./imgs/9_main.jpg','./imgs/9_sub01.jpg','./imgs/9_sub02.jpg','./imgs/9_sub03.jpg','./imgs/9_sub04.jpg','./imgs/9_sub05.jpg','./imgs/9_sub06.jpg','./imgs/9_sub07.jpg','./imgs/9_sub08.jpg','2022-8-28 00:00:00','マスター'),
-('テスト10','http://www.google.co.jp',1,'./imgs/10_main.jpg','./imgs/10_sub01.jpg','./imgs/10_sub02.jpg','./imgs/10_sub03.jpg','./imgs/10_sub04.jpg','./imgs/10_sub05.jpg','./imgs/10_sub06.jpg','./imgs/10_sub07.jpg','./imgs/10_sub08.jpg','2022-09-01 00:00:00','マスター');
+insert into products (product_name,product_url,category_a,img,regist_date,regist_by,update_date,update_by) values 
+('テスト1','http://www.yahoo.co.jp',1,9,'2022-04-01 05:00:52','マスター','2022-05-10 12:34:56','山田太郎'),
+('テスト2','http://www.google.co.jp',2,6,'2022-05-01 20:01:41','ユーザー',null,null),
+('テスト3','http://www.amazon.co.jp',1,6,'2022-05-15 22:00:51','マスター',null,null),
+('テスト4','http://www.google.co.jp',3,4,'2022-06-21 14:11:05','山田太郎','2022-06-21 01:00:02','マスター'),
+('テスト5','http://www.google.co.jp',2,3,'2022-8-15 15:56:27','ユーザー',null,null),
+('テスト6','http://www.google.co.jp',1,9,'2022-8-17 21:35:57','マスター','2022-8-27 03:00:03','山田太郎'),
+('テスト7','http://www.google.co.jp',2,5,'2022-8-21 14:42:34','ユーザー','2022-8-25 01:10:41','マスター'),
+('テスト8','http://www.google.co.jp',2,8,'2022-8-22 22:24:31','山田太郎',null,null),
+('テスト9','http://www.google.co.jp',1,3,'2022-8-23 23:08:08','マスター',null,null),
+('テスト10','http://www.google.co.jp',1,4,'2022-08-23 01:01:01','山田太郎','2022-08-25 06:06:59','マスター'),
+('テスト11','http://www.google.co.jp',3,8,'2022-08-23 05:02:00','山田太郎','2022-08-24 23:02:21','ユーザー'),
+('テスト12','http://www.google.co.jp',3,3,'2022-08-24 09:41:44','マスター',null,null),
+('テスト13','http://www.google.co.jp',1,5,'2022-08-25 11:08:53','ユーザー','2022-08-26 08:50:00','マスター'),
+('テスト14','http://www.google.co.jp',2,8,'2022-08-26 16:34:55','山田太郎','2022-08-26 08:54:26','ユーザー'),
+('テスト15','http://www.google.co.jp',2,7,'2022-08-27 14:24:21','ユーザー',null,null),
+('テスト16','http://www.google.co.jp',2,3,'2022-08-28 13:40:12','マスター','2022-08-29 20:05:18','マスター'),
+('テスト17','http://www.google.co.jp',2,5,'2022-08-29 09:55:05','山田太郎','2022-08-30 22:15:34','山田太郎');
+
+truncate table as_categories;
+
+insert into as_categories (a_category_name) values 
+('デジタル一眼カメラ'),
+('デジタルカメラ'),
+('カメラレンズ'),
+('カメラ関連製品'),
+('その他');
+
+
+truncate table users_types;
+insert into users_types (type_name) values
+('master'),
+('user'),
+('register');

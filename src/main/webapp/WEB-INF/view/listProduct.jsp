@@ -94,7 +94,7 @@
 					<td>
 						<div class="container">
 							<div>
-								<a href="index">すべて</a>
+								<a href="listProduct">すべて</a>
 							</div>
 							<c:forEach items="${aCategoryList}" var="aCategoryList"
 								varStatus="vs">
@@ -139,35 +139,16 @@
 								</tr>
 								<tr class="product-middle">
 									<td>
-										<div class="single">
-											<div>
-												<img src="${productList.imgMain}?${today}" alt="" class="imgs" />
+											<div class="single">
+												<c:forEach var="i" begin="1" end="${productList.img}"
+													varStatus="vs">
+													<div>
+														<img src="./imgs/${productList.id}_0${i}.jpg?${today}"
+															alt="" class="imgs" />
+													</div>
+												</c:forEach>
 											</div>
-											<div>
-												<img src="${productList.imgSub01}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub02}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub03}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub04}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub05}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub06}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub07}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub08}?${today}" alt="" class="imgs" />
-											</div>
-										</div>
+
 									</td>
 								</tr>
 								<tr>
@@ -184,8 +165,9 @@
 											<tr>
 												<td class="product-ted"><i
 													class="fa-solid fa-calendar-days calender-icon"></i> <fmt:formatDate
-														value="${productList.registDate}" pattern=" y年MM月dd日 HH時mm分" />
-													<c:out value="by ${productList.registBy}" /></td>
+														value="${productList.registDate}"
+														pattern=" y年MM月dd日 HH時mm分" /> <c:out
+														value="by ${productList.registBy}" /></td>
 											</tr>
 											<tr>
 												<td class="product-ted"><i
@@ -270,12 +252,14 @@
 <%-- slick ここから --%>
 <script src="./js/slick.min.js"></script>
 <script>
-	$('.single').slick({
-		autoplay : true,
-		autoplaySpeed : 4000,
-		dots : true, //ドットのナビゲーションを表示
-		prevArrow : '<button class="slide-arrow prev-arrow"></button>',
-		nextArrow : '<button class="slide-arrow next-arrow"></button>'
+	$(document).ready(function(){
+		$('.single').slick({
+			autoplay : true,
+			autoplaySpeed : 4000,
+			dots : true, //ドットのナビゲーションを表示
+			prevArrow : '<button class="slide-arrow prev-arrow"></button>',
+			nextArrow : '<button class="slide-arrow next-arrow"></button>'
+		});
 	});
 </script>
 <%-- slick ここまで --%>

@@ -16,7 +16,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap"
 	rel="stylesheet">
-	
+
 <link rel="stylesheet" href="./css/default.css">
 <link rel="stylesheet" href="./css/list.css">
 <link rel="stylesheet" href="./css/hf_style.css">
@@ -25,14 +25,14 @@
 <script src="./js/jquery-3.6.0.min.js"></script>
 <script src="./js/jquery-uploadThumbs.js"></script>
 <script type="text/javascript">
-	const maxFiles = 8;
+	const maxFiles = 9;
 	$(function() {
 		let $file_btn = $("#product-img-sub");
 
 		$file_btn.on("change", function(evt) {
 			let elm = $file_btn[0];
 			if (maxFiles < elm.files.length) {
-				alert(`サブ画像は8枚までです`);
+				alert(`画像は9枚までです`);
 				elm.value = null; 
 
 				return false;
@@ -98,80 +98,73 @@ $(function(){
 					<%-- ユーザー名 --%>
 					<tr>
 						<th><c:if test="${ not empty nameSuccess}">
-										<i class="fa-solid fa-circle-check success"></i>
-									</c:if> <c:if test="${ not empty nameError}">
-										<i class="fa-solid fa-circle-exclamation error"></i>
-									</c:if>
-									 商品名*</th></tr>
-					<tr><td>
-					<c:if test="${ not empty nameError}">
-										<div class="alert alert-danger" id="alert">
-											<c:out value="※ ${nameError}" />
-										</div>
-									</c:if> <input type="text" value="${productName}" placeholder="商品名"
-									name="product-name" id="add-user-form">
-									<div class="attention">※ 商品名は255文字以内で入力してください。</div></td>
+								<i class="fa-solid fa-circle-check success"></i>
+							</c:if> <c:if test="${ not empty nameError}">
+								<i class="fa-solid fa-circle-exclamation error"></i>
+							</c:if> 商品名*</th>
+					</tr>
+					<tr>
+						<td><c:if test="${ not empty nameError}">
+								<div class="alert alert-danger" id="alert">
+									<c:out value="※ ${nameError}" />
+								</div>
+							</c:if> <input type="text" value="${productName}" placeholder="商品名"
+							name="product-name" id="add-user-form">
+							<div class="attention">※ 商品名は255文字以内で入力してください。</div></td>
 					</tr>
 
 					<%-- ログインID --%>
 					<tr>
 						<th><c:if test="${ not empty urlSuccess}">
-										<i class="fa-solid fa-circle-check success"></i>
-									</c:if> <c:if test="${ not empty urlError}">
-										<i class="fa-solid fa-circle-exclamation error"></i>
-									</c:if> 商品URL*</th>
+								<i class="fa-solid fa-circle-check success"></i>
+							</c:if> <c:if test="${ not empty urlError}">
+								<i class="fa-solid fa-circle-exclamation error"></i>
+							</c:if> 商品URL*</th>
 					</tr>
 					<tr>
 						<td><c:if test="${ not empty urlError}">
-										<div class="alert alert-danger" id="alert">
-											<c:out value="※ ${urlError}" />
-										</div>
-									</c:if> <input type="text" value="${productUrl}" name="product-url"
-									id="add-user-form"></td>
+								<div class="alert alert-danger" id="alert">
+									<c:out value="※ ${urlError}" />
+								</div>
+							</c:if> <input type="text" value="${productUrl}" name="product-url"
+							id="add-user-form"></td>
 					</tr>
 					<%-- ログインパスワード --%>
 					<tr>
 						<th><c:if test="${ not empty aCategorySuccess}">
-										<i class="fa-solid fa-circle-check success"></i>
-									</c:if> <c:if test="${ not empty aCategoryError}">
-										<i class="fa-solid fa-circle-exclamation error"></i>
-									</c:if> カテゴリA*</th>
+								<i class="fa-solid fa-circle-check success"></i>
+							</c:if> <c:if test="${ not empty aCategoryError}">
+								<i class="fa-solid fa-circle-exclamation error"></i>
+							</c:if> カテゴリA*</th>
 					</tr>
 					<tr>
 						<td><c:if test="${ not empty aCategoryError}">
-										<div class="alert alert-danger" id="alert">
-											<c:out value="※ ${aCategoryError}" />
-										</div>
-									</c:if> <select name="a-category-id" id="selectform" class="select-a">
-										<option value="0">--選択--</option>
-										<c:forEach items="${aCategoryList}" var="aCategoryList"
-											varStatus="vs">
-											<option value="${aCategoryList.id}"><c:out
-													value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></option>
-										</c:forEach>
-								</select></td>
+								<div class="alert alert-danger" id="alert">
+									<c:out value="※ ${aCategoryError}" />
+								</div>
+							</c:if> <select name="a-category-id" id="selectform" class="select-a">
+								<option value="0">--選択--</option>
+								<c:forEach items="${aCategoryList}" var="aCategoryList"
+									varStatus="vs">
+									<option value="${aCategoryList.id}"><c:out
+											value="${aCategoryList.id}.${aCategoryList.aCategoryName}" /></option>
+								</c:forEach>
+						</select></td>
 					</tr>
 					<%-- ログインパスワード(確認) --%>
 					<tr>
-						<th>メイン画像</th>
+						<th>画像*</th>
 					</tr>
 					<tr>
-						<td><label><input type="file"
-										name="product-img-main" accept="image/jpg" required></label>
-									<div class="attention">※ 形式はjpgのみです。</div></td>
+						<td><label><input type="file" name="product-img"
+								id="product-img-sub" class="form-sub" accept="image/jpg"
+								multiple required></label>
+							<div class="attention">※ 形式はjpgのみです。</div></td>
 					</tr>
 					<tr>
-						<th>サブ画像</th>
-					</tr>
-					<tr>
-						<td><label><input type="file"
-										name="product-img-sub" id="product-img-sub" class="form-sub"
-										accept="image/jpg" multiple></label>
-									<div class="attention">※ 形式はjpgのみです。</div></td>
-					</tr>
-					<tr>
-					<td><div class="submit"><input type="submit" value="追加" class="btn btn-secondary"></div>
-					</td>
+						<td><div class="submit">
+								<input type="submit" value="追加" class="btn btn-secondary">
+							</div></td>
 					</tr>
 					<tr>
 						<td><hr></td>
@@ -180,7 +173,12 @@ $(function(){
 						<td>
 							<table>
 								<tr>
-									<td class="bottom-link"><a href="listProduct">戻る</a></td>
+									<td class="bottom-link"><c:if
+											test="${not empty visitedByDesign}">
+											<a href="listProduct">戻る</a>
+										</c:if> <c:if test="${not empty visitedBySimple}">
+											<a href="listProductSimple">戻る</a>
+										</c:if></td>
 								</tr>
 							</table>
 						</td>

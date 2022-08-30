@@ -36,6 +36,11 @@ public class ListProductServlet extends HttpServlet {
 			String today = fmt.format(todayDate);
 			request.getSession().setAttribute("today", today);
 			
+			/* 編集・削除画面へどのページから行ったかをセッションに記録。各ページのリンク「戻る」に使用する */
+			/* simple版のセッションは消す */
+			request.getSession().setAttribute("visitedByDesign", "true");
+			request.getSession().removeAttribute("visitedBySimple");
+			
 			/* urlに?Category=があれば取得してInteger化 */
 			String categoryStr = request.getParameter("Category");
 			Integer category = null;

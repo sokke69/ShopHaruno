@@ -86,7 +86,7 @@
 					<td>
 						<div class="container">
 							<div>
-								<a href="index">すべて</a>
+								<a href="listProduct">すべて</a>
 							</div>
 							<c:forEach items="${aCategoryList}" var="aCategoryList"
 								varStatus="vs">
@@ -132,34 +132,14 @@
 								<tr class="product-middle">
 									<td>
 										<div class="single">
-											<div>
-												<img src="${productList.imgMain}?${today}" alt="" class="imgs" />
+												<c:forEach var="i" begin="1" end="${productList.img}"
+													varStatus="vs">
+													<div>
+														<img src="./imgs/${productList.id}_0${i}.jpg?${today}"
+															alt="" class="imgs" />
+													</div>
+												</c:forEach>
 											</div>
-											<div>
-												<img src="${productList.imgSub01}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub02}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub03}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub04}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub05}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub06}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub07}?${today}" alt="" class="imgs" />
-											</div>
-											<div>
-												<img src="${productList.imgSub08}?${today}" alt="" class="imgs" />
-											</div>
-										</div>
 									</td>
 								</tr>
 								<tr>

@@ -28,8 +28,7 @@ public class ProductDaoImpl implements ProductDao{
 			String sql = "SELECT"
 					+ " products.id, product_name, product_url,"
 					+ " as_categories.a_category_name AS a_category_name,"
-					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
-					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
+					+ " img, "
 					+ " regist_date, regist_by, update_date, update_by"
 					+ " FROM products"
 					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id";
@@ -52,8 +51,7 @@ public class ProductDaoImpl implements ProductDao{
 			String sql = "SELECT"
 					+ " products.id, product_name, product_url,"
 					+ " as_categories.a_category_name AS a_category_name,"
-					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
-					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
+					+ " img, "
 					+ " regist_date, regist_by, update_date, update_by"
 					+ " FROM products"
 					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
@@ -76,8 +74,7 @@ public class ProductDaoImpl implements ProductDao{
 			String sql = "SELECT"
 					+ " products.id, product_name, product_url,"
 					+ " as_categories.a_category_name AS a_category_name,"
-					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
-					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
+					+ " img, "
 					+ " regist_date, regist_by, update_date, update_by"
 					+ " FROM products"
 					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
@@ -101,8 +98,7 @@ public class ProductDaoImpl implements ProductDao{
 			String sql = "SELECT"
 					+ " products.id, product_name, product_url,"
 					+ " as_categories.a_category_name AS a_category_name,"
-					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
-					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
+					+ " img, "
 					+ " regist_date, regist_by, update_date, update_by"
 					+ " FROM products"
 					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
@@ -126,23 +122,14 @@ public class ProductDaoImpl implements ProductDao{
 		String productName = rs.getString("product_name");
 		String productUrl = rs.getString("product_url");
 		Integer categoryA = (Integer) rs.getObject("category_a");
-		Integer categoryB = (Integer) rs.getObject("category_b");
-		String imgMain = rs.getString("img_main");
-		String imgSub01 = rs.getString("img_sub01");
-		String imgSub02 = rs.getString("img_sub02");
-		String imgSub03 = rs.getString("img_sub03");
-		String imgSub04 = rs.getString("img_sub04");
-		String imgSub05 = rs.getString("img_sub05");
-		String imgSub06 = rs.getString("img_sub06");
-		String imgSub07 = rs.getString("img_sub07");
-		String imgSub08 = rs.getString("img_sub08");
+		Integer img = (Integer) rs.getObject("img");
 		Date registDate = rs.getTimestamp("regist_date");
 		String registBy = rs.getString("regist_by");
 		Date updateDate = rs.getTimestamp("update_date");
 		String updateBy = rs.getString("update_by");
 		
-		return new Product(id, productName, productUrl, categoryA, categoryB,
-				imgMain, imgSub01, imgSub02, imgSub03, imgSub04, imgSub05, imgSub06, imgSub07, imgSub08,
+		return new Product(id, productName, productUrl, categoryA,
+				img,
 				registDate, registBy, updateDate, updateBy);
 	}
 	
@@ -151,22 +138,14 @@ public class ProductDaoImpl implements ProductDao{
 		String productName = rs.getString("product_name");
 		String productUrl = rs.getString("product_url");
 		String categoryA = rs.getString("a_category_name");
-		String imgMain = rs.getString("img_main");
-		String imgSub01 = rs.getString("img_sub01");
-		String imgSub02 = rs.getString("img_sub02");
-		String imgSub03 = rs.getString("img_sub03");
-		String imgSub04 = rs.getString("img_sub04");
-		String imgSub05 = rs.getString("img_sub05");
-		String imgSub06 = rs.getString("img_sub06");
-		String imgSub07 = rs.getString("img_sub07");
-		String imgSub08 = rs.getString("img_sub08");
+		Integer img = (Integer) rs.getObject("img");
 		Date registDate = rs.getTimestamp("regist_date");
 		String registBy = rs.getString("regist_by");
 		Date updateDate = rs.getTimestamp("update_date");
 		String updateBy = rs.getString("update_by");
 		
 		return new Product(id, productName, productUrl, categoryA,
-				imgMain, imgSub01, imgSub02, imgSub03, imgSub04, imgSub05, imgSub06, imgSub07, imgSub08,
+				img,
 				registDate, registBy, updateDate, updateBy);
 	}
 	
@@ -179,8 +158,7 @@ public class ProductDaoImpl implements ProductDao{
 					+ " products.id, product_name, product_url,"
 					+ " as_categories.a_category_name AS a_category_name,"
 					+ " bs_categories.b_category_name AS b_category_name,"
-					+ " img_main, img_sub01, img_sub02, img_sub03, img_sub04, "
-					+ " img_sub05, img_sub06, img_sub07, img_sub08, "
+					+ " img, "
 					+ " regist_date, regist_by, update_date, update_by"
 					+ " FROM products"
 					+ " LEFT JOIN as_categories ON products.category_a = as_categories.id"
@@ -204,23 +182,14 @@ public class ProductDaoImpl implements ProductDao{
 		try (Connection con = ds.getConnection()){
 			//あとで追加したい：category_a, category_b01, category_b02, category_b03,regist_by
 			String sql = "INSERT INTO"
-					+ " products (product_name, product_url,category_a, img_main, img_sub01, img_sub02, img_sub03, img_sub04,"
-					+ " img_sub05, img_sub06, img_sub07, img_sub08, regist_date, regist_by)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW() , ?)";
+					+ " products (product_name, product_url,category_a, img, regist_date, regist_by)"
+					+ " VALUES (?, ?, ?, ?, NOW() , ?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, product.getProductName());
 			stmt.setString(2, product.getProductUrl());
 			stmt.setObject(3, product.getCategoryA(),Types.INTEGER);
-			stmt.setString(4, product.getImgMain());
-			stmt.setString(5, product.getImgSub01());
-			stmt.setString(6, product.getImgSub02());
-			stmt.setString(7, product.getImgSub03());
-			stmt.setString(8, product.getImgSub04());
-			stmt.setString(9, product.getImgSub05());
-			stmt.setString(10, product.getImgSub06());
-			stmt.setString(11, product.getImgSub07());
-			stmt.setString(12, product.getImgSub08());
-			stmt.setString(13, product.getRegistBy());
+			stmt.setObject(4, product.getImg(),Types.INTEGER);
+			stmt.setString(5, product.getRegistBy());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;

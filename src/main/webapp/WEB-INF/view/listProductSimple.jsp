@@ -75,7 +75,7 @@
 					<td>
 						<div class="container">
 							<div>
-								<a href="index">すべて</a>
+								<a href="listProduct">すべて</a>
 							</div>
 							<c:forEach items="${aCategoryList}" var="aCategoryList"
 								varStatus="vs">

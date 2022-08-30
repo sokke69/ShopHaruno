@@ -28,6 +28,11 @@ public class ListProductSimpleServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			/* 編集・削除画面へどのページから行ったかをセッションに記録。各ページのリンク「戻る」に使用する */
+			/* simple版のセッションは消す */
+			request.getSession().setAttribute("visitedBySimple", "true");
+			request.getSession().removeAttribute("visitedByDesign");
+			
 			/* urlに?Category=があれば取得してInteger化 */
 			String categoryStr = request.getParameter("Category");
 			Integer category = null;
