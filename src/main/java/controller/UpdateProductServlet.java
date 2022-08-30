@@ -30,8 +30,8 @@ import domain.Product;
 
 
 /* 注意！！使うPCによって必ずここを変更する！！！！！！！！ */
-//@MultipartConfig(location = "C:/Users/zd2L17/temp")
-@MultipartConfig(location = "C:/temp")
+@MultipartConfig(location = "C:/Users/zd2L17/temp")
+//@MultipartConfig(location = "C:/temp")
 
 
 
@@ -92,7 +92,6 @@ public class UpdateProductServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		/*画像削除ボタンは押されていなかったとき*/
 		try {
 			/* DaoFactoryで使用するDaoの作成 */
 			ProductDao productDao = DaoFactory.createProductDao();
@@ -104,8 +103,6 @@ public class UpdateProductServlet extends HttpServlet {
 			String productUrl = request.getParameter("product-url");
 			Integer countImg = productDao.findCountImg(id);
 			Integer aCategoryId = Integer.parseInt(request.getParameter("a-category-id"));
-			
-			/* 削除する画像ナンバーを取得 */
 			
 			
 			/* セッションからログインしているユーザー名を取得(編集ユーザー記録用) */

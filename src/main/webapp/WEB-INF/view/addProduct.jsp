@@ -90,12 +90,12 @@ $(function(){
 				<%-- テーブル中身 ここから --%>
 				<table class="table-list">
 					<tr>
-						<th class="subject">ユーザー追加</th>
+						<th class="subject">商品追加</th>
 					</tr>
 					<tr>
 						<td><hr></td>
 					</tr>
-					<%-- ユーザー名 --%>
+					<%-- 商品名 --%>
 					<tr>
 						<th><c:if test="${ not empty nameSuccess}">
 								<i class="fa-solid fa-circle-check success"></i>
@@ -113,7 +113,7 @@ $(function(){
 							<div class="attention">※ 商品名は255文字以内で入力してください。</div></td>
 					</tr>
 
-					<%-- ログインID --%>
+					<%-- 商品URL --%>
 					<tr>
 						<th><c:if test="${ not empty urlSuccess}">
 								<i class="fa-solid fa-circle-check success"></i>
@@ -129,7 +129,7 @@ $(function(){
 							</c:if> <input type="text" value="${productUrl}" name="product-url"
 							id="add-user-form"></td>
 					</tr>
-					<%-- ログインパスワード --%>
+					<%-- カテゴリ --%>
 					<tr>
 						<th><c:if test="${ not empty aCategorySuccess}">
 								<i class="fa-solid fa-circle-check success"></i>
@@ -151,7 +151,7 @@ $(function(){
 								</c:forEach>
 						</select></td>
 					</tr>
-					<%-- ログインパスワード(確認) --%>
+					<%-- 画像 --%>
 					<tr>
 						<th>画像*</th>
 					</tr>

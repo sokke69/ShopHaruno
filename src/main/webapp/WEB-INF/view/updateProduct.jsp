@@ -24,7 +24,6 @@
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/jquery-3.6.0.min.js"></script>
 <script src="./js/jquery-uploadThumbs.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.29/sweetalert2.min.js"></script>
 
 <%-- アップロード枚数 --%>
 <script type="text/javascript">
@@ -172,9 +171,6 @@ $(function(){
 									class="uploaded thumb" alt="" /><br /> <input type="file"
 									name="product-img-0${i}" />
 							</label>
-							<div class="danger">
-							<a href="deleteImg?id=${product.id}imgId=${i}" class="btn btn-danger btn-sm text-white" id="btn0${i}">画像0<c:out value="${i}" />の削除を実行</a>
-							</div>
 							<br><br>
 							</td>	
 						</tr>
@@ -233,31 +229,6 @@ $(function(){
 <footer>
 	<c:import url="parts/footer.jsp" />
 </footer>
-
-<%-- Sweet Alert2 --%>
-<script>
-<c:forEach var="j" begin="1" end="${countImg}" varStatus="vs">
-$("#btn0${j}").click(function(){
-	  Swal.fire({
-	    title: '画像0${j}を削除します。',
-	    text: "好きなテキストを入力",
-	    type: 'warning',
-	    showCancelButton: true,
-	    confirmButtonColor: '#3085d6',
-	    cancelButtonColor: '#d33',
-	    confirmButtonText: 'OK'
-	  }).then((result) => {
-	    if (result.value) {
-	      Swal.fire(
-	        '画像0${j}を削除しました。',
-	        '自由に入力',
-	        'success'
-	        );
-	    }
-	  });
-	});
-</c:forEach>
-</script>
 
 </body>
 
