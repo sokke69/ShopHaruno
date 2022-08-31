@@ -10,23 +10,23 @@ insert into users (id,user_nick_name,user_name,user_pass,user_type) values
 truncate table products;
 
 insert into products (product_name,product_url,category_a,img,regist_date,regist_by,update_date,update_by) values 
-('テスト1','http://www.yahoo.co.jp',1,9,'2022-04-01 05:00:52','マスター','2022-05-10 12:34:56','山田太郎'),
-('テスト2','http://www.google.co.jp',2,6,'2022-05-01 20:01:41','ユーザー',null,null),
-('テスト3','http://www.amazon.co.jp',1,6,'2022-05-15 22:00:51','マスター',null,null),
-('テスト4','http://www.google.co.jp',3,4,'2022-06-21 14:11:05','山田太郎','2022-06-21 01:00:02','マスター'),
-('テスト5','http://www.google.co.jp',2,3,'2022-8-15 15:56:27','ユーザー',null,null),
-('テスト6','http://www.google.co.jp',1,9,'2022-8-17 21:35:57','マスター','2022-8-27 03:00:03','山田太郎'),
-('テスト7','http://www.google.co.jp',2,5,'2022-8-21 14:42:34','ユーザー','2022-8-25 01:10:41','マスター'),
-('テスト8','http://www.google.co.jp',2,8,'2022-8-22 22:24:31','山田太郎',null,null),
-('テスト9','http://www.google.co.jp',1,3,'2022-8-23 23:08:08','マスター',null,null),
-('テスト10','http://www.google.co.jp',1,4,'2022-08-23 01:01:01','山田太郎','2022-08-25 06:06:59','マスター'),
-('テスト11','http://www.google.co.jp',3,8,'2022-08-23 05:02:00','山田太郎','2022-08-24 23:02:21','ユーザー'),
-('テスト12','http://www.google.co.jp',3,3,'2022-08-24 09:41:44','マスター',null,null),
-('テスト13','http://www.google.co.jp',1,5,'2022-08-25 11:08:53','ユーザー','2022-08-26 08:50:00','マスター'),
-('テスト14','http://www.google.co.jp',2,8,'2022-08-26 16:34:55','山田太郎','2022-08-26 08:54:26','ユーザー'),
-('テスト15','http://www.google.co.jp',2,7,'2022-08-27 14:24:21','ユーザー',null,null),
-('テスト16','http://www.google.co.jp',2,3,'2022-08-28 13:40:12','マスター','2022-08-29 20:05:18','マスター'),
-('テスト17','http://www.google.co.jp',2,5,'2022-08-29 09:55:05','山田太郎','2022-08-30 22:15:34','山田太郎');
+('テスト01 てすと01 test01 TEST01 テスト01 てすと01 test01 TEST01 テスト01 てすと01 test01 TEST01 テスト01 てすと01 test01 TEST01 ','http://www.yahoo.co.jp',1,9,'2022-04-01 05:00:52','マスター','2022-05-10 12:34:56','山田太郎'),
+('テスト02 てすと02 test02 TEST02 テスト02 てすと02 test02 TEST02 テスト02 てすと02 test02 TEST02 テスト02 てすと02 test02 TEST02 ','http://www.google.co.jp',2,6,'2022-05-01 20:01:41','ユーザー',null,null),
+('テスト03 てすと03 test03 TEST03 テスト03 てすと03 test03 TEST03 テスト03 てすと03 test03 TEST03 テスト03 てすと03 test03 TEST03 ','http://www.amazon.co.jp',1,6,'2022-05-15 22:00:51','マスター',null,null),
+('テスト04 てすと04 test04 TEST04 テスト04 てすと04 test04 TEST04 テスト04 てすと04 test04 TEST04 テスト04 てすと04 test04 TEST04 ','http://www.google.co.jp',3,4,'2022-06-21 14:11:05','山田太郎','2022-06-21 01:00:02','マスター'),
+('テスト05 てすと05 test05 TEST05 テスト05 てすと05 test05 TEST05 テスト05 てすと05 test05 TEST05 テスト05 てすと05 test05 TEST05 ','http://www.google.co.jp',2,3,'2022-8-15 15:56:27','ユーザー',null,null),
+('テスト06 てすと06 test06 TEST06 テスト06 てすと06 test06 TEST06 テスト06 てすと06 test06 TEST06 テスト06 てすと06 test06 TEST06 ','http://www.google.co.jp',1,9,'2022-8-17 21:35:57','マスター','2022-8-27 03:00:03','山田太郎'),
+('テスト07 てすと07 test07 TEST07 テスト07 てすと07 test07 TEST07 テスト07 てすと07 test07 TEST07 テスト07 てすと07 test07 TEST07 ','http://www.google.co.jp',2,5,'2022-8-21 14:42:34','ユーザー','2022-8-25 01:10:41','マスター'),
+('テスト08 てすと08 test08 TEST08 テスト08 てすと08 test08 TEST08 テスト08 てすと08 test08 TEST08 テスト08 てすと08 test08 TEST08 ','http://www.google.co.jp',2,8,'2022-8-22 22:24:31','山田太郎',null,null),
+('テスト09 てすと09 test09 TEST09 テスト09 てすと09 test09 TEST09 テスト09 てすと09 test09 TEST09 テスト09 てすと09 test09 TEST09 ','http://www.google.co.jp',1,3,'2022-8-23 23:08:08','マスター',null,null),
+('テスト10 てすと10 test10 TEST10 テスト10 てすと10 test10 TEST10 テスト10 てすと10 test10 TEST10 テスト10 てすと10 test10 TEST10 ','http://www.google.co.jp',1,4,'2022-08-23 01:01:01','山田太郎','2022-08-25 06:06:59','マスター'),
+('テスト11 てすと11 test11 TEST11 テスト11 てすと11 test11 TEST11 テスト11 てすと11 test11 TEST11 テスト11 てすと11 test11 TEST11 ','http://www.google.co.jp',3,8,'2022-08-23 05:02:00','山田太郎','2022-08-24 23:02:21','ユーザー'),
+('テスト12 てすと12 test12 TEST12 テスト12 てすと12 test12 TEST12 テスト12 てすと12 test12 TEST12 テスト12 てすと12 test12 TEST12 ','http://www.google.co.jp',3,3,'2022-08-24 09:41:44','マスター',null,null),
+('テスト13 てすと13 test13 TEST13 テスト13 てすと13 test13 TEST13 テスト13 てすと13 test13 TEST13 テスト13 てすと13 test13 TEST13 ','http://www.google.co.jp',1,5,'2022-08-25 11:08:53','ユーザー','2022-08-26 08:50:00','マスター'),
+('テスト14 てすと14 test14 TEST14 テスト14 てすと14 test14 TEST14 テスト14 てすと14 test14 TEST14 テスト14 てすと14 test14 TEST14 ','http://www.google.co.jp',2,8,'2022-08-26 16:34:55','山田太郎','2022-08-26 08:54:26','ユーザー'),
+('テスト15 てすと15 test15 TEST15 テスト15 てすと15 test15 TEST15 テスト15 てすと15 test15 TEST15 テスト15 てすと15 test15 TEST15 ','http://www.google.co.jp',2,7,'2022-08-27 14:24:21','ユーザー',null,null),
+('テスト16 てすと16 test16 TEST16 テスト16 てすと16 test16 TEST16 テスト16 てすと16 test16 TEST16 テスト16 てすと16 test16 TEST16 ','http://www.google.co.jp',2,3,'2022-08-28 13:40:12','マスター','2022-08-29 20:05:18','マスター'),
+('テスト17 てすと17 test17 TEST17 テスト17 てすと17 test17 TEST17 テスト17 てすと17 test17 TEST17 テスト17 てすと17 test17 TEST17 ','http://www.google.co.jp',2,5,'2022-08-29 09:55:05','山田太郎','2022-08-30 22:15:34','山田太郎');
 
 truncate table as_categories;
 

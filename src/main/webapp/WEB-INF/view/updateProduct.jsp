@@ -29,7 +29,7 @@
 <script type="text/javascript">
 	const maxFiles = ${restOfCountImg};
 	$(function() {
-		let $file_btn = $("#product-img");
+		let $file_btn = $("#add-img");
 
 		$file_btn.on("change", function(evt) {
 			let elm = $file_btn[0];
@@ -184,7 +184,7 @@ $(function(){
 						<th colspan=2>画像の追加(あと<c:out value="${restOfCountImg}" />枚追加できます。)</th>
 					</tr>
 					<tr>
-						<td colspan=2><label><input type="file" name="add-img"
+						<td colspan=2><label><input type="file" name="add-img" id="add-img"
 								class="form-sub" accept="image/jpg"
 								multiple></label>
 							<div class="attention">※ 形式はjpgのみです。</div></td>

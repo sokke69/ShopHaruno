@@ -107,7 +107,7 @@ public class DeleteImgServlet extends HttpServlet {
 				countDelete += 1;
 			}
 			
-			/* 取得したexeの数が元の画像数がは同じもしくは超えるとき画像ファイルが0になってしまうのでエラーで戻る */
+			/* 取得したexeの数が元の画像数と同じもしくは超えるとき画像ファイルが0になってしまうのでエラーで戻る */
 			Integer countImg = productDao.getImgCount(id);
 			if (countDelete >= countImg) {
 				request.setAttribute("id", id);

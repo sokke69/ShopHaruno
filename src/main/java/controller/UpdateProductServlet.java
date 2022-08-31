@@ -28,8 +28,8 @@ import domain.Product;
 @WebServlet("/updateProduct")
 
 /* 注意！！使うPCによって必ずここを変更する！！！！！！！！ */
-//@MultipartConfig(location = "C:/Users/zd2L17/temp")
-@MultipartConfig(location = "C:/temp")
+@MultipartConfig(location = "C:/Users/zd2L17/temp")
+//MultipartConfig(location = "C:/temp")
 
 public class UpdateProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
