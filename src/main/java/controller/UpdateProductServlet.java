@@ -141,16 +141,16 @@ public class UpdateProductServlet extends HttpServlet {
 				request.setAttribute("aCategorySuccess", "true");
 			}
 
-			/* update実行用にセット */
-			Product product = new Product();
-			product.setId(id);
-			product.setProductName(productName);
-			product.setProductUrl(productUrl);
-			product.setCategoryA(aCategoryId);
-			product.setUpdateBy(productUpdateBy);
-
 			/* エラーがある場合は再表示 */
 			if (isError) {
+				/* update実行用にセット */
+				Product product = new Product();
+				product.setId(id);
+				product.setProductName(productName);
+				product.setProductUrl(productUrl);
+				product.setCategoryA(aCategoryId);
+				product.setUpdateBy(productUpdateBy);
+
 				/* ページ再表示用 */
 				request.setAttribute("aId", aCategoryId);
 				List<ACategory> aCategoryList = aCategoryDao.findAll();
@@ -170,10 +170,7 @@ public class UpdateProductServlet extends HttpServlet {
 				Integer updateImg = countImg + registImg;
 
 				/* update実行用にセット(2) */
-				product.setImg(updateImg);
-
-				/* DBに反映させアップデート */
-				productDao.update(product);
+				productDao.updateImgCount(id, updateImg);
 
 				/* 完了ページ表示用 */
 				request.getSession().setAttribute("completeTitle", "商品編集");
@@ -273,39 +270,28 @@ public class UpdateProductServlet extends HttpServlet {
 					part09.write(filePath + "/" + idStr + "_09.jpg");
 				}
 			}
-
 			/* 変更ではなく追加画像の取得 */
-			List<Part> partsImg = request.getParts().stream().filter(part -> "product-img".equals(part.getName()))
+			List<Part> partsImg = request.getParts().stream().filter(part -> "add-img".equals(part.getName()))
 					.collect(Collectors.toList());
+			
 			/* 画像取得&書き込み */
-			System.out.println("partsImg.size()は : " + partsImg.size() + "。選択された画像の枚数は" + (partsImg.size()));
-			Integer addedImg = null;
-			if (partsImg.size() >= 1) {
-
-				for (int i = 0; i <= partsImg.size() - 1; i++) {
-
-					/* 取得 */
-					Part partImg = partsImg.get(i);
-					long subFileSize = partImg.getSize();
-
-					/* 変数iを書き込み用に現在登録枚数に変更 */
-					i = i + countImg;
-
-					/* 書き込み */
-					if (subFileSize > 0) {
-						partImg.write(filePath + "/" + idStr + "_0" + (i + 1) + ".jpg");
-						System.out.println(filePath + "/" + idStr + "_0" + (i + 1) + ".jpg" + "を新たに追加します。");
-					}
-					
-					/* 変数iを変更前に戻す */
-					i = i - countImg;
-					addedImg = +1;
-					
+			/* 画像変更時のみの場合でもListに何故か要素が一つはいってしまうため画像書き込みが */
+			/* あったかどうかのbooleanを用意しておく */
+			boolean writing = false;
+			for (int i = 1; i <= partsImg.size(); i++) {
+				/* 取得 */
+				Part partImg = partsImg.get(i - 1);
+				long subFileSize = partImg.getSize();
+				/* 書き込み */
+				if (subFileSize > 0) {
+					Integer imgNo = countImg + i;
+					partImg.write(filePath + "/" + idStr + "_0" + imgNo + ".jpg");
+					writing = true;
 				}
-				System.out.println("writeImage処理が終わりました。addedImg : " + addedImg + " を返します。");
-				return addedImg;
+			}
+			if (writing) {
+				return partsImg.size();
 			} else {
-				System.out.println("新たな画像追加はありませんでした。");
 				return 0;
 			}
 

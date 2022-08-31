@@ -184,8 +184,8 @@ $(function(){
 						<th colspan=2>画像の追加(あと<c:out value="${restOfCountImg}" />枚追加できます。)</th>
 					</tr>
 					<tr>
-						<td colspan=2><label><input type="file" name="product-img"
-								id="product-img" class="form-sub" accept="image/jpg"
+						<td colspan=2><label><input type="file" name="add-img"
+								class="form-sub" accept="image/jpg"
 								multiple></label>
 							<div class="attention">※ 形式はjpgのみです。</div></td>
 					</tr>

@@ -27,13 +27,9 @@ import domain.Product;
  */
 @WebServlet("/addProduct")
 
-
-
 /* 注意！！使うPCによって必ずここを変更する！！！！！！！！ */
 //@MultipartConfig(location = "C:/Users/zd2L17/temp")
 @MultipartConfig(location = "C:/temp")
-
-
 
 public class AddProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -48,7 +44,7 @@ public class AddProductServlet extends HttpServlet {
 		if (request.getSession().getAttribute("product") != null) {
 			request.getSession().removeAttribute("product");
 		}
-		
+
 		try {
 			/* カテゴリ名取得用 */
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
@@ -68,26 +64,26 @@ public class AddProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		try {
 			/* session中にproductがあるならば初期化 */
 			if (request.getSession().getAttribute("product") != null) {
 				request.getSession().removeAttribute("product");
 			}
-			
+
 			/* 新規ファイル書き込み用にproductsテーブルのMAX(id)+1を取得 */
 			ProductDao productDao = DaoFactory.createProductDao();
-			
+
 			/* DB登録用変数セット */
 			String productName = request.getParameter("product-name");
 			String productUrl = request.getParameter("product-url");
 			Integer aCategoryId = Integer.parseInt(request.getParameter("a-category-id"));
 			String userNickName = (String) request.getSession().getAttribute("userNickName");
-			
+
 			/* 商品URLの正規表現チェック */
 			Pattern urlPattern = Pattern.compile("https?://[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+");
 			Matcher urlMatcher = urlPattern.matcher(productUrl);
-			
+
 			/* ページ再表示用 */
 			request.setAttribute("aId", aCategoryId);
 			ACategoryDao aCategoryDao = DaoFactory.createACategoryDao();
@@ -97,10 +93,10 @@ public class AddProductServlet extends HttpServlet {
 			request.setAttribute("countAId", countAId);
 			request.setAttribute("productName", productName);
 			request.setAttribute("productUrl", productUrl);
-			
+
 			/* バリデーションチェック用boolean作成 */
 			boolean isError = false;
-			
+
 			/* 商品名バリデーション */
 			if (productName.isBlank()) {
 				request.setAttribute("nameError", "商品名が入力されていません。");
@@ -111,7 +107,7 @@ public class AddProductServlet extends HttpServlet {
 			} else {
 				request.setAttribute("nameSuccess", "true");
 			}
-			
+
 			/* 商品URLバリデーション */
 			if (productUrl.isBlank()) {
 				request.setAttribute("urlError", "商品URLが入力されていません。");
@@ -125,7 +121,7 @@ public class AddProductServlet extends HttpServlet {
 			} else {
 				request.setAttribute("urlSuccess", "true");
 			}
-			
+
 			/* 商品カテゴリバリデーション */
 			if (aCategoryId == 0) {
 				request.setAttribute("aCategoryError", "選択してください。");
@@ -133,7 +129,7 @@ public class AddProductServlet extends HttpServlet {
 			} else {
 				request.setAttribute("aCategorySuccess", "true");
 			}
-			
+
 			/* エラーがある場合は再表示 */
 			if (isError) {
 				request.getRequestDispatcher("/WEB-INF/view/addProduct.jsp").forward(request, response);
@@ -141,7 +137,7 @@ public class AddProductServlet extends HttpServlet {
 			else if (!isError) {
 				/* 画像ファイルを取得して書き込み */
 				Integer countImg = writeImg(request);
-				
+
 				/* insert実行用にセット */
 				Product product = new Product();
 
@@ -151,23 +147,22 @@ public class AddProductServlet extends HttpServlet {
 				product.setImg(countImg);
 				product.setRegistBy(userNickName);
 
-				
 				/* DBに登録 */
 				productDao.insert(product);
 				request.getSession().removeAttribute("product");
-				
-				/*完了ページ表示用*/
+
+				/* 完了ページ表示用 */
 				request.getSession().setAttribute("completeTitle", "商品追加");
 				request.getSession().setAttribute("completeMessage", "商品を追加しました。");
 				request.getSession().setAttribute("completeLink1Title", "商品リスト");
 				request.getSession().setAttribute("completeLink1", "listProduct");
-				request.getSession().setAttribute("completeLink2Title", "データベースリスト");			
-				request.getSession().setAttribute("completeLink2", "ListDb");	
-				
+				request.getSession().setAttribute("completeLink2Title", "データベースリスト");
+				request.getSession().setAttribute("completeLink2", "ListDb");
+
 				/* 完了ページ移動 */
 				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
-			
+
 		} catch (Exception e1) {
 			throw new ServletException(e1);
 		}
@@ -181,30 +176,29 @@ public class AddProductServlet extends HttpServlet {
 		return new File(path);
 
 	}
-	
+
 	private Integer writeImg(HttpServletRequest request) throws ServletException {
-		
+
 		File filePath = getUploadedDirectory(request);
-		
+
 		try {
 			/* 新規ファイル書き込み用にproductsテーブルのMAX(id)+1を取得 */
 			ProductDao productDao = DaoFactory.createProductDao();
 			Integer id = productDao.findLatestIdPlusOne();
 			String idStr = id.toString();
-			
+
 			/* 画像List取得 */
 			List<Part> partsImg = request.getParts().stream().filter(part -> "product-img".equals(part.getName()))
 					.collect(Collectors.toList());
-			
-			
+
 			/* 画像取得&書き込み */
-			for(int i=0; i <= partsImg.size()-1; i++) {
+			for (int i = 0; i <= partsImg.size() - 1; i++) {
 				/* 取得 */
 				Part partImg = partsImg.get(i);
 				long subFileSize = partImg.getSize();
 				/* 書き込み */
 				if (subFileSize > 0) {
-					partImg.write(filePath + "/" + idStr + "_0" + (i+1) + ".jpg");
+					partImg.write(filePath + "/" + idStr + "_0" + (i + 1) + ".jpg");
 				}
 			}
 			return partsImg.size();
