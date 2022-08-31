@@ -55,7 +55,7 @@ public class UpdateProductServlet extends HttpServlet {
 			/* URLから修正したい商品のIDの取得 */
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			
-			/* IDから商品情報全てを取得・セット */
+			/* IDから商品情報を取得・セット */
 			Product product = productDao.findById(id);
 			request.setAttribute("product", product);
 			
@@ -92,6 +92,12 @@ public class UpdateProductServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
+		/* 画像削除ボタンが押されたらここを実行 */
+		
+		
+		
+		
+		/* 画像削除ボタンが押されていない場合はここを実行 */
 		try {
 			/* DaoFactoryで使用するDaoの作成 */
 			ProductDao productDao = DaoFactory.createProductDao();
@@ -284,7 +290,6 @@ public class UpdateProductServlet extends HttpServlet {
 			/* 変更ではなく追加画像の取得 */
 			List<Part> partsImg = request.getParts().stream().filter(part -> "product-img".equals(part.getName()))
 					.collect(Collectors.toList());
-			System.out.println("参照から取得した枚数" + partsImg.size());
 			/* 画像取得&書き込み */
 			for(int i = 0; i <= partsImg.size()-1; i++) {
 				/* 取得 */
@@ -297,7 +302,6 @@ public class UpdateProductServlet extends HttpServlet {
 				/* 書き込み */
 				if (subFileSize > 0) {
 					partImg.write(filePath + "/" + idStr + "_0" + (i+1) + ".jpg");
-					System.out.println("./imgs/" + idStr + "_0" + (i+1) + ".jpg で追加登録します。");
 				}
 				
 				/* 変数iを変更前に戻す */

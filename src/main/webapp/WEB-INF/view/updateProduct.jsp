@@ -96,21 +96,23 @@ $(function(){
 				<%-- テーブル中身 ここから --%>
 				<table class="table-list">
 					<tr>
-						<th class="subject">商品編集</th>
+						<th colspan=2 class="subject">商品編集</th>
 					</tr>
 					<tr>
-						<td><hr></td>
+						<td colspan=2><hr></td>
 					</tr>
+					<%-- 商品ID --%>
+					<tr><th class="img-id">商品ID</th><td><c:out value="${product.id}" /></td></tr>
 					<%-- 商品名 --%>
 					<tr>
-						<th><c:if test="${ not empty nameSuccess}">
+						<th colspan=2><c:if test="${ not empty nameSuccess}">
 								<i class="fa-solid fa-circle-check success"></i>
 							</c:if> <c:if test="${ not empty nameError}">
 								<i class="fa-solid fa-circle-exclamation error"></i>
 							</c:if> 商品名*</th>
 					</tr>
 					<tr>
-						<td><c:if test="${ not empty nameError}">
+						<td colspan=2><c:if test="${ not empty nameError}">
 								<div class="alert alert-danger" id="alert">
 									<c:out value="※ ${nameError}" />
 								</div>
@@ -121,14 +123,14 @@ $(function(){
 
 					<%-- 商品URL --%>
 					<tr>
-						<th><c:if test="${ not empty urlSuccess}">
+						<th colspan=2><c:if test="${ not empty urlSuccess}">
 								<i class="fa-solid fa-circle-check success"></i>
 							</c:if> <c:if test="${ not empty urlError}">
 								<i class="fa-solid fa-circle-exclamation error"></i>
 							</c:if> 商品URL*</th>
 					</tr>
 					<tr>
-						<td><c:if test="${ not empty urlError}">
+						<td colspan=2><c:if test="${ not empty urlError}">
 								<div class="alert alert-danger" id="alert">
 									<c:out value="※ ${urlError}" />
 								</div>
@@ -137,14 +139,14 @@ $(function(){
 					</tr>
 					<%-- カテゴリA --%>
 					<tr>
-						<th><c:if test="${ not empty aCategorySuccess}">
+						<th colspan=2><c:if test="${ not empty aCategorySuccess}">
 								<i class="fa-solid fa-circle-check success"></i>
 							</c:if> <c:if test="${ not empty aCategoryError}">
 								<i class="fa-solid fa-circle-exclamation error"></i>
 							</c:if> カテゴリA*</th>
 					</tr>
 					<tr>
-						<td><c:if test="${ not empty aCategoryError}">
+						<td colspan=2><c:if test="${ not empty aCategoryError}">
 								<div class="alert alert-danger" id="alert">
 									<c:out value="※ ${aCategoryError}" />
 								</div>
@@ -160,17 +162,18 @@ $(function(){
 					<%-- 画像 --%>
 					<c:forEach var="i" begin="1" end="${product.img}" varStatus="vs">
 						<tr>
-							<th>画像0<c:out value="${i}" />
+							<th colspan=2>画像0<c:out value="${i}" />
 							</th>
 						</tr>
 						<tr>
-							<td class="img-td"><label> <input type="checkbox" name="checked"
+							<td  colspan=2 class="img-td"><label> <input type="checkbox" name="checked"
 									value="1" checked="checked" class="check" /> <small>変更しない</small>
 							</label><br /> <label> <img
 									src="./imgs/${product.id}_0${i}.jpg?${today}"
 									class="uploaded thumb" alt="" /><br /> <input type="file"
 									name="product-img-0${i}" />
 							</label>
+							<a href="deleteImg?id=${product.id}" class="btn btn-outline-danger btn-sm delete-img-btn">画像削除ページへ移動</a>
 							<br><br>
 							</td>	
 						</tr>
@@ -178,10 +181,10 @@ $(function(){
 					
 					<c:if test="${restOfCountImg > 0}">
 						<tr>
-						<th>画像の追加(あと<c:out value="${restOfCountImg}" />枚追加できます。)</th>
+						<th colspan=2>画像の追加(あと<c:out value="${restOfCountImg}" />枚追加できます。)</th>
 					</tr>
 					<tr>
-						<td><label><input type="file" name="product-img"
+						<td colspan=2><label><input type="file" name="product-img"
 								id="product-img" class="form-sub" accept="image/jpg"
 								multiple></label>
 							<div class="attention">※ 形式はjpgのみです。</div></td>
@@ -190,15 +193,15 @@ $(function(){
 					
 					
 					<tr>
-						<td><div class="submit">
+						<td colspan=2><div class="submit">
 								<input type="submit" value="決定" class="btn btn-secondary">
 							</div></td>
 					</tr>
 					<tr>
-						<td><hr></td>
+						<td colspan=2><hr></td>
 					</tr>
 					<tr>
-						<td>
+						<td colspan=2>
 							<table>
 								<tr>
 									<td class="bottom-link"><c:if

@@ -147,6 +147,12 @@ td.product-ted-simple{
 .head{
 	width:120px;
 }
-.danger{
-	padding-left:6px;
+.delete-img-btn{
+	margin-left:6px;
+}
+.img-id{
+	width:100px;
+}
+.delete-radio{
+	margin-bottom:20px;
 }

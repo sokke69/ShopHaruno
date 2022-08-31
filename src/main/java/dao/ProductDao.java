@@ -18,4 +18,6 @@ public interface ProductDao {
 	Integer findAIdById(Integer id) throws Exception;
 	Integer countId() throws Exception;
 	Integer findCountImg(Integer id) throws Exception;
+	void updateImgCount(Integer id, Integer newImgCount) throws Exception;
+	Integer getImgCount(Integer id) throws Exception;
 }

@@ -314,5 +314,38 @@ public class ProductDaoImpl implements ProductDao{
 
 		return null;
 	}
+
+	@Override
+	public void updateImgCount(Integer id,Integer newImgCount) throws Exception {
+		try (Connection con = ds.getConnection()){
+			String sql = "UPDATE products SET"
+					+ " img=?"
+					+ " WHERE id=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setObject(1, newImgCount,Types.INTEGER);
+			stmt.setObject(2, id,Types.INTEGER);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public Integer getImgCount(Integer id) throws Exception {
+		Integer oldCountImg = null;
+		try (Connection con = ds.getConnection()){
+			String sql = "SELECT img FROM products WHERE id=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setObject(1, id,Types.INTEGER);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				oldCountImg = (Integer) rs.getObject("img");
+				return oldCountImg;
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return null;
+	}
 	
 }
