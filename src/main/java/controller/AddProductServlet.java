@@ -30,8 +30,8 @@ import domain.Product;
 
 
 /* 注意！！使うPCによって必ずここを変更する！！！！！！！！ */
-@MultipartConfig(location = "C:/Users/zd2L17/temp")
-//@MultipartConfig(location = "C:/temp")
+//@MultipartConfig(location = "C:/Users/zd2L17/temp")
+@MultipartConfig(location = "C:/temp")
 
 
 
