@@ -77,70 +77,103 @@ public class DeleteImgServlet extends HttpServlet {
 			String check08 = request.getParameter("check08");
 			String check09 = request.getParameter("check09");
 
-			/* 取得した変数にexeが入っているなら各々削除実行 */
+			/* 取得したexeの個数を計算 */
 			Integer countDelete = 0;
 			if (check01.equals("exe")) {
-				deleteImg(request, id, 1);
 				countDelete += 1;
 			}
-
-			if (check02.equals("exe")) {
-				deleteImg(request, id, 2);
+			if (check02.equals("exe")) {;
 				countDelete += 1;
 			}
 			if (check03.equals("exe")) {
-				deleteImg(request, id, 3);
 				countDelete += 1;
 			}
 			if (check04.equals("exe")) {
-				deleteImg(request, id, 4);
 				countDelete += 1;
 			}
 			if (check05.equals("exe")) {
-				deleteImg(request, id, 5);
 				countDelete += 1;
 			}
 			if (check06.equals("exe")) {
-				deleteImg(request, id, 6);
 				countDelete += 1;
 			}
 			if (check07.equals("exe")) {
-				deleteImg(request, id, 7);
 				countDelete += 1;
 			}
 			if (check08.equals("exe")) {
-				deleteImg(request, id, 8);
 				countDelete += 1;
 			}
 			if (check09.equals("exe")) {
-				deleteImg(request, id, 9);
 				countDelete += 1;
 			}
 			
-			renameImg(request, id);
-			/* 商品情報のimgカラム変更 */
-			Integer oldImgCount = productDao.getImgCount(id);
+			/* 取得したexeの数が元の画像数がは同じもしくは超えるとき画像ファイルが0になってしまうのでエラーで戻る */
+			Integer countImg = productDao.getImgCount(id);
+			if (countDelete >= countImg) {
+				request.setAttribute("id", id);
+				request.getRequestDispatcher("/WEB-INF/view/updateProductFail.jsp").forward(request, response);
+			} else {
+				/* 取得した変数にexeが入っているなら各々削除実行 */
+				countDelete = 0;
+				if (check01.equals("exe")) {
+					deleteImg(request, id, 1);
+					countDelete += 1;
+				}
+				if (check02.equals("exe")) {
+					deleteImg(request, id, 2);
+					countDelete += 1;
+				}
+				if (check03.equals("exe")) {
+					deleteImg(request, id, 3);
+					countDelete += 1;
+				}
+				if (check04.equals("exe")) {
+					deleteImg(request, id, 4);
+					countDelete += 1;
+				}
+				if (check05.equals("exe")) {
+					deleteImg(request, id, 5);
+					countDelete += 1;
+				}
+				if (check06.equals("exe")) {
+					deleteImg(request, id, 6);
+					countDelete += 1;
+				}
+				if (check07.equals("exe")) {
+					deleteImg(request, id, 7);
+					countDelete += 1;
+				}
+				if (check08.equals("exe")) {
+					deleteImg(request, id, 8);
+					countDelete += 1;
+				}
+				if (check09.equals("exe")) {
+					deleteImg(request, id, 9);
+					countDelete += 1;
+				}
+				
+				/* 選択された画像が削除されたため穴あきが発生してるためリネームして画像番号を詰める */
+				renameImg(request, id);
+				
+				/* 商品情報のimgカラム変更 */
+				Integer oldImgCount = productDao.getImgCount(id);
+				Integer newImgCount = oldImgCount - countDelete;
+				productDao.updateImgCount(id, newImgCount);
+				
 			
-			Integer newImgCount = oldImgCount - countDelete;
-			if (newImgCount == 0) {
-				newImgCount = null;
+				/* 完了ページ表示用 */
+				request.getSession().setAttribute("completeTitle", "商品画像削除");
+				request.getSession().setAttribute("completeMessage", "商品画像の削除が完了しました。");
+				request.getSession().setAttribute("completeLink1Title", "商品リスト");
+				request.getSession().setAttribute("completeLink1", "listProduct");
+				request.getSession().setAttribute("completeLink2Title", "データベースリスト");
+				request.getSession().setAttribute("completeLink2", "listDb");
+				
+				/* 完了ページ移動 */
+				request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 			}
 			
-			productDao.updateImgCount(id, newImgCount);
 			
-		
-			/* 完了ページ表示用 */
-			String link1 = "updateProduct?id=" + id;
-			
-			request.getSession().setAttribute("completeTitle", "商品画像削除");
-			request.getSession().setAttribute("completeMessage", "商品画像の削除が完了しました。");
-			request.getSession().setAttribute("completeLink1Title", "商品ページ");
-			request.getSession().setAttribute("completeLink1", link1);
-			request.getSession().setAttribute("completeLink2Title", "商品リスト");
-			request.getSession().setAttribute("completeLink2", "listProduct");
-			
-			/* 完了ページ移動 */
-			request.getRequestDispatcher("/WEB-INF/view/done.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			new ServletException(e);

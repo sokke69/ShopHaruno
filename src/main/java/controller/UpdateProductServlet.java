@@ -92,12 +92,6 @@ public class UpdateProductServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		/* 画像削除ボタンが押されたらここを実行 */
-		
-		
-		
-		
-		/* 画像削除ボタンが押されていない場合はここを実行 */
 		try {
 			/* DaoFactoryで使用するDaoの作成 */
 			ProductDao productDao = DaoFactory.createProductDao();
@@ -222,7 +216,7 @@ public class UpdateProductServlet extends HttpServlet {
 			/* 編集する商品のidをString化 */
 			String idStr = id.toString();
 
-			/* 1 画像取得・書き込み */
+			/* 1 画像変更から取得・書き込み */
 			Part part01 = request.getPart("product-img-01");
 			long part01FileSize = part01.getSize();
 			if (part01FileSize > 0) {
@@ -291,24 +285,30 @@ public class UpdateProductServlet extends HttpServlet {
 			List<Part> partsImg = request.getParts().stream().filter(part -> "product-img".equals(part.getName()))
 					.collect(Collectors.toList());
 			/* 画像取得&書き込み */
-			for(int i = 0; i <= partsImg.size()-1; i++) {
-				/* 取得 */
-				Part partImg = partsImg.get(i);
-				long subFileSize = partImg.getSize();
-				
-				/* 変数iを書き込み用に現在登録枚数に変更 */
-				i = i + countImg;
-				
-				/* 書き込み */
-				if (subFileSize > 0) {
-					partImg.write(filePath + "/" + idStr + "_0" + (i+1) + ".jpg");
+			System.out.println("partsImg.size()は : " + partsImg.size() + "。選択された画像の枚数は" + (partsImg.size()));
+			if (partsImg.size() >= 1) {
+				for(int i = 0; i <= partsImg.size()-1; i++) {
+					/* 取得 */
+					Part partImg = partsImg.get(i);
+					long subFileSize = partImg.getSize();
+					
+					/* 変数iを書き込み用に現在登録枚数に変更 */
+					i = i + countImg;
+					
+					/* 書き込み */
+					if (subFileSize > 0) {
+						partImg.write(filePath + "/" + idStr + "_0" + (i+1) + ".jpg");
+						System.out.println(filePath + "/" + idStr + "_0" + (i+1) + ".jpg" + "を新たに追加します。");
+					}
+					
+					/* 変数iを変更前に戻す */
+					i = i - countImg;
 				}
-				
-				/* 変数iを変更前に戻す */
-				i = i - countImg;
+				System.out.println("writeImage処理が終わりました。partsImg.size() : " + partsImg.size() + " を返します。");
+				return partsImg.size()-1;
 			}
-			
-			return partsImg.size();
+			System.out.println("新たな画像追加はありませんでした。");
+			return 0;
 
 		} catch (Exception e1) {
 			throw new ServletException(e1);

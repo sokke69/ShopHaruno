@@ -97,12 +97,8 @@
 						<td colspan=2>
 							<table>
 								<tr>
-									<td class="bottom-link"><c:if
-											test="${not empty visitedByDesign}">
-											<a href="listProduct">戻る</a>
-										</c:if> <c:if test="${not empty visitedBySimple}">
-											<a href="listProductSimple">戻る</a>
-										</c:if></td>
+									<td class="bottom-link">
+											<a href="updateProduct?id=${product.id}">戻る</a>
 								</tr>
 							</table>
 						</td>
