@@ -20,12 +20,6 @@ public class ListDbServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//String userId = (String) request.getSession().getAttribute("userName");
-		//String userType = (String) request.getSession().getAttribute("userType");
-		//String userNickName = (String) request.getSession().getAttribute("userNickName");
-		//System.out.println("ユーザーID:" + userId + "、ユーザータイプ:"  + userType + "、ユーザーニックネーム:" + userNickName + "でログイン中。");
-		
-		
 		request.getRequestDispatcher("/WEB-INF/view/listDb.jsp").forward(request, response);
 	}
 

@@ -140,16 +140,17 @@ public class UpdateProductServlet extends HttpServlet {
 			} else {
 				request.setAttribute("aCategorySuccess", "true");
 			}
+			
+			/* update実行用にセット */
+			Product product = new Product();
+			product.setId(id);
+			product.setProductName(productName);
+			product.setProductUrl(productUrl);
+			product.setCategoryA(aCategoryId);
+			product.setUpdateBy(productUpdateBy);
 
 			/* エラーがある場合は再表示 */
 			if (isError) {
-				/* update実行用にセット */
-				Product product = new Product();
-				product.setId(id);
-				product.setProductName(productName);
-				product.setProductUrl(productUrl);
-				product.setCategoryA(aCategoryId);
-				product.setUpdateBy(productUpdateBy);
 
 				/* ページ再表示用 */
 				request.setAttribute("aId", aCategoryId);
@@ -169,8 +170,10 @@ public class UpdateProductServlet extends HttpServlet {
 				Integer registImg = writeImg(request, id, countImg);
 				Integer updateImg = countImg + registImg;
 
-				/* update実行用にセット(2) */
+				/* update実行 */
+				productDao.update(product);
 				productDao.updateImgCount(id, updateImg);
+				
 
 				/* 完了ページ表示用 */
 				request.getSession().setAttribute("completeTitle", "商品編集");
